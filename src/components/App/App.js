@@ -1,6 +1,12 @@
 import "../../blocks/App.css";
+import logo from "../../images/logo.svg";
 // import ItemModal from "../ItemCard/ItemModal";
 import React from "react";
+
+const currentDate = new Date().toLocaleString("default", {
+  month: "long",
+  day: "numeric",
+});
 
 function App() {
   return (
@@ -15,7 +21,11 @@ function App() {
           <div className="header__text">Welcome</div>
           <div className="header__name">Cristopher Campos</div>
           <div className="header__avatar">
-            <img className="header__avatar-image"></img>
+            <img
+              className="header__avatar-image"
+              src="{logo}"
+              alt="avatar logo"
+            ></img>
           </div>
         </header>
       </div>
