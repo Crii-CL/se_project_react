@@ -1,32 +1,35 @@
 .header {
   display: flex;
-
+  align-items: center;
   background-color: aqua;
+  min-height: 60px;
 }
 
 .header__logo {
-  border: solid 1px red;
   margin: 0;
 }
 
 .header__text {
-  border: solid 1px red;
+  font-family: "Cabinet Grotesk", "Inter", sans-serif;
 }
 
 .header__name {
-  margin-left: auto;
+  margin-left: 12px;
 }
 
 .header__button {
-  border: solid 1px red;
+  border: none;
+  list-style: none;
+  margin-left: auto;
+  background: none;
+  height: 25px;
 }
 
 .header__avatar {
-  margin-left: auto;
-  border: 1px solid red;
+  display: flex;
+  margin-left: 12px;
   border-radius: 50%;
 }
 
 .header__avatar-image {
-  border: 1px solid red;
 }
