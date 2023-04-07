@@ -1,3 +1,15 @@
 .header {
+  display: flex;
+
   color: #000;
+}
+
+.header__logo {
+}
+
+.header__text {
+  color: blue;
+}
+
+.header__button {
 }
