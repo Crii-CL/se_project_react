@@ -13,7 +13,7 @@ function App() {
             Add New Clothes
           </button>
           <div className="header__text">Welcome</div>
-          <div className="header__text">Cristopher Campos</div>
+          <div className="header__name">Cristopher Campos</div>
           <div className="header__avatar">
             <img className="header__avatar-image"></img>
           </div>

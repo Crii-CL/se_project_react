@@ -1,15 +1,32 @@
 .header {
   display: flex;
 
-  color: #000;
+  background-color: aqua;
 }
 
 .header__logo {
+  border: solid 1px red;
+  margin: 0;
 }
 
 .header__text {
-  color: blue;
+  border: solid 1px red;
+}
+
+.header__name {
+  margin-left: auto;
 }
 
 .header__button {
+  border: solid 1px red;
+}
+
+.header__avatar {
+  margin-left: auto;
+  border: 1px solid red;
+  border-radius: 50%;
+}
+
+.header__avatar-image {
+  border: 1px solid red;
 }
