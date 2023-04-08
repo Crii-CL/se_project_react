@@ -18,10 +18,6 @@ function App() {
     const currentDateElement = document.createElement("div");
     currentDateElement.id = "current-date";
     currentDateElement.innerHTML = currentDate;
-
-    return () => {
-      document.body.removeChild(currentDateElement);
-    };
   }, [currentDate]);
 
   return (
