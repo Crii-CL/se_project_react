@@ -29,7 +29,8 @@ function Header() {
             </div>
           </div>
           <div className="header__container" id="button-name-avatar">
-            <button className="header__button" type="text">
+            {/* header__button opens card modal */}
+            <button className="header__button" type="text" id="add-new-clothes">
               + Add New Clothes
             </button>
             <div className="header__name">Cristopher Campos</div>
