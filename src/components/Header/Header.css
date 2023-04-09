@@ -3,7 +3,8 @@
   align-items: center;
   justify-content: space-between;
   min-height: 60px;
-  font-family: "CabinetGrotesk-Regular", "Inter", sans-serif;
+  font-family: "CabinetGrotesk-Medium", "Times New Roman", sans-serif;
+
   font-weight: normal;
   padding: 0 20px;
 }
@@ -36,7 +37,7 @@
   background: none;
   height: 25px;
   font-size: 16px;
-  font-family: "CabinetGrotesk-Regular", "Inter", sans-serif;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
 }
 
 .header__avatar {

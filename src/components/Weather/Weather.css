@@ -10,6 +10,8 @@
   margin-left: 16px;
   z-index: 1;
 
+  font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
+  font-weight: normal;
   font-size: 36px;
   color: white;
 }
