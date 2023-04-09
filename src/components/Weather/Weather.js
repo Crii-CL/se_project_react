@@ -1,16 +1,17 @@
+import "./Weather.css";
+import daySunny from "../../images/day-snow.svg";
+
 function Weather() {
   return (
     <>
-      <div className="weather">
-        <div className="weather__container">
-          <p className="weather__info"></p>
-          <img
-            className="weather__img"
-            src="../images/day-sunny.svg"
-            alt="weather conditions frame"
-          ></img>
-        </div>
-      </div>
+      <section className="weather">
+        <div className="weather__info">25F</div>
+        <img
+          className="weather__image"
+          src={daySunny}
+          alt="weather conditions frame"
+        />
+      </section>
     </>
   );
 }
