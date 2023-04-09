@@ -1,33 +1,33 @@
 import "./Cards.css";
-
 import cap from "../../images/Cap.svg";
 import shorts from "../../images/Shorts.svg";
 import sneakers from "../../images/Sneakers 1.svg";
 import tshirt from "../../images/T-Shirt.svg";
 
 const cardImagesArray = [
-  { url: cap },
-  { url: shorts },
-  { url: sneakers },
-  { url: tshirt },
+  { url: cap, name: "Cap" },
+  { url: shorts, name: "Shorts" },
+  { url: sneakers, name: "Sneakers" },
+  { url: tshirt, name: "T-Shirt" },
 ];
 
 function Cards() {
   return (
-    <div className="cards" id="item-card-section">
+    <section className="cards" id="card-section">
       <ul className="cards__list" id="card-list">
         {cardImagesArray.map((cardImage, index) => (
           <li className="cards__el" key={index}>
+            <div className="cards__caption">{cardImage.name}</div>
             <img
               className="cards__image"
               src={cardImage.url}
-              id={`${index}`}
+              id={`${cardImage.name}`}
               alt={`Card ${index}`}
             ></img>
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
 

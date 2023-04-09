@@ -1,16 +1,33 @@
-.cards {
-}
-
 .cards__list {
   display: flex;
-  justify-content: space-between;
   flex-flow: row wrap;
   list-style: none;
   padding: 0;
   gap: 13px;
 }
 
+.cards__el {
+  position: relative;
+}
+
+.cards__caption {
+  position: absolute;
+  display: flex;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  width: 72px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3%;
+  z-index: 1;
+}
+
 .cards__image {
   width: 328;
   height: 328px;
+  border-radius: 3%;
+  border: solid 1px rgba(0, 0, 0, 0.3);
 }

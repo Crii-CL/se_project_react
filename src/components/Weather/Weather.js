@@ -1,5 +1,5 @@
 import "./Weather.css";
-import daySunny from "../../images/day-snow.svg";
+import daySunny from "../../images/day-sunny.svg";
 
 const weatherOptions = [
   { url: "../../images/day-sunny.svg", day: true, type: "sunny" },
@@ -24,22 +24,24 @@ function Weather({ day, type }) {
   console.log(imageSrc);
   return (
     <>
-      <div className="weather">
-        <div className="weather__info" id="weather-info">
-          25F
+      <section id="weather-section">
+        <div className="weather">
+          <div className="weather__info" id="weather-info">
+            75F
+          </div>
+          <img
+            className="weather__image"
+            src={daySunny}
+            alt="weather conditions frame"
+          />
         </div>
-        <img
-          className="weather__image"
-          src={daySunny}
-          alt="weather conditions frame"
-        />
-      </div>
-      <div>
-        <h1 className="weather__message">
-          Today is 25F you may want to wear a coat!
-          {/* Automate this text to show the correct weather and clothing item*/}
-        </h1>
-      </div>
+        <div>
+          <h1 className="weather__message">
+            Today is 75F{type}/ You may want to wear:
+            {/* figure out why type isn't passing*/}
+          </h1>
+        </div>
+      </section>
     </>
   );
 }

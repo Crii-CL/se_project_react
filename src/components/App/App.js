@@ -5,9 +5,6 @@ import Cards from "../Cards/Cards";
 import React from "react";
 import font from "../../vendor/Fonts/fonts.css";
 
-// const currentDateEl = document.getElementById('currentDate');
-// currentDateEl.innerHTML = currentDate;
-
 function App() {
   return (
     <>
