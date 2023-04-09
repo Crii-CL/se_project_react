@@ -24,14 +24,22 @@ function Weather({ day, type }) {
   console.log(imageSrc);
   return (
     <>
-      <section className="weather">
-        <div className="weather__info">25F</div>
+      <div className="weather">
+        <div className="weather__info" id="weather-info">
+          25F
+        </div>
         <img
           className="weather__image"
           src={daySunny}
           alt="weather conditions frame"
         />
-      </section>
+      </div>
+      <div>
+        <h1 className="weather__message">
+          Today is 25F you may want to wear a coat!
+          {/* Automate this text to show the correct weather and clothing item*/}
+        </h1>
+      </div>
     </>
   );
 }

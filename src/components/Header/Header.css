@@ -3,9 +3,7 @@
   align-items: center;
   justify-content: space-between;
   min-height: 60px;
-  font-family: "CabinetGrotesk-Medium", "Times New Roman", sans-serif;
-
-  font-weight: normal;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
   padding: 0 20px;
 }
 

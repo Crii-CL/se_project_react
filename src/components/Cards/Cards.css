@@ -1,0 +1,16 @@
+.cards {
+}
+
+.cards__list {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  list-style: none;
+  padding: 0;
+  gap: 13px;
+}
+
+.cards__image {
+  width: 328;
+  height: 328px;
+}

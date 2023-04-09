@@ -11,7 +11,6 @@
   z-index: 1;
 
   font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
-  font-weight: normal;
   font-size: 36px;
   color: white;
 }
@@ -20,4 +19,9 @@
   display: block;
   width: 100%;
   height: auto;
+}
+
+.weather__message {
+  font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
+  font-size: 25px;
 }
