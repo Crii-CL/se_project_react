@@ -16,7 +16,7 @@ const weatherOptions = [
   { url: "../../images/night-snow.svg", day: false, type: "snow" },
 ];
 
-function Weather({ day, type }) {
+export default function Weather({ day, type }) {
   const imageSrc = weatherOptions.filter((i) => {
     console.log(i);
     return i.day === day && i.type === type;
@@ -45,5 +45,3 @@ function Weather({ day, type }) {
     </>
   );
 }
-
-export default Weather;

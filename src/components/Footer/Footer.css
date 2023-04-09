@@ -1,0 +1,16 @@
+.footer {
+  display: flex;
+  color: #000;
+  position: relative;
+  bottom: -30vh;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  margin: 0 20px;
+}
+
+.footer__author {
+  align-self: center;
+}
+
+.footer__year {
+  margin-left: auto;
+}

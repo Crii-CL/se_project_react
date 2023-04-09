@@ -3,7 +3,7 @@ import avatar from "../../images/avatar.png";
 import logo from "../../images/logo.svg";
 import { useEffect } from "react";
 
-function Header() {
+export default function Header() {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -46,5 +46,3 @@ function Header() {
     </>
   );
 }
-
-export default Header;

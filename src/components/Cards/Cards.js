@@ -11,13 +11,13 @@ const cardImagesArray = [
   { url: tshirt, name: "T-Shirt" },
 ];
 
-function Cards() {
+export default function Cards() {
   return (
     <section className="cards" id="card-section">
       <ul className="cards__list" id="card-list">
         {cardImagesArray.map((cardImage, index) => (
           <li className="cards__el" key={index}>
-            <div className="cards__caption">{cardImage.name}</div>
+            <p className="cards__caption">{cardImage.name}</p>
             <img
               className="cards__image"
               src={cardImage.url}
@@ -30,5 +30,3 @@ function Cards() {
     </section>
   );
 }
-
-export default Cards;
