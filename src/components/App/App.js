@@ -1,5 +1,6 @@
 import Header from "../Header/Header";
 import Weather from "../Weather/Weather";
+import Main from "../Main/Main";
 // import Cards from "../Cards/Cards";
 import React from "react";
 
@@ -11,8 +12,10 @@ function App() {
     <>
       <div>
         <Header />
-        <Weather />
-        {/* <Cards /> */}
+        <Main>
+          <Weather />
+          {/* <Cards /> */}
+        </Main>
       </div>
     </>
   );
