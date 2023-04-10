@@ -11,8 +11,6 @@ import shorts from "../../images/Shorts.svg";
 import sneakers from "../../images/Sneakers 1.svg";
 import tshirt from "../../images/T-Shirt.svg";
 
-
-
 const cardImagesArray = [
   { url: cap, name: "Cap" },
   { url: shorts, name: "Shorts" },
@@ -24,13 +22,13 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState();
 
-const handleCardClick = (name, url) => {
-  setIsModalOpen(true)
-  setModalData({
-    name,
-    url
-  })
-};
+  const handleCardClick = (name, url) => {
+    setIsModalOpen(true);
+    setModalData({
+      name,
+      url,
+    });
+  };
 
   return (
     <>
@@ -52,9 +50,9 @@ const handleCardClick = (name, url) => {
           </section>
         </Main>
         <Footer />
-        {isModalOpen && (
+        {/* {isModalOpen && (
           //Modal here
-        )}
+        )} */}
       </div>
     </>
   );
