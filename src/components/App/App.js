@@ -19,10 +19,10 @@ const cardImagesArray = [
   { url: tshirt, name: "T-Shirt" },
 ];
 
-export { cardImagesArray };
-
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalClosed, setIsModalClosed] = useState(false);
+  const [closeModal, setCloseModal] = useState(false);
   const [modalData, setModalData] = useState();
 
   const handleCardClick = (name, url) => {
@@ -31,6 +31,14 @@ export default function App() {
       name,
       url,
     });
+  };
+
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsModalOpen(false);
+      setCloseModal(true);
+      console.log("attempted to close");
+    }
   };
 
   return (
@@ -51,7 +59,13 @@ export default function App() {
               ))}
             </ul>
           </section>
-          <ItemModal itemData={modalData} isOpen={isModalOpen} />
+          <ItemModal
+            itemData={modalData}
+            isOpen={isModalOpen}
+            isClosed={isModalClosed}
+            onClose={closeModal}
+            handleOverlayClick={handleOverlayClick}
+          />
         </Main>
         <Footer />
       </div>
