@@ -22,6 +22,7 @@
   align-items: center;
   border-radius: 5%;
   z-index: 1;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
 }
 
 .cards__image {

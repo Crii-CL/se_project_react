@@ -1,11 +1,12 @@
 import _ from "lodash";
+import fonts from "../../vendor/Fonts/fonts.css";
 import Header from "../Header/Header";
 import Weather from "../Weather/Weather";
 import Main from "../Main/Main";
 import ItemCard from "../ItemCard/ItemCard";
+import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
 import React, { useState } from "react";
-import font from "../../vendor/Fonts/fonts.css";
 import cap from "../../images/Cap.svg";
 import shorts from "../../images/Shorts.svg";
 import sneakers from "../../images/Sneakers 1.svg";
@@ -35,7 +36,7 @@ function App() {
       <div>
         <Header />
         <Main>
-          <Weather day={false} type="sunny" />
+          <Weather day={false} type="clear" />
           <section className="cards" id="card-section">
             <ul className="cards__list" id="card-list">
               {cardImagesArray.map((card, index) => (
@@ -48,11 +49,9 @@ function App() {
               ))}
             </ul>
           </section>
+          <ItemModal />
         </Main>
         <Footer />
-        {/* {isModalOpen && (
-          //Modal here
-        )} */}
       </div>
     </>
   );
