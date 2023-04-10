@@ -1,4 +1,4 @@
-import "./ItemCard.css";
+import "./Cards.css";
 
 export default function Cards({ handleCardClick, name, url }) {
   return (

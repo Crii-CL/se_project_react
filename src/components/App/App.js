@@ -3,7 +3,7 @@ import fonts from "../../vendor/Fonts/fonts.css";
 import Header from "../Header/Header";
 import Weather from "../Weather/Weather";
 import Main from "../Main/Main";
-import ItemCard from "../ItemCard/ItemCard";
+import Cards from "../Cards/Cards";
 import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
 import React, { useState } from "react";
@@ -19,7 +19,9 @@ const cardImagesArray = [
   { url: tshirt, name: "T-Shirt" },
 ];
 
-function App() {
+export { cardImagesArray };
+
+export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState();
 
@@ -40,7 +42,7 @@ function App() {
           <section className="cards" id="card-section">
             <ul className="cards__list" id="card-list">
               {cardImagesArray.map((card, index) => (
-                <ItemCard
+                <Cards
                   key={_.uniqueId(card.name)}
                   handleCardClick={handleCardClick}
                   name={card.name}
@@ -49,12 +51,10 @@ function App() {
               ))}
             </ul>
           </section>
-          <ItemModal />
+          <ItemModal itemData={modalData} />
         </Main>
         <Footer />
       </div>
     </>
   );
 }
-
-export default App;
