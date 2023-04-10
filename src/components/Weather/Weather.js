@@ -42,7 +42,7 @@ export default function Weather({ day, type }) {
       <section id="weather-section">
         <div className="weather">
           <div className="weather__info" id="weather-info">
-            {}
+            75F
             {/* Display Temperature */}
           </div>
           <img
@@ -53,8 +53,7 @@ export default function Weather({ day, type }) {
         </div>
         <div>
           <h1 className="weather__message">
-            Today is {}/ You may want to wear:
-            {/* figure out why type isn't passing*/}
+            Today is 75F/ You may want to wear:
           </h1>
         </div>
       </section>
