@@ -51,7 +51,7 @@ export default function App() {
               ))}
             </ul>
           </section>
-          <ItemModal itemData={modalData} />
+          <ItemModal itemData={modalData} isOpen={isModalOpen} />
         </Main>
         <Footer />
       </div>
