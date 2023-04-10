@@ -1,10 +1,11 @@
 .footer {
   display: flex;
-  color: #000;
   position: relative;
-  bottom: -30vh;
-  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  bottom: -40vh;
   margin: 0 20px;
+
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  color: #000;
 }
 
 .footer__author {

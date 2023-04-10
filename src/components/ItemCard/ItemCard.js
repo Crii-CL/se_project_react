@@ -1,4 +1,4 @@
-import "./Cards.css";
+import "./ItemCard.css";
 import cap from "../../images/Cap.svg";
 import shorts from "../../images/Shorts.svg";
 import sneakers from "../../images/Sneakers 1.svg";
