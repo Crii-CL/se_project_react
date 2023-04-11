@@ -9,32 +9,56 @@
   z-index: 100;
   justify-content: center;
   align-items: center;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
 }
 
 .formModal__form {
+  position: relative;
   width: 496px;
   height: 436px;
-  border: solid 1px red;
+  box-sizing: border-box;
+  padding: 28px 0 0 28px;
+  background-color: #fff;
+  border-radius: 4%;
 }
 
 .formModal__title {
-  font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
   font-weight: 700;
   font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.formModal__title:nth-last-child(2) {
+  margin-top: 24px;
 }
 
 .formModal__fieldset {
   padding-left: 0;
   border: none;
+  margin: 0;
+  padding: 0px;
 }
 
 .formModal__caption {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.formModal__caption:nth-last-child(2) {
+  margin-top: 24px;
 }
 
 .formModal__input {
+  border: none;
+  border-bottom: solid #000 1px;
+  width: 436px;
 }
 
 .formModal__close {
+  position: absolute;
+  right: 31px;
+  background: none;
+  border: none;
 }
 
 .formModal__btn-container {
