@@ -30,6 +30,7 @@
 
 .formModal__title:nth-last-child(2) {
   margin-top: 24px;
+  margin-bottom: 14px;
 }
 
 .formModal__fieldset {
@@ -74,12 +75,17 @@
   position: relative;
   width: 10px;
   height: 10px;
+  border-radius: 50%;
 }
 
 .formModal__btn-submit {
   width: 124px;
   height: 36px;
   margin-top: 21px;
+  border: none;
+  border-radius: 4%;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
 .formModal__label {
