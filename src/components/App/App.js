@@ -40,6 +40,10 @@ export default function App() {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <div>
@@ -63,7 +67,7 @@ export default function App() {
             isOpen={isModalOpen}
             handleOverlayClick={handleOverlayClick}
           />
-          <ModalWithForm />
+          <ModalWithForm handleSubmit={handleSubmit} />
         </Main>
         <Footer />
       </div>
