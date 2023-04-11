@@ -8,6 +8,7 @@ import Footer from "../Footer/Footer";
 import React, { useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import modal from "../../utils/modal.css";
 /* ------------------------------ Item Imports ------------------------------ */
 import cap from "../../images/Cap.svg";
 import shorts from "../../images/Shorts.svg";
@@ -67,7 +68,11 @@ export default function App() {
             isOpen={isModalOpen}
             handleOverlayClick={handleOverlayClick}
           />
-          <ModalWithForm handleSubmit={handleSubmit} />
+          <ModalWithForm
+            handleSubmit={handleSubmit}
+            isOpen={isModalOpen}
+            handleOverlayClick={handleOverlayClick}
+          />
         </Main>
         <Footer />
       </div>
