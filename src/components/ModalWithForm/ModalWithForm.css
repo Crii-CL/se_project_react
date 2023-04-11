@@ -71,7 +71,7 @@
 .formModal__btn-container {
 }
 
-.formModal__btn-radio {
+.formModal__input[type="radio"] {
   position: relative;
   width: 10px;
   height: 10px;

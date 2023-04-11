@@ -23,23 +23,23 @@ export default function ModalWithForm() {
           </h1>
           <fieldset className="formModal__fieldset" id="button-fieldset">
             <label className="formModal__label">
-              <button
+              <input
                 type="radio"
-                className="formModal__btn-radio"
+                className="formModal__input"
                 name="Hot"
-              ></button>
+              ></input>
               Hot
             </label>
             <label className="formModal__label">
-              <button
+              <input
                 type="radio"
-                className="formModal__btn-radio"
+                className="formModal__input"
                 name="Warm"
-              ></button>
+              ></input>
               Warm
             </label>
             <label className="formModal__label">
-              <button type="radio" className="formModal__btn-radio"></button>
+              <input type="radio" className="formModal__input"></input>
               Cold
             </label>
             <button type="submit" className="formModal__btn-submit">
