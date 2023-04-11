@@ -33,10 +33,15 @@
 }
 
 .formModal__fieldset {
-  padding-left: 0;
   border: none;
   margin: 0;
   padding: 0px;
+}
+
+#button-fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .formModal__caption {
@@ -52,6 +57,7 @@
   border: none;
   border-bottom: solid #000 1px;
   width: 436px;
+  padding-bottom: 4px;
 }
 
 .formModal__close {
@@ -65,7 +71,18 @@
 }
 
 .formModal__btn-radio {
+  position: relative;
+  width: 10px;
+  height: 10px;
 }
 
 .formModal__btn-submit {
+  width: 124px;
+  height: 36px;
+  margin-top: 21px;
+}
+
+.formModal__label {
+  display: block;
+  right: 5px;
 }

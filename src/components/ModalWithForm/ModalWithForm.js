@@ -12,7 +12,7 @@ export default function ModalWithForm() {
           <h1 className="formModal__title" id="new-garment">
             New Garment:
           </h1>
-          <fieldset className="formModal__fieldset">
+          <fieldset className="formModal__fieldset" id="input-fieldset">
             <p className="formModal__caption">Name</p>
             <input className="formModal__input" placeholder="Name"></input>
             <p className="formModal__caption">Image</p>
@@ -21,11 +21,30 @@ export default function ModalWithForm() {
           <h1 className="formModal__title" id="weather-type">
             Select the weather type:
           </h1>
-          <fieldset className="formModal__fieldset">
-            <button type="radio" className="formModal__btn-radio"></button>
-            <button type="radio" className="formModal__btn-radio"></button>
-            <button type="radio" className="formModal__btn-radio"></button>
-            <button type="submit" className="formModal__btn-submit"></button>
+          <fieldset className="formModal__fieldset" id="button-fieldset">
+            <label className="formModal__label">
+              <button
+                type="radio"
+                className="formModal__btn-radio"
+                name="Hot"
+              ></button>
+              Hot
+            </label>
+            <label className="formModal__label">
+              <button
+                type="radio"
+                className="formModal__btn-radio"
+                name="Warm"
+              ></button>
+              Warm
+            </label>
+            <label className="formModal__label">
+              <button type="radio" className="formModal__btn-radio"></button>
+              Cold
+            </label>
+            <button type="submit" className="formModal__btn-submit">
+              Add Garment
+            </button>
           </fieldset>
         </form>
       </div>
