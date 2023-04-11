@@ -14,15 +14,15 @@ export default function ModalWithForm() {
             <input className="formModal__input" placeholder="Name"></input>
             <p className="formModal__caption">Image</p>
             <input className="formModal__input" placeholder="Image URL"></input>
-            <h1 className="formModal__title" id="weather-type">
-              Select the weather type:
-            </h1>
-            <div className="formModal__btn-container">
-              <button type="radio" className="formModal__btn-radio"></button>
-              <button type="radio" className="formModal__btn-radio"></button>
-              <button type="radio" className="formModal__btn-radio"></button>
-              <button type="submit" className="formModal__btn-submit"></button>
-            </div>
+          </fieldset>
+          <h1 className="formModal__title" id="weather-type">
+            Select the weather type:
+          </h1>
+          <fieldset className="formModal__btn-container">
+            <button type="radio" className="formModal__btn-radio"></button>
+            <button type="radio" className="formModal__btn-radio"></button>
+            <button type="radio" className="formModal__btn-radio"></button>
+            <button type="submit" className="formModal__btn-submit"></button>
           </fieldset>
         </form>
       </div>
