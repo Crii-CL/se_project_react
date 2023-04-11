@@ -4,13 +4,16 @@ import Header from "../Header/Header";
 import Weather from "../Weather/Weather";
 import Main from "../Main/Main";
 import Cards from "../Cards/Cards";
-import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
 import React, { useState } from "react";
+import ItemModal from "../ItemModal/ItemModal";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+/* ------------------------------ Item Imports ------------------------------ */
 import cap from "../../images/Cap.svg";
 import shorts from "../../images/Shorts.svg";
 import sneakers from "../../images/Sneakers 1.svg";
 import tshirt from "../../images/T-Shirt.svg";
+/* ----------------------------- ^Item Imports^ ----------------------------- */
 
 const cardImagesArray = [
   { url: cap, name: "Cap" },
@@ -21,8 +24,6 @@ const cardImagesArray = [
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalClosed, setIsModalClosed] = useState(false);
-  const [closeModal, setCloseModal] = useState(false);
   const [modalData, setModalData] = useState();
 
   const handleCardClick = (name, url) => {
@@ -36,8 +37,6 @@ export default function App() {
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       setIsModalOpen(false);
-      setCloseModal(true);
-      console.log("attempted to close");
     }
   };
 
@@ -62,10 +61,9 @@ export default function App() {
           <ItemModal
             itemData={modalData}
             isOpen={isModalOpen}
-            isClosed={isModalClosed}
-            onClose={closeModal}
             handleOverlayClick={handleOverlayClick}
           />
+          <ModalWithForm />
         </Main>
         <Footer />
       </div>
