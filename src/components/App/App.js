@@ -46,6 +46,20 @@ export default function App() {
   };
 
   useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
+  useEffect(() => {
     getWeather(constants.latitude, constants.longitude, constants.apiKey).then(
       (res) => {
         console.log(res);
@@ -74,12 +88,12 @@ export default function App() {
           <ItemModal
             onClose={onClose}
             itemData={modalData}
-            isItemModalOpen={isItemModalOpen}
+            isModalOpen={isItemModalOpen}
             handleOverlayClick={handleOverlayClick}
           />
           <ModalWithForm
             onClose={onClose}
-            isFormModalOpen={isFormModalOpen}
+            isModalOpen={isFormModalOpen}
             handleSubmit={handleSubmit}
             handleOverlayClick={handleOverlayClick}
           />

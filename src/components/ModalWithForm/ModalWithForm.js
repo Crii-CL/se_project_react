@@ -3,18 +3,18 @@ import closeButton from "../../images/close-button.svg";
 
 export default function ModalWithForm({
   handleSubmit,
-  isFormModalOpen,
+  isModalOpen,
   handleOverlayClick,
   onClose,
 }) {
   return (
     <>
       <div
-        className={`formModal ${isFormModalOpen ? "formModal_opened" : ""}`}
+        className={`formModal ${isModalOpen ? "formModal_opened" : ""}`}
         onClick={handleOverlayClick}
         id="garment-form-modal"
       >
-        <form className="formModal__form" onClick>
+        <form className="formModal__form">
           <button
             className="modal__closeBtn"
             id="modal-form-close"
