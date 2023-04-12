@@ -56,7 +56,6 @@ const defaultClothingItems = [
 ];
 
 export default function App() {
-  // const [isModalOpen, setIsModalOpen] = useState(false);
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [modalData, setModalData] = useState();
