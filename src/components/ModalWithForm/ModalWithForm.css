@@ -72,15 +72,12 @@
   font-size: 16px;
 }
 
-.formModal__close {
+/* .formModal__close {
   position: absolute;
   right: 31px;
   background: none;
   border: none;
-}
-
-.formModal__btn-container {
-}
+} */
 
 .formModal__input[type="radio"] {
   position: relative;

@@ -75,6 +75,11 @@ export default function App() {
     }
   };
 
+  const handleClose = () => {
+    setIsFormModalOpen(false);
+    setIsItemModalOpen(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -98,11 +103,13 @@ export default function App() {
             </ul>
           </section>
           <ItemModal
+            handleClose
             itemData={modalData}
             isItemModalOpen={isItemModalOpen}
             handleOverlayClick={handleOverlayClick}
           />
           <ModalWithForm
+            handleClose
             isFormModalOpen={isFormModalOpen}
             handleSubmit={handleSubmit}
             handleOverlayClick={handleOverlayClick}

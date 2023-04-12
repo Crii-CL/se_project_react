@@ -5,3 +5,18 @@
 .modal_closed {
   visibility: hidden;
 }
+
+.modal__closeBtn {
+  position: absolute;
+  background: none;
+  border: none;
+}
+
+#modal-form-close {
+  right: 31px;
+}
+
+#modal-item-close {
+  top: 17px;
+  right: 17px;
+}
