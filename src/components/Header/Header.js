@@ -3,7 +3,7 @@ import avatar from "../../images/avatar.png";
 import logo from "../../images/logo.svg";
 import { useEffect } from "react";
 
-export default function Header(isFormModalOpen) {
+export default function Header({ openForm }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -32,7 +32,7 @@ export default function Header(isFormModalOpen) {
               className="header__button"
               type="text"
               id="add-new-clothes"
-              // onClick={}
+              onClick={openForm}
             >
               + Add New Clothes
             </button>

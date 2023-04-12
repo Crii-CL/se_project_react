@@ -32,6 +32,10 @@ export default function App() {
     }
   };
 
+  const openForm = () => {
+    setIsFormModalOpen(true);
+  };
+
   const onClose = () => {
     setIsFormModalOpen(false);
     setIsItemModalOpen(false);
@@ -52,7 +56,7 @@ export default function App() {
   return (
     <>
       <div>
-        <Header />
+        <Header openForm={openForm} />
         <Main>
           <Weather day={false} type="clear" />
           <section className="cards" id="card-section">
