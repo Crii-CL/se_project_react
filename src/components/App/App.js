@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 import React, { useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import modal from "../../utils/modal.css";
+import Modal from "../../utils/modal.css";
 /* ------------------------------ Item Imports ------------------------------ */
 import cap from "../../images/Cap.svg";
 import shorts from "../../images/Shorts.svg";
@@ -56,11 +56,13 @@ const defaultClothingItems = [
 ];
 
 export default function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isItemModalOpen, setIsItemModalOpen] = useState(false);
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [modalData, setModalData] = useState();
 
   const handleCardClick = (name, url) => {
-    setIsModalOpen(true);
+    setIsItemModalOpen(true);
     setModalData({
       name,
       url,
@@ -69,7 +71,8 @@ export default function App() {
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
-      setIsModalOpen(false);
+      setIsFormModalOpen(false);
+      setIsItemModalOpen(false);
     }
   };
 
@@ -85,7 +88,7 @@ export default function App() {
           <Weather day={false} type="clear" />
           <section className="cards" id="card-section">
             <ul className="cards__list" id="card-list">
-              {defaultClothingItems.map((card, index) => (
+              {defaultClothingItems.map((card) => (
                 <Cards
                   key={_.uniqueId(card.name)}
                   handleCardClick={handleCardClick}
@@ -97,12 +100,12 @@ export default function App() {
           </section>
           <ItemModal
             itemData={modalData}
-            isOpen={isModalOpen}
+            isItemModalOpen={isItemModalOpen}
             handleOverlayClick={handleOverlayClick}
           />
           <ModalWithForm
+            isFormModalOpen={isFormModalOpen}
             handleSubmit={handleSubmit}
-            isOpen={isModalOpen}
             handleOverlayClick={handleOverlayClick}
           />
         </Main>
