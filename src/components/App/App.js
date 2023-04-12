@@ -1,14 +1,14 @@
 import _ from "lodash";
 import fonts from "../../vendor/Fonts/fonts.css";
-import Modal from "../../utils/modal.css";
 import Header from "../Header/Header";
 import Weather from "../Weather/Weather";
 import Main from "../Main/Main";
 import Cards from "../Cards/Cards";
 import Footer from "../Footer/Footer";
 import React, { useEffect, useState } from "react";
-import ItemModal from "../ItemModal/ItemModal";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ItemModal from "../ItemModal/ItemModal";
+import Modal from "../../utils/modal.css";
 import getWeather from "../../utils/weatherApi";
 import { constants, defaultClothingItems } from "../../utils/constants";
 
@@ -34,6 +34,7 @@ export default function App() {
 
   const openForm = () => {
     setIsFormModalOpen(true);
+    setIsItemModalOpen(true);
   };
 
   const onClose = () => {
