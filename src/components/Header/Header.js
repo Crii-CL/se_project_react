@@ -3,7 +3,7 @@ import avatar from "../../images/avatar.png";
 import logo from "../../images/logo.svg";
 import { useEffect } from "react";
 
-export default function Header() {
+export default function Header(isFormModalOpen) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -28,7 +28,12 @@ export default function Header() {
             </div>
           </div>
           <div className="header__container" id="button-name-avatar">
-            <button className="header__button" type="text" id="add-new-clothes">
+            <button
+              className="header__button"
+              type="text"
+              id="add-new-clothes"
+              // onClick={}
+            >
               + Add New Clothes
             </button>
             <div className="header__name">Cristopher Campos</div>

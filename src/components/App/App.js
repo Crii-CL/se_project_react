@@ -32,7 +32,7 @@ export default function App() {
     }
   };
 
-  const handleClose = () => {
+  const onClose = () => {
     setIsFormModalOpen(false);
     setIsItemModalOpen(false);
   };
@@ -68,13 +68,13 @@ export default function App() {
             </ul>
           </section>
           <ItemModal
-            handleClose={handleClose}
+            onClose={onClose}
             itemData={modalData}
             isItemModalOpen={isItemModalOpen}
             handleOverlayClick={handleOverlayClick}
           />
           <ModalWithForm
-            handleClose={handleClose}
+            onClose={onClose}
             isFormModalOpen={isFormModalOpen}
             handleSubmit={handleSubmit}
             handleOverlayClick={handleOverlayClick}

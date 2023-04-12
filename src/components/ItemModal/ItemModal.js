@@ -1,12 +1,26 @@
 import "./ItemModal.css";
 import closeButton from "../../images/close-button-white.svg";
+import { useEffect } from "react";
 
 export default function ItemModal({
   itemData,
   handleOverlayClick,
   isItemModalOpen,
-  handleClose,
+  onClose,
 }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
   return (
     <>
       <div
@@ -19,7 +33,7 @@ export default function ItemModal({
             className="modal__closeBtn"
             id="modal-item-close"
             type="button"
-            onClick={handleClose}
+            onClick={onClose}
           >
             <img src={closeButton}></img>
           </button>
