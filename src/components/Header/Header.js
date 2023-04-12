@@ -21,6 +21,7 @@ export default function Header({ openForm }) {
         <header className="header">
           <div className="header__container" id="logo-date">
             <div className="header__logo">
+              ``
               <img src={logo} alt="wtwr logo"></img>
             </div>
             <div className="header__text" id="currentDate">
