@@ -10,6 +10,7 @@
   position: absolute;
   background: none;
   border: none;
+  padding: none;
 }
 
 #modal-form-close {

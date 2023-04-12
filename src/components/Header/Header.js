@@ -28,7 +28,6 @@ export default function Header() {
             </div>
           </div>
           <div className="header__container" id="button-name-avatar">
-            {/* header__button opens card modal */}
             <button className="header__button" type="text" id="add-new-clothes">
               + Add New Clothes
             </button>

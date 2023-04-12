@@ -1,4 +1,4 @@
-.itemModal {
+3.itemModal {
   display: flex;
   visibility: hidden;
   background-color: rgba(0, 0, 0, 0.6);
@@ -36,10 +36,10 @@
   margin-left: 32px;
 }
 
-.itemModal__caption:nth-child(2) {
+.itemModal__caption:nth-child(3) {
   margin: 12px 0 0 32px;
 }
 
-.itemModal__caption:nth-child(3) {
+.itemModal__caption:nth-child(4) {
   margin: 12px 0 32px 32px;
 }
