@@ -1,16 +1,16 @@
 import _ from "lodash";
-import fonts from "../../vendor/Fonts/fonts.css";
 import Header from "../Header/Header";
 import Weather from "../Weather/Weather";
 import Main from "../Main/Main";
 import Cards from "../Cards/Cards";
 import Footer from "../Footer/Footer";
 import React, { useEffect, useState } from "react";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import ItemModal from "../ItemModal/ItemModal";
-import Modal from "../../utils/modal.css";
+import ModalWithForm from "../Modal/ModalWithForm/ModalWithForm";
+import ItemModal from "../Modal/ItemModal/ItemModal";
 import getWeather from "../../utils/weatherApi";
 import { constants, defaultClothingItems } from "../../utils/constants";
+import Modal from "../Modal/modal.css";
+import fonts from "../../vendor/Fonts/fonts.css";
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -93,11 +93,14 @@ export default function App() {
             handleOverlayClick={handleOverlayClick}
           />
           <ModalWithForm
+            name="clothes"
+            title="clothes"
+            buttonText="Add Garment"
             onClose={onClose}
             isModalOpen={isFormModalOpen}
             handleSubmit={handleSubmit}
             handleOverlayClick={handleOverlayClick}
-          />
+          ></ModalWithForm>
         </Main>
         <Footer />
       </div>

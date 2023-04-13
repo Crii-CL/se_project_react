@@ -1,5 +1,5 @@
 import "./ModalWithForm.css";
-import closeButton from "../../images/close-button.svg";
+import closeButton from "../../../images/close-button.svg";
 
 export default function ModalWithForm({
   handleSubmit,
@@ -23,9 +23,9 @@ export default function ModalWithForm({
           >
             <img src={closeButton}></img>
           </button>
-          <h1 className="formModal__title" id="new-garment">
+          <h2 className="formModal__title" id="new-garment">
             New Garment:
-          </h1>
+          </h2>
           <fieldset className="formModal__fieldset" id="input-fieldset">
             <p className="formModal__caption">Name</p>
             <input
@@ -40,9 +40,9 @@ export default function ModalWithForm({
               required
             ></input>
           </fieldset>
-          <h1 className="formModal__title" id="weather-type">
+          <h2 className="formModal__title" id="weather-type">
             Select the weather type:
-          </h1>
+          </h2>
           <fieldset className="formModal__fieldset" id="button-fieldset">
             <label className="formModal__label">
               <input
@@ -81,3 +81,8 @@ export default function ModalWithForm({
     </>
   );
 }
+// button onClose
+//h3 title
+//form
+// {children}
+//button submitn {button text}

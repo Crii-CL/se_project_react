@@ -1,4 +1,4 @@
-.formModal {
+/* .formModal {
   display: flex;
   visibility: hidden;
   background-color: rgba(0, 0, 0, 0.6);
@@ -72,12 +72,113 @@
   font-size: 16px;
 }
 
-/* .formModal__close {
-  position: absolute;
-  right: 31px;
-  background: none;
+.formModal__input[type="radio"] {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.formModal__submit {
+  width: 124px;
+  height: 36px;
+  margin-top: 10px;
+  margin-bottom: 12px;
   border: none;
+  border-radius: 4px;
+  background-color: #000;
+  color: white;
+  cursor: pointer;
+}
+
+.formModal__submit:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.formModal__submit:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.formModal__label {
+  display: block;
+  right: 5px;
+  font-size: 16px;
 } */
+
+.formModal {
+  display: flex;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+}
+
+.formModal_opened {
+  visibility: visible;
+}
+
+.formModal__form {
+  position: relative;
+  width: 496px;
+  height: 436px;
+  box-sizing: border-box;
+  padding: 22px 0 36px 28px;
+  background-color: #fff;
+  border-radius: 4%;
+}
+
+.formModal__title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.formModal__title:nth-last-child(2) {
+  margin-top: 24px;
+  margin-bottom: 14px;
+}
+
+.formModal__fieldset {
+  border: none;
+  margin: 0;
+  padding: 0px;
+}
+
+#button-fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formModal__caption {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
+}
+
+.formModal__caption:nth-last-child(2) {
+  margin-top: 24px;
+}
+
+.formModal__input {
+  border: none;
+  outline: none;
+  border-bottom: solid #000 1px;
+  width: 436px;
+  padding-bottom: 4px;
+  padding-left: 0;
+  cursor: text;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  font-size: 16px;
+}
 
 .formModal__input[type="radio"] {
   position: relative;
