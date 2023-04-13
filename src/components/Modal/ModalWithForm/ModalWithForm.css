@@ -106,21 +106,6 @@
   font-size: 16px;
 } */
 
-.formModal {
-  display: flex;
-  visibility: hidden;
-  background-color: rgba(0, 0, 0, 0.6);
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  justify-content: center;
-  align-items: center;
-  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
-}
-
 .formModal_opened {
   visibility: visible;
 }
