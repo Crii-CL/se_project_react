@@ -39,8 +39,7 @@ export default function Weather({ day, type }) {
       <section id="weather-section">
         <div className="weather">
           <div className="weather__info" id="weather-info">
-            75F
-            {/* Display Temperature */}
+            {/* {getWeather.temp} */}
           </div>
           <img
             className="weather__image"

@@ -2,6 +2,7 @@ import "./Header.css";
 import avatar from "../../images/avatar.png";
 import logo from "../../images/logo.svg";
 import { useEffect } from "react";
+import { constants } from "../../utils/constants";
 
 export default function Header({ openForm }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -24,7 +25,7 @@ export default function Header({ openForm }) {
               <img src={logo} alt="wtwr logo"></img>
             </div>
             <div className="header__text" id="currentDate">
-              {currentDate}
+              {currentDate},
             </div>
           </div>
           <div className="header__container" id="button-name-avatar">

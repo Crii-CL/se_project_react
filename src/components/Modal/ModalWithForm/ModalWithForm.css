@@ -1,13 +1,3 @@
-.formModal__form {
-  position: relative;
-  width: 496px;
-  height: 436px;
-  box-sizing: border-box;
-  padding: 22px 0 36px 28px;
-  background-color: #fff;
-  border-radius: 4%;
-}
-
 .formModal__title {
   font-weight: 700;
   font-size: 16px;
@@ -25,7 +15,7 @@
   padding: 0px;
 }
 
-#button-fieldset {
+#radio-button-fieldset {
   display: flex;
   flex-direction: column;
   gap: 15px;

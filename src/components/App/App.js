@@ -118,7 +118,10 @@ export default function App() {
             <h3 className="formModal__title" id="weather-type-title[\">
               Select the weather type
             </h3>
-            <fieldset className="formModal__fieldset" id="button-fieldset">
+            <fieldset
+              className="formModal__fieldset"
+              id="radio-button-fieldset"
+            >
               <label className="formModal__label">
                 <input
                   type="radio"
