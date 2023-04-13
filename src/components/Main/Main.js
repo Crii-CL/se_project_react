@@ -1,8 +1,4 @@
 import React from "react";
-import Weather from "../Weather/Weather";
-import Cards from "../Cards/Cards";
-import App from "../App/App";
-
 import "./Main.css";
 
 function Main({
