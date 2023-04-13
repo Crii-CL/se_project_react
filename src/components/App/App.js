@@ -12,7 +12,6 @@ import { constants, defaultClothingItems } from "../../utils/constants";
 import Modal from "../Modal/modal.css";
 import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
-import { children } from "react";
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -101,7 +100,6 @@ export default function App() {
             isModalOpen={isFormModalOpen}
             onSubmit={onSubmit}
             handleOverlayClick={handleOverlayClick}
-            children={children}
           >
             <fieldset className="formModal__fieldset" id="input-fieldset">
               <p className="formModal__caption">Name</p>
