@@ -1,9 +1,9 @@
-export default function getWeather(latitude, longitude, apiKey, temp) {
-  if (temp >= 86) {
+export default function getWeather(latitude, longitude, apiKey, temperature) {
+  if (temperature >= 86) {
     return "hot";
-  } else if (temp >= 66 && temp <= 85) {
+  } else if (temperature >= 66 && temperature <= 85) {
     return "warm";
-  } else if (temp <= 65) {
+  } else if (temperature <= 65) {
     return "cold";
   }
 
@@ -16,3 +16,10 @@ export default function getWeather(latitude, longitude, apiKey, temp) {
     return Promise.reject(`Error ${res.status}`);
   });
 }
+
+export const parseWeatherData = (data) => {
+  const main = data.main;
+  const temperature = main && main.temp;
+  console.log(Math.ceil(temperature));
+  return Math.ceil(temperature);
+};

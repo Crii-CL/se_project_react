@@ -2,7 +2,6 @@ import "./Header.css";
 import avatar from "../../images/avatar.png";
 import logo from "../../images/logo.svg";
 import { useEffect } from "react";
-import { constants } from "../../utils/constants";
 
 export default function Header({ openForm }) {
   const currentDate = new Date().toLocaleString("default", {

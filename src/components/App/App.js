@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 import React, { useEffect, useState } from "react";
 import ModalWithForm from "../Modal/ModalWithForm/ModalWithForm";
 import ItemModal from "../Modal/ItemModal/ItemModal";
-import getWeather from "../../utils/weatherApi";
+import getWeather, { parseWeatherData } from "../../utils/weatherApi";
 import { constants, defaultClothingItems } from "../../utils/constants";
 import Modal from "../Modal/modal.css";
 import fonts from "../../vendor/Fonts/fonts.css";
@@ -17,6 +17,7 @@ export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [modalData, setModalData] = useState();
+  const [weatherData, setWeatherData] = useState();
 
   const handleCardClick = (name, url) => {
     setIsItemModalOpen(true);
@@ -63,7 +64,7 @@ export default function App() {
   useEffect(() => {
     getWeather(constants.latitude, constants.longitude, constants.apiKey).then(
       (res) => {
-        console.log(res);
+        setWeatherData(parseWeatherData(res) + "°F");
       }
     );
   }, []);
@@ -73,7 +74,7 @@ export default function App() {
       <div>
         <Header openForm={openForm} />
         <Main>
-          <Weather day={false} type="clear" />
+          <Weather day={false} type="clear" weatherTemp={weatherData} />
           <section className="cards" id="card-section">
             <ul className="cards__list" id="card-list">
               {defaultClothingItems.map((card) => (
@@ -93,8 +94,8 @@ export default function App() {
             handleOverlayClick={handleOverlayClick}
           />
           <ModalWithForm
-            name="clothes"
-            title="clothes"
+            name="garments"
+            title="New Garments:"
             buttonText="Add Garment"
             onClose={onClose}
             isModalOpen={isFormModalOpen}
@@ -104,19 +105,25 @@ export default function App() {
             <fieldset className="formModal__fieldset" id="input-fieldset">
               <p className="formModal__caption">Name</p>
               <input
+                type="text"
                 className="formModal__input"
                 placeholder="Name"
+                minLength="1"
+                maxLength="30"
                 required
               ></input>
               <p className="formModal__caption">Image</p>
               <input
+                type="url"
                 className="formModal__input"
                 placeholder="Image URL"
+                minLength="1"
+                maxLength="30"
                 required
               ></input>
             </fieldset>
             <h3 className="formModal__title" id="weather-type-title[\">
-              Select the weather type
+              Select the weather type:
             </h3>
             <fieldset
               className="formModal__fieldset"
@@ -126,7 +133,8 @@ export default function App() {
                 <input
                   type="radio"
                   className="formModal__input"
-                  name="formModal-radio"
+                  name="hot"
+                  value="hot"
                 ></input>
                 Hot
               </label>
@@ -134,7 +142,8 @@ export default function App() {
                 <input
                   type="radio"
                   className="formModal__input"
-                  name="formModal-radio"
+                  name="warm"
+                  value="warm"
                 ></input>
                 Warm
               </label>
@@ -142,7 +151,8 @@ export default function App() {
                 <input
                   type="radio"
                   className="formModal__input"
-                  name="formModal-radio"
+                  name="cold"
+                  value="cold"
                 ></input>
                 Cold
               </label>

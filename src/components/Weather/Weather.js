@@ -27,7 +27,7 @@ const weatherOptions = [
   { url: nightSnow, day: false, type: "snow" },
 ];
 
-export default function Weather({ day, type }) {
+export default function Weather({ day, type, weatherTemp = "" }) {
   const imageSrc = weatherOptions.filter((i) => {
     return i.day === day && i.type === type;
   });
@@ -39,7 +39,7 @@ export default function Weather({ day, type }) {
       <section id="weather-section">
         <div className="weather">
           <div className="weather__info" id="weather-info">
-            {/* {getWeather.temp} */}
+            {weatherTemp}
           </div>
           <img
             className="weather__image"
@@ -49,7 +49,7 @@ export default function Weather({ day, type }) {
         </div>
         <div>
           <h1 className="weather__message">
-            Today is 75F/ You may want to wear:
+            Today is {weatherTemp} You may want to wear:
           </h1>
         </div>
       </section>

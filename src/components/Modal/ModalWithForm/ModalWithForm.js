@@ -27,7 +27,7 @@ export default function ModalWithForm({
           >
             <img src={closeButton}></img>
           </button>
-          <h2 className="modal__title">New Garment:</h2>
+          <h2 className="modal__title">{title}</h2>
           {children}
           <button type="submit" className="modal__submit" onClick={onSubmit}>
             {buttonText}
