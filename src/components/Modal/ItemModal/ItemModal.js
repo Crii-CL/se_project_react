@@ -8,26 +8,28 @@ export default function ItemModal({
   onClose,
 }) {
   return (
-    <>
-      <div
-        className={`itemModal ${isModalOpen ? "modal_opened" : ""}`}
-        id="item-modal"
-        onClick={handleOverlayClick}
-      >
-        <div className="itemModal__container">
-          <button
-            className="modal__closeBtn"
-            id="modal-item-close"
-            type="button"
-            onClick={onClose}
-          >
-            <img src={closeButton}></img>
-          </button>
-          <img src={itemData?.url} className="itemModal__image"></img>
-          <p className="itemModal__caption">{itemData?.name}</p>
-          <p className="itemModal__caption">Weather: Hot</p>
-        </div>
+    <div
+      className={`itemModal ${isModalOpen ? "modal_opened" : ""}`}
+      id="item-modal"
+      onClick={handleOverlayClick}
+    >
+      <div className="itemModal__container">
+        <button
+          className="modal__closeBtn"
+          id="modal-item-close"
+          type="button"
+          onClick={onClose}
+        >
+          <img src={closeButton} alt="white close button"></img>
+        </button>
+        <img
+          src={itemData?.url}
+          className="itemModal__image"
+          alt="item image"
+        ></img>
+        <p className="itemModal__caption">{itemData?.name}</p>
+        <p className="itemModal__caption">Weather: Hot</p>
       </div>
-    </>
+    </div>
   );
 }

@@ -1,4 +1,3 @@
-import _ from "lodash";
 import Header from "../Header/Header";
 import Weather from "../Weather/Weather";
 import Main from "../Main/Main";

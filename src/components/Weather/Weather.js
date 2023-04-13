@@ -35,24 +35,22 @@ export default function Weather({ day, type, weatherTemp = "" }) {
   const imageSrcUrl = imageSrc[0].url || "";
 
   return (
-    <>
-      <section id="weather-section">
-        <div className="weather">
-          <div className="weather__info" id="weather-info">
-            {weatherTemp}
-          </div>
-          <img
-            className="weather__image"
-            src={imageSrcUrl}
-            alt="weather conditions frame"
-          />
+    <section id="weather-section">
+      <div className="weather">
+        <div className="weather__info" id="weather-info">
+          {weatherTemp}
         </div>
-        <div>
-          <h1 className="weather__message">
-            Today is {weatherTemp} You may want to wear:
-          </h1>
-        </div>
-      </section>
-    </>
+        <img
+          className="weather__image"
+          src={imageSrcUrl}
+          alt="weather conditions frame"
+        />
+      </div>
+      <div>
+        <h1 className="weather__message">
+          Today is {weatherTemp} You may want to wear:
+        </h1>
+      </div>
+    </section>
   );
 }

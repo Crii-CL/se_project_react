@@ -11,29 +11,27 @@ export default function ModalWithForm({
   children,
 }) {
   return (
-    <>
-      <div
-        className={`modal modal_type_${name} ${
-          isModalOpen ? "modal_opened" : ""
-        }`}
-        onClick={handleOverlayClick}
-      >
-        <form className="modal__form">
-          <button
-            className="modal__closeBtn"
-            id="clothes-form-close"
-            type="button"
-            onClick={onClose}
-          >
-            <img src={closeButton}></img>
-          </button>
-          <h2 className="modal__title">{title}</h2>
-          {children}
-          <button type="submit" className="modal__submit" onClick={onSubmit}>
-            {buttonText}
-          </button>
-        </form>
-      </div>
-    </>
+    <div
+      className={`modal modal_type_${name} ${
+        isModalOpen ? "modal_opened" : ""
+      }`}
+      onClick={handleOverlayClick}
+    >
+      <form className="modal__form" onClick={onSubmit}>
+        <button
+          className="modal__closeBtn"
+          id="clothes-form-close"
+          type="button"
+          onClick={onClose}
+        >
+          <img src={closeButton} alt="dark close button"></img>
+        </button>
+        <h2 className="modal__title">{title}</h2>
+        {children}
+        <button type="submit" className="modal__submit">
+          {buttonText}
+        </button>
+      </form>
+    </div>
   );
 }
