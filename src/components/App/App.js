@@ -1,8 +1,8 @@
 import _ from "lodash";
 import Header from "../Header/Header";
 import Weather from "../Weather/Weather";
-import Cards from "../Cards/Cards";
 import Main from "../Main/Main";
+import Cards from "../Cards/Cards";
 import Footer from "../Footer/Footer";
 import React, { useEffect, useState } from "react";
 import ModalWithForm from "../Modal/ModalWithForm/ModalWithForm";
