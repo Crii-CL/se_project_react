@@ -106,10 +106,6 @@
   font-size: 16px;
 } */
 
-.formModal_opened {
-  visibility: visible;
-}
-
 .formModal__form {
   position: relative;
   width: 496px;
