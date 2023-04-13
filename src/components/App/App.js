@@ -36,7 +36,6 @@ export default function App() {
 
   const openForm = () => {
     setIsFormModalOpen(true);
-    setIsItemModalOpen(true);
   };
 
   const onClose = () => {
@@ -118,9 +117,9 @@ export default function App() {
                 required
               ></input>
             </fieldset>
-            <h2 className="formModal__title" id="weather-type">
+            <h3 className="formModal__title" id="weather-type-title[\">
               Select the weather type
-            </h2>
+            </h3>
             <fieldset className="formModal__fieldset" id="button-fieldset">
               <label className="formModal__label">
                 <input

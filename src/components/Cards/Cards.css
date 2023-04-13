@@ -8,6 +8,7 @@
 
 .cards__el {
   position: relative;
+  cursor: pointer;
 }
 
 .cards__caption {
