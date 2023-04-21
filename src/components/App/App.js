@@ -11,6 +11,7 @@ import { constants, defaultClothingItems } from "../../utils/constants";
 import Modal from "../Modal/modal.css";
 import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
+import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -32,6 +33,8 @@ export default function App() {
       onClose();
     }
   };
+
+  const handleToggleSwitchChange = () => {};
 
   const openForm = () => {
     setIsFormModalOpen(true);
@@ -72,83 +75,87 @@ export default function App() {
 
   return (
     <>
-      <Header openForm={openForm} />
-      <Main
-        Weather={Weather}
-        Cards={Cards}
-        handleCardClick={handleCardClick}
-        weatherData={weatherData}
-        defaultClothingItems={defaultClothingItems}
-      />
-      <Footer />
-      <ItemModal
-        onClose={onClose}
-        itemData={modalData}
-        isModalOpen={isItemModalOpen}
-        handleOverlayClick={handleOverlayClick}
-      />
-      <ModalWithForm
-        name="garments"
-        title="New Garments:"
-        buttonText="Add Garment"
-        onClose={onClose}
-        isModalOpen={isFormModalOpen}
-        onSubmit={onSubmit}
-        handleOverlayClick={handleOverlayClick}
+      <CurrentTempUnitContext.Provider
+        value={{ currentTempUnit, handleToggleSwitchChange }}
       >
-        <fieldset className="formModal__fieldset" id="input-fieldset">
-          <p className="formModal__caption">Name</p>
-          <input
-            type="text"
-            className="formModal__input"
-            placeholder="Name"
-            minLength="1"
-            maxLength="30"
-            required
-          ></input>
-          <p className="formModal__caption">Image</p>
-          <input
-            type="url"
-            className="formModal__input"
-            placeholder="Image URL"
-            minLength="1"
-            maxLength="30"
-            required
-          ></input>
-        </fieldset>
-        <h3 className="formModal__title" id="weather-type-title[\">
-          Select the weather type:
-        </h3>
-        <fieldset className="formModal__fieldset" id="radio-button-fieldset">
-          <label className="formModal__label">
+        <Header openForm={openForm} />
+        <Main
+          Weather={Weather}
+          Cards={Cards}
+          handleCardClick={handleCardClick}
+          weatherData={weatherData}
+          defaultClothingItems={defaultClothingItems}
+        />
+        <Footer />
+        <ItemModal
+          onClose={onClose}
+          itemData={modalData}
+          isModalOpen={isItemModalOpen}
+          handleOverlayClick={handleOverlayClick}
+        />
+        <ModalWithForm
+          name="garments"
+          title="New Garments:"
+          buttonText="Add Garment"
+          onClose={onClose}
+          isModalOpen={isFormModalOpen}
+          onSubmit={onSubmit}
+          handleOverlayClick={handleOverlayClick}
+        >
+          <fieldset className="formModal__fieldset" id="input-fieldset">
+            <p className="formModal__caption">Name</p>
             <input
-              type="radio"
+              type="text"
               className="formModal__input"
-              name="hot"
-              value="hot"
+              placeholder="Name"
+              minLength="1"
+              maxLength="30"
+              required
             ></input>
-            Hot
-          </label>
-          <label className="formModal__label">
+            <p className="formModal__caption">Image</p>
             <input
-              type="radio"
+              type="url"
               className="formModal__input"
-              name="warm"
-              value="warm"
+              placeholder="Image URL"
+              minLength="1"
+              maxLength="30"
+              required
             ></input>
-            Warm
-          </label>
-          <label className="formModal__label">
-            <input
-              type="radio"
-              className="formModal__input"
-              name="cold"
-              value="cold"
-            ></input>
-            Cold
-          </label>
-        </fieldset>
-      </ModalWithForm>
+          </fieldset>
+          <h3 className="formModal__title" id="weather-type-title[\">
+            Select the weather type:
+          </h3>
+          <fieldset className="formModal__fieldset" id="radio-button-fieldset">
+            <label className="formModal__label">
+              <input
+                type="radio"
+                className="formModal__input"
+                name="hot"
+                value="hot"
+              ></input>
+              Hot
+            </label>
+            <label className="formModal__label">
+              <input
+                type="radio"
+                className="formModal__input"
+                name="warm"
+                value="warm"
+              ></input>
+              Warm
+            </label>
+            <label className="formModal__label">
+              <input
+                type="radio"
+                className="formModal__input"
+                name="cold"
+                value="cold"
+              ></input>
+              Cold
+            </label>
+          </fieldset>
+        </ModalWithForm>
+      </CurrentTempUnitContext.Provider>
     </>
   );
 }
