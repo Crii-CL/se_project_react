@@ -73,6 +73,7 @@ export default function App() {
     getWeather(constants.latitude, constants.longitude, constants.apiKey)
       .then((res) => {
         setWeatherData(parseWeatherData(res) + "°F");
+        console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -128,7 +129,7 @@ export default function App() {
               required
             ></input>
           </fieldset>
-          <h3 className="formModal__title" id="weather-type-title[\">
+          <h3 className="formModal__title" id="weather-type-title">
             Select the weather type:
           </h3>
           <fieldset className="formModal__fieldset" id="radio-button-fieldset">
