@@ -24,5 +24,6 @@ export default function getWeather(latitude, longitude, apiKey, temperature) {
 export const parseWeatherData = (data) => {
   const main = data.main;
   const temperature = main && main.temp;
+  console.log(data);
   return Math.ceil(temperature);
 };
