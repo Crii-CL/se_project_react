@@ -7,15 +7,15 @@ import Footer from "../Footer/Footer";
 import React, { useEffect, useState } from "react";
 import ModalWithForm from "../Modal/ModalWithForm/ModalWithForm";
 import ItemModal from "../Modal/ItemModal/ItemModal";
-import getWeather, { parseWeatherData } from "../../utils/weatherApi";
+import getWeather, {
+  parseWeatherData,
+  tempUnits,
+} from "../../utils/weatherApi";
 import { constants, defaultClothingItems } from "../../utils/constants";
 import Modal from "../Modal/modal.css";
 import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
-import {
-  tempUnits,
-  CurrentTempUnitContext,
-} from "../../Contexts/CurrentTempUnitContext";
+import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -72,8 +72,8 @@ export default function App() {
   useEffect(() => {
     getWeather(constants.latitude, constants.longitude, constants.apiKey)
       .then((res) => {
-        setWeatherData(parseWeatherData(res));
-        console.log(res);
+        setWeatherData(tempUnits(parseWeatherData(res)));
+        console.log(tempUnits(parseWeatherData(res)));
       })
       .catch((error) => {
         console.log(error);
