@@ -17,6 +17,7 @@ export default function App() {
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
+  const [currentTempUnit, setCurrentTempUnit] = useState("F");
 
   const handleCardClick = (name, url) => {
     setIsItemModalOpen(true);
