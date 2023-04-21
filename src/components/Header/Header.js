@@ -3,27 +3,15 @@ import avatar from "../../images/avatar.png";
 import logo from "../../images/logo.svg";
 import React, { useState } from "react";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
+import { useContext } from "react";
 
 export default function Header({ openForm }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-
-  // const [tempIsF, setTempIsF] = useState(true);
-  // const [tempIsC, setTempIsC] = useState(false);
-
-  // const handleChange = () => {
-  //   if (tempIsF) {
-  //     setTempIsF(false);
-  //     setTempIsC(true);
-  // //   }
-  //   if (tempIsC) {
-  //     setTempIsF(true);
-  //     setTempIsC(false);
-  //     console.log("second if");
-  //   }
-  // };
+  const { toggleTempSwitch } = useContext(CurrentTempUnitContext);
 
   return (
     <header className="header">
@@ -37,13 +25,7 @@ export default function Header({ openForm }) {
       </div>
       <div className="header__container" id="button-name-avatar">
         <div className="header__slider"></div>
-        {/* <ToggleSwitch
-          name="F/C"
-          tempIsF={tempIsF}
-          tempIsC={tempIsC}
-          onChange={handleChange}
-        /> */}
-        <ToggleSwitch name="F/C" />
+        <ToggleSwitch name="Temp Switch" />
         <button
           className="header__button"
           type="text"

@@ -51,7 +51,7 @@ export default function App() {
     e.preventDefault();
   };
 
-  const handleToggleSwitchChange = () => {
+  const toggleTempSwitch = () => {
     currentTempUnit === "F" ? setCurrentTempUnit("C") : setCurrentTempUnit("F");
   };
 
@@ -83,7 +83,7 @@ export default function App() {
   return (
     <div className="page">
       <CurrentTempUnitContext.Provider
-        value={{ currentTempUnit, handleToggleSwitchChange }}
+        value={{ currentTempUnit, toggleTempSwitch }}
       >
         <Header openForm={openForm} />
         <Main
