@@ -14,7 +14,7 @@ export default function Header({ openForm }) {
   const [tempIsC, setTempIsC] = useState(false);
 
   const handleClick = () => {
-    handleChange();
+    this.handleChange();
   };
 
   const handleChange = () => {

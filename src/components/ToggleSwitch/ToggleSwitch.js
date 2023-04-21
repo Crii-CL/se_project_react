@@ -16,10 +16,13 @@ export default function ToggleSwitch({
         onClick={handleClick}
         onChange={handleChange}
       ></input>
-      <span className="switch__slider">
-        <p className={`switch__temp-F ${tempIsF ? "switch_active" : ""}`}>F</p>
-        <p className={`switch__temp-C ${tempIsC ? "switch_active" : ""}`}>C</p>
-      </span>
+      <span
+        className="switch__slider-C"
+        onClick={handleClick}
+        onChange={handleChange}
+      ></span>
+      <p className={`switch__temp-F ${tempIsF ? "switch_active" : ""}`}>F</p>
+      <p className={`switch__temp-C ${tempIsC ? "switch_active" : ""}`}>C</p>
     </label>
   );
 }
