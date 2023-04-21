@@ -10,10 +10,10 @@ export default function Header({ openForm }) {
     day: "numeric",
   });
 
-  const [checked, setChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleChange = () => {
-    setChecked(!checked);
+    setIsChecked(!isChecked);
   };
 
   return (
@@ -28,7 +28,7 @@ export default function Header({ openForm }) {
       </div>
       <div className="header__container" id="button-name-avatar">
         <div className="header__slider"></div>
-        <Checkbox label="F/C" checked={checked} onChange={handleChange} />
+        <Checkbox name="F/C" checked={isChecked} onChange={handleChange} />
         <button
           className="header__button"
           type="text"
