@@ -25,7 +25,7 @@
   right: 24px;
 }
 
-.switch__temp {
+/* .switch__temp {
   position: absolute;
   color: white;
 }
@@ -43,14 +43,27 @@
   z-index: 100;
   font-size: 13px;
   color: rgba(0, 0, 0, 0.5);
-}
+} */
 
-#switch-F::after {
+.switch__temp-F {
+  position: absolute;
+  top: -13.5px;
+  left: 6px;
   z-index: 100;
+  font-size: 15px;
   color: rgba(0, 0, 0, 0.5);
 }
 
-#switch-C::after {
+.switch__temp-C {
+  position: absolute;
+  top: -11px;
+  left: 23px;
   z-index: 100;
+  font-size: 13px;
   color: rgba(0, 0, 0, 0.5);
+}
+
+.switch_active {
+  z-index: 100;
+  color: #fff;
 }

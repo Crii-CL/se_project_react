@@ -12,12 +12,8 @@ export default function ToggleSwitch({ name, tempIsF, tempIsC, handleChange }) {
         onChange={handleChange}
       ></input>
       <span className="switch__slider">
-        <p className="switch__temp" id="switch-F">
-          F
-        </p>
-        <p className="switch__temp" id="switch-C">
-          C
-        </p>
+        <p className="switch__temp-F">F</p>
+        <p className="switch__temp-C">C</p>
       </span>
     </label>
   );
