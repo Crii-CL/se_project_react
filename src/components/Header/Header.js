@@ -13,10 +13,6 @@ export default function Header({ openForm }) {
   const [tempIsF, setTempIsF] = useState(true);
   const [tempIsC, setTempIsC] = useState(false);
 
-  const handleClick = () => {
-    this.handleChange();
-  };
-
   const handleChange = () => {
     if (tempIsF) {
       setTempIsF(false);
@@ -25,6 +21,7 @@ export default function Header({ openForm }) {
     if (tempIsC) {
       setTempIsF(true);
       setTempIsC(false);
+      console.log("second if");
     }
   };
 
@@ -44,7 +41,6 @@ export default function Header({ openForm }) {
           name="F/C"
           tempIsF={tempIsF}
           tempIsC={tempIsC}
-          onClick={handleClick}
           onChange={handleChange}
         />
         <button
