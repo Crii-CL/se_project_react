@@ -1,7 +1,7 @@
 import "./Header.css";
 import avatar from "../../images/avatar.png";
 import logo from "../../images/logo.svg";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Checkbox from "../Checkbox/Checkbox";
 
 export default function Header({ openForm }) {
@@ -9,6 +9,12 @@ export default function Header({ openForm }) {
     month: "long",
     day: "numeric",
   });
+
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = () => {
+    setChecked(!checked);
+  };
 
   return (
     <header className="header">
@@ -22,7 +28,7 @@ export default function Header({ openForm }) {
       </div>
       <div className="header__container" id="button-name-avatar">
         <div className="header__slider"></div>
-        <Checkbox label="F/C" value={checked} onChange={handleChange} />
+        <Checkbox label="F/C" checked={checked} onChange={handleChange} />
         <button
           className="header__button"
           type="text"
