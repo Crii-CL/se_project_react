@@ -1,24 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import Weather from "../Weather/Weather";
+import Cards from "../Cards/Cards";
 import "./Main.css";
+import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
 
-function Main({
-  Weather,
-  Cards,
-  handleCardClick,
-  weatherData,
-  defaultClothingItems,
-  currentTempUnit,
-  handleToggleSwitchChange,
-}) {
+function Main({ handleCardClick, weatherData, defaultClothingItems }) {
+  const { currentTempUnit } = useContext(CurrentTempUnitContext);
   return (
     <main className="main">
-      <Weather
-        day={false}
-        type="clear"
-        weatherTemp={weatherData}
-        currentTempUnit={currentTempUnit}
-        handleToggleSwitchChange={handleToggleSwitchChange}
-      />
+      <Weather day={false} type="clear" weatherTemp={weatherData} />
       <section className="cards" id="card-section">
         <ul className="cards__list" id="card-list">
           {defaultClothingItems.map((card) => (
