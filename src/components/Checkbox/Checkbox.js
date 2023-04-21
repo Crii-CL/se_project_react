@@ -10,7 +10,14 @@ export default function Checkbox({ name, isChecked, handleChange }) {
         isChecked={isChecked}
         onChange={handleChange}
       ></input>
-      <span className="checkbox__slider"></span>
+      <span className="checkbox__slider">
+        <p className="checkbox__temp" id="checkbox-F">
+          F
+        </p>
+        <p className="checkbox__temp" id="checkbox-C">
+          C
+        </p>
+      </span>
     </label>
   );
 }

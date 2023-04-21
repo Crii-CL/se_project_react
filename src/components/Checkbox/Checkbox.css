@@ -27,8 +27,40 @@
   top: 20px;
   right: 385.3px;
   background-color: #000;
+  color: #fff;
+  text-align: center;
 }
 
 .checkbox__slider::after {
   right: 24px;
+}
+
+.checkbox__temp {
+  position: absolute;
+  color: white;
+}
+
+#checkbox-F {
+  top: -13.5px;
+  left: 6px;
+  z-index: 100;
+  font-size: 15px;
+}
+
+#checkbox-C {
+  top: -12px;
+  left: 23px;
+  z-index: 100;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#checkbox-F::after {
+  z-index: 100;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#checkbox-C::after {
+  z-index: 100;
+  color: rgba(0, 0, 0, 0.5);
 }
