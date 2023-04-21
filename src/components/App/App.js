@@ -72,7 +72,7 @@ export default function App() {
   useEffect(() => {
     getWeather(constants.latitude, constants.longitude, constants.apiKey)
       .then((res) => {
-        setWeatherData(parseWeatherData(res) + "°F");
+        setWeatherData(parseWeatherData(res));
         console.log(res);
       })
       .catch((error) => {
