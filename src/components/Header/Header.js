@@ -1,8 +1,8 @@
 import "./Header.css";
 import avatar from "../../images/avatar.png";
 import logo from "../../images/logo.svg";
-import React, { useEffect, useState } from "react";
-import Checkbox from "../Checkbox/Checkbox";
+import React, { useState } from "react";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 export default function Header({ openForm }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -10,10 +10,20 @@ export default function Header({ openForm }) {
     day: "numeric",
   });
 
-  const [isChecked, setIsChecked] = useState(false);
+  const [tempIsF, setTempIsF] = useState(true);
+  const [tempIsC, setTempIsC] = useState(true);
 
   const handleChange = () => {
-    setIsChecked(!isChecked);
+    if (tempIsF) {
+      setTempIsC(false);
+
+      document.querySelector("#switch-F").classList.add(".switch_active");
+    }
+    if (tempIsC) {
+      setTempIsF(false);
+
+      document.querySelector("#switch-C").classList.add(".switch_active");
+    }
   };
 
   return (
@@ -28,7 +38,12 @@ export default function Header({ openForm }) {
       </div>
       <div className="header__container" id="button-name-avatar">
         <div className="header__slider"></div>
-        <Checkbox name="F/C" checked={isChecked} onChange={handleChange} />
+        <ToggleSwitch
+          name="F/C"
+          tempIsF={tempIsF}
+          tempIsC={tempIsC}
+          onChange={handleChange}
+        />
         <button
           className="header__button"
           type="text"
