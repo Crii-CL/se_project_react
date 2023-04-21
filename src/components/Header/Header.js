@@ -11,18 +11,20 @@ export default function Header({ openForm }) {
   });
 
   const [tempIsF, setTempIsF] = useState(true);
-  const [tempIsC, setTempIsC] = useState(true);
+  const [tempIsC, setTempIsC] = useState(false);
+
+  const handleClick = () => {
+    handleChange();
+  };
 
   const handleChange = () => {
     if (tempIsF) {
-      setTempIsC(false);
-
-      document.querySelector("#switch-F").classList.add(".switch_active");
+      setTempIsF(false);
+      setTempIsC(true);
     }
     if (tempIsC) {
-      setTempIsF(false);
-
-      document.querySelector("#switch-C").classList.add(".switch_active");
+      setTempIsF(true);
+      setTempIsC(false);
     }
   };
 
@@ -42,6 +44,7 @@ export default function Header({ openForm }) {
           name="F/C"
           tempIsF={tempIsF}
           tempIsC={tempIsC}
+          onClick={handleClick}
           onChange={handleChange}
         />
         <button
