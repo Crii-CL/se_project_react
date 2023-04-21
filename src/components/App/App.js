@@ -92,6 +92,8 @@ export default function App() {
           handleCardClick={handleCardClick}
           weatherData={weatherData}
           defaultClothingItems={defaultClothingItems}
+          currentTempUnit={currentTempUnit}
+          handleToggleSwitchChange={handleToggleSwitchChange}
         />
         <Footer />
         <ItemModal

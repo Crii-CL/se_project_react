@@ -1,5 +1,4 @@
 import React from "react";
-import Weather from "../Weather/Weather";
 import "./Main.css";
 
 function Main({
@@ -8,10 +7,18 @@ function Main({
   handleCardClick,
   weatherData,
   defaultClothingItems,
+  currentTempUnit,
+  handleToggleSwitchChange,
 }) {
   return (
     <main className="main">
-      <Weather day={false} type="clear" weatherTemp={weatherData} />
+      <Weather
+        day={false}
+        type="clear"
+        weatherTemp={weatherData}
+        currentTempUnit={currentTempUnit}
+        handleToggleSwitchChange={handleToggleSwitchChange}
+      />
       <section className="cards" id="card-section">
         <ul className="cards__list" id="card-list">
           {defaultClothingItems.map((card) => (
