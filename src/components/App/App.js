@@ -1,3 +1,4 @@
+import "./App.css";
 import Header from "../Header/Header";
 import Weather from "../Weather/Weather";
 import Main from "../Main/Main";
@@ -11,7 +12,10 @@ import { constants, defaultClothingItems } from "../../utils/constants";
 import Modal from "../Modal/modal.css";
 import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
-import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
+import {
+  tempUnits,
+  CurrentTempUnitContext,
+} from "../../Contexts/CurrentTempUnitContext";
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -34,8 +38,6 @@ export default function App() {
     }
   };
 
-  const handleToggleSwitchChange = () => {};
-
   const openForm = () => {
     setIsFormModalOpen(true);
   };
@@ -47,6 +49,10 @@ export default function App() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+  };
+
+  const handleToggleSwitchChange = () => {
+    currentTempUnit === "F" ? setCurrentTempUnit("C") : setCurrentTempUnit("F");
   };
 
   useEffect(() => {
@@ -74,7 +80,7 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <div className="page">
       <CurrentTempUnitContext.Provider
         value={{ currentTempUnit, handleToggleSwitchChange }}
       >
@@ -156,6 +162,6 @@ export default function App() {
           </fieldset>
         </ModalWithForm>
       </CurrentTempUnitContext.Provider>
-    </>
+    </div>
   );
 }

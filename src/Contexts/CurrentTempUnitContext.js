@@ -1,3 +1,8 @@
 import React from "react";
-import { parseWeatherData } from "../utils/weatherApi";
+
+export const tempUnits = {
+  F: {},
+  C: {},
+};
+
 export const CurrentTempUnitContext = React.createContext();

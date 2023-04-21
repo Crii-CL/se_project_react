@@ -10,20 +10,20 @@ export default function Header({ openForm }) {
     day: "numeric",
   });
 
-  const [tempIsF, setTempIsF] = useState(true);
-  const [tempIsC, setTempIsC] = useState(false);
+  // const [tempIsF, setTempIsF] = useState(true);
+  // const [tempIsC, setTempIsC] = useState(false);
 
-  const handleChange = () => {
-    if (tempIsF) {
-      setTempIsF(false);
-      setTempIsC(true);
-    }
-    if (tempIsC) {
-      setTempIsF(true);
-      setTempIsC(false);
-      console.log("second if");
-    }
-  };
+  // const handleChange = () => {
+  //   if (tempIsF) {
+  //     setTempIsF(false);
+  //     setTempIsC(true);
+  // //   }
+  //   if (tempIsC) {
+  //     setTempIsF(true);
+  //     setTempIsC(false);
+  //     console.log("second if");
+  //   }
+  // };
 
   return (
     <header className="header">
@@ -37,12 +37,13 @@ export default function Header({ openForm }) {
       </div>
       <div className="header__container" id="button-name-avatar">
         <div className="header__slider"></div>
-        <ToggleSwitch
+        {/* <ToggleSwitch
           name="F/C"
           tempIsF={tempIsF}
           tempIsC={tempIsC}
           onChange={handleChange}
-        />
+        /> */}
+        <ToggleSwitch name="F/C" />
         <button
           className="header__button"
           type="text"
