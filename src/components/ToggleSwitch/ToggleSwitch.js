@@ -17,7 +17,7 @@ export default function ToggleSwitch({
         onChange={handleChange}
       ></input>
       <span
-        className="switch__slider-C"
+        className={`${tempIsF ? "switch__slider-F" : "switch__slider-C"}`}
         onClick={handleClick}
         onChange={handleChange}
       ></span>
