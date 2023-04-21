@@ -1,6 +1,8 @@
 import "./Header.css";
 import avatar from "../../images/avatar.png";
 import logo from "../../images/logo.svg";
+import { useEffect, useState } from "react";
+import Checkbox from "../Checkbox/Checkbox";
 
 export default function Header({ openForm }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -19,10 +21,8 @@ export default function Header({ openForm }) {
         </div>
       </div>
       <div className="header__container" id="button-name-avatar">
-        <label className="header__slider">
-          <input type="checkbox" className="header__slider-circle"></input>
-          <span className="header__slider-box">F</span>
-        </label>
+        <div className="header__slider"></div>
+        <Checkbox label="F/C" value={checked} onChange={handleChange} />
         <button
           className="header__button"
           type="text"
