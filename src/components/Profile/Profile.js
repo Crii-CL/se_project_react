@@ -1,12 +1,29 @@
 import "./Profile.css";
 import Sidebar from "./Sidebar/Sidebar";
 import ClothesSection from "./ClothesSection/ClothesSection";
+import Cards from "../Cards/Cards";
 
-export default function Profile() {
+export default function Profile({ handleCardClick, garments }) {
   return (
     <div className="profile">
-      <Sidebar />
-      <ClothesSection />
+      <div className="profile__section">
+        <Sidebar />
+      </div>
+      <div className="profile__garments">
+        <ClothesSection />
+        <section className="cards" id="card-section">
+          <ul className="cards__list" id="card-list">
+            {garments.map((card) => (
+              <Cards
+                key={card._id}
+                handleCardClick={handleCardClick}
+                name={card.name}
+                url={card.link}
+              />
+            ))}
+          </ul>
+        </section>
+      </div>
     </div>
   );
 }

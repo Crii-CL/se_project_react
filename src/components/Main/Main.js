@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import Weather from "../Weather/Weather";
-import Profile from "../Profile/Profile";
 import Cards from "../Cards/Cards";
 
 import "./Main.css";
@@ -9,7 +8,6 @@ function Main({ handleCardClick, weatherData, defaultClothingItems }) {
   return (
     <main className="main">
       <Weather day={false} type="clear" weatherTemp={weatherData} />
-      <Profile />
       <section className="cards" id="card-section">
         <ul className="cards__list" id="card-list">
           {defaultClothingItems.map((card) => (

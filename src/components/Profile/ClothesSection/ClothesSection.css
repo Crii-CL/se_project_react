@@ -7,6 +7,8 @@
 .clothes__header {
   font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
   font-size: 20px;
+  margin: 0;
+  align-self: center;
 }
 
 .clothes__button {
