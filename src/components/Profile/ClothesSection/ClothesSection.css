@@ -1,14 +1,19 @@
 .clothes {
   display: flex;
-  font-family: "CabinetGrotesk-Medium";
   font-size: 16px;
   gap: 16px;
+}
+
+.clothes__header {
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  font-size: 20px;
 }
 
 .clothes__button {
   line-height: 25px;
   border: none;
   background: transparent;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
   font-size: 20px;
   color: rgba(0, 0, 0, 0.6);
   padding: 0;
