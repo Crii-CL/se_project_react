@@ -21,10 +21,16 @@
 
   align-items: center;
   margin: 0;
+  cursor: pointer;
 }
 
 .header__name {
   margin-left: 12px;
+}
+
+.header__name-link {
+  text-decoration: none;
+  color: #000;
 }
 
 .header__button {

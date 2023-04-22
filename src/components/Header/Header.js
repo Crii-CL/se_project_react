@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
 import { useContext } from "react";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Header({ openForm }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -16,9 +17,11 @@ export default function Header({ openForm }) {
   return (
     <header className="header">
       <div className="header__container" id="logo-date">
-        <div className="header__logo">
-          <img src={logo} alt="wtwr logo"></img>
-        </div>
+        <NavLink exact to="/">
+          <div className="header__logo">
+            <img src={logo} alt="wtwr logo"></img>
+          </div>
+        </NavLink>
         <div className="header__text" id="currentDate">
           {currentDate},
         </div>
@@ -34,14 +37,18 @@ export default function Header({ openForm }) {
         >
           + Add Clothes
         </button>
-        <div className="header__name">Cristopher Campos</div>
-        <div className="header__avatar">
-          <img
-            className="header__avatar-image"
-            src={avatar}
-            alt="avatar logo"
-          ></img>
-        </div>
+        <NavLink to="/profile" className="header__name-link">
+          <div className="header__name">Cristopher Campos</div>
+        </NavLink>
+        <NavLink to="/profile">
+          <div className="header__avatar">
+            <img
+              className="header__avatar-image"
+              src={avatar}
+              alt="avatar logo"
+            ></img>
+          </div>
+        </NavLink>
       </div>
     </header>
   );
