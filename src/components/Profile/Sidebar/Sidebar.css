@@ -1,6 +1,8 @@
 .sidebar {
   display: flex;
   flex-flow: row;
+  align-self: flex-start;
+  flex-wrap: nowrap;
 }
 
 .sidebar__title {
@@ -8,7 +10,10 @@
   font-size: 20px;
   margin: 0;
   align-self: center;
+  max-width: 150px;
+  white-space: nowrap;
 }
+
 .sidebar__avatar {
   width: 56px;
   height: 56px;

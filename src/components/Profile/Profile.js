@@ -11,8 +11,8 @@ export default function Profile({ handleCardClick, garments }) {
       </div>
       <div className="profile__garments">
         <ClothesSection />
-        <section className="cards" id="card-section">
-          <ul className="cards__list" id="card-list">
+        <section className="cards">
+          <ul className="cards__list">
             {garments.map((card) => (
               <Cards
                 key={card._id}
