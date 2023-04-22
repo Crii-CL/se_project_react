@@ -1,9 +1,7 @@
 import "./App.css";
 import Header from "../Header/Header";
 import Weather from "../Weather/Weather";
-import Profile from "../Profile/Profile";
-import Sidebar from "../Profile/Sidebar/Sidebar";
-import ClothesSection from "../Profile/ClothesSection/ClothesSection";
+
 import Main from "../Main/Main";
 import Cards from "../Cards/Cards";
 import Footer from "../Footer/Footer";

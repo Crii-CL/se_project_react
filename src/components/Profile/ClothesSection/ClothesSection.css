@@ -1,0 +1,15 @@
+.clothes {
+  display: flex;
+  font-family: "CabinetGrotesk-Medium";
+  font-size: 16px;
+  gap: 16px;
+}
+
+.clothes__button {
+  line-height: 25px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 0;
+}
