@@ -31,7 +31,6 @@ const weatherOptions = [
 
 export default function Weather({ day, type, weatherTemp }) {
   const { currentTempUnit } = useContext(CurrentTempUnitContext);
-
   const imageSrc = weatherOptions.filter((i) => {
     return i.day === day && i.type === type;
   });
