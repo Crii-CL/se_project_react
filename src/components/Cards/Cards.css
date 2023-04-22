@@ -9,6 +9,11 @@
 .cards__el {
   position: relative;
   cursor: pointer;
+  transition: 0.15s ease-in;
+}
+
+.cards__el:hover {
+  transform: scale(103%);
 }
 
 .cards__caption {
