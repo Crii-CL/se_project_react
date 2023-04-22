@@ -111,9 +111,6 @@ export default function App() {
             handleOverlayClick={handleOverlayClick}
           />
           <AddItemModal
-            name="Add New Items"
-            title="New Items:"
-            buttonText="Add Garment"
             onClose={onClose}
             isModalOpen={isFormModalOpen}
             onSubmit={onSubmit}
