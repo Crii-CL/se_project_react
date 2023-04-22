@@ -5,7 +5,6 @@
   min-height: 60px;
   font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
   padding: 0 20px;
-  /* max-width: 1280px; */
 }
 
 .header__container {
@@ -22,6 +21,11 @@
   align-items: center;
   margin: 0;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.header__logo:hover {
+  transform: scale(120%);
 }
 
 .header__name {
@@ -44,12 +48,18 @@
   cursor: pointer;
 }
 
+.header__button:hover {
+  color: rgba(0, 0, 0, 0.6);
+}
+
 .header__avatar {
   display: flex;
   margin-left: 12px;
   border-radius: 50%;
   align-items: center;
+  transition: 0.3s ease-in-out;
 }
 
-.header__avatar-image {
+.header__avatar:hover {
+  transform: scale(120%);
 }

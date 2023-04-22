@@ -8,6 +8,7 @@ import Footer from "../Footer/Footer";
 import React, { useEffect, useState } from "react";
 import ModalWithForm from "../Modal/ModalWithForm/ModalWithForm";
 import ItemModal from "../Modal/ItemModal/ItemModal";
+import AddItemModal from "../Modal/AddItemModal/AddItemModal";
 import getWeather, {
   parseWeatherData,
   tempUnits,
@@ -109,6 +110,9 @@ export default function App() {
             isModalOpen={isItemModalOpen}
             handleOverlayClick={handleOverlayClick}
           />
+          <Route path="/profile">
+            <AddItemModal />
+          </Route>
           <ModalWithForm
             name="garments"
             title="New Garments:"

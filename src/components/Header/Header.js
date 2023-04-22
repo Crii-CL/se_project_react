@@ -1,10 +1,8 @@
 import "./Header.css";
 import avatar from "../../images/avatar.png";
 import logo from "../../images/logo.svg";
-import React, { useState } from "react";
+import React from "react";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
-import { useContext } from "react";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Header({ openForm }) {
@@ -12,7 +10,6 @@ export default function Header({ openForm }) {
     month: "long",
     day: "numeric",
   });
-  const { toggleTempSwitch } = useContext(CurrentTempUnitContext);
 
   return (
     <header className="header">
