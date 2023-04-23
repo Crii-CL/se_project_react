@@ -13,7 +13,7 @@ function Main({ handleCardClick, weatherData, items }) {
         <ul className="cards__list" id="card-list">
           {items.map((card) => (
             <Cards
-              key={card._id}
+              key={card.name}
               handleCardClick={handleCardClick}
               name={card.name}
               url={card.link}

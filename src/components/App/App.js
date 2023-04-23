@@ -42,12 +42,11 @@ export default function App() {
     }
   };
 
-  const addItem = (name, link, key, weatherType) => {
+  const addItem = (name, link, weatherType) => {
     const newItem = {
       id: items.length + 1,
       name: name,
       link: link,
-      key: key,
       weatherType: weatherType,
     };
 
