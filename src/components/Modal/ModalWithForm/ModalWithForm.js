@@ -4,8 +4,8 @@ export default function ModalWithForm({
   name,
   title,
   buttonText,
-  onSubmit,
   isModalOpen,
+  handleSubmit,
   handleOverlayClick,
   onClose,
   children,
@@ -17,7 +17,7 @@ export default function ModalWithForm({
       }`}
       onClick={handleOverlayClick}
     >
-      <form className="modal__form" onClick={onSubmit}>
+      <form className="modal__form" onSubmit={handleSubmit}>
         <button
           className="modal__closeBtn"
           id="clothes-form-close"

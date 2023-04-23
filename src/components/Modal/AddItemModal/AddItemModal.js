@@ -1,14 +1,32 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "../ModalWithForm/ModalWithForm.css";
+import React, { useEffect, useState } from "react";
 
 export default function AddItemModal({
   onClose,
   isModalOpen,
-  onAddItem,
-  onSubmit,
   handleOverlayClick,
+  onAddItem,
 }) {
+  const [nameInputValue, setNameInputValue] = React.useState("");
+  const [linkInputValue, setLinkInputValue] = React.useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
+  useEffect(() => {
+    function clearInputs() {
+      setNameInputValue("");
+      setLinkInputValue("");
+    }
+
+    if (isModalOpen) {
+      clearInputs();
+    }
+  }, [isModalOpen]);
+
   return (
     <ModalWithForm
       name="Add New Items"
@@ -16,7 +34,7 @@ export default function AddItemModal({
       buttonText="Add Garment"
       onClose={onClose}
       isModalOpen={isModalOpen}
-      onSubmit={onSubmit}
+      handleSubmit={handleSubmit}
       handleOverlayClick={handleOverlayClick}
     >
       <fieldset className="formModal__fieldset" id="input-fieldset">
@@ -28,6 +46,11 @@ export default function AddItemModal({
           minLength="1"
           maxLength="30"
           required
+          id="name-input"
+          value={nameInputValue}
+          onChange={(e) => {
+            setNameInputValue(e.target.value);
+          }}
         ></input>
         <p className="formModal__caption">Image</p>
         <input
@@ -37,6 +60,11 @@ export default function AddItemModal({
           minLength="1"
           maxLength="30"
           required
+          id="link-input"
+          value={linkInputValue}
+          onChange={(e) => {
+            setLinkInputValue(e.target.value);
+          }}
         ></input>
       </fieldset>
       <h3 className="formModal__title" id="weather-type-title">
