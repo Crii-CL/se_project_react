@@ -42,7 +42,17 @@ export default function App() {
     }
   };
 
-  const addItem = (name, link, weatherType) => {
+  const addItem = (name, link, key, weatherType) => {
+    const newItem = {
+      id: items.length + 1,
+      name: name,
+      link: link,
+      key: key,
+      weatherType: weatherType,
+    };
+
+    setItems([...items, newItem]);
+
     console.log(name, link, weatherType);
   };
 
@@ -96,7 +106,6 @@ export default function App() {
               handleCardClick={handleCardClick}
               weatherData={weatherData}
               items={items}
-              onAddItem={addItem}
             />
           </Route>
           <Route path="/profile">

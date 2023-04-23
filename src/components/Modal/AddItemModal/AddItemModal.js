@@ -11,11 +11,12 @@ export default function AddItemModal({
 }) {
   const [nameInputValue, setNameInputValue] = useState("");
   const [linkInputValue, setLinkInputValue] = useState("");
-  const [weatherType, setWeatherType] = useState(null);
+  const [weatherType, setWeatherType] = useState("");
+  const [itemKey, setItemKey] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem(nameInputValue, linkInputValue, weatherType);
+    onAddItem(nameInputValue, linkInputValue, itemKey, weatherType);
     onClose();
   }
 
@@ -23,7 +24,7 @@ export default function AddItemModal({
     function clearInputs() {
       setNameInputValue("");
       setLinkInputValue("");
-      setWeatherType(null);
+      setWeatherType("");
     }
 
     if (isModalOpen) {
@@ -49,7 +50,7 @@ export default function AddItemModal({
           className="formModal__input"
           placeholder="Name"
           minLength="1"
-          maxLength="30"
+          maxLength="50"
           required
           id="name-input"
           value={nameInputValue}
@@ -63,7 +64,7 @@ export default function AddItemModal({
           className="formModal__input"
           placeholder="Image URL"
           minLength="1"
-          maxLength="30"
+          maxLength="100"
           required
           id="link-input"
           value={linkInputValue}
@@ -82,7 +83,6 @@ export default function AddItemModal({
             className="formModal__input"
             name="temperature"
             value="Hot"
-            key="Hot"
             onChange={(e) => setWeatherType(e.target.value)}
           ></input>
           Hot
@@ -93,7 +93,6 @@ export default function AddItemModal({
             className="formModal__input"
             name="temperature"
             value="Warm"
-            key="Warm"
             onChange={(e) => setWeatherType(e.target.value)}
           ></input>
           Warm
@@ -104,7 +103,6 @@ export default function AddItemModal({
             className="formModal__input"
             name="temperature"
             value="Cold"
-            key="Cold"
             onChange={(e) => setWeatherType(e.target.value)}
           ></input>
           Cold
