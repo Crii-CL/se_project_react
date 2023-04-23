@@ -9,8 +9,8 @@ export default function AddItemModal({
   handleOverlayClick,
   onAddItem,
 }) {
-  const [nameInputValue, setNameInputValue] = React.useState("");
-  const [linkInputValue, setLinkInputValue] = React.useState("");
+  const [nameInputValue, setNameInputValue] = useState("");
+  const [linkInputValue, setLinkInputValue] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -29,7 +29,7 @@ export default function AddItemModal({
 
   return (
     <ModalWithForm
-      name="Add New Items"
+      name="add-item-form"
       title="New Items:"
       buttonText="Add Garment"
       onClose={onClose}
