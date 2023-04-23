@@ -3,14 +3,19 @@ import Sidebar from "./Sidebar/Sidebar";
 import ClothesSection from "./ClothesSection/ClothesSection";
 import Cards from "../Cards/Cards";
 
-export default function Profile({ handleCardClick, garments }) {
+export default function Profile({
+  handleCardClick,
+  garments,
+  openForm,
+  isModalOpen,
+}) {
   return (
     <div className="profile">
       <div className="profile__section">
         <Sidebar />
       </div>
       <div className="profile__garments">
-        <ClothesSection />
+        <ClothesSection openForm={openForm} />
         <section className="cards">
           <ul className="cards__list">
             {garments.map((card) => (

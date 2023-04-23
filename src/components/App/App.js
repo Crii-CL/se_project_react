@@ -103,6 +103,7 @@ export default function App() {
           <Route path="/profile">
             <Profile
               handleCardClick={handleCardClick}
+              openForm={openForm}
               garments={defaultClothingItems}
             />
           </Route>
