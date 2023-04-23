@@ -14,6 +14,7 @@ export default function AddItemModal({
 
   function handleSubmit(e) {
     e.preventDefault();
+    onAddItem(nameInputValue, linkInputValue);
   }
 
   useEffect(() => {

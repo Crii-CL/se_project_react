@@ -26,6 +26,7 @@ export default function App() {
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
+  const [items, setItems] = useState(defaultClothingItems);
 
   const handleCardClick = (name, url) => {
     setIsItemModalOpen(true);
@@ -41,7 +42,10 @@ export default function App() {
     }
   };
 
-  const addItem = () => {};
+  const addItem = (name, link) => {
+    //add new item to the
+    console.log(name, link);
+  };
 
   const openForm = () => {
     setIsFormModalOpen(true);
@@ -92,7 +96,8 @@ export default function App() {
             <Main
               handleCardClick={handleCardClick}
               weatherData={weatherData}
-              defaultClothingItems={defaultClothingItems}
+              items={items}
+              onAddItem={addItem}
             />
           </Route>
           <Route path="/profile">
