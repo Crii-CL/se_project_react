@@ -42,9 +42,8 @@ export default function App() {
     }
   };
 
-  const addItem = (name, link) => {
-    //add new item to the
-    console.log(name, link);
+  const addItem = (name, link, weatherType) => {
+    console.log(name, link, weatherType);
   };
 
   const openForm = () => {

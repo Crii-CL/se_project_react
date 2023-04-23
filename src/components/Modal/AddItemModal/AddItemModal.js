@@ -11,16 +11,19 @@ export default function AddItemModal({
 }) {
   const [nameInputValue, setNameInputValue] = useState("");
   const [linkInputValue, setLinkInputValue] = useState("");
+  const [weatherType, setWeatherType] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem(nameInputValue, linkInputValue);
+    onAddItem(nameInputValue, linkInputValue, weatherType);
+    onClose();
   }
 
   useEffect(() => {
     function clearInputs() {
       setNameInputValue("");
       setLinkInputValue("");
+      setWeatherType(null);
     }
 
     if (isModalOpen) {
@@ -37,6 +40,7 @@ export default function AddItemModal({
       isModalOpen={isModalOpen}
       handleSubmit={handleSubmit}
       handleOverlayClick={handleOverlayClick}
+      onAddItem={onAddItem}
     >
       <fieldset className="formModal__fieldset" id="input-fieldset">
         <p className="formModal__caption">Name</p>
@@ -76,8 +80,10 @@ export default function AddItemModal({
           <input
             type="radio"
             className="formModal__input"
-            name="hot"
-            value="hot"
+            name="temperature"
+            value="Hot"
+            key="Hot"
+            onChange={(e) => setWeatherType(e.target.value)}
           ></input>
           Hot
         </label>
@@ -85,8 +91,10 @@ export default function AddItemModal({
           <input
             type="radio"
             className="formModal__input"
-            name="warm"
-            value="warm"
+            name="temperature"
+            value="Warm"
+            key="Warm"
+            onChange={(e) => setWeatherType(e.target.value)}
           ></input>
           Warm
         </label>
@@ -94,8 +102,10 @@ export default function AddItemModal({
           <input
             type="radio"
             className="formModal__input"
-            name="cold"
-            value="cold"
+            name="temperature"
+            value="Cold"
+            key="Cold"
+            onChange={(e) => setWeatherType(e.target.value)}
           ></input>
           Cold
         </label>
