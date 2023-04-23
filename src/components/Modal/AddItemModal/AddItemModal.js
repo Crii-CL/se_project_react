@@ -12,10 +12,11 @@ export default function AddItemModal({
   const [nameInputValue, setNameInputValue] = useState("");
   const [linkInputValue, setLinkInputValue] = useState("");
   const [weatherType, setWeatherType] = useState("");
+  const [itemId, setItemId] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddItem(nameInputValue, linkInputValue, weatherType);
+    onAddItem(nameInputValue, linkInputValue, itemId, weatherType);
     onClose();
   }
 

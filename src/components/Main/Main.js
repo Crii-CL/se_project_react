@@ -5,13 +5,13 @@ import AddItemModal from "../Modal/AddItemModal/AddItemModal";
 
 import "./Main.css";
 
-function Main({ handleCardClick, weatherData, items }) {
+function Main({ handleCardClick, weatherData, clothingItems }) {
   return (
     <main className="main">
       <Weather day={false} type="clear" weatherTemp={weatherData} />
       <section className="cards" id="card-section">
         <ul className="cards__list" id="card-list">
-          {items.map((card) => (
+          {clothingItems.map((card) => (
             <Cards
               key={card.name}
               handleCardClick={handleCardClick}
