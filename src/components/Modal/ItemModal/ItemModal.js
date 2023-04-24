@@ -8,7 +8,7 @@ export default function ItemModal({
   isItemModalOpen,
   isConfirmModalOpen,
   onClose,
-  handleCardDelete,
+  handleItemDelete,
   openConfirmModal,
   handleConfirmModalClose,
 }) {
@@ -49,7 +49,7 @@ export default function ItemModal({
             className="modal__closeBtn"
             id="modal-item-confirm-close"
             type="button"
-            onClick={onClose}
+            onClick={handleConfirmModalClose}
           >
             <img src={closeButtonDark} alt="white close button"></img>
           </button>
@@ -59,7 +59,7 @@ export default function ItemModal({
           </p>
           <button
             className="itemModal__confirm-delBtn"
-            onClick={handleCardDelete}
+            onClick={handleItemDelete}
           >
             Delete Item
           </button>

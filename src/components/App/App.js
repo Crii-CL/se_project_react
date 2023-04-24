@@ -13,6 +13,7 @@ import getWeather, {
   parseWeatherData,
   tempUnits,
 } from "../../utils/weatherApi";
+import itemsApi from "../../utils/api";
 import { constants, defaultClothingItems } from "../../utils/constants";
 import Modal from "../Modal/modal.css";
 import fonts from "../../vendor/Fonts/fonts.css";
@@ -28,20 +29,7 @@ export default function App() {
   const [weatherData, setWeatherData] = useState("");
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
-
-  const handleCardClick = (name, url) => {
-    setIsItemModalOpen(true);
-    setModalData({
-      name,
-      url,
-    });
-  };
-
-  const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
+  // const [clothingItems, setClothingItems] = useState("");
 
   const addItem = (name, link, id, weatherType) => {
     const newItem = {
@@ -57,7 +45,24 @@ export default function App() {
     console.log(name, link, weatherType);
   };
 
-  const handleCardDelete = () => {};
+  const handleItemDelete = (id) => {
+    const itemsApiObject = itemsApi();
+    itemsApiObject.remove(id);
+  };
+
+  const handleCardClick = (name, url) => {
+    setIsItemModalOpen(true);
+    setModalData({
+      name,
+      url,
+    });
+  };
+
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
 
   const openConfirmModal = () => {
     setIsConfirmModalOpen(true);
@@ -133,7 +138,7 @@ export default function App() {
             isItemModalOpen={isItemModalOpen}
             isConfirmModalOpen={isConfirmModalOpen}
             handleOverlayClick={handleOverlayClick}
-            handleCardDelete={handleCardDelete}
+            handleItemDelete={handleItemDelete}
             openConfirmModal={openConfirmModal}
             handleConfirmModalClose={handleConfirmModalClose}
           />

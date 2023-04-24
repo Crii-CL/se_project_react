@@ -1,4 +1,4 @@
-const baseUrl = "https://localhost:3000";
+const baseUrl = "https://my-json-server.typicode.com/crii-cl/se_project_react";
 
 export default function itemsApi() {
   return {
@@ -36,8 +36,8 @@ export default function itemsApi() {
           console.log(error);
         });
     },
-    delete: () => {
-      return fetch(`${baseUrl}/items/:id`, {
+    remove: (id) => {
+      return fetch(`${baseUrl}/items/${id}`, {
         method: "DELETE",
       })
         .then((res) => {
