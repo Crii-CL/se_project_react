@@ -18,7 +18,7 @@ function Main({ handleCardClick, weatherData, clothingItems }) {
               id={card._id}
               handleCardClick={handleCardClick}
               name={card.name}
-              url={card.link}
+              url={card.imageUrl}
             />
           ))}
         </ul>

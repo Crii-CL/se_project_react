@@ -20,6 +20,7 @@ import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
 import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
 import { BrowserRouter, Route } from "react-router-dom";
+import items from "../../db.json";
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -28,7 +29,7 @@ export default function App() {
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState(items.items);
   // const [clothingItems, setClothingItems] = useState("");
 
   const addItem = (name, link, id, weatherType) => {
@@ -37,7 +38,7 @@ export default function App() {
       name: name,
       link: link,
       id: id,
-      weatherType: weatherType,
+      weatherType: weatherType, //to be used in the future
     };
 
     setClothingItems([newItem, ...clothingItems]);
@@ -51,11 +52,11 @@ export default function App() {
     setIsConfirmModalOpen(false);
   };
 
-  const handleCardClick = (name, url, id) => {
+  const handleCardClick = (name, imageuUrl, id) => {
     setIsItemModalOpen(true);
     setModalData({
       name,
-      url,
+      imageuUrl,
       id,
     });
   };
@@ -124,6 +125,7 @@ export default function App() {
               handleCardClick={handleCardClick}
               weatherData={weatherData}
               clothingItems={clothingItems}
+              itemData={modalData}
             />
           </Route>
           <Route path="/profile">

@@ -27,6 +27,7 @@ export default function itemsApi() {
         }),
       })
         .then((res) => {
+          console.log(res);
           if (res.ok) {
             return res.json();
           }
