@@ -23,6 +23,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
@@ -56,6 +57,12 @@ export default function App() {
     console.log(name, link, weatherType);
   };
 
+  const handleCardDelete = () => {};
+
+  const openConfirmModal = () => {
+    setIsConfirmModalOpen(true);
+  };
+
   const openForm = () => {
     setIsFormModalOpen(true);
   };
@@ -63,6 +70,7 @@ export default function App() {
   const onClose = () => {
     setIsFormModalOpen(false);
     setIsItemModalOpen(false);
+    setIsConfirmModalOpen(false);
   };
 
   const toggleTempSwitch = () => {
@@ -119,8 +127,11 @@ export default function App() {
           <ItemModal
             onClose={onClose}
             itemData={modalData}
-            isModalOpen={isItemModalOpen}
+            isItemModalOpen={isItemModalOpen}
+            isConfirmModalOpen={isConfirmModalOpen}
             handleOverlayClick={handleOverlayClick}
+            handleCardDelete={handleCardDelete}
+            openConfirmModal={openConfirmModal}
           />
           <AddItemModal
             onClose={onClose}

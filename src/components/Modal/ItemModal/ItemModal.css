@@ -1,7 +1,5 @@
 .itemModal {
   display: flex;
-  visibility: hidden;
-  /* background-color: rgba(0, 0, 0, 0.6); */
   position: fixed;
   top: 0;
   left: 0;
@@ -10,31 +8,36 @@
   justify-content: center;
   align-items: center;
   z-index: 100;
+
+  visibility: hidden;
   transition: 0.3s ease-in;
 }
 
 .itemModal__container {
   position: relative;
+
   background-color: #fff;
   border-radius: 16px;
 }
 
 .itemModal__image {
-  border: solid 1px rgba(0, 0, 0, 0.3);
+  width: 328px;
+  height: 328px;
+
   border-radius: 16px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom: none;
-  width: 328px;
-  height: 328px;
+  border: solid 1px rgba(0, 0, 0, 0.3);
 }
 
 .itemModal__caption {
   display: flex;
+  margin-left: 32px;
+
   color: #000;
   font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
-  font-size: 20px;
-  margin-left: 32px;
+  font-size: 15px;
 }
 
 .itemModal__caption:nth-child(3) {
@@ -42,5 +45,71 @@
 }
 
 .itemModal__caption:nth-child(4) {
-  margin: 12px 0 32px 32px;
+  margin: 12px 0 25px 32px;
+}
+
+.itemModal__delBtn {
+  position: absolute;
+  bottom: 54px;
+  right: 32px;
+  margin: 0;
+
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  font-size: 15px;
+  border: none;
+  background: transparent;
+  color: #ff4d00;
+  cursor: pointer;
+}
+
+.itemModal__confirm {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+
+  visibility: hidden;
+  transition: 0.3s ease-in;
+}
+
+.itemModal__confirm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 400px;
+  height: 200px;
+  gap: 12px;
+
+  background-color: #fff;
+  border-radius: 16px;
+}
+
+.itemModal__confirm-caption {
+  width: 300px;
+  text-align: center;
+}
+
+.itemModal__confirm-delBtn {
+  margin: 0;
+
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  font-size: 15px;
+  border: none;
+  background: transparent;
+  color: #ff4d00;
+  cursor: pointer;
+}
+
+.itemModal__confirm-cancelBtn {
+  border: none;
+  background: transparent;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  font-size: 13px;
 }
