@@ -6,6 +6,7 @@ import AddItemModal from "../Modal/AddItemModal/AddItemModal";
 import "./Main.css";
 
 function Main({ handleCardClick, weatherData, clothingItems }) {
+  console.log(clothingItems);
   return (
     <main className="main">
       <Weather day={false} type="clear" weatherTemp={weatherData} />
@@ -14,6 +15,7 @@ function Main({ handleCardClick, weatherData, clothingItems }) {
           {clothingItems.map((card) => (
             <Cards
               key={card.name}
+              id={card._id}
               handleCardClick={handleCardClick}
               name={card.name}
               url={card.link}

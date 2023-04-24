@@ -48,13 +48,15 @@ export default function App() {
   const handleItemDelete = (id) => {
     const itemsApiObject = itemsApi();
     itemsApiObject.remove(id);
+    setIsConfirmModalOpen(false);
   };
 
-  const handleCardClick = (name, url) => {
+  const handleCardClick = (name, url, id) => {
     setIsItemModalOpen(true);
     setModalData({
       name,
       url,
+      id,
     });
   };
 

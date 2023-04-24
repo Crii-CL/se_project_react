@@ -12,6 +12,7 @@ export default function ItemModal({
   openConfirmModal,
   handleConfirmModalClose,
 }) {
+  console.log(itemData);
   return (
     <div
       className={`itemModal ${isItemModalOpen ? "modal_opened" : ""}`}
@@ -59,7 +60,7 @@ export default function ItemModal({
           </p>
           <button
             className="itemModal__confirm-delBtn"
-            onClick={handleItemDelete}
+            onClick={() => handleItemDelete(itemData.id)}
           >
             Delete Item
           </button>

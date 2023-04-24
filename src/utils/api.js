@@ -37,6 +37,7 @@ export default function itemsApi() {
         });
     },
     remove: (id) => {
+      console.log(id);
       return fetch(`${baseUrl}/items/${id}`, {
         method: "DELETE",
       })
