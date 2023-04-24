@@ -10,6 +10,7 @@ export default function ItemModal({
   onClose,
   handleCardDelete,
   openConfirmModal,
+  handleConfirmModalClose,
 }) {
   return (
     <div
@@ -41,6 +42,7 @@ export default function ItemModal({
         className={`itemModal__confirm ${
           isConfirmModalOpen ? "modal_opened" : ""
         }`}
+        onClick={handleOverlayClick}
       >
         <div className="itemModal__confirm-container">
           <button
@@ -61,7 +63,10 @@ export default function ItemModal({
           >
             Delete Item
           </button>
-          <button className="itemModal__confirm-cancelBtn" onClick={onClose}>
+          <button
+            className="itemModal__confirm-cancelBtn"
+            onClick={handleConfirmModalClose}
+          >
             Cancel
           </button>
         </div>

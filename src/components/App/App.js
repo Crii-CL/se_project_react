@@ -70,6 +70,9 @@ export default function App() {
   const onClose = () => {
     setIsFormModalOpen(false);
     setIsItemModalOpen(false);
+  };
+
+  const handleConfirmModalClose = () => {
     setIsConfirmModalOpen(false);
   };
 
@@ -132,6 +135,7 @@ export default function App() {
             handleOverlayClick={handleOverlayClick}
             handleCardDelete={handleCardDelete}
             openConfirmModal={openConfirmModal}
+            handleConfirmModalClose={handleConfirmModalClose}
           />
           <AddItemModal
             onClose={onClose}
