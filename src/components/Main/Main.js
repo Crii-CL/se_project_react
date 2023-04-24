@@ -13,18 +13,15 @@ function Main({ handleCardClick, weatherData, clothingItems }) {
       <Weather day={false} type="clear" weatherTemp={weatherData} />
       <section className="cards" id="card-section">
         <ul className="cards__list" id="card-list">
-          {clothingItems.map(
-            (card) => (
-              <Cards
-                key={card.name}
-                name={card.name}
-                id={card.id}
-                url={card.imageUrl}
-                handleCardClick={handleCardClick}
-              />
-            ),
-            console.log(clothingItems)
-          )}
+          {clothingItems.map((card) => (
+            <Cards
+              key={card.id}
+              name={card.name}
+              id={card.id}
+              url={card.imageUrl}
+              handleCardClick={handleCardClick}
+            />
+          ))}
         </ul>
       </section>
     </main>
