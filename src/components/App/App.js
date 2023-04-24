@@ -14,13 +14,13 @@ import getWeather, {
   tempUnits,
 } from "../../utils/weatherApi";
 import itemsApi from "../../utils/api";
-import { constants, defaultClothingItems } from "../../utils/constants";
+import { constants } from "../../utils/constants";
 import Modal from "../Modal/modal.css";
 import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
 import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
 import { BrowserRouter, Route } from "react-router-dom";
-import items from "../../db.json";
+import db from "../../db.json";
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -29,34 +29,32 @@ export default function App() {
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
-  const [clothingItems, setClothingItems] = useState(items.items);
-  // const [clothingItems, setClothingItems] = useState("");
+  const [clothingItems, setClothingItems] = useState(db.items);
+  const itemsApiObject = itemsApi();
 
   const addItem = (name, link, id, weatherType) => {
     const newItem = {
-      id: clothingItems.length + 1,
+      id: clothingItems.length,
       name: name,
-      link: link,
-      id: id,
-      weatherType: weatherType, //to be used in the future
+      weather: weatherType, //to be used in the future
+      imageUrl: link,
     };
 
     setClothingItems([newItem, ...clothingItems]);
-
-    console.log(name, link, weatherType);
+    console.log("items below");
+    console.log(clothingItems);
   };
 
   const handleItemDelete = (id) => {
-    const itemsApiObject = itemsApi();
     itemsApiObject.remove(id);
     setIsConfirmModalOpen(false);
   };
 
-  const handleCardClick = (name, imageuUrl, id) => {
+  const handleCardClick = (name, url, id) => {
     setIsItemModalOpen(true);
     setModalData({
       name,
-      imageuUrl,
+      url,
       id,
     });
   };
@@ -106,7 +104,6 @@ export default function App() {
     getWeather(constants.latitude, constants.longitude, constants.apiKey)
       .then((res) => {
         setWeatherData(tempUnits(parseWeatherData(res)));
-        console.log(tempUnits(parseWeatherData(res)));
       })
       .catch((error) => {
         console.log(error);
@@ -132,7 +129,7 @@ export default function App() {
             <Profile
               handleCardClick={handleCardClick}
               openForm={openForm}
-              garments={defaultClothingItems}
+              garments={clothingItems}
             />
           </Route>
           <Footer />
