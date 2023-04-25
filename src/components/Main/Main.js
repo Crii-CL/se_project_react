@@ -1,19 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Weather from "../Weather/Weather";
 import Cards from "../Cards/Cards";
 import AddItemModal from "../Modal/AddItemModal/AddItemModal";
+import itemsApi from "../../utils/api";
 
 import "./Main.css";
 
 function Main({ handleCardClick, weatherData, clothingItems }) {
-  console.log(clothingItems);
-  console.log("before");
+  const itemsApiObject = itemsApi();
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    itemsApiObject
+      .get()
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((res) => {
+        setCards(res);
+        console.log("...");
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <main className="main">
       <Weather day={false} type="clear" weatherTemp={weatherData} />
       <section className="cards" id="card-section">
         <ul className="cards__list" id="card-list">
-          {clothingItems.map((card) => (
+          {cards.map((card) => (
             <Cards
               key={card.id}
               name={card.name}

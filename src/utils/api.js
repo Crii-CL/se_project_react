@@ -4,7 +4,7 @@ export default function itemsApi() {
 
   return {
     get: () => {
-      return fetch(`${baseUrl}`)
+      return fetch(`${baseUrl}/items`)
         .then((res) => {
           console.log("1");
           console.log(res);

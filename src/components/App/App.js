@@ -20,7 +20,7 @@ import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
 import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
 import { BrowserRouter, Route } from "react-router-dom";
-import mockDb from "../../dbs.json";
+// import mockDb from "../../dbs.json";
 // https://my-json-server.typicode.com/crii-cl/se_project_react/db
 
 export default function App() {
@@ -31,20 +31,20 @@ export default function App() {
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
-  // const [clothingItems, setClothingItems] = useState(itemsApiObject.get());
-  const [clothingItems, setClothingItems] = useState(mockDb.items);
+  // const [clothingItems, setClothingItems] = useState("");
+  // const [clothingItems, setClothingItems] = useState(mockDb.items);
 
   const addItem = (name, link, id, weatherType) => {
     const newItem = {
-      id: clothingItems.length,
+      // id: clothingItems.length,
       name: name,
       weather: weatherType,
       imageUrl: link,
     };
 
-    setClothingItems([newItem, ...clothingItems]);
+    // setClothingItems([newItem, ...clothingItems]);
     console.log("items below");
-    console.log(clothingItems);
+    // console.log(clothingItems);
   };
 
   const handleItemDelete = (id) => {
@@ -110,10 +110,6 @@ export default function App() {
       .catch((error) => {
         console.log(error);
       });
-    itemsApiObject.get().then((res) => {
-      console.log("----------");
-      console.log(res);
-    }); // receive items
   }, []);
 
   // return null;
@@ -129,7 +125,7 @@ export default function App() {
             <Main
               handleCardClick={handleCardClick}
               weatherData={weatherData}
-              clothingItems={clothingItems}
+              // clothingItems={clothingItems}
               itemData={modalData}
             />
           </Route>
@@ -137,7 +133,7 @@ export default function App() {
             <Profile
               handleCardClick={handleCardClick}
               openForm={openForm}
-              garments={clothingItems}
+              // garments={clothingItems}
             />
           </Route>
           <Footer />
