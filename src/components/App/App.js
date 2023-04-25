@@ -20,7 +20,7 @@ import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
 import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
 import { BrowserRouter, Route } from "react-router-dom";
-import db from "../../dbs.json";
+import mockDb from "../../dbs.json";
 // https://my-json-server.typicode.com/crii-cl/se_project_react/db
 
 export default function App() {
@@ -32,7 +32,7 @@ export default function App() {
   const [weatherData, setWeatherData] = useState("");
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
   // const [clothingItems, setClothingItems] = useState(itemsApiObject.get());
-  const [clothingItems, setClothingItems] = useState(db.items);
+  const [clothingItems, setClothingItems] = useState(mockDb.items);
 
   const addItem = (name, link, id, weatherType) => {
     const newItem = {
@@ -116,7 +116,7 @@ export default function App() {
     }); // receive items
   }, []);
 
-  return null;
+  // return null;
 
   return (
     <div className="page">
