@@ -20,7 +20,7 @@ import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
 import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
 import { BrowserRouter, Route } from "react-router-dom";
-import db from "../../db.json";
+import db from "../../../db.json";
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -36,7 +36,7 @@ export default function App() {
     const newItem = {
       id: clothingItems.length,
       name: name,
-      weather: weatherType, //to be used in the future
+      weather: weatherType,
       imageUrl: link,
     };
 
