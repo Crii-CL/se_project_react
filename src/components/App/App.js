@@ -33,18 +33,32 @@ export default function App() {
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
   // const [clothingItems, setClothingItems] = useState("");
   // const [clothingItems, setClothingItems] = useState(mockDb.items);
+  const [items, setItems] = useState([]);
 
-  const addItem = (name, link, id, weatherType) => {
-    const newItem = {
-      // id: clothingItems.length,
-      name: name,
-      weather: weatherType,
-      imageUrl: link,
-    };
+  // const handleAddItem = (name, link, id, weatherType) => {
+  //   const newItem = {
+  //     id: clothingItems.length,
+  //     name: name,
+  //     weather: weatherType,
+  //     imageUrl: link,
+  //   };
 
-    // setClothingItems([newItem, ...clothingItems]);
-    console.log("items below");
-    // console.log(clothingItems);
+  //   setClothingItems([newItem, ...clothingItems]);
+  //   console.log("items below");
+  //   console.log(clothingItems);
+  // };
+
+  const handleAddItem = (name, link, id, weather) => {
+    itemsApiObject.add(name, link, weather).then(() => {
+      const newItem = {
+        name: name,
+        link: link,
+        id: id,
+        weather: weather,
+      };
+      console.log(newItem);
+      setItems([newItem, ...items]);
+    });
   };
 
   const handleItemDelete = (id) => {
@@ -114,6 +128,17 @@ export default function App() {
 
   // return null;
 
+  useEffect(() => {
+    itemsApiObject
+      .get()
+      .then((res) => {
+        setItems(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div className="page">
       <BrowserRouter>
@@ -125,7 +150,7 @@ export default function App() {
             <Main
               handleCardClick={handleCardClick}
               weatherData={weatherData}
-              // clothingItems={clothingItems}
+              clothingItems={items}
               itemData={modalData}
             />
           </Route>
@@ -133,7 +158,7 @@ export default function App() {
             <Profile
               handleCardClick={handleCardClick}
               openForm={openForm}
-              // garments={clothingItems}
+              garments={items}
             />
           </Route>
           <Footer />
@@ -151,7 +176,7 @@ export default function App() {
             onClose={onClose}
             isModalOpen={isFormModalOpen}
             handleOverlayClick={handleOverlayClick}
-            onAddItem={addItem}
+            onAddItem={handleAddItem}
           ></AddItemModal>
         </CurrentTempUnitContext.Provider>
       </BrowserRouter>

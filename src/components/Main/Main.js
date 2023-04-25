@@ -7,26 +7,12 @@ import itemsApi from "../../utils/api";
 import "./Main.css";
 
 function Main({ handleCardClick, weatherData, clothingItems }) {
-  const itemsApiObject = itemsApi();
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    itemsApiObject
-      .get()
-      .then((res) => {
-        setCards(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   return (
     <main className="main">
       <Weather day={false} type="clear" weatherTemp={weatherData} />
       <section className="cards" id="card-section">
         <ul className="cards__list" id="card-list">
-          {cards?.map((card) => (
+          {clothingItems?.map((card) => (
             <Cards
               key={card.id}
               name={card.name}
