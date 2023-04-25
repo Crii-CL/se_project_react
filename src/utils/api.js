@@ -1,10 +1,13 @@
-const baseUrl = "https://my-json-server.typicode.com/crii-cl/se_project_react";
-
 export default function itemsApi() {
+  const baseUrl =
+    "https://my-json-server.typicode.com/crii-cl/se_project_react";
+
   return {
     get: () => {
-      return fetch(`${baseUrl}/items`)
+      return fetch(`${baseUrl}`)
         .then((res) => {
+          console.log("1");
+          console.log(res);
           if (res.ok) {
             return res.json();
           }
@@ -27,7 +30,6 @@ export default function itemsApi() {
         }),
       })
         .then((res) => {
-          console.log(res);
           if (res.ok) {
             return res.json();
           }
@@ -38,9 +40,11 @@ export default function itemsApi() {
         });
     },
     remove: (id) => {
-      console.log(id);
       return fetch(`${baseUrl}/items/${id}`, {
         method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
         .then((res) => {
           if (res.ok) {

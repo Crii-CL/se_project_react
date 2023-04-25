@@ -20,17 +20,19 @@ import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
 import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
 import { BrowserRouter, Route } from "react-router-dom";
-import db from "../../../db.json";
+import db from "../../dbs.json";
+// https://my-json-server.typicode.com/crii-cl/se_project_react/db
 
 export default function App() {
+  const itemsApiObject = itemsApi();
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
+  // const [clothingItems, setClothingItems] = useState(itemsApiObject.get());
   const [clothingItems, setClothingItems] = useState(db.items);
-  const itemsApiObject = itemsApi();
 
   const addItem = (name, link, id, weatherType) => {
     const newItem = {
@@ -108,7 +110,13 @@ export default function App() {
       .catch((error) => {
         console.log(error);
       });
+    itemsApiObject.get().then((res) => {
+      console.log("----------");
+      console.log(res);
+    }); // receive items
   }, []);
+
+  return null;
 
   return (
     <div className="page">
