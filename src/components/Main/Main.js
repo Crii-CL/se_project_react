@@ -14,14 +14,7 @@ function Main({ handleCardClick, weatherData, clothingItems }) {
     itemsApiObject
       .get()
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((res) => {
         setCards(res);
-        console.log("...");
-        console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -33,7 +26,7 @@ function Main({ handleCardClick, weatherData, clothingItems }) {
       <Weather day={false} type="clear" weatherTemp={weatherData} />
       <section className="cards" id="card-section">
         <ul className="cards__list" id="card-list">
-          {cards.map((card) => (
+          {cards?.map((card) => (
             <Cards
               key={card.id}
               name={card.name}
