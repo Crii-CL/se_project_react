@@ -20,7 +20,7 @@ export default function Header({ openForm }) {
           </div>
         </NavLink>
         <div className="header__text" id="currentDate">
-          {currentDate},
+          {currentDate}, Puerto Rico
         </div>
       </div>
       <div className="header__container" id="button-name-avatar">

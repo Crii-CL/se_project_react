@@ -5,7 +5,7 @@ import Cards from "../Cards/Cards";
 
 export default function Profile({
   handleCardClick,
-  garments,
+  clothingItems,
   openForm,
   isModalOpen,
 }) {
@@ -18,12 +18,14 @@ export default function Profile({
         <ClothesSection openForm={openForm} />
         <section className="cards">
           <ul className="cards__list">
-            {garments.map((card) => (
+            {clothingItems.map((card) => (
               <Cards
-                key={card._id}
-                handleCardClick={handleCardClick}
+                key={card.id}
                 name={card.name}
-                url={card.link}
+                url={card.imageUrl}
+                id={card.id}
+                weather={card.weather}
+                handleCardClick={handleCardClick}
               />
             ))}
           </ul>

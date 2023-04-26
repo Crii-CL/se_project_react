@@ -1,12 +1,9 @@
 import "./App.css";
 import Header from "../Header/Header";
-import Weather from "../Weather/Weather";
 import Profile from "../Profile/Profile";
 import Main from "../Main/Main";
-import Cards from "../Cards/Cards";
 import Footer from "../Footer/Footer";
 import React, { useEffect, useState } from "react";
-import ModalWithForm from "../Modal/ModalWithForm/ModalWithForm";
 import ItemModal from "../Modal/ItemModal/ItemModal";
 import AddItemModal from "../Modal/AddItemModal/AddItemModal";
 import getWeather, {
@@ -20,8 +17,6 @@ import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
 import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
 import { BrowserRouter, Route } from "react-router-dom";
-// import mockDb from "../../dbs.json";
-// https://my-json-server.typicode.com/crii-cl/se_project_react/db
 
 export default function App() {
   const itemsApiObject = itemsApi();
@@ -42,6 +37,7 @@ export default function App() {
   const handleItemDelete = () => {
     itemsApiObject.remove();
     setIsConfirmModalOpen(false);
+    setIsItemModalOpen(false);
   };
 
   const handleCardClick = (name, url, weather, id) => {
@@ -134,7 +130,7 @@ export default function App() {
             <Profile
               handleCardClick={handleCardClick}
               openForm={openForm}
-              garments={items}
+              clothingItems={items}
             />
           </Route>
           <Footer />
