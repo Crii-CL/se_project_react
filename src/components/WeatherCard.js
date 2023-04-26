@@ -29,7 +29,7 @@ const weatherOptions = [
   { url: nightSnow, day: false, type: "snow" },
 ];
 
-export default function Weather({ day, type, weatherTemp }) {
+export default function WeatherCard({ day, type, weatherTemp }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const imageSrc = weatherOptions.filter((i) => {
     return i.day === day && i.type === type;
