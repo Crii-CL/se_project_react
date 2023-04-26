@@ -16,8 +16,9 @@ function Main({ handleCardClick, weatherData, clothingItems }) {
             <Cards
               key={card.id}
               name={card.name}
-              id={card.id}
               url={card.imageUrl}
+              id={card.id}
+              weather={card.weather}
               handleCardClick={handleCardClick}
             />
           ))}

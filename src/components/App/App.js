@@ -31,46 +31,25 @@ export default function App() {
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
-  // const [clothingItems, setClothingItems] = useState("");
-  // const [clothingItems, setClothingItems] = useState(mockDb.items);
   const [items, setItems] = useState([]);
 
-  // const handleAddItem = (name, link, id, weatherType) => {
-  //   const newItem = {
-  //     id: clothingItems.length,
-  //     name: name,
-  //     weather: weatherType,
-  //     imageUrl: link,
-  //   };
-
-  //   setClothingItems([newItem, ...clothingItems]);
-  //   console.log("items below");
-  //   console.log(clothingItems);
-  // };
-
-  const handleAddItem = (name, link, id, weather) => {
-    itemsApiObject.add(name, link, weather).then(() => {
-      const newItem = {
-        name: name,
-        link: link,
-        id: id,
-        weather: weather,
-      };
-      console.log(newItem);
-      setItems([newItem, ...items]);
+  const handleAddItem = (name, url, weatherType) => {
+    itemsApiObject.add(name, url, weatherType).then((res) => {
+      setItems([res, ...items]);
     });
   };
 
-  const handleItemDelete = (id) => {
-    itemsApiObject.remove(id);
+  const handleItemDelete = () => {
+    itemsApiObject.remove();
     setIsConfirmModalOpen(false);
   };
 
-  const handleCardClick = (name, url, id) => {
+  const handleCardClick = (name, url, weather, id) => {
     setIsItemModalOpen(true);
     setModalData({
       name,
       url,
+      weather,
       id,
     });
   };
@@ -126,8 +105,6 @@ export default function App() {
       });
   }, []);
 
-  // return null;
-
   useEffect(() => {
     itemsApiObject
       .get()
@@ -151,7 +128,6 @@ export default function App() {
               handleCardClick={handleCardClick}
               weatherData={weatherData}
               clothingItems={items}
-              itemData={modalData}
             />
           </Route>
           <Route path="/profile">

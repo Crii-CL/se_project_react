@@ -12,6 +12,7 @@ export default function ItemModal({
   openConfirmModal,
   handleConfirmModalClose,
 }) {
+  console.log("item data below");
   console.log(itemData);
   return (
     <div
@@ -34,7 +35,7 @@ export default function ItemModal({
           alt="item image"
         ></img>
         <p className="itemModal__caption">{itemData?.name}</p>
-        <p className="itemModal__caption">Weather: Hot</p>
+        <p className="itemModal__caption">Weather: {itemData?.weather}</p>
         <button className="itemModal__delBtn" onClick={openConfirmModal}>
           Delete Item
         </button>

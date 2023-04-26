@@ -6,8 +6,6 @@ export default function itemsApi() {
     get: () => {
       return fetch(`${baseUrl}/items`)
         .then((res) => {
-          console.log("1");
-          console.log(res);
           if (res.ok) {
             return res.json();
           }

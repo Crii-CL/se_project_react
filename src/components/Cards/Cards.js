@@ -1,8 +1,11 @@
 import "./Cards.css";
 
-export default function Cards({ handleCardClick, name, url, id }) {
+export default function Cards({ handleCardClick, name, url, weather, id }) {
   return (
-    <li className="cards__el" onClick={() => handleCardClick(name, url, id)}>
+    <li
+      className="cards__el"
+      onClick={() => handleCardClick(name, url, weather, id)}
+    >
       <p className="cards__caption">{name}</p>
       <img
         className="cards__image"
