@@ -19,7 +19,7 @@
 // }
 
 import "../ToggleSwitch/ToggleSwitch.css";
-import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
+import { CurrentTempUnitContext } from "../../contexts/CurrentTempUnitContext";
 import { useContext } from "react";
 
 export default function ToggleSwitch({ name }) {

@@ -15,7 +15,7 @@ import { constants } from "../../utils/constants";
 import Modal from "../Modal/modal.css";
 import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
-import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
+import { CurrentTempUnitContext } from "../../contexts/CurrentTempUnitContext";
 import { BrowserRouter, Route } from "react-router-dom";
 
 export default function App() {

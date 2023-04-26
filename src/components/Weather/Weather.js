@@ -12,7 +12,7 @@ import nightStorm from "../../images/night-storm.svg";
 import nightFog from "../../images/night-foggy.svg";
 import nightSnow from "../../images/night-snow.svg";
 import React, { useContext } from "react";
-import { CurrentTempUnitContext } from "../../Contexts/CurrentTempUnitContext";
+import { CurrentTempUnitContext } from "../../contexts/CurrentTempUnitContext";
 
 const weatherOptions = [
   { url: dayClear, day: true, type: "clear" },
