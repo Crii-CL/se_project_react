@@ -110,7 +110,9 @@ export default function AddItemModal({
           </label>
         </fieldset>
       </ModalWithForm>
-      <FormValidator /> //soon
+      <FormValidator />
     </>
   );
 }
+
+// FormValidator will be implemented soon
