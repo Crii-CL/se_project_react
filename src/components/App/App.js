@@ -25,7 +25,7 @@ export default function App() {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
-  const [currentTempUnit, setCurrentTempUnit] = useState("F");
+  const [currentTemperatureUnit, setCurrentTempUnit] = useState("F");
   const [items, setItems] = useState([]);
 
   const handleAddItem = (name, url, weatherType) => {
@@ -74,7 +74,9 @@ export default function App() {
   };
 
   const toggleTempSwitch = () => {
-    currentTempUnit === "F" ? setCurrentTempUnit("C") : setCurrentTempUnit("F");
+    currentTemperatureUnit === "F"
+      ? setCurrentTempUnit("C")
+      : setCurrentTempUnit("F");
   };
 
   useEffect(() => {
@@ -116,7 +118,7 @@ export default function App() {
     <div className="page">
       <BrowserRouter>
         <CurrentTemperatureUnitContext.Provider
-          value={{ currentTempUnit, toggleTempSwitch }}
+          value={{ currentTemperatureUnit, toggleTempSwitch }}
         >
           <Header openForm={openForm} />
           <Route exact path="/">

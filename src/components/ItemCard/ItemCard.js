@@ -1,6 +1,6 @@
-import "./Cards.css";
+import "./ItemCard.css";
 
-export default function Cards({ handleCardClick, name, url, weather, id }) {
+export default function ItemCard({ handleCardClick, name, url, weather, id }) {
   return (
     <li
       className="cards__el"

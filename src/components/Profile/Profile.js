@@ -1,7 +1,7 @@
 import "./Profile.css";
 import Sidebar from "./Sidebar/Sidebar";
 import ClothesSection from "./ClothesSection/ClothesSection";
-import Cards from "../Cards/Cards";
+import ItemCard from "../ItemCard/ItemCard";
 
 export default function Profile({
   handleCardClick,
@@ -19,7 +19,7 @@ export default function Profile({
         <section className="cards">
           <ul className="cards__list">
             {clothingItems.map((card) => (
-              <Cards
+              <ItemCard
                 key={card.id}
                 name={card.name}
                 url={card.imageUrl}

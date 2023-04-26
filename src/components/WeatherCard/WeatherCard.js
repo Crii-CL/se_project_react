@@ -1,4 +1,4 @@
-import "./Weather.css";
+import "./WeatherCard.css";
 import dayClear from "../../images/day-clear.svg";
 import dayRain from "../../images/day-rain.svg";
 import dayCloudy from "../../images/day-cloudy.svg";
@@ -30,7 +30,7 @@ const weatherOptions = [
 ];
 
 export default function Weather({ day, type, weatherTemp }) {
-  const { currentTempUnit } = useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const imageSrc = weatherOptions.filter((i) => {
     return i.day === day && i.type === type;
   });
@@ -41,7 +41,7 @@ export default function Weather({ day, type, weatherTemp }) {
     <section id="weather-section">
       <div className="weather">
         <div className="weather__info" id="weather-info">
-          {weatherTemp[currentTempUnit]}
+          {weatherTemp[currentTemperatureUnit]}
         </div>
         <img
           className="weather__image"
@@ -51,7 +51,7 @@ export default function Weather({ day, type, weatherTemp }) {
       </div>
       <div>
         <h1 className="weather__message">
-          Today is {weatherTemp[currentTempUnit]} You may want to wear:
+          Today is {weatherTemp[currentTemperatureUnit]} You may want to wear:
         </h1>
       </div>
     </section>

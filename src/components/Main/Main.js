@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Weather from "../Weather/Weather";
-import Cards from "../Cards/Cards";
+import Weather from "../WeatherCard/WeatherCard";
+import ItemCard from "../ItemCard/ItemCard";
 import AddItemModal from "../Modal/AddItemModal/AddItemModal";
 import itemsApi from "../../utils/api";
 
@@ -13,7 +13,7 @@ function Main({ handleCardClick, weatherData, clothingItems }) {
       <section className="cards" id="card-section">
         <ul className="cards__list" id="card-list">
           {clothingItems?.map((card) => (
-            <Cards
+            <ItemCard
               key={card.id}
               name={card.name}
               url={card.imageUrl}
