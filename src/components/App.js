@@ -70,7 +70,7 @@ export default function App() {
     setIsConfirmModalOpen(false);
   };
 
-  const toggleTempSwitch = () => {
+  const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
       ? setCurrentTempUnit("C")
       : setCurrentTempUnit("F");
@@ -115,7 +115,7 @@ export default function App() {
     <div className="page">
       <BrowserRouter>
         <CurrentTemperatureUnitContext.Provider
-          value={{ currentTemperatureUnit, toggleTempSwitch }}
+          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <Header openForm={openForm} />
           <Route exact path="/">

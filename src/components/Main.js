@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
-import AddItemModal from "./AddItemModal";
-import itemsApi from "../utils/api";
-
+import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import "../blocks/Main.css";
 
 function Main({ handleCardClick, weatherData, clothingItems }) {

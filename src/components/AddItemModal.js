@@ -2,7 +2,6 @@ import "../blocks/AddItemModal.css";
 import ModalWithForm from "./ModalWithForm";
 import "../blocks/ModalWithForm.css";
 import React, { useEffect, useState } from "react";
-import FormValidator from "./FormValidator";
 
 export default function AddItemModal({
   onClose,
@@ -110,9 +109,6 @@ export default function AddItemModal({
           </label>
         </fieldset>
       </ModalWithForm>
-      <FormValidator />
     </>
   );
 }
-
-// FormValidator will be implemented soon
