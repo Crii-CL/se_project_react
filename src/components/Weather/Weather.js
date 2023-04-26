@@ -12,7 +12,7 @@ import nightStorm from "../../images/night-storm.svg";
 import nightFog from "../../images/night-foggy.svg";
 import nightSnow from "../../images/night-snow.svg";
 import React, { useContext } from "react";
-import { CurrentTempUnitContext } from "../../contexts/CurrentTempUnitContext";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 const weatherOptions = [
   { url: dayClear, day: true, type: "clear" },
@@ -30,7 +30,7 @@ const weatherOptions = [
 ];
 
 export default function Weather({ day, type, weatherTemp }) {
-  const { currentTempUnit } = useContext(CurrentTempUnitContext);
+  const { currentTempUnit } = useContext(CurrentTemperatureUnitContext);
   const imageSrc = weatherOptions.filter((i) => {
     return i.day === day && i.type === type;
   });

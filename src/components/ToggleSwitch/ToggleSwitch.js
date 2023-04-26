@@ -16,15 +16,15 @@
 //       <p className={`switch__temp-C ${tempIsC ? "switch_active" : ""}`}>C</p>
 //     </label>
 //   );
-// }
+// }erature
 
 import "../ToggleSwitch/ToggleSwitch.css";
-import { CurrentTempUnitContext } from "../../contexts/CurrentTempUnitContext";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { useContext } from "react";
 
 export default function ToggleSwitch({ name }) {
-  const { toggleTempSwitch } = useContext(CurrentTempUnitContext);
-  const { currentTempUnit } = useContext(CurrentTempUnitContext);
+  const { toggleTempSwitch } = useContext(CurrentTemperatureUnitContext);
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
     <label className="switch">
@@ -36,19 +36,21 @@ export default function ToggleSwitch({ name }) {
       ></input>
       <span
         className={
-          currentTempUnit === "F" ? "switch__slider-F" : "switch__slider-C"
+          currentTemperatureUnit === "F"
+            ? "switch__slider-F"
+            : "switch__slider-C"
         }
       ></span>
       <p
         className={`switch__temp-F ${
-          currentTempUnit === "F" ? "switch_active" : ""
+          currentTemperatureUnit === "F" ? "switch_active" : ""
         }`}
       >
         F
       </p>
       <p
         className={`switch__temp-C ${
-          currentTempUnit === "C" ? "switch_active" : ""
+          currentTemperatureUnit === "C" ? "switch_active" : ""
         }`}
       >
         C

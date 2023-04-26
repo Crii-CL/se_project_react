@@ -1,3 +1,3 @@
 import React from "react";
 
-export const CurrentTempUnitContext = React.createContext();
+export const CurrentTemperatureUnitContext = React.createContext();

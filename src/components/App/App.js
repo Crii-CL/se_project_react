@@ -15,7 +15,7 @@ import { constants } from "../../utils/constants";
 import Modal from "../Modal/modal.css";
 import fonts from "../../vendor/Fonts/fonts.css";
 import "../Modal/ModalWithForm/ModalWithForm.css";
-import { CurrentTempUnitContext } from "../../contexts/CurrentTempUnitContext";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { BrowserRouter, Route } from "react-router-dom";
 
 export default function App() {
@@ -115,7 +115,7 @@ export default function App() {
   return (
     <div className="page">
       <BrowserRouter>
-        <CurrentTempUnitContext.Provider
+        <CurrentTemperatureUnitContext.Provider
           value={{ currentTempUnit, toggleTempSwitch }}
         >
           <Header openForm={openForm} />
@@ -150,7 +150,7 @@ export default function App() {
             handleOverlayClick={handleOverlayClick}
             onAddItem={handleAddItem}
           ></AddItemModal>
-        </CurrentTempUnitContext.Provider>
+        </CurrentTemperatureUnitContext.Provider>
       </BrowserRouter>
     </div>
   );
