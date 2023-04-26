@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Weather from "./WeatherCard";
+import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 import AddItemModal from "./AddItemModal";
 import itemsApi from "../utils/api";
@@ -9,7 +9,7 @@ import "../blocks/Main.css";
 function Main({ handleCardClick, weatherData, clothingItems }) {
   return (
     <main className="main">
-      <Weather day={false} type="clear" weatherTemp={weatherData} />
+      <WeatherCard day={false} type="clear" weatherTemp={weatherData} />
       <section className="cards" id="card-section">
         <ul className="cards__list" id="card-list">
           {clothingItems?.map((card) => (

@@ -1,5 +1,5 @@
 import "../blocks/Profile.css";
-import Sidebar from "./SideBar";
+import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 import ItemCard from "./ItemCard";
 
@@ -12,7 +12,7 @@ export default function Profile({
   return (
     <div className="profile">
       <div className="profile__section">
-        <Sidebar />
+        <SideBar />
       </div>
       <div className="profile__garments">
         <ClothesSection openForm={openForm} />

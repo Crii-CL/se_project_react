@@ -1,7 +1,7 @@
 import "../blocks/SideBar.css";
 import avatar from "../images/avatar.png";
 
-export default function Sidebar() {
+export default function SideBar() {
   return (
     <div className="sidebar">
       <img className="sidebar__avatar" src={avatar}></img>
