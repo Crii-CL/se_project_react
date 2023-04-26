@@ -1,21 +1,18 @@
-import "./App.css";
-import Header from "../Header/Header";
-import Profile from "../Profile/Profile";
-import Main from "../Main/Main";
-import Footer from "../Footer/Footer";
+import "../blocks/App.css";
+import Header from "./Header";
+import Profile from "./Profile";
+import Main from "./Main";
+import Footer from "./Footer";
 import React, { useEffect, useState } from "react";
-import ItemModal from "../Modal/ItemModal/ItemModal";
-import AddItemModal from "../Modal/AddItemModal/AddItemModal";
-import getWeather, {
-  parseWeatherData,
-  tempUnits,
-} from "../../utils/weatherApi";
-import itemsApi from "../../utils/api";
-import { constants } from "../../utils/constants";
-import Modal from "../Modal/modal.css";
-import fonts from "../../vendor/Fonts/fonts.css";
-import "../Modal/ModalWithForm/ModalWithForm.css";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import ItemModal from "./ItemModal";
+import AddItemModal from "./AddItemModal";
+import getWeather, { parseWeatherData, tempUnits } from "../utils/weatherApi";
+import itemsApi from "../utils/api";
+import { constants } from "../utils/constants";
+import Modal from "../blocks/modal.css";
+import fonts from "../vendor/Fonts/fonts.css";
+import "../blocks/ModalWithForm.css";
+import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { BrowserRouter, Route } from "react-router-dom";
 
 export default function App() {

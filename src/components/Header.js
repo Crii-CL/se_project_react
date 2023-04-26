@@ -1,8 +1,8 @@
-import "./Header.css";
-import avatar from "../../images/avatar.png";
-import logo from "../../images/logo.svg";
+import "../blocks/Header.css";
+import avatar from "../images/avatar.png";
+import logo from "../images/logo.svg";
 import React from "react";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import ToggleSwitch from "./ToggleSwitch";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Header({ openForm }) {

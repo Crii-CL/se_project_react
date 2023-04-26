@@ -1,7 +1,7 @@
-import "./Profile.css";
-import Sidebar from "./Sidebar/Sidebar";
-import ClothesSection from "./ClothesSection/ClothesSection";
-import ItemCard from "../ItemCard/ItemCard";
+import "../blocks/Profile.css";
+import Sidebar from "./SideBar";
+import ClothesSection from "./ClothesSection";
+import ItemCard from "./ItemCard";
 
 export default function Profile({
   handleCardClick,

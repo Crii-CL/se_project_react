@@ -1,5 +1,5 @@
 import React from "react";
-import closeButton from "../../../images/close-button.svg";
+import closeButton from "../images/close-button.svg";
 
 export default function ModalWithForm({
   name,

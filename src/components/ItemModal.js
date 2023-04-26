@@ -1,6 +1,6 @@
-import "./ItemModal.css";
-import closeButton from "../../../images/close-button-white.svg";
-import closeButtonDark from "../../../images/close-button.svg";
+import "../blocks/ItemModal.css";
+import closeButton from "../images/close-button-white.svg";
+import closeButtonDark from "../images/close-button.svg";
 
 export default function ItemModal({
   itemData,

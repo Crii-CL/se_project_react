@@ -1,4 +1,4 @@
-import "./ItemCard.css";
+import "../blocks/ItemCard.css";
 
 export default function ItemCard({ handleCardClick, name, url, weather, id }) {
   return (

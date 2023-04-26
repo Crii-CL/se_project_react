@@ -1,8 +1,8 @@
-import "./AddItemModal.css";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "../ModalWithForm/ModalWithForm.css";
+import "../blocks/AddItemModal.css";
+import ModalWithForm from "./ModalWithForm";
+import "../blocks/ModalWithForm.css";
 import React, { useEffect, useState } from "react";
-import FormValidator from "../../FormValidator/FormValidator";
+import FormValidator from "./FormValidator";
 
 export default function AddItemModal({
   onClose,

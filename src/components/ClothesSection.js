@@ -1,4 +1,4 @@
-import "./ClothesSection.css";
+import "../blocks/ClothesSection.css";
 
 export default function ClothesSection({ openForm }) {
   return (

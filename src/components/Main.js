@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Weather from "../WeatherCard/WeatherCard";
-import ItemCard from "../ItemCard/ItemCard";
-import AddItemModal from "../Modal/AddItemModal/AddItemModal";
-import itemsApi from "../../utils/api";
+import Weather from "./WeatherCard";
+import ItemCard from "./ItemCard";
+import AddItemModal from "./AddItemModal";
+import itemsApi from "../utils/api";
 
-import "./Main.css";
+import "../blocks/Main.css";
 
 function Main({ handleCardClick, weatherData, clothingItems }) {
   return (
