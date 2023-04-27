@@ -48,9 +48,9 @@ export default function App() {
   //   setIsItemModalOpen(false);
   // };
 
-  const handleItemDelete = () => {
+  const handleItemDelete = (item) => {
     itemsApiObject
-      .remove()
+      .remove(item)
       .then((res) => {
         setIsConfirmModalOpen(false);
         setIsItemModalOpen(false);
