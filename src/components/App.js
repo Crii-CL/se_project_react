@@ -42,12 +42,6 @@ export default function App() {
       });
   };
 
-  // const handleItemDelete = () => {
-  //   itemsApiObject.remove();
-  //   setIsConfirmModalOpen(false);
-  //   setIsItemModalOpen(false);
-  // };
-
   const handleItemDelete = (item) => {
     itemsApiObject
       .remove(item)
