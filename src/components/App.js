@@ -51,7 +51,9 @@ export default function App() {
   const handleItemDelete = (item) => {
     itemsApiObject
       .remove(item)
-      .then((res) => {
+      .then(() => {
+        const filteredItems = items.filter((card) => card.id !== item);
+        setItems(filteredItems);
         setIsConfirmModalOpen(false);
         setIsItemModalOpen(false);
       })

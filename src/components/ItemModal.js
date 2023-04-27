@@ -66,6 +66,8 @@ export default function ItemModal({
           <button
             className="itemModal__confirm-delBtn"
             onClick={() => {
+              console.log(itemData);
+              console.log("working");
               handleItemDelete(itemData.id);
             }}
           >
