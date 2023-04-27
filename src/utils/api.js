@@ -1,19 +1,17 @@
 export default function itemsApi() {
+  function _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error${res.status}`);
+  }
+
   const baseUrl =
     "https://my-json-server.typicode.com/crii-cl/se_project_react";
 
   return {
     get: () => {
-      return fetch(`${baseUrl}/items`)
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-          return Promise.reject(`Error${res.status}`);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      return fetch(`${baseUrl}/items`).then(_checkResponse);
     },
     add: (name, imageUrl, weather) => {
       return fetch(`${baseUrl}/items`, {
@@ -26,16 +24,7 @@ export default function itemsApi() {
           imageUrl,
           weather,
         }),
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-          return Promise.reject(`Error${res.status}`);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      }).then(_checkResponse);
     },
     remove: (id) => {
       return fetch(`${baseUrl}/items/${id}`, {
@@ -43,16 +32,7 @@ export default function itemsApi() {
         headers: {
           "Content-Type": "application/json",
         },
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-          return Promise.reject(`Error ${res.status}`);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      }).then(_checkResponse);
     },
   };
 }

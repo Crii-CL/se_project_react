@@ -57,9 +57,18 @@ export default function ItemModal({
             Are you sure you want to delete this item? This action is
             irreversible.
           </p>
-          <button
+          {/* <button
             className="itemModal__confirm-delBtn"
             onClick={() => handleItemDelete(itemData.id)}
+          >
+            Delete Item
+          </button> */}
+          <button
+            className="itemModal__confirm-delBtn"
+            onClick={() => {
+              console.log("working");
+              handleItemDelete(itemData.id);
+            }}
           >
             Delete Item
           </button>

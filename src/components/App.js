@@ -14,9 +14,9 @@ import fonts from "../vendor/Fonts/fonts.css";
 import "../blocks/ModalWithForm.css";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { BrowserRouter, Route } from "react-router-dom";
+const itemsApiObject = itemsApi();
 
 export default function App() {
-  const itemsApiObject = itemsApi();
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
@@ -24,17 +24,41 @@ export default function App() {
   const [weatherData, setWeatherData] = useState("");
   const [currentTemperatureUnit, setCurrentTempUnit] = useState("F");
   const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAddItem = (name, url, weatherType) => {
-    itemsApiObject.add(name, url, weatherType).then((res) => {
-      setItems([res, ...items]);
-    });
+    itemsApiObject
+      .add(name, url, weatherType)
+      .then((res) => {
+        setIsLoading(true);
+        setItems([res, ...items]);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+        setIsFormModalOpen(false);
+      });
   };
 
+  // const handleItemDelete = () => {
+  //   itemsApiObject.remove();
+  //   setIsConfirmModalOpen(false);
+  //   setIsItemModalOpen(false);
+  // };
+
   const handleItemDelete = () => {
-    itemsApiObject.remove();
-    setIsConfirmModalOpen(false);
-    setIsItemModalOpen(false);
+    itemsApiObject
+      .remove()
+      .then((res) => {
+        setIsConfirmModalOpen(false);
+        setIsItemModalOpen(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        closeAllPopups();
+      });
   };
 
   const handleCardClick = (name, url, weather, id) => {
@@ -49,7 +73,7 @@ export default function App() {
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      closeAllPopups();
     }
   };
 
@@ -61,9 +85,10 @@ export default function App() {
     setIsFormModalOpen(true);
   };
 
-  const onClose = () => {
+  const closeAllPopups = () => {
     setIsFormModalOpen(false);
     setIsItemModalOpen(false);
+    setIsConfirmModalOpen(false);
   };
 
   const handleConfirmModalClose = () => {
@@ -79,7 +104,7 @@ export default function App() {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        onClose();
+        closeAllPopups();
       }
     };
 
@@ -134,7 +159,7 @@ export default function App() {
           </Route>
           <Footer />
           <ItemModal
-            onClose={onClose}
+            onClose={closeAllPopups}
             itemData={modalData}
             isItemModalOpen={isItemModalOpen}
             isConfirmModalOpen={isConfirmModalOpen}
@@ -144,11 +169,11 @@ export default function App() {
             handleConfirmModalClose={handleConfirmModalClose}
           />
           <AddItemModal
-            onClose={onClose}
+            onClose={closeAllPopups}
             isModalOpen={isFormModalOpen}
             handleOverlayClick={handleOverlayClick}
             onAddItem={handleAddItem}
-          ></AddItemModal>
+          />
         </CurrentTemperatureUnitContext.Provider>
       </BrowserRouter>
     </div>
