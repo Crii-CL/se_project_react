@@ -27,18 +27,18 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleAddItem = (name, url, weatherType) => {
+    setIsLoading(true);
     itemsApiObject
       .add(name, url, weatherType)
       .then((res) => {
-        setIsLoading(true);
         setItems([res, ...items]);
+        setIsFormModalOpen(false);
       })
       .catch((error) => {
         console.log(error);
       })
       .finally(() => {
         setIsLoading(false);
-        setIsFormModalOpen(false);
       });
   };
 
@@ -48,12 +48,10 @@ export default function App() {
       .then(() => {
         const filteredItems = items.filter((card) => card.id !== item);
         setItems(filteredItems);
-        setIsConfirmModalOpen(false);
-        setIsItemModalOpen(false);
+        closeAllPopups();
       })
       .catch((error) => {
         console.log(error);
-        closeAllPopups();
       });
   };
 
