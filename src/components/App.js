@@ -16,30 +16,6 @@ import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUni
 import { BrowserRouter, Route } from "react-router-dom";
 const itemsApiObject = itemsApi();
 
-export default function RegisterOrLogin() {
-  return {
-    register: (name, avatar, email, password) => {
-      return fetch(`${baseUrl}/items`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name, avatar, email, password
-        })
-      });
-    },
-    login: (email, password) => {
-      return fetch(`${baseUrl}/items`, {
-        method: 'POST',
-        headers: {"Content-Type": 'application/json'},
-        body: JSON.stringify({email, password}),
-      });
-    },
-  };
-}
-
-
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
