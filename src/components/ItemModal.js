@@ -30,7 +30,7 @@ export default function ItemModal({
         <img
           src={itemData?.url}
           className="itemModal__image"
-          alt="item image"
+          alt="item"
         ></img>
         <p className="itemModal__caption">{itemData?.name}</p>
         <p className="itemModal__caption">Weather: {itemData?.weather}</p>
