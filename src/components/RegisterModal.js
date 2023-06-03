@@ -1,8 +1,12 @@
 import ModalWithForm from "./ModalWithForm";
 
-export default function RegisterModal({}) {
+export default function RegisterModal({
+  onClose,
+  isModalOpen,
+  handleOverlayClick,
+}) {
   return (
-    <ModalWithForm openForm>
+    <ModalWithForm>
       <div></div>
     </ModalWithForm>
   );

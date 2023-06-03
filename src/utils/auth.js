@@ -1,12 +1,12 @@
 export default function RegisterOrLogin() {
-  function checkResponse(res) {
+  function _checkResponse(res) {
     if (res.ok) {
       return res.json();
     }
     return Promise.reject(`Error${res.status}`);
   }
 
-  const baseUrl = "http://localhost:3001";
+  const baseUrl = "https://localhost:3001";
 
   return {
     register: (name, avatar, email, password) => {
@@ -22,7 +22,7 @@ export default function RegisterOrLogin() {
           password,
         }),
       }).then(() => {
-        checkResponse;
+        _checkResponse;
       });
     },
     login: (email, password) => {
@@ -30,6 +30,8 @@ export default function RegisterOrLogin() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
+      }).then(() => {
+        _checkResponse;
       });
     },
   };

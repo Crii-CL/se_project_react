@@ -5,7 +5,7 @@ import React from "react";
 import ToggleSwitch from "./ToggleSwitch";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
-export default function Header({ openForm }) {
+export default function Header({ openForm, isLoggedIn }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
