@@ -8,9 +8,23 @@ export default function LoginModal({
   handleOverlayClick,
   isLoggedIn,
 }) {
+  const [emailInputValue, setEmailInputValue] = useState("");
+  const [passwordInputValue, setPasswordInputValue] = useState("");
+
   function handleSubmit(e) {
     e.preventDefault();
   }
+
+  useEffect(() => {
+    function clearInputs() {
+      setEmailInputValue("");
+      setPasswordInputValue("");
+    }
+
+    if (isModalOpen) {
+      clearInputs();
+    }
+  }, [isModalOpen]);
 
   return (
     <ModalWithForm
@@ -20,6 +34,7 @@ export default function LoginModal({
       onClose={onClose}
       isModalOpen={isModalOpen}
       handleSubmit={handleSubmit}
+      handleOverlayClick={handleOverlayClick}
     >
       <fieldset className="login">
         <p className="login__caption">Email</p>
@@ -30,6 +45,9 @@ export default function LoginModal({
           minLength="1"
           maxLength="20"
           required="true"
+          onChange={(e) => {
+            setEmailInputValue(e.target.value);
+          }}
         ></input>
         <p className="login__caption">Password</p>
         <input
@@ -39,8 +57,14 @@ export default function LoginModal({
           minLength="1"
           maxLength="20"
           required="true"
+          onChange={(e) => {
+            setPasswordInputValue(e.target.value);
+          }}
         ></input>
       </fieldset>
+      <div className="login__register">
+        <button className="login__register-button">or Register</button>
+      </div>
     </ModalWithForm>
   );
 }

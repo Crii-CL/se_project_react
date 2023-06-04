@@ -22,7 +22,8 @@ const itemsApiObject = itemsApi();
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true); //
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false); //
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
@@ -80,14 +81,24 @@ export default function App() {
     setIsConfirmModalOpen(true);
   };
 
-  const openForm = () => {
+  const openAddForm = () => {
     setIsAddModalOpen(true);
+  };
+
+  const openLoginForm = () => {
+    setIsLoginModalOpen(true);
+  };
+
+  const openRegisterForm = () => {
+    setIsRegisterModalOpen(true);
   };
 
   const closeAllPopups = () => {
     setIsAddModalOpen(false);
     setIsItemModalOpen(false);
     setIsConfirmModalOpen(false);
+    setIsLoginModalOpen(false);
+    setIsRegisterModalOpen(false);
   };
 
   const handleConfirmModalClose = () => {
@@ -141,7 +152,7 @@ export default function App() {
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
-          <Header openForm={openForm} />
+          <Header openForm={openAddForm} />
           <Route exact path="/">
             <Main
               handleCardClick={handleCardClick}
@@ -152,7 +163,7 @@ export default function App() {
           <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
             <Profile
               handleCardClick={handleCardClick}
-              openForm={openForm}
+              openForm={openAddForm}
               clothingItems={items}
             />
           </ProtectedRoute>
@@ -173,11 +184,11 @@ export default function App() {
             handleOverlayClick={handleOverlayClick}
             onAddItem={handleAddItem}
           />
-          {/* <RegisterModal
+          <RegisterModal
             onClose={closeAllPopups}
             isModalOpen={isRegisterModalOpen}
             handleOverlayClick={handleOverlayClick}
-          /> */}
+          />
           <LoginModal
             onClose={closeAllPopups}
             isModalOpen={isLoginModalOpen}
