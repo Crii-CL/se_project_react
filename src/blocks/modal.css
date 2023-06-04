@@ -24,13 +24,23 @@
 
 .modal__form {
   position: relative;
-  width: 496px;
-  height: 436px;
   box-sizing: border-box;
   padding: 22px 0 36px 28px;
 
   background-color: #fff;
   border-radius: 4%;
+}
+
+.modal__form_add-item {
+  width: 496px;
+  height: 436px;
+  padding: 22px 0 36px 28px;
+}
+
+.modal__form_login {
+  width: 496px;
+  height: 304px;
+  padding: 28px 28px;
 }
 
 .modal_opened {
@@ -64,6 +74,10 @@
   cursor: pointer;
 }
 
+.modal__submit_login {
+  margin-top: 25px;
+}
+
 .modal__submit:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
@@ -73,10 +87,16 @@
 }
 
 .modal__title {
-  margin-bottom: 24px;
-
   font-weight: 700;
   font-size: 16px;
+}
+
+.modal__title_add-item {
+  margin-bottom: 24px;
+}
+
+.modal__title_login {
+  margin-bottom: 0;
 }
 
 #clothes-form-close {

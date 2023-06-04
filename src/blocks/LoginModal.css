@@ -21,3 +21,8 @@
   font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
   font-size: 16px;
 }
+
+.login__caption {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}

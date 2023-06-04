@@ -21,7 +21,8 @@ const itemsApiObject = itemsApi();
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
-  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
@@ -36,7 +37,7 @@ export default function App() {
       .add(name, url, weatherType)
       .then((res) => {
         setItems([res, ...items]);
-        setIsFormModalOpen(false);
+        setIsAddModalOpen(false);
       })
       .catch((error) => {
         console.log(error);
@@ -80,11 +81,11 @@ export default function App() {
   };
 
   const openForm = () => {
-    setIsFormModalOpen(true);
+    setIsAddModalOpen(true);
   };
 
   const closeAllPopups = () => {
-    setIsFormModalOpen(false);
+    setIsAddModalOpen(false);
     setIsItemModalOpen(false);
     setIsConfirmModalOpen(false);
   };
@@ -168,18 +169,18 @@ export default function App() {
           />
           <AddItemModal
             onClose={closeAllPopups}
-            isModalOpen={isFormModalOpen}
+            isModalOpen={isAddModalOpen}
             handleOverlayClick={handleOverlayClick}
             onAddItem={handleAddItem}
           />
           {/* <RegisterModal
             onClose={closeAllPopups}
-            isModalOpen={isFormModalOpen}
+            isModalOpen={isRegisterModalOpen}
             handleOverlayClick={handleOverlayClick}
           /> */}
           <LoginModal
             onClose={closeAllPopups}
-            isModalOpen={isFormModalOpen}
+            isModalOpen={isLoginModalOpen}
             handleOverlayClick={handleOverlayClick}
             isLoggedIn={isLoggedIn}
           />

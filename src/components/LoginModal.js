@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ModalWithForm from "./ModalWithForm";
+import "../blocks/LoginModal.css";
 
 export default function LoginModal({
   onClose,
@@ -13,7 +14,7 @@ export default function LoginModal({
 
   return (
     <ModalWithForm
-      name="login-modal"
+      name="login"
       title="Log In"
       buttonText="Log in"
       onClose={onClose}
@@ -21,7 +22,24 @@ export default function LoginModal({
       handleSubmit={handleSubmit}
     >
       <fieldset className="login">
-        <h1 className="login__title"></h1>
+        <p className="login__caption">Email</p>
+        <input
+          className="login__input"
+          type="text"
+          placeholder="Email"
+          minLength="1"
+          maxLength="20"
+          required="true"
+        ></input>
+        <p className="login__caption">Password</p>
+        <input
+          className="login__input"
+          type="text"
+          placeholder="Password"
+          minLength="1"
+          maxLength="20"
+          required="true"
+        ></input>
       </fieldset>
     </ModalWithForm>
   );

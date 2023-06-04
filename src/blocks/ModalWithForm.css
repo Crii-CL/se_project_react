@@ -1,15 +1,15 @@
-.formModal__title {
+.addItem__title {
   font-weight: 700;
   font-size: 16px;
   margin-bottom: 24px;
 }
 
-.formModal__title:nth-last-child(2) {
+.addItem__title:nth-last-child(2) {
   margin-top: 24px;
   margin-bottom: 14px;
 }
 
-.formModal__fieldset {
+.addItem__fieldset {
   border: none;
   margin: 0;
   padding: 0px;
@@ -21,17 +21,17 @@
   gap: 15px;
 }
 
-.formModal__caption {
+.addItem__caption {
   margin-top: 0;
   margin-bottom: 8px;
   font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
 }
 
-.formModal__caption:nth-last-child(2) {
+.addItem__caption:nth-last-child(2) {
   margin-top: 24px;
 }
 
-.formModal__input {
+.addItem__input {
   border: none;
   outline: none;
   border-bottom: solid #000 1px;
@@ -43,7 +43,7 @@
   font-size: 16px;
 }
 
-.formModal__input[type="radio"] {
+.addItem__input[type="radio"] {
   position: relative;
   width: 10px;
   height: 10px;
@@ -51,7 +51,7 @@
   cursor: pointer;
 }
 
-.formModal__label {
+.addItem__label {
   display: block;
   right: 5px;
   font-size: 16px;
