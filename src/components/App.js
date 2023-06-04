@@ -172,11 +172,11 @@ export default function App() {
             handleOverlayClick={handleOverlayClick}
             onAddItem={handleAddItem}
           />
-          <RegisterModal
+          {/* <RegisterModal
             onClose={closeAllPopups}
             isModalOpen={isFormModalOpen}
             handleOverlayClick={handleOverlayClick}
-          />
+          /> */}
           <LoginModal
             onClose={closeAllPopups}
             isModalOpen={isFormModalOpen}

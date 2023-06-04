@@ -1,0 +1,23 @@
+.login {
+  border: none;
+  margin: 0;
+  padding: 0px;
+}
+
+.login__title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.login__input {
+  border: none;
+  outline: none;
+  border-bottom: solid #000 1px;
+  width: 436px;
+  padding-bottom: 4px;
+  padding-left: 0;
+  cursor: text;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  font-size: 16px;
+}
