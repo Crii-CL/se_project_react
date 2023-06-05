@@ -42,12 +42,14 @@
   font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
   background: transparent;
   border: none;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .register__login-button:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+  color: rgb(0, 0, 0);
+  transition: ease 0.2s;
 }
 
 .register__login-button:disabled {
-  background-color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.3);
 }

@@ -2,17 +2,32 @@ import ModalWithForm from "./ModalWithForm";
 import "../blocks/RegisterModal.css";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function RegisterModal({
   onClose,
   isModalOpen,
   handleOverlayClick,
 }) {
+  const loginButton = document.querySelector("register__login-button");
+
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
+  const [nameInputValue, setNameInputValue] = useState("");
+  const [avatarInputValue, setAvatarInputValue] = useState("");
+
+  const history = useHistory();
 
   function handleSubmit(e) {
-    e.preventDefault();
+    if (e.target === loginButton) {
+      handleLoginRedirect();
+    } else {
+      e.preventDefault();
+    }
+  }
+
+  function handleLoginRedirect() {
+    history.push("/login");
   }
 
   useEffect(() => {
@@ -33,8 +48,8 @@ export default function RegisterModal({
       buttonText="Sign up"
       onClose={onClose}
       isModalOpen={isModalOpen}
-      handleSubmit={handleSubmit}
       handleOverlayClick={handleOverlayClick}
+      handleSubmit={handleSubmit}
     >
       <fieldset className="register">
         <p className="register__caption">Email*</p>
@@ -80,12 +95,14 @@ export default function RegisterModal({
           maxLength="20"
           required
           onChange={(e) => {
-            setPasswordInputValue(e.target.value);
+            setAvatarInputValue(e.target.value);
           }}
         ></input>
       </fieldset>
       <div className="register__login">
-        <button className="register__login-button">or Log in</button>
+        <button className="register__login-button" onClick={handleSubmit}>
+          or Log in
+        </button>
       </div>
     </ModalWithForm>
   );

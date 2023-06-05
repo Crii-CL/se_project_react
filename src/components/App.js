@@ -15,7 +15,7 @@ import fonts from "../vendor/Fonts/fonts.css";
 import "../blocks/AddItemModal.css";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
-import RegisterModal from "./RegisterModal";
+import SignupModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 const itemsApiObject = itemsApi();
 
@@ -23,7 +23,7 @@ export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); //
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); //
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(true); //
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false); //
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
@@ -167,6 +167,21 @@ export default function App() {
               clothingItems={items}
             />
           </ProtectedRoute>
+          <Route exact path="/register">
+            <SignupModal
+              onClose={closeAllPopups}
+              isModalOpen={isRegisterModalOpen}
+              handleOverlayClick={handleOverlayClick}
+            />
+          </Route>
+          <Route exact path="/login">
+            <LoginModal
+              onClose={closeAllPopups}
+              isModalOpen={isLoginModalOpen}
+              handleOverlayClick={handleOverlayClick}
+              isLoggedIn={isLoggedIn}
+            />
+          </Route>
           <Footer />
           <ItemModal
             onClose={closeAllPopups}
@@ -183,17 +198,6 @@ export default function App() {
             isModalOpen={isAddModalOpen}
             handleOverlayClick={handleOverlayClick}
             onAddItem={handleAddItem}
-          />
-          <RegisterModal
-            onClose={closeAllPopups}
-            isModalOpen={isRegisterModalOpen}
-            handleOverlayClick={handleOverlayClick}
-          />
-          <LoginModal
-            onClose={closeAllPopups}
-            isModalOpen={isLoginModalOpen}
-            handleOverlayClick={handleOverlayClick}
-            isLoggedIn={isLoggedIn}
           />
         </CurrentTemperatureUnitContext.Provider>
       </BrowserRouter>

@@ -1,4 +1,4 @@
-export default function RegisterOrLogin() {
+export default function SignUpOrSignIn() {
   function _checkResponse(res) {
     if (res.ok) {
       return res.json();
@@ -9,7 +9,7 @@ export default function RegisterOrLogin() {
   const baseUrl = "https://localhost:3001";
 
   return {
-    register: (name, avatar, email, password) => {
+    signUp: (name, avatar, email, password) => {
       return fetch(`${baseUrl}/items`, {
         method: "POST",
         headers: {
@@ -25,7 +25,7 @@ export default function RegisterOrLogin() {
         _checkResponse;
       });
     },
-    login: (email, password) => {
+    signIn: (email, password) => {
       return fetch(`${baseUrl}/items`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

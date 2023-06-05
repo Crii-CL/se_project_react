@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ModalWithForm from "./ModalWithForm";
 import "../blocks/LoginModal.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function LoginModal({
   onClose,
@@ -8,11 +9,22 @@ export default function LoginModal({
   handleOverlayClick,
   isLoggedIn,
 }) {
+  const registerButton = document.querySelector("login__register-button");
+  const history = useHistory();
+
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
 
   function handleSubmit(e) {
-    e.preventDefault();
+    if (e.target === registerButton) {
+      handleSignupRedirect();
+    } else {
+      e.preventDefault();
+    }
+  }
+
+  function handleSignupRedirect() {
+    history.push("/signup");
   }
 
   useEffect(() => {
