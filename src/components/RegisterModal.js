@@ -19,15 +19,13 @@ export default function RegisterModal({
   const history = useHistory();
 
   function handleSubmit(e) {
-    if (e.target === loginButton) {
-      handleLoginRedirect();
-    } else {
-      e.preventDefault();
-    }
+    e.preventDefault();
   }
 
+  // function
+
   function handleLoginRedirect() {
-    history.push("/login");
+    history.push("/signin");
   }
 
   useEffect(() => {
@@ -45,7 +43,7 @@ export default function RegisterModal({
     <ModalWithForm
       name="register"
       title="Sign up"
-      buttonText="Sign up"
+      buttonText="Next"
       onClose={onClose}
       isModalOpen={isModalOpen}
       handleOverlayClick={handleOverlayClick}
@@ -61,6 +59,7 @@ export default function RegisterModal({
           onChange={(e) => {
             setEmailInputValue(e.target.value);
           }}
+          value={emailInputValue}
         ></input>
         <p className="register__caption">Password*</p>
         <input
@@ -73,6 +72,7 @@ export default function RegisterModal({
           onChange={(e) => {
             setPasswordInputValue(e.target.value);
           }}
+          value={passwordInputValue}
         ></input>
         <p className="register__caption">Name*</p>
         <input
@@ -83,8 +83,9 @@ export default function RegisterModal({
           maxLength="20"
           required
           onChange={(e) => {
-            setPasswordInputValue(e.target.value);
+            setNameInputValue(e.target.value);
           }}
+          value={nameInputValue}
         ></input>
         <p className="register__caption">Avatar URL*</p>
         <input
@@ -97,10 +98,15 @@ export default function RegisterModal({
           onChange={(e) => {
             setAvatarInputValue(e.target.value);
           }}
+          value={avatarInputValue}
         ></input>
       </fieldset>
       <div className="register__login">
-        <button className="register__login-button" onClick={handleSubmit}>
+        <button
+          type="submit"
+          className="register__login-button"
+          onClick={handleLoginRedirect}
+        >
           or Log in
         </button>
       </div>

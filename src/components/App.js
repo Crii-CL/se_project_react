@@ -71,6 +71,10 @@ export default function App() {
     });
   };
 
+  const signupUser = (email, password, name, avatar) => {};
+
+  const loginUser = (email, password) => {};
+
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       closeAllPopups();
@@ -126,6 +130,18 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if ("/signup") {
+      setIsRegisterModalOpen(true);
+    }
+  });
+
+  useEffect(() => {
+    if (isLoggedIn === false) {
+      setIsLoginModalOpen(true);
+    }
+  });
+
+  useEffect(() => {
     getWeather(constants.latitude, constants.longitude, constants.apiKey)
       .then((res) => {
         setWeatherData(tempUnits(parseWeatherData(res)));
@@ -152,7 +168,7 @@ export default function App() {
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
-          <Header openForm={openAddForm} />
+          {isLoggedIn && <Header openForm={openAddForm} />}
           <Route exact path="/">
             <Main
               handleCardClick={handleCardClick}
@@ -167,14 +183,14 @@ export default function App() {
               clothingItems={items}
             />
           </ProtectedRoute>
-          <Route exact path="/register">
+          <Route exact path="/signup">
             <SignupModal
               onClose={closeAllPopups}
               isModalOpen={isRegisterModalOpen}
               handleOverlayClick={handleOverlayClick}
             />
           </Route>
-          <Route exact path="/login">
+          <Route exact path="/signin">
             <LoginModal
               onClose={closeAllPopups}
               isModalOpen={isLoginModalOpen}
@@ -182,7 +198,7 @@ export default function App() {
               isLoggedIn={isLoggedIn}
             />
           </Route>
-          <Footer />
+          {isLoggedIn && <Footer />}
           <ItemModal
             onClose={closeAllPopups}
             itemData={modalData}

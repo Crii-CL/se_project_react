@@ -16,11 +16,7 @@ export default function LoginModal({
   const [passwordInputValue, setPasswordInputValue] = useState("");
 
   function handleSubmit(e) {
-    if (e.target === registerButton) {
-      handleSignupRedirect();
-    } else {
-      e.preventDefault();
-    }
+    e.preventDefault();
   }
 
   function handleSignupRedirect() {
@@ -55,6 +51,7 @@ export default function LoginModal({
           type="email"
           placeholder="Email"
           required
+          value={emailInputValue}
           onChange={(e) => {
             setEmailInputValue(e.target.value);
           }}
@@ -67,13 +64,19 @@ export default function LoginModal({
           minLength="5"
           maxLength="20"
           required
+          value={passwordInputValue}
           onChange={(e) => {
             setPasswordInputValue(e.target.value);
           }}
         ></input>
       </fieldset>
       <div className="login__register">
-        <button className="login__register-button">or Register</button>
+        <button
+          className="login__register-button"
+          onClick={handleSignupRedirect}
+        >
+          or Register
+        </button>
       </div>
     </ModalWithForm>
   );
