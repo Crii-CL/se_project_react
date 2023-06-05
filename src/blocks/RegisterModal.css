@@ -1,0 +1,53 @@
+.register {
+  border: none;
+  margin: 0;
+  padding: 0px;
+}
+
+.register__title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.register__input {
+  border: none;
+  outline: none;
+  border-bottom: solid #000 1px;
+  width: 436px;
+  padding-bottom: 4px;
+  padding-left: 0;
+  cursor: text;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  font-size: 16px;
+}
+
+.register__caption {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.register__login {
+  display: flex;
+  position: absolute;
+  left: 110px;
+  bottom: 39px;
+}
+
+.register__login-button {
+  margin: 0;
+  padding: 0 0 0 5px;
+
+  font-size: 16px;
+  font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
+  background: transparent;
+  border: none;
+}
+
+.register__login-button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.register__login-button:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+}

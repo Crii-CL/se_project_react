@@ -40,11 +40,9 @@ export default function LoginModal({
         <p className="login__caption">Email</p>
         <input
           className="login__input"
-          type="text"
+          type="email"
           placeholder="Email"
-          minLength="1"
-          maxLength="20"
-          required="true"
+          required
           onChange={(e) => {
             setEmailInputValue(e.target.value);
           }}
@@ -54,9 +52,9 @@ export default function LoginModal({
           className="login__input"
           type="text"
           placeholder="Password"
-          minLength="1"
+          minLength="5"
           maxLength="20"
-          required="true"
+          required
           onChange={(e) => {
             setPasswordInputValue(e.target.value);
           }}

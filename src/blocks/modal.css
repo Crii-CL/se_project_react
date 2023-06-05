@@ -43,6 +43,12 @@
   padding: 28px 28px;
 }
 
+.modal__form_register {
+  width: 496px;
+  height: 456px;
+  padding: 28px 28px;
+}
+
 .modal_opened {
   visibility: visible;
   animation: modalExpand 0.15s ease;
@@ -85,6 +91,12 @@
   height: 36px;
 }
 
+.modal__submit_register {
+  margin-top: 25px;
+  width: 73px;
+  height: 36px;
+}
+
 .modal__submit:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
@@ -103,6 +115,10 @@
 }
 
 .modal__title_login {
+  margin-bottom: 0;
+}
+
+.modal__title_register {
   margin-bottom: 0;
 }
 

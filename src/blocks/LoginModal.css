@@ -43,3 +43,11 @@
   background: transparent;
   border: none;
 }
+
+.login__register-button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.login__register-button:disabled {
+  background-color: rgba(0, 0, 0, 0.3);
+}

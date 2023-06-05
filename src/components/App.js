@@ -12,7 +12,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import { constants } from "../utils/constants";
 import Modal from "../blocks/modal.css";
 import fonts from "../vendor/Fonts/fonts.css";
-import "../blocks/ModalWithForm.css";
+import "../blocks/AddItemModal.css";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import RegisterModal from "./RegisterModal";
@@ -21,9 +21,9 @@ const itemsApiObject = itemsApi();
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(true); //
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false); //
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false); //
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); //
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(true); //
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
