@@ -1,4 +1,4 @@
-export default function SignUpOrSignIn() {
+export default function SignupOrSignin() {
   function _checkResponse(res) {
     if (res.ok) {
       return res.json();
@@ -9,20 +9,20 @@ export default function SignUpOrSignIn() {
   const baseUrl = "https://localhost:3001";
 
   return {
-    signUp: (name, avatar, email, password) => {
+    signUp: (email, password, name, avatar) => {
       return fetch(`${baseUrl}/items`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
-          avatar,
           email,
           password,
+          name,
+          avatar,
         }),
       }).then(() => {
-        _checkResponse;
+        _checkResponse();
       });
     },
     signIn: (email, password) => {
@@ -31,7 +31,7 @@ export default function SignUpOrSignIn() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       }).then(() => {
-        _checkResponse;
+        _checkResponse();
       });
     },
   };

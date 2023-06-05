@@ -3,11 +3,12 @@ import Header from "./Header";
 import Profile from "./Profile";
 import Main from "./Main";
 import Footer from "./Footer";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useHistory } from "react";
 import ItemModal from "./ItemModal";
 import AddItemModal from "./AddItemModal";
 import getWeather, { parseWeatherData, tempUnits } from "../utils/weatherApi";
-import itemsApi from "../utils/api";
+import itemsApi from "../utils/ItemsApi";
+import SignupOrSignin from "../utils/auth";
 import ProtectedRoute from "./ProtectedRoute";
 import { constants } from "../utils/constants";
 import Modal from "../blocks/modal.css";
@@ -17,7 +18,9 @@ import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUni
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import SignupModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
+
 const itemsApiObject = itemsApi();
+const UserApi = SignupOrSignin();
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -30,6 +33,7 @@ export default function App() {
   const [currentTemperatureUnit, setCurrentTempUnit] = useState("F");
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleAddItem = (name, url, weatherType) => {
@@ -71,9 +75,57 @@ export default function App() {
     });
   };
 
-  const signupUser = (email, password, name, avatar) => {};
+  const signupUser = (email, password, name, avatar) => {
+    setIsLoading(true);
+    UserApi.signUp(email, password, name, avatar)
+      .then((res) => {
+        res.json();
+      })
+      .then((user) => {
+        localStorage.setItem(
+          user,
+          JSON.stringify({
+            email: email,
+            password: password,
+            name: name,
+            avatar: avatar,
+          })
+        );
+        setIsRegistered(true);
+        setIsRegisterModalOpen(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
-  const loginUser = (email, password) => {};
+  const loginUser = (email, password) => {
+    setIsLoading(true);
+    UserApi.signIn(email, password)
+      .then((res) => {
+        res.json();
+      })
+      .then((user) => {
+        localStorage.setItem(
+          user,
+          JSON.stringify({
+            email: email,
+            password: password,
+          })
+        );
+        setIsLoggedIn(true);
+        setIsLoginModalOpen(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
@@ -130,7 +182,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if ("/signup") {
+    if (!isRegistered) {
       setIsRegisterModalOpen(true);
     }
   });
@@ -188,6 +240,7 @@ export default function App() {
               onClose={closeAllPopups}
               isModalOpen={isRegisterModalOpen}
               handleOverlayClick={handleOverlayClick}
+              signup={signupUser}
             />
           </Route>
           <Route exact path="/signin">
@@ -196,6 +249,7 @@ export default function App() {
               isModalOpen={isLoginModalOpen}
               handleOverlayClick={handleOverlayClick}
               isLoggedIn={isLoggedIn}
+              login={loginUser}
             />
           </Route>
           {isLoggedIn && <Footer />}

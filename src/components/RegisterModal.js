@@ -22,8 +22,6 @@ export default function RegisterModal({
     e.preventDefault();
   }
 
-  // function
-
   function handleLoginRedirect() {
     history.push("/signin");
   }
