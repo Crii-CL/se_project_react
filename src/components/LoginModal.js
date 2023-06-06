@@ -8,6 +8,7 @@ export default function LoginModal({
   isModalOpen,
   handleOverlayClick,
   isLoggedIn,
+  login,
 }) {
   const registerButton = document.querySelector("login__register-button");
   const history = useHistory();
@@ -17,6 +18,7 @@ export default function LoginModal({
 
   function handleSubmit(e) {
     e.preventDefault();
+    login(emailInputValue, passwordInputValue);
   }
 
   function handleSignupRedirect() {

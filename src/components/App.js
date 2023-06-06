@@ -36,7 +36,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const handleAddItem = (name, url, weatherType) => {
     setIsLoading(true);
@@ -237,7 +237,6 @@ export default function App() {
               <SignupModal
                 onClose={closeAllPopups}
                 isModalOpen={isRegisterModalOpen}
-                handleOverlayClick={handleOverlayClick}
                 signup={signupUser}
               />
             </Route>
@@ -245,7 +244,6 @@ export default function App() {
               <LoginModal
                 onClose={closeAllPopups}
                 isModalOpen={isLoginModalOpen}
-                handleOverlayClick={handleOverlayClick}
                 isLoggedIn={isLoggedIn}
                 login={loginUser}
               />
@@ -273,5 +271,3 @@ export default function App() {
     </div>
   );
 }
-
-//Ask Tutor how to correctly implement the tokens

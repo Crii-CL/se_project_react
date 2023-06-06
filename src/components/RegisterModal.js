@@ -8,6 +8,7 @@ export default function RegisterModal({
   onClose,
   isModalOpen,
   handleOverlayClick,
+  signup,
 }) {
   const loginButton = document.querySelector("register__login-button");
 
@@ -20,6 +21,12 @@ export default function RegisterModal({
 
   function handleSubmit(e) {
     e.preventDefault();
+    signup(
+      emailInputValue,
+      passwordInputValue,
+      nameInputValue,
+      avatarInputValue
+    );
   }
 
   function handleLoginRedirect() {
@@ -30,6 +37,8 @@ export default function RegisterModal({
     function clearInputs() {
       setEmailInputValue("");
       setPasswordInputValue("");
+      setNameInputValue("");
+      setAvatarInputValue("");
     }
 
     if (isModalOpen) {
