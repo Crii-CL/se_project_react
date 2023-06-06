@@ -80,21 +80,7 @@ export default function App() {
   const signupUser = (email, password, name, avatar) => {
     setIsLoading(true);
     UserApi.signUp(email, password, name, avatar)
-      .then((res) => {
-        res.json();
-      })
-      .then((res) => {
-        localStorage.setItem(
-          "token",
-          res.token
-        )(
-          JSON.stringify({
-            email: email,
-            password: password,
-            name: name,
-            avatar: avatar,
-          })
-        );
+      .then(() => {
         setIsRegistered(true);
         setIsLoggedIn(true);
         setIsRegisterModalOpen(false);
@@ -110,19 +96,7 @@ export default function App() {
   const loginUser = (email, password) => {
     setIsLoading(true);
     UserApi.signIn(email, password)
-      .then((res) => {
-        res.json();
-      })
-      .then((res) => {
-        localStorage.setItem(
-          "token",
-          res.token
-        )(
-          JSON.stringify({
-            email: email,
-            password: password,
-          })
-        );
+      .then(() => {
         setIsLoggedIn(true);
         setIsLoginModalOpen(false);
       })
@@ -223,7 +197,20 @@ export default function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-  });
+    if (token) {
+      UserApi.validateToken(token)
+        .then(() => {
+          setIsLoggedIn(true);
+        })
+        .catch(() => {
+          console.log("token is invalid");
+          setIsLoggedIn(false);
+          localStorage.removeItem("token");
+        });
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
 
   return (
     <div className="page">

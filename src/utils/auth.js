@@ -14,7 +14,6 @@ export default function SignupOrSignin() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({
           email,
@@ -22,8 +21,8 @@ export default function SignupOrSignin() {
           name,
           avatar,
         }),
-      }).then(() => {
-        _checkResponse();
+      }).then((res) => {
+        _checkResponse(res);
       });
     },
     signIn: (email, password) => {
@@ -31,8 +30,24 @@ export default function SignupOrSignin() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
-      }).then(() => {
-        _checkResponse();
+      })
+        .then((res) => {
+          _checkResponse(res);
+        })
+        .then((data) => {
+          const token = data.token;
+          localStorage.setItem("token", token);
+        });
+    },
+    validateToken: (token) => {
+      return fetch(`${baseUrl}/user/me`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+      }).then((res) => {
+        _checkResponse(res);
       });
     },
   };
