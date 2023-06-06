@@ -17,11 +17,11 @@ import fonts from "../vendor/Fonts/fonts.css";
 import "../blocks/AddItemModal.css";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
-import SignupModal from "./RegisterModal";
+import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 const token = localStorage.getItem("jwt");
 const itemsApiObject = itemsApi(token);
-const UserApi = SignupOrSignin(token);
+const UserApi = SignupOrSignin();
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -79,6 +79,7 @@ export default function App() {
 
   const signupUser = (email, password, name, avatar) => {
     setIsLoading(true);
+    console.log(UserApi);
     UserApi.signUp(email, password, name, avatar)
       .then(() => {
         setIsRegistered(true);
@@ -234,7 +235,7 @@ export default function App() {
               />
             </ProtectedRoute>
             <Route exact path="/signup">
-              <SignupModal
+              <RegisterModal
                 onClose={closeAllPopups}
                 isModalOpen={isRegisterModalOpen}
                 signup={signupUser}

@@ -10,7 +10,7 @@ export default function SignupOrSignin() {
 
   return {
     signUp: (email, password, name, avatar) => {
-      return fetch(`${baseUrl}/items`, {
+      return fetch(`${baseUrl}/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export default function SignupOrSignin() {
       });
     },
     signIn: (email, password) => {
-      return fetch(`${baseUrl}/items`, {
+      return fetch(`${baseUrl}/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
