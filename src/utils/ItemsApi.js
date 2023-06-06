@@ -9,6 +9,8 @@ export default function itemsApi() {
   const baseUrl =
     "https://my-json-server.typicode.com/crii-cl/se_project_react";
 
+  const token = localStorage.getItem("jwt");
+
   return {
     get: () => {
       return fetch(`${baseUrl}/items`).then(_checkResponse);
@@ -18,6 +20,7 @@ export default function itemsApi() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           name,

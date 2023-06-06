@@ -34,9 +34,9 @@ export default function SignupOrSignin() {
         .then((res) => {
           _checkResponse(res);
         })
-        .then((data) => {
-          const token = data.token;
-          localStorage.setItem("token", token);
+        .then((res) => {
+          const token = res.token;
+          localStorage.setItem("jwt", token);
         });
     },
     validateToken: (token) => {

@@ -19,9 +19,9 @@ import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUni
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import SignupModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
-
-const itemsApiObject = itemsApi();
-const UserApi = SignupOrSignin();
+const token = localStorage.getItem("jwt");
+const itemsApiObject = itemsApi(token);
+const UserApi = SignupOrSignin(token);
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -196,7 +196,6 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     if (token) {
       UserApi.validateToken(token)
         .then(() => {
