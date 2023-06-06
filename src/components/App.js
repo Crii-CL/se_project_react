@@ -11,6 +11,7 @@ import itemsApi from "../utils/ItemsApi";
 import SignupOrSignin from "../utils/auth";
 import ProtectedRoute from "./ProtectedRoute";
 import { constants } from "../utils/constants";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Modal from "../blocks/modal.css";
 import fonts from "../vendor/Fonts/fonts.css";
 import "../blocks/AddItemModal.css";
@@ -32,6 +33,7 @@ export default function App() {
   const [weatherData, setWeatherData] = useState("");
   const [currentTemperatureUnit, setCurrentTempUnit] = useState("F");
   const [items, setItems] = useState([]);
+  const [currentUser, setCurrentUser] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -81,9 +83,11 @@ export default function App() {
       .then((res) => {
         res.json();
       })
-      .then((user) => {
+      .then((res) => {
         localStorage.setItem(
-          user,
+          "token",
+          res.token
+        )(
           JSON.stringify({
             email: email,
             password: password,
@@ -92,6 +96,7 @@ export default function App() {
           })
         );
         setIsRegistered(true);
+        setIsLoggedIn(true);
         setIsRegisterModalOpen(false);
       })
       .catch((err) => {
@@ -108,9 +113,11 @@ export default function App() {
       .then((res) => {
         res.json();
       })
-      .then((user) => {
+      .then((res) => {
         localStorage.setItem(
-          user,
+          "token",
+          res.token
+        )(
           JSON.stringify({
             email: email,
             password: password,
@@ -214,63 +221,71 @@ export default function App() {
       });
   }, []);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+  });
+
   return (
     <div className="page">
       <BrowserRouter>
-        <CurrentTemperatureUnitContext.Provider
-          value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-        >
-          {isLoggedIn && <Header openForm={openAddForm} />}
-          <Route exact path="/">
-            <Main
-              handleCardClick={handleCardClick}
-              weatherData={weatherData}
-              clothingItems={items}
-            />
-          </Route>
-          <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
-            <Profile
-              handleCardClick={handleCardClick}
-              openForm={openAddForm}
-              clothingItems={items}
-            />
-          </ProtectedRoute>
-          <Route exact path="/signup">
-            <SignupModal
+        <CurrentUserContext.Provider value={currentUser}>
+          <CurrentTemperatureUnitContext.Provider
+            value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+          >
+            {isLoggedIn && <Header openForm={openAddForm} />}
+            <ProtectedRoute path="/" isLoggedIn={isLoggedIn}>
+              <Main
+                handleCardClick={handleCardClick}
+                weatherData={weatherData}
+                clothingItems={items}
+              />
+            </ProtectedRoute>
+            <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
+              <Profile
+                handleCardClick={handleCardClick}
+                openForm={openAddForm}
+                clothingItems={items}
+              />
+            </ProtectedRoute>
+            <Route exact path="/signup">
+              <SignupModal
+                onClose={closeAllPopups}
+                isModalOpen={isRegisterModalOpen}
+                handleOverlayClick={handleOverlayClick}
+                signup={signupUser}
+              />
+            </Route>
+            <Route exact path="/signin">
+              <LoginModal
+                onClose={closeAllPopups}
+                isModalOpen={isLoginModalOpen}
+                handleOverlayClick={handleOverlayClick}
+                isLoggedIn={isLoggedIn}
+                login={loginUser}
+              />
+            </Route>
+            {isLoggedIn && <Footer />}
+            <ItemModal
               onClose={closeAllPopups}
-              isModalOpen={isRegisterModalOpen}
+              itemData={modalData}
+              isItemModalOpen={isItemModalOpen}
+              isConfirmModalOpen={isConfirmModalOpen}
               handleOverlayClick={handleOverlayClick}
-              signup={signupUser}
+              handleItemDelete={handleItemDelete}
+              openConfirmModal={openConfirmModal}
+              handleConfirmModalClose={handleConfirmModalClose}
             />
-          </Route>
-          <Route exact path="/signin">
-            <LoginModal
+            <AddItemModal
               onClose={closeAllPopups}
-              isModalOpen={isLoginModalOpen}
+              isModalOpen={isAddModalOpen}
               handleOverlayClick={handleOverlayClick}
-              isLoggedIn={isLoggedIn}
-              login={loginUser}
+              onAddItem={handleAddItem}
             />
-          </Route>
-          {isLoggedIn && <Footer />}
-          <ItemModal
-            onClose={closeAllPopups}
-            itemData={modalData}
-            isItemModalOpen={isItemModalOpen}
-            isConfirmModalOpen={isConfirmModalOpen}
-            handleOverlayClick={handleOverlayClick}
-            handleItemDelete={handleItemDelete}
-            openConfirmModal={openConfirmModal}
-            handleConfirmModalClose={handleConfirmModalClose}
-          />
-          <AddItemModal
-            onClose={closeAllPopups}
-            isModalOpen={isAddModalOpen}
-            handleOverlayClick={handleOverlayClick}
-            onAddItem={handleAddItem}
-          />
-        </CurrentTemperatureUnitContext.Provider>
+          </CurrentTemperatureUnitContext.Provider>
+        </CurrentUserContext.Provider>
       </BrowserRouter>
     </div>
   );
 }
+
+//Ask Tutor how to correctly implement the tokens
