@@ -20,7 +20,7 @@ import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 const token = localStorage.getItem("jwt");
-const itemsApiObject = itemsApi(token);
+const itemsApiObject = itemsApi();
 const UserApi = SignupOrSignin();
 
 export default function App() {
@@ -36,7 +36,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleAddItem = (name, url, weatherType) => {
     setIsLoading(true);
@@ -83,7 +83,7 @@ export default function App() {
     UserApi.signUp(email, password, name, avatar)
       .then(() => {
         setIsRegistered(true);
-        setIsLoggedIn(true);
+        setIsLoginModalOpen(true);
         setIsRegisterModalOpen(false);
       })
       .catch((err) => {
@@ -200,6 +200,7 @@ export default function App() {
     if (token) {
       UserApi.validateToken(token)
         .then(() => {
+          console.log("this ran");
           setIsLoggedIn(true);
         })
         .catch(() => {
@@ -211,7 +212,6 @@ export default function App() {
       setIsLoggedIn(false);
     }
   }, []);
-
   return (
     <div className="page">
       <BrowserRouter>
@@ -221,11 +221,13 @@ export default function App() {
           >
             {isLoggedIn && <Header openForm={openAddForm} />}
             <ProtectedRoute path="/" isLoggedIn={isLoggedIn}>
-              <Main
-                handleCardClick={handleCardClick}
-                weatherData={weatherData}
-                clothingItems={items}
-              />
+              {isLoggedIn && (
+                <Main
+                  handleCardClick={handleCardClick}
+                  weatherData={weatherData}
+                  clothingItems={items}
+                />
+              )}
             </ProtectedRoute>
             <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
               <Profile
@@ -245,7 +247,6 @@ export default function App() {
               <LoginModal
                 onClose={closeAllPopups}
                 isModalOpen={isLoginModalOpen}
-                isLoggedIn={isLoggedIn}
                 login={loginUser}
               />
             </Route>

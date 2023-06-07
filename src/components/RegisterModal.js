@@ -86,8 +86,6 @@ export default function RegisterModal({
           className="register__input"
           type="text"
           placeholder="Name"
-          minLength="5"
-          maxLength="20"
           required
           onChange={(e) => {
             setNameInputValue(e.target.value);
@@ -99,8 +97,6 @@ export default function RegisterModal({
           className="register__input"
           type="url"
           placeholder="Avatar URL"
-          minLength="5"
-          maxLength="20"
           required
           onChange={(e) => {
             setAvatarInputValue(e.target.value);

@@ -34,6 +34,7 @@ export default function itemsApi() {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
         },
       }).then(_checkResponse);
     },

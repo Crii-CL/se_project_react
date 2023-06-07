@@ -11,6 +11,12 @@ export default function ModalWithForm({
   onClose,
   children,
 }) {
+  const handleFormKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
+  };
+
   return (
     <div
       className={`modal modal_type_${name} ${
@@ -21,6 +27,7 @@ export default function ModalWithForm({
       <form
         className={`modal__form modal__form_${name}`}
         onSubmit={handleSubmit}
+        onKeyDown={handleFormKeyDown}
       >
         <button
           className={`modal__closeBtn modal__closeBtn_${name}`}

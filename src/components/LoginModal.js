@@ -7,10 +7,8 @@ export default function LoginModal({
   onClose,
   isModalOpen,
   handleOverlayClick,
-  isLoggedIn,
   login,
 }) {
-  const registerButton = document.querySelector("login__register-button");
   const history = useHistory();
 
   const [emailInputValue, setEmailInputValue] = useState("");
@@ -44,7 +42,6 @@ export default function LoginModal({
       onClose={onClose}
       isModalOpen={isModalOpen}
       handleSubmit={handleSubmit}
-      handleOverlayClick={handleOverlayClick}
     >
       <fieldset className="login">
         <p className="login__caption">Email</p>

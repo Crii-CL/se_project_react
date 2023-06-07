@@ -1,12 +1,14 @@
 export default function SignupOrSignin() {
   function _checkResponse(res) {
+    console.log(res);
     if (res.ok) {
       return res.json();
     }
+    console.log("check response rejecting");
     return Promise.reject(`Error${res.status}`);
   }
 
-  const baseUrl = "https://localhost:3001";
+  const baseUrl = "http://localhost:3001";
 
   return {
     signUp: (email, password, name, avatar) => {
@@ -22,7 +24,7 @@ export default function SignupOrSignin() {
           avatar,
         }),
       }).then((res) => {
-        _checkResponse(res);
+        return _checkResponse(res);
       });
     },
     signIn: (email, password) => {
@@ -32,7 +34,7 @@ export default function SignupOrSignin() {
         body: JSON.stringify({ email, password }),
       })
         .then((res) => {
-          _checkResponse(res);
+          return _checkResponse(res);
         })
         .then((res) => {
           const token = res.token;
@@ -40,14 +42,14 @@ export default function SignupOrSignin() {
         });
     },
     validateToken: (token) => {
-      return fetch(`${baseUrl}/user/me`, {
+      return fetch(`${baseUrl}/users/me`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
       }).then((res) => {
-        _checkResponse(res);
+        return _checkResponse(res);
       });
     },
   };
