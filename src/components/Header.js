@@ -5,7 +5,7 @@ import React from "react";
 import ToggleSwitch from "./ToggleSwitch";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
-export default function Header({ openForm, isLoggedIn }) {
+export default function Header({ openForm, isLoggedIn, name }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -35,7 +35,7 @@ export default function Header({ openForm, isLoggedIn }) {
           + Add Clothes
         </button>
         <NavLink to="/profile" className="header__name-link">
-          <div className="header__name">Cristopher Campos</div>
+          <div className="header__name">{name}</div>
         </NavLink>
         <NavLink to="/profile">
           <div className="header__avatar">

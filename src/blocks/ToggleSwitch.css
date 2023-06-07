@@ -7,15 +7,24 @@
   width: 40px;
   height: 20px;
   outline: none;
+  position: relative;
+  top: 10px;
+}
+
+.switch__buttons {
+  position: relative;
+  display: flex;
+  flex-direction: row;
 }
 
 .switch__slider-F {
   position: absolute;
+  margin-left: auto;
   border-radius: 20px;
   width: 20px;
   height: 20px;
-  top: 20px;
-  right: 385.3px;
+  top: 13px;
+  right: 40px;
   background-color: #000;
   color: #fff;
   text-align: center;
@@ -27,8 +36,8 @@
   border-radius: 20px;
   width: 20px;
   height: 20px;
-  top: 20px;
-  right: 366px;
+  top: 13px;
+  right: 20px;
   background-color: #000;
   color: #fff;
   text-align: center;
@@ -40,26 +49,36 @@
 }
 
 .switch__temp-F {
-  position: absolute;
-  top: 9.5px;
-  right: 391px;
+  position: relative;
+
+  top: 3px;
+  right: 36px;
   z-index: 100;
   font-size: 13px;
   color: rgba(0, 0, 0, 0.5);
 }
 
 .switch__temp-C {
-  position: absolute;
-  top: 9.5px;
-  right: 371px;
+  position: relative;
+  top: 3px;
+  right: 27px;
   z-index: 100;
   font-size: 13px;
   color: rgba(0, 0, 0, 0.5);
 }
 
-.switch_active {
+.switch_active_F {
   z-index: 100;
   color: #fff;
-  top: 7px;
+  top: 0px;
+  right: 37px;
+  font-size: 15px;
+}
+
+.switch_active_C {
+  z-index: 100;
+  color: #fff;
+  top: 0px;
+  right: 25px;
   font-size: 15px;
 }

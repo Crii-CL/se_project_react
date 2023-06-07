@@ -81,9 +81,9 @@ export default function App() {
     setIsLoading(true);
     console.log(UserApi);
     UserApi.signUp(email, password, name, avatar)
-      .then(() => {
+      .then((res) => {
         setIsRegistered(true);
-        setIsLoginModalOpen(true);
+        setIsLoggedIn(true);
         setIsRegisterModalOpen(false);
       })
       .catch((err) => {
@@ -99,6 +99,7 @@ export default function App() {
     UserApi.signIn(email, password)
       .then(() => {
         setIsLoggedIn(true);
+        setCurrentUser(true);
         setIsLoginModalOpen(false);
       })
       .catch((err) => {
@@ -219,7 +220,13 @@ export default function App() {
           <CurrentTemperatureUnitContext.Provider
             value={{ currentTemperatureUnit, handleToggleSwitchChange }}
           >
-            {isLoggedIn && <Header openForm={openAddForm} />}
+            {isLoggedIn && (
+              <Header
+                openForm={openAddForm}
+                isLoggedIn={isLoggedIn}
+                name={currentUser}
+              />
+            )}
             <ProtectedRoute path="/" isLoggedIn={isLoggedIn}>
               <Main
                 handleCardClick={handleCardClick}
