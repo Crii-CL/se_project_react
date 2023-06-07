@@ -221,20 +221,20 @@ export default function App() {
           >
             {isLoggedIn && <Header openForm={openAddForm} />}
             <ProtectedRoute path="/" isLoggedIn={isLoggedIn}>
+              <Main
+                handleCardClick={handleCardClick}
+                weatherData={weatherData}
+                clothingItems={items}
+              />
+            </ProtectedRoute>
+            <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
               {isLoggedIn && (
-                <Main
+                <Profile
                   handleCardClick={handleCardClick}
-                  weatherData={weatherData}
+                  openForm={openAddForm}
                   clothingItems={items}
                 />
               )}
-            </ProtectedRoute>
-            <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
-              <Profile
-                handleCardClick={handleCardClick}
-                openForm={openAddForm}
-                clothingItems={items}
-              />
             </ProtectedRoute>
             <Route exact path="/signup">
               <RegisterModal

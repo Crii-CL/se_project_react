@@ -42,6 +42,7 @@ export default function LoginModal({
       onClose={onClose}
       isModalOpen={isModalOpen}
       handleSubmit={handleSubmit}
+      handleOverlayClick={handleOverlayClick}
     >
       <fieldset className="login">
         <p className="login__caption">Email</p>
