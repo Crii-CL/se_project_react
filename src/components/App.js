@@ -19,6 +19,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
+
 const token = localStorage.getItem("jwt");
 const itemsApiObject = itemsApi();
 const UserApi = SignupOrSignin();
@@ -109,7 +110,7 @@ export default function App() {
       : setCurrentTempUnit("F");
   };
 
-  /* ----------------------------- User Sign Functions ----------------------------- */
+  /* ----------------------------- User Auth ----------------------------- */
   const signupUser = (email, password, name, avatar) => {
     setIsLoading(true);
     UserApi.signUp(email, password, name, avatar)
@@ -144,7 +145,10 @@ export default function App() {
   const signOutUser = (user) => {
     setIsLoading(true);
     UserApi.signOut(user)
-      .then(setIsLoggedIn(false))
+      .then(() => {
+        setIsLoggedIn(false);
+        localStorage.removeItem("jwt");
+      })
       .catch((err) => {
         console.log(err);
       })
@@ -214,7 +218,7 @@ export default function App() {
         .catch(() => {
           console.log("token is invalid");
           setIsLoggedIn(false);
-          localStorage.removeItem("token");
+          localStorage.removeItem("jwt");
         });
     } else {
       setIsLoggedIn(false);

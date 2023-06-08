@@ -39,20 +39,6 @@ export default function SignupOrSignin() {
           localStorage.setItem("jwt", token);
         });
     },
-    signOut: (user) => {
-      return fetch(`${baseUrl}/users/me`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
-      })
-        .then((res) => {
-          return _checkResponse(res);
-        })
-        .then((res) => {
-          const token = res.token;
-          localStorage.removeItem("jwt", token);
-        });
-    },
     validateToken: (token) => {
       return fetch(`${baseUrl}/users/me`, {
         method: "GET",

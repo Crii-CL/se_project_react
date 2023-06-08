@@ -38,7 +38,7 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
-.header__name-link {
+.header__link {
   text-decoration: none;
   color: #000;
 }
@@ -49,7 +49,7 @@
   background: none;
   height: 25px;
   font-size: 16px;
-  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  font-family: "Cabinetrotesk-Medium", "Inter", sans-serif;
   outline: none;
   cursor: pointer;
   transition: 0.15s ease-in-out;
@@ -70,4 +70,20 @@
 
 .header__avatar:hover {
   transform: scale(120%);
+}
+
+.header__avatar-placeholder-container {
+  width: 20px;
+  height: 20px;
+  border: solid 1px #000;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(18, 96, 152);
+  border-radius: 50%;
+  align-items: center;
+}
+
+.header__avatar-placeholder-letter {
+  color: #fff;
+  margin: 0;
 }

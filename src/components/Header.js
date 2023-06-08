@@ -44,10 +44,10 @@ export default function Header({ openForm, isLoggedIn, name }) {
         >
           + Add Clothes
         </button>
-        <NavLink to="/profile" className="header__name-link">
+        <NavLink to="/profile" className="header__link">
           <div className="header__name">{currentUser.name}</div>
         </NavLink>
-        <NavLink to="/profile">
+        <NavLink to="/profile" className="header__link">
           <div className="header__avatar">
             {!avatarError ? (
               <img
@@ -58,8 +58,12 @@ export default function Header({ openForm, isLoggedIn, name }) {
               />
             ) : (
               <div className="header__avatar-placeholder">
-                <div className="header__avatar-placeholder-letter">
-                  {currentUser.name.charAt(0).toUpperCase()}
+                <div className="header__avatar-placeholder-container">
+                  <div>
+                    <p className="header__avatar-placeholder-letter ">
+                      {currentUser.name.charAt(0).toUpperCase()}
+                    </p>
+                  </div>
                 </div>
               </div>
             )}
