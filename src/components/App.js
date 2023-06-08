@@ -11,7 +11,7 @@ import itemsApi from "../utils/ItemsApi";
 import SignupOrSignin from "../utils/auth";
 import ProtectedRoute from "./ProtectedRoute";
 import { constants } from "../utils/constants";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 import Modal from "../blocks/modal.css";
 import fonts from "../vendor/Fonts/fonts.css";
 import "../blocks/AddItemModal.css";
@@ -77,39 +77,6 @@ export default function App() {
     });
   };
 
-  const signupUser = (email, password, name, avatar) => {
-    setIsLoading(true);
-    console.log(UserApi);
-    UserApi.signUp(email, password, name, avatar)
-      .then((res) => {
-        setIsRegistered(true);
-        setIsLoggedIn(true);
-        setIsRegisterModalOpen(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  const loginUser = (email, password) => {
-    setIsLoading(true);
-    UserApi.signIn(email, password)
-      .then(() => {
-        setIsLoggedIn(true);
-        setCurrentUser(true);
-        setIsLoginModalOpen(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       closeAllPopups();
@@ -122,14 +89,6 @@ export default function App() {
 
   const openAddForm = () => {
     setIsAddModalOpen(true);
-  };
-
-  const openLoginForm = () => {
-    setIsLoginModalOpen(true);
-  };
-
-  const openRegisterForm = () => {
-    setIsRegisterModalOpen(true);
   };
 
   const closeAllPopups = () => {
@@ -150,6 +109,53 @@ export default function App() {
       : setCurrentTempUnit("F");
   };
 
+  /* ----------------------------- User Sign Functions ----------------------------- */
+  const signupUser = (email, password, name, avatar) => {
+    setIsLoading(true);
+    console.log(UserApi);
+    UserApi.signUp(email, password, name, avatar)
+      .then(() => {
+        setIsRegistered(true);
+        setIsLoggedIn(true);
+        setIsRegisterModalOpen(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  const loginUser = (email, password) => {
+    setIsLoading(true);
+    UserApi.signIn(email, password)
+      .then(() => {
+        setIsLoggedIn(true);
+        setIsLoginModalOpen(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  const signOutUser = (user) => {
+    setIsLoading(true);
+    UserApi.signOut(user)
+      .then(setIsLoggedIn(false))
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+  /* ------------------------------------ . ----------------------------------- */
+
+  /* ------------------------------- UseEffects ------------------------------- */
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -174,6 +180,7 @@ export default function App() {
     if (isLoggedIn === false) {
       setIsLoginModalOpen(true);
     }
+    setIsLoginModalOpen(false);
   });
 
   useEffect(() => {
@@ -200,9 +207,9 @@ export default function App() {
   useEffect(() => {
     if (token) {
       UserApi.validateToken(token)
-        .then(() => {
-          console.log("this ran");
+        .then((res) => {
           setIsLoggedIn(true);
+          setCurrentUser(res.data);
         })
         .catch(() => {
           console.log("token is invalid");
@@ -213,10 +220,11 @@ export default function App() {
       setIsLoggedIn(false);
     }
   }, []);
+  /* ------------------------------------ . ----------------------------------- */
   return (
     <div className="page">
       <BrowserRouter>
-        <CurrentUserContext.Provider value={currentUser}>
+        <CurrentUserContext.Provider value={(currentUser, setCurrentUser)}>
           <CurrentTemperatureUnitContext.Provider
             value={{ currentTemperatureUnit, handleToggleSwitchChange }}
           >
@@ -224,7 +232,7 @@ export default function App() {
               <Header
                 openForm={openAddForm}
                 isLoggedIn={isLoggedIn}
-                name={currentUser}
+                signOut={signOutUser}
               />
             )}
             <ProtectedRoute path="/" isLoggedIn={isLoggedIn}>

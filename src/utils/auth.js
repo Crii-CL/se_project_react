@@ -1,6 +1,5 @@
 export default function SignupOrSignin() {
   function _checkResponse(res) {
-    console.log(res);
     if (res.ok) {
       return res.json();
     }
@@ -39,6 +38,20 @@ export default function SignupOrSignin() {
         .then((res) => {
           const token = res.token;
           localStorage.setItem("jwt", token);
+        });
+    },
+    signOut: (user) => {
+      return fetch(`${baseUrl}/users/me`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      })
+        .then((res) => {
+          return _checkResponse(res);
+        })
+        .then((res) => {
+          const token = res.token;
+          localStorage.removeItem("jwt", token);
         });
     },
     validateToken: (token) => {

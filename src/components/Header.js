@@ -1,15 +1,19 @@
 import "../blocks/Header.css";
 import avatar from "../images/avatar.png";
 import logo from "../images/logo.svg";
-import React from "react";
+import React, { useContext } from "react";
 import ToggleSwitch from "./ToggleSwitch";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 export default function Header({ openForm, isLoggedIn, name }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
+  const { currentUser } = useContext(CurrentUserContext);
+  console.log({ currentUser });
 
   return (
     <header className="header">
@@ -35,7 +39,7 @@ export default function Header({ openForm, isLoggedIn, name }) {
           + Add Clothes
         </button>
         <NavLink to="/profile" className="header__name-link">
-          <div className="header__name">{name}</div>
+          <div className="header__name">{currentUser}</div>
         </NavLink>
         <NavLink to="/profile">
           <div className="header__avatar">
