@@ -3,7 +3,6 @@ export default function SignupOrSignin() {
     if (res.ok) {
       return res.json();
     }
-    console.log("check response rejecting");
     return Promise.reject(`Error${res.status}`);
   }
 

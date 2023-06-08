@@ -11,11 +11,11 @@ import itemsApi from "../utils/ItemsApi";
 import SignupOrSignin from "../utils/auth";
 import ProtectedRoute from "./ProtectedRoute";
 import { constants } from "../utils/constants";
-import CurrentUserContext from "../contexts/CurrentUserContext";
 import Modal from "../blocks/modal.css";
 import fonts from "../vendor/Fonts/fonts.css";
 import "../blocks/AddItemModal.css";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
@@ -33,7 +33,7 @@ export default function App() {
   const [weatherData, setWeatherData] = useState("");
   const [currentTemperatureUnit, setCurrentTempUnit] = useState("F");
   const [items, setItems] = useState([]);
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -112,7 +112,6 @@ export default function App() {
   /* ----------------------------- User Sign Functions ----------------------------- */
   const signupUser = (email, password, name, avatar) => {
     setIsLoading(true);
-    console.log(UserApi);
     UserApi.signUp(email, password, name, avatar)
       .then(() => {
         setIsRegistered(true);
@@ -210,6 +209,7 @@ export default function App() {
         .then((res) => {
           setIsLoggedIn(true);
           setCurrentUser(res.data);
+          console.log(currentUser);
         })
         .catch(() => {
           console.log("token is invalid");
@@ -224,7 +224,7 @@ export default function App() {
   return (
     <div className="page">
       <BrowserRouter>
-        <CurrentUserContext.Provider value={(currentUser, setCurrentUser)}>
+        <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
           <CurrentTemperatureUnitContext.Provider
             value={{ currentTemperatureUnit, handleToggleSwitchChange }}
           >

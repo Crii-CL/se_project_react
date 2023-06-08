@@ -1,10 +1,10 @@
 import "../blocks/Header.css";
 import avatar from "../images/avatar.png";
 import logo from "../images/logo.svg";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ToggleSwitch from "./ToggleSwitch";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
-import CurrentUserContext from "../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function Header({ openForm, isLoggedIn, name }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -13,7 +13,13 @@ export default function Header({ openForm, isLoggedIn, name }) {
   });
 
   const { currentUser } = useContext(CurrentUserContext);
+  const [avatarError, setAvatarError] = useState(false);
+
   console.log({ currentUser });
+
+  const handleAvatarError = (event) => {
+    setAvatarError(true);
+  };
 
   return (
     <header className="header">
@@ -39,15 +45,24 @@ export default function Header({ openForm, isLoggedIn, name }) {
           + Add Clothes
         </button>
         <NavLink to="/profile" className="header__name-link">
-          <div className="header__name">{currentUser}</div>
+          <div className="header__name">{currentUser.name}</div>
         </NavLink>
         <NavLink to="/profile">
           <div className="header__avatar">
-            <img
-              className="header__avatar-image"
-              src={avatar}
-              alt="avatar logo"
-            ></img>
+            {!avatarError ? (
+              <img
+                className="header__avatar-image"
+                src={currentUser.avatar}
+                alt="avatar logo"
+                onError={handleAvatarError}
+              />
+            ) : (
+              <div className="header__avatar-placeholder">
+                <div className="header__avatar-placeholder-letter">
+                  {currentUser.name.charAt(0).toUpperCase()}
+                </div>
+              </div>
+            )}
           </div>
         </NavLink>
       </div>
