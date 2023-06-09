@@ -20,6 +20,7 @@ import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 import { Switch } from "react-router-dom";
+import EditProfileModal from "./EditProfileModal";
 
 const token = localStorage.getItem("jwt");
 const itemsApiObject = itemsApi();
@@ -30,6 +31,7 @@ export default function App() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
@@ -256,6 +258,11 @@ export default function App() {
                 )}
               </ProtectedRoute>
             </Switch>
+            <EditProfileModal
+              onClose={closeAllPopups}
+              isModalOpen={isEditProfileModalOpen}
+              handleOverlayClick={handleOverlayClick}
+            ></EditProfileModal>
             <RegisterModal
               handleOverlayClick={handleOverlayClick}
               onClose={closeAllPopups}

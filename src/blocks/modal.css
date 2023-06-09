@@ -37,7 +37,8 @@
   padding: 22px 0 36px 28px;
 }
 
-.modal__form_login {
+.modal__form_login,
+.modal__form_edit-profile {
   width: 496px;
   height: 304px;
   padding: 28px 28px;
@@ -121,6 +122,16 @@
 
 .modal__title_register {
   margin-bottom: 0;
+}
+
+.modal__title_edit-profile {
+  margin-bottom: 0px;
+}
+
+.modal__submit_edit-profile {
+  margin-top: 32px;
+  width: 128px;
+  height: 36px;
 }
 
 #clothes-form-close {
