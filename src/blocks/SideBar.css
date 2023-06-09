@@ -1,4 +1,10 @@
 .sidebar {
+  box-sizing: border-box;
+  max-width: 300px;
+  width: 200px;
+}
+
+.sidebar__header {
   display: flex;
   flex-flow: row;
   align-self: flex-start;
@@ -10,7 +16,6 @@
   font-size: 20px;
   margin: 0;
   align-self: center;
-  max-width: 150px;
   white-space: nowrap;
 }
 
@@ -27,17 +32,41 @@
 }
 
 .sidebar__avatar-placeholder-container {
-  width: 20px;
-  height: 20px;
+  width: 58px;
+  height: 58px;
   border: solid 1px #000;
   display: flex;
   justify-content: center;
   background-color: rgb(18, 96, 152);
   border-radius: 50%;
   align-items: center;
+  margin-right: 16px;
+  box-sizing: border-box;
 }
 
 .sidebar__avatar-placeholder-letter {
   color: #fff;
   margin: 0;
+  font-size: 29px;
+  font-family: CabinetGrotesk-Medium, "Inter", sans-serif;
+}
+
+.sidebar__button {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
+  font-size: 20px;
+  margin-top: 8px;
+  transition: 0.2s ease;
+}
+
+.sidebar__button:nth-child(2) {
+  margin-top: 24px;
+}
+
+.sidebar__button:hover {
+  color: rgba(0, 0, 0, 0.3);
+  transform: scale(105%);
 }

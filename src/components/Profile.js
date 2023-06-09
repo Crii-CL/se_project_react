@@ -3,11 +3,18 @@ import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 import ItemCard from "./ItemCard";
 
-export default function Profile({ handleCardClick, clothingItems, openForm }) {
+export default function Profile({
+  handleCardClick,
+  clothingItems,
+  openForm,
+  openEdit,
+  logout,
+  onClose,
+}) {
   return (
     <div className="profile">
       <div className="profile__section">
-        <SideBar />
+        <SideBar openEdit={openEdit} logout={logout} />
       </div>
       <div className="profile__garments">
         <ClothesSection openForm={openForm} />

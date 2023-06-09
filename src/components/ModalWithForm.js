@@ -13,7 +13,7 @@ export default function ModalWithForm({
 }) {
   const handleFormKeyDown = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault();
+      handleSubmit();
     }
   };
 

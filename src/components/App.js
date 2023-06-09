@@ -103,12 +103,17 @@ export default function App() {
     setIsRegisterModalOpen(true);
   };
 
+  const openEditProfileForm = () => {
+    setIsEditProfileModalOpen(true);
+  };
+
   const closeAllPopups = () => {
     setIsAddModalOpen(false);
     setIsItemModalOpen(false);
     setIsConfirmModalOpen(false);
     setIsLoginModalOpen(false);
     setIsRegisterModalOpen(false);
+    setIsEditProfileModalOpen(false);
   };
 
   const handleConfirmModalClose = () => {
@@ -159,6 +164,20 @@ export default function App() {
       .then(() => {
         setIsLoggedIn(false);
         localStorage.removeItem("jwt");
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  const editProfile = (name, avatar) => {
+    setIsLoading(true);
+    UserApi.editUser(name, avatar)
+      .then(() => {
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
@@ -254,6 +273,8 @@ export default function App() {
                     handleCardClick={handleCardClick}
                     openForm={openAddForm}
                     clothingItems={items}
+                    openEdit={openEditProfileForm}
+                    logout={signOutUser}
                   />
                 )}
               </ProtectedRoute>
@@ -262,6 +283,7 @@ export default function App() {
               onClose={closeAllPopups}
               isModalOpen={isEditProfileModalOpen}
               handleOverlayClick={handleOverlayClick}
+              editProfile={editProfile}
             ></EditProfileModal>
             <RegisterModal
               handleOverlayClick={handleOverlayClick}

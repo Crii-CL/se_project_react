@@ -1,28 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import ModalWithForm from "./ModalWithForm";
 import "../blocks/modal.css";
 import "../blocks/EditProfileModal.css";
 import { useState, useEffect } from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function EditProfileModal({
   onClose,
   isModalOpen,
   handleOverlayClick,
+  editProfile,
 }) {
+  const { currentUser } = useContext(CurrentUserContext);
   const [nameInputValue, setNameInputValue] = useState("");
   const [avatarInputValue, setAvatarInputValue] = useState("");
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    // editProfile(nameInputValue, avatarInputValue);
+  function handleSubmit() {
+    editProfile(nameInputValue, avatarInputValue);
     onClose();
   }
 
   useEffect(() => {
-    function clearInputs() {
-      setNameInputValue(nameInputValue);
-      setAvatarInputValue(avatarInputValue);
-    }
+    setNameInputValue(currentUser?.name);
+    setAvatarInputValue(currentUser?.avatar);
   }, [isModalOpen]);
 
   return (
@@ -41,7 +41,6 @@ export default function EditProfileModal({
           className="edit__input"
           type="text"
           placeholder="Name"
-          required
           value={nameInputValue}
           onChange={(e) => {
             setNameInputValue(e.target.value);
@@ -52,7 +51,6 @@ export default function EditProfileModal({
           className="edit__input"
           type="url"
           placeholder="Avatar"
-          required
           value={avatarInputValue}
           onChange={(e) => {
             setAvatarInputValue(e.target.value);
