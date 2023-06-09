@@ -6,7 +6,7 @@ import ToggleSwitch from "./ToggleSwitch";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-export default function Header({ openForm, isLoggedIn, name }) {
+export default function Header({ openForm, isLoggedIn, register, login }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -44,15 +44,27 @@ export default function Header({ openForm, isLoggedIn, name }) {
         >
           + Add Clothes
         </button>
+        {isLoggedIn ? ( //change to !isLoggedIn when done styling
+          <>
+            <button className="header__button" onClick={register}>
+              Sign Up
+            </button>
+            <button className="header__button" onClick={login}>
+              Sign In
+            </button>
+          </>
+        ) : (
+          <></>
+        )}
         <NavLink to="/profile" className="header__link">
-          <div className="header__name">{currentUser.name}</div>
+          <div className="header__name">{currentUser?.name}</div>
         </NavLink>
         <NavLink to="/profile" className="header__link">
           <div className="header__avatar">
             {!avatarError ? (
               <img
                 className="header__avatar-image"
-                src={currentUser.avatar}
+                src={currentUser?.avatar}
                 alt="avatar logo"
                 onError={handleAvatarError}
               />
@@ -61,7 +73,7 @@ export default function Header({ openForm, isLoggedIn, name }) {
                 <div className="header__avatar-placeholder-container">
                   <div>
                     <p className="header__avatar-placeholder-letter ">
-                      {currentUser.name.charAt(0).toUpperCase()}
+                      {currentUser?.name.charAt(0).toUpperCase()}
                     </p>
                   </div>
                 </div>

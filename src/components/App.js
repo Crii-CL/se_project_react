@@ -19,6 +19,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
+import { Switch } from "react-router-dom";
 
 const token = localStorage.getItem("jwt");
 const itemsApiObject = itemsApi();
@@ -90,6 +91,14 @@ export default function App() {
 
   const openAddForm = () => {
     setIsAddModalOpen(true);
+  };
+
+  const openLoginForm = () => {
+    setIsLoginModalOpen(true);
+  };
+
+  const openRegisterForm = () => {
+    isRegisterModalOpen(true);
   };
 
   const closeAllPopups = () => {
@@ -180,13 +189,6 @@ export default function App() {
   });
 
   useEffect(() => {
-    if (isLoggedIn === false) {
-      setIsLoginModalOpen(true);
-    }
-    setIsLoginModalOpen(false);
-  });
-
-  useEffect(() => {
     getWeather(constants.latitude, constants.longitude, constants.apiKey)
       .then((res) => {
         setWeatherData(tempUnits(parseWeatherData(res)));
@@ -211,7 +213,6 @@ export default function App() {
     if (token) {
       UserApi.validateToken(token)
         .then((res) => {
-          setIsLoggedIn(true);
           setCurrentUser(res.data);
           console.log(currentUser);
         })
@@ -219,6 +220,9 @@ export default function App() {
           console.log("token is invalid");
           setIsLoggedIn(false);
           localStorage.removeItem("jwt");
+        })
+        .finally(() => {
+          setIsLoggedIn(true);
         });
     } else {
       setIsLoggedIn(false);
@@ -232,44 +236,45 @@ export default function App() {
           <CurrentTemperatureUnitContext.Provider
             value={{ currentTemperatureUnit, handleToggleSwitchChange }}
           >
-            {isLoggedIn && (
-              <Header
-                openForm={openAddForm}
-                isLoggedIn={isLoggedIn}
-                signOut={signOutUser}
-              />
-            )}
-            <ProtectedRoute path="/" isLoggedIn={isLoggedIn}>
-              <Main
-                handleCardClick={handleCardClick}
-                weatherData={weatherData}
-                clothingItems={items}
-              />
-            </ProtectedRoute>
-            <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
-              {isLoggedIn && (
-                <Profile
+            <Header
+              openForm={openAddForm}
+              isLoggedIn={isLoggedIn}
+              register={openRegisterForm}
+              login={openLoginForm}
+              signOut={signOutUser}
+            />
+            <Switch>
+              <Route>
+                <Main
                   handleCardClick={handleCardClick}
-                  openForm={openAddForm}
+                  weatherData={weatherData}
                   clothingItems={items}
+                  isLoggedIn={isLoggedIn}
                 />
-              )}
-            </ProtectedRoute>
-            <Route exact path="/signup">
-              <RegisterModal
-                onClose={closeAllPopups}
-                isModalOpen={isRegisterModalOpen}
-                signup={signupUser}
-              />
-            </Route>
-            <Route exact path="/signin">
-              <LoginModal
-                onClose={closeAllPopups}
-                isModalOpen={isLoginModalOpen}
-                login={loginUser}
-              />
-            </Route>
-            {isLoggedIn && <Footer />}
+              </Route>
+              <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
+                {isLoggedIn && (
+                  <Profile
+                    handleCardClick={handleCardClick}
+                    openForm={openAddForm}
+                    clothingItems={items}
+                  />
+                )}
+              </ProtectedRoute>
+            </Switch>
+            <RegisterModal
+              handleOverlayClick={handleOverlayClick}
+              onClose={closeAllPopups}
+              isModalOpen={isRegisterModalOpen}
+              signup={signupUser}
+            />
+            <LoginModal
+              onClose={closeAllPopups}
+              handleOverlayClick={handleOverlayClick}
+              isModalOpen={isLoginModalOpen}
+              login={loginUser}
+            />
+            <Footer />
             <ItemModal
               onClose={closeAllPopups}
               itemData={modalData}

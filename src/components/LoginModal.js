@@ -17,6 +17,7 @@ export default function LoginModal({
   function handleSubmit(e) {
     e.preventDefault();
     login(emailInputValue, passwordInputValue);
+    history.push("/profile");
   }
 
   function handleSignupRedirect() {
