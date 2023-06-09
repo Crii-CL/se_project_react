@@ -27,9 +27,9 @@ const UserApi = SignupOrSignin();
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false); //
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); //
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false); //
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
@@ -98,7 +98,7 @@ export default function App() {
   };
 
   const openRegisterForm = () => {
-    isRegisterModalOpen(true);
+    setIsRegisterModalOpen(true);
   };
 
   const closeAllPopups = () => {
@@ -183,12 +183,6 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (!isRegistered) {
-      setIsRegisterModalOpen(true);
-    }
-  });
-
-  useEffect(() => {
     getWeather(constants.latitude, constants.longitude, constants.apiKey)
       .then((res) => {
         setWeatherData(tempUnits(parseWeatherData(res)));
@@ -266,12 +260,16 @@ export default function App() {
               handleOverlayClick={handleOverlayClick}
               onClose={closeAllPopups}
               isModalOpen={isRegisterModalOpen}
+              handleRegisterModal={setIsRegisterModalOpen}
+              handleLoginModal={setIsLoginModalOpen}
               signup={signupUser}
             />
             <LoginModal
               onClose={closeAllPopups}
               handleOverlayClick={handleOverlayClick}
               isModalOpen={isLoginModalOpen}
+              handleRegisterModal={setIsRegisterModalOpen}
+              handleLoginModal={setIsLoginModalOpen}
               login={loginUser}
             />
             <Footer />

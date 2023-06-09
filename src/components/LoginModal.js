@@ -8,6 +8,8 @@ export default function LoginModal({
   isModalOpen,
   handleOverlayClick,
   login,
+  handleLoginModal,
+  handleRegisterModal,
 }) {
   const history = useHistory();
 
@@ -20,8 +22,9 @@ export default function LoginModal({
     history.push("/profile");
   }
 
-  function handleSignupRedirect() {
-    history.push("/signup");
+  function switchToRegister() {
+    handleLoginModal(false);
+    handleRegisterModal(true);
   }
 
   useEffect(() => {
@@ -72,10 +75,7 @@ export default function LoginModal({
         ></input>
       </fieldset>
       <div className="login__register">
-        <button
-          className="login__register-button"
-          onClick={handleSignupRedirect}
-        >
+        <button className="login__register-button" onClick={switchToRegister}>
           or Register
         </button>
       </div>

@@ -17,7 +17,7 @@ export default function Header({ openForm, isLoggedIn, register, login }) {
 
   console.log({ currentUser });
 
-  const handleAvatarError = (event) => {
+  const handleAvatarError = () => {
     setAvatarError(true);
   };
 
@@ -44,7 +44,7 @@ export default function Header({ openForm, isLoggedIn, register, login }) {
         >
           + Add Clothes
         </button>
-        {isLoggedIn ? ( //change to !isLoggedIn when done styling
+        {!isLoggedIn ? (
           <>
             <button className="header__button" onClick={register}>
               Sign Up
