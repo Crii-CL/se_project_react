@@ -240,7 +240,7 @@ export default function App() {
               signOut={signOutUser}
             />
             <Switch>
-              <Route path="/">
+              <Route exact path="/">
                 <Main
                   handleCardClick={handleCardClick}
                   weatherData={weatherData}
