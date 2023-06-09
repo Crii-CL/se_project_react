@@ -3,12 +3,7 @@ import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 import ItemCard from "./ItemCard";
 
-export default function Profile({
-  handleCardClick,
-  clothingItems,
-  openForm,
-  isModalOpen,
-}) {
+export default function Profile({ handleCardClick, clothingItems, openForm }) {
   return (
     <div className="profile">
       <div className="profile__section">

@@ -19,4 +19,25 @@
   height: 56px;
   padding-right: 16px;
   align-self: center;
+  transition: 0.15s ease;
+}
+
+.sidebar__avatar:hover {
+  transform: scale(120%);
+}
+
+.sidebar__avatar-placeholder-container {
+  width: 20px;
+  height: 20px;
+  border: solid 1px #000;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(18, 96, 152);
+  border-radius: 50%;
+  align-items: center;
+}
+
+.sidebar__avatar-placeholder-letter {
+  color: #fff;
+  margin: 0;
 }

@@ -240,7 +240,7 @@ export default function App() {
               signOut={signOutUser}
             />
             <Switch>
-              <Route>
+              <Route path="/">
                 <Main
                   handleCardClick={handleCardClick}
                   weatherData={weatherData}
@@ -248,7 +248,7 @@ export default function App() {
                   isLoggedIn={isLoggedIn}
                 />
               </Route>
-              <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
                 {isLoggedIn && (
                   <Profile
                     handleCardClick={handleCardClick}
