@@ -2,7 +2,6 @@ import { useContext } from "react";
 import "../blocks/ItemModal.css";
 import closeButton from "../images/close-button-white.svg";
 import closeButtonDark from "../images/close-button.svg";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function ItemModal({
   itemData,
@@ -14,11 +13,11 @@ export default function ItemModal({
   openConfirmModal,
   handleConfirmModalClose,
 }) {
-  const { currentUser } = useContext(CurrentUserContext);
-
   return (
     <div
-      className={`itemModal ${isItemModalOpen ? "modal_opened" : ""}`}
+      className={`itemModal ${isItemModalOpen ? "modal_opened" : ""} ${
+        !isItemModalOpen && onClose ? "modal_closed" : ""
+      }  `}
       id="item-modal"
       onClick={handleOverlayClick}
     >

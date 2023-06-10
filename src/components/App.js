@@ -41,6 +41,28 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleLikeClick = ({ id, isLiked, user }) => {
+    setIsItemModalOpen(false);
+    isLiked
+      ? itemsApiObject
+          .addCardLike({ id, user }, token)
+          .then((updatedCard) => {
+            setItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err))
+      : itemsApiObject
+          .removeCardLike({ id, user }, token)
+          .then((updatedCard) => {
+            setItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
 
   const handleAddItem = (name, url, weatherType) => {
     setIsLoading(true);
@@ -169,7 +191,8 @@ export default function App() {
   const editProfile = (name, avatar) => {
     setIsLoading(true);
     UserApi.editUser(name, avatar)
-      .then(() => {
+      .then((user) => {
+        setCurrentUser(user.name, user.avatar);
         closeAllPopups();
       })
       .catch((err) => {
@@ -254,6 +277,7 @@ export default function App() {
             <Switch>
               <Route exact path="/">
                 <Main
+                  handleLikeClick={handleLikeClick}
                   handleCardClick={handleCardClick}
                   weatherData={weatherData}
                   clothingItems={items}
@@ -263,6 +287,7 @@ export default function App() {
               <ProtectedRoute isLoggedIn={isLoggedIn}>
                 {isLoggedIn && (
                   <Profile
+                    handleLikeClick={handleLikeClick}
                     handleCardClick={handleCardClick}
                     openForm={openAddForm}
                     clothingItems={items}

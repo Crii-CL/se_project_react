@@ -53,7 +53,9 @@ export default function SignupOrSignin() {
     editUser: (name, avatar) => {
       return fetch(`${baseUrl}/users/me`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({ name, avatar }),
       }).then((res) => {
         return _checkResponse(res);

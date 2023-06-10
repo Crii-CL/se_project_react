@@ -14,7 +14,6 @@
 .switch__buttons {
   position: relative;
   display: flex;
-  flex-direction: row;
 }
 
 .switch__slider-F {

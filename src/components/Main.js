@@ -4,7 +4,12 @@ import ItemCard from "./ItemCard";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import "../blocks/Main.css";
 
-function Main({ handleCardClick, weatherData, clothingItems }) {
+function Main({
+  handleCardClick,
+  weatherData,
+  clothingItems,
+  handleLikeClick,
+}) {
   return (
     <main className="main">
       <WeatherCard day={false} type="clear" weatherTemp={weatherData} />
@@ -21,6 +26,7 @@ function Main({ handleCardClick, weatherData, clothingItems }) {
                   id={card.id}
                   weather={card.weather}
                   handleCardClick={handleCardClick}
+                  handleLikeClick={handleLikeClick}
                 />
               )
             )

@@ -44,9 +44,22 @@
 
 .cards__button {
   position: relative;
-  width: 18px;
-  height: 15px;
-  background: transparent;
+  box-sizing: border-box;
   border: none;
   padding: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+.cards__like-image {
+  padding: none;
+  fill: aquamarine;
+  width: 18px;
+  height: 15px;
+}
+
+.cards__like_active {
+}
+
+.cards__like_disabled {
 }

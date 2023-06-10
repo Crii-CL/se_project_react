@@ -27,7 +27,7 @@ export default function itemsApi() {
           imageUrl,
           weather,
         }),
-      }).then(_checkResponse);
+      }).then(_checkResponse());
     },
     remove: (id) => {
       return fetch(`${baseUrl}/items/${id}`, {
@@ -36,7 +36,27 @@ export default function itemsApi() {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-      }).then(_checkResponse);
+      }).then(_checkResponse());
+    },
+    addCardLike: (id, user) => {
+      return fetch(`${baseUrl}/items/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ id, user }),
+      }).then(_checkResponse());
+    },
+    removeCardLike: (id, user) => {
+      return fetch(`${baseUrl}/items/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ id, user }),
+      }).then(_checkResponse());
     },
   };
 }
