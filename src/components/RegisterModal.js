@@ -11,8 +11,6 @@ export default function RegisterModal({
   handleRegisterModal,
   handleLoginModal,
 }) {
-  const loginButton = document.querySelector("register__login-button");
-
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
   const [nameInputValue, setNameInputValue] = useState("");

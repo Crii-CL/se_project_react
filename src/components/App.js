@@ -126,6 +126,12 @@ export default function App() {
       : setCurrentTempUnit("F");
   };
 
+  function signOutUser() {
+    setIsLoggedIn(false);
+    localStorage.removeItem("jwt");
+    window.location.reload();
+  }
+
   /* ----------------------------- User Auth ----------------------------- */
   const signupUser = (email, password, name, avatar) => {
     setIsLoading(true);
@@ -134,6 +140,7 @@ export default function App() {
         setIsRegistered(true);
         setIsLoggedIn(true);
         setIsRegisterModalOpen(false);
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -149,21 +156,7 @@ export default function App() {
       .then(() => {
         setIsLoggedIn(true);
         setIsLoginModalOpen(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  const signOutUser = (user) => {
-    setIsLoading(true);
-    UserApi.signOut(user)
-      .then(() => {
-        setIsLoggedIn(false);
-        localStorage.removeItem("jwt");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);

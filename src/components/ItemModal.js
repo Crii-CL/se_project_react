@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import "../blocks/ItemModal.css";
 import closeButton from "../images/close-button-white.svg";
 import closeButtonDark from "../images/close-button.svg";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function ItemModal({
   itemData,
@@ -12,6 +14,8 @@ export default function ItemModal({
   openConfirmModal,
   handleConfirmModalClose,
 }) {
+  const { currentUser } = useContext(CurrentUserContext);
+
   return (
     <div
       className={`itemModal ${isItemModalOpen ? "modal_opened" : ""}`}
@@ -27,11 +31,7 @@ export default function ItemModal({
         >
           <img src={closeButton} alt="white close button"></img>
         </button>
-        <img
-          src={itemData?.url}
-          className="itemModal__image"
-          alt="item"
-        ></img>
+        <img src={itemData?.url} className="itemModal__image" alt="item"></img>
         <p className="itemModal__caption">{itemData?.name}</p>
         <p className="itemModal__caption">Weather: {itemData?.weather}</p>
         <button className="itemModal__delBtn" onClick={openConfirmModal}>
