@@ -1,9 +1,17 @@
 @keyframes modalExpand {
-  0% {
+  from {
     transform: scale(10%);
   }
-  100% {
+  to {
     transform: scale(100%);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0%;
   }
 }
 
@@ -19,7 +27,7 @@
   align-items: center;
   z-index: 100;
   font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
-  transition: 0.3s ease-in;
+  transition: 0.3s ease;
 }
 
 .modal__form {
@@ -58,6 +66,7 @@
 
 .modal_closed {
   visibility: hidden;
+  animation: fadeOut 0.3s ease;
 }
 
 .modal__closeBtn {

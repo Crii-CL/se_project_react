@@ -16,8 +16,7 @@ export default function RegisterModal({
   const [nameInputValue, setNameInputValue] = useState("");
   const [avatarInputValue, setAvatarInputValue] = useState("");
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit() {
     signup(
       emailInputValue,
       passwordInputValue,

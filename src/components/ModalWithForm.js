@@ -15,7 +15,7 @@ export default function ModalWithForm({
     <div
       className={`modal modal_type_${name} ${
         isModalOpen ? "modal_opened" : ""
-      }`}
+      } ${!isModalOpen && onClose ? "modal_closed" : ""}`}
       onClick={handleOverlayClick}
     >
       <form

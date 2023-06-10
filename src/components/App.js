@@ -183,16 +183,16 @@ export default function App() {
 
   /* ------------------------------- UseEffects ------------------------------- */
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleEscapeOut = (e) => {
       if (e.key === "Escape") {
         closeAllPopups();
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleEscapeOut);
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", handleEscapeOut);
     };
   }, []);
 
@@ -317,5 +317,3 @@ export default function App() {
     </div>
   );
 }
-
-//if any errors arise add se_project_react to this   "homepage": "https://crii-cl.github.io/" in package.json
