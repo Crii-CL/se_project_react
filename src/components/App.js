@@ -16,7 +16,7 @@ import fonts from "../vendor/Fonts/fonts.css";
 import "../blocks/AddItemModal.css";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 import { Switch } from "react-router-dom";
@@ -40,7 +40,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const handleAddItem = (name, url, weatherType) => {
     setIsLoading(true);
@@ -317,3 +317,5 @@ export default function App() {
     </div>
   );
 }
+
+//if any errors arise add se_project_react to this   "homepage": "https://crii-cl.github.io/" in package.json

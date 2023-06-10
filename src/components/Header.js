@@ -60,26 +60,32 @@ export default function Header({ openForm, isLoggedIn, register, login }) {
           <div className="header__name">{currentUser?.name}</div>
         </NavLink>
         <NavLink to="/profile" className="header__link">
-          <div className="header__avatar">
-            {!avatarError ? (
-              <img
-                className="header__avatar-image"
-                src={currentUser?.avatar}
-                alt="avatar logo"
-                onError={handleAvatarError}
-              />
-            ) : (
-              <div className="header__avatar-placeholder">
-                <div className="header__avatar-placeholder-container">
-                  <div>
-                    <p className="header__avatar-placeholder-letter ">
-                      {currentUser?.name.charAt(0).toUpperCase()}
-                    </p>
+          {isLoggedIn && (
+            <div className="header__avatar">
+              {!avatarError ? (
+                <img
+                  className="header__avatar-image"
+                  src={currentUser?.avatar}
+                  alt="avatar logo"
+                  onError={handleAvatarError}
+                />
+              ) : (
+                <div className="header__avatar-placeholder">
+                  <div className="header__avatar-placeholder-container">
+                    <div>
+                      <p className="header__avatar-placeholder-letter ">
+                        {currentUser ? (
+                          currentUser?.name.charAt(0).toUpperCase()
+                        ) : (
+                          <></>
+                        )}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </NavLink>
       </div>
     </header>

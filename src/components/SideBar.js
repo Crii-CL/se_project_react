@@ -16,7 +16,7 @@ export default function SideBar({ openEdit, logout }) {
         {!avatarError ? (
           <img
             className="sidebar__avatar"
-            src={currentUser.avatar}
+            src={currentUser?.avatar}
             onError={handleAvatarError}
           />
         ) : (
@@ -30,7 +30,7 @@ export default function SideBar({ openEdit, logout }) {
             </div>
           </div>
         )}
-        <h2 className="sidebar__title">{currentUser.name}</h2>
+        <h2 className="sidebar__title">{currentUser?.name}</h2>
       </div>
       <button className="sidebar__button" onClick={openEdit}>
         Change Profile Data
