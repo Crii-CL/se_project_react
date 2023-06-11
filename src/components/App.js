@@ -46,23 +46,29 @@ export default function App() {
 
   const handleLikeClick = ({ id, isLiked, user }) => {
     setIsItemModalOpen(false);
-    isLiked
-      ? itemsApiObject
-          .addCardLike({ id, user }, token)
-          .then((updatedCard) => {
-            setItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
-            );
-          })
-          .catch((err) => console.log(err))
-      : itemsApiObject
-          .removeCardLike({ id, user }, token)
-          .then((updatedCard) => {
-            setItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
-            );
-          })
-          .catch((err) => console.log(err));
+
+    const itemId = id.toString();
+    const userObj = { id: user };
+
+    if (isLiked) {
+      itemsApiObject
+        .addCardLike(itemId, userObj, token)
+        .then((updatedCard) => {
+          setItems((cards) =>
+            cards.map((c) => (c._id === id ? updatedCard : c))
+          );
+        })
+        .catch((err) => console.log(err));
+    } else {
+      itemsApiObject
+        .removeCardLike(itemId, userObj, token)
+        .then((updatedCard) => {
+          setItems((cards) =>
+            cards.map((c) => (c._id === id ? updatedCard : c))
+          );
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const handleAddItem = (name, url, weatherType) => {
@@ -246,7 +252,6 @@ export default function App() {
       UserApi.validateToken(token)
         .then((res) => {
           setCurrentUser(res.data);
-          console.log(currentUser);
         })
         .catch(() => {
           console.log("token is invalid");
@@ -294,6 +299,7 @@ export default function App() {
                     clothingItems={items}
                     openEdit={openEditProfileForm}
                     logout={signOutUser}
+                    isLoggedIn={isLoggedIn}
                   />
                 )}
               </ProtectedRoute>

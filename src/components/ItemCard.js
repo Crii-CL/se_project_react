@@ -24,7 +24,7 @@ export default function ItemCard({
             <img
               src={likeButton}
               className="cards__like-image"
-              onClick={() => handleLikeClick(id, isLiked, user)}
+              onClick={() => handleLikeClick({ id, isLiked, user })}
             />
           </button>
         )}

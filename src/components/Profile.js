@@ -11,6 +11,7 @@ export default function Profile({
   openEdit,
   logout,
   onClose,
+  isLoggedIn,
 }) {
   return (
     <div className="profile">
@@ -30,6 +31,7 @@ export default function Profile({
                 weather={card.weather}
                 handleCardClick={handleCardClick}
                 handleLikeClick={handleLikeClick}
+                isLoggedIn={isLoggedIn}
               />
             ))}
           </ul>

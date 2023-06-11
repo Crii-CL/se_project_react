@@ -15,8 +15,6 @@ export default function Header({ openForm, isLoggedIn, register, login }) {
   const { currentUser } = useContext(CurrentUserContext);
   const [avatarError, setAvatarError] = useState(false);
 
-  console.log({ currentUser });
-
   const handleAvatarError = () => {
     setAvatarError(true);
   };
