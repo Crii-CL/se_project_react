@@ -10,6 +10,7 @@ export default function ItemCard({
   id,
   isLiked,
   user,
+  isLoggedIn,
 }) {
   return (
     <li
@@ -18,13 +19,15 @@ export default function ItemCard({
     >
       <div className="cards__caption">
         <p className="cards__name">{name}</p>
-        <button className="cards__button">
-          <img
-            src={likeButton}
-            className="cards__like-image"
-            onClick={() => handleLikeClick(id, isLiked, user)}
-          />
-        </button>
+        {isLoggedIn && (
+          <button className="cards__button">
+            <img
+              src={likeButton}
+              className="cards__like-image"
+              onClick={() => handleLikeClick(id, isLiked, user)}
+            />
+          </button>
+        )}
       </div>
       <img className="cards__image" src={url} alt={name}></img>
     </li>

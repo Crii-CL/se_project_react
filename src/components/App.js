@@ -42,6 +42,7 @@ export default function App() {
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLiked, setIsLiked] = useState(false);
+  const [isToken, setIsToken] = useState(localStorage.getItem("jwt"));
 
   const handleLikeClick = ({ id, isLiked, user }) => {
     setIsItemModalOpen(false);
@@ -190,9 +191,9 @@ export default function App() {
 
   const editProfile = (name, avatar) => {
     setIsLoading(true);
-    UserApi.editUser(name, avatar)
+    UserApi.editUser(name, avatar, token)
       .then((user) => {
-        setCurrentUser(user.name, user.avatar);
+        setCurrentUser(name, avatar);
         closeAllPopups();
       })
       .catch((err) => {

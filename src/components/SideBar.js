@@ -23,7 +23,7 @@ export default function SideBar({ openEdit, logout }) {
           <div className="sidebar__avatar-placeholder">
             <div className="sidebar__avatar-placeholder-container">
               <div>
-                <p className="sidebar__avatar-placeholder-letter ">
+                <p className="sidebar__avatar-placeholder-letter">
                   {currentUser?.name.charAt(0).toUpperCase()}
                 </p>
               </div>

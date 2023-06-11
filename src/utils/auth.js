@@ -50,11 +50,12 @@ export default function SignupOrSignin() {
         return _checkResponse(res);
       });
     },
-    editUser: (name, avatar) => {
+    editUser: (name, avatar, token) => {
       return fetch(`${baseUrl}/users/me`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ name, avatar }),
       }).then((res) => {

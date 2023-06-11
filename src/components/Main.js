@@ -9,6 +9,7 @@ function Main({
   weatherData,
   clothingItems,
   handleLikeClick,
+  isLoggedIn,
 }) {
   return (
     <main className="main">
@@ -27,6 +28,7 @@ function Main({
                   weather={card.weather}
                   handleCardClick={handleCardClick}
                   handleLikeClick={handleLikeClick}
+                  isLoggedIn={isLoggedIn}
                 />
               )
             )

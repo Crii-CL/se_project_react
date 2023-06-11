@@ -5,6 +5,7 @@ import ItemCard from "./ItemCard";
 
 export default function Profile({
   handleCardClick,
+  handleLikeClick,
   clothingItems,
   openForm,
   openEdit,
@@ -28,6 +29,7 @@ export default function Profile({
                 id={card.id}
                 weather={card.weather}
                 handleCardClick={handleCardClick}
+                handleLikeClick={handleLikeClick}
               />
             ))}
           </ul>
