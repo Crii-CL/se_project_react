@@ -24,19 +24,20 @@ export default function itemsApi(currentUser) {
     },
 
     add: (name, imageUrl, weather) => {
+      const body = {
+        name,
+        imageUrl,
+        weather,
+        owner: currentUser._id,
+        likes: [],
+      };
       return fetch(`${baseUrl}/items`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          name,
-          imageUrl,
-          weather,
-          owner: currentUser._id,
-          likes: [],
-        }),
+        body: JSON.stringify(body),
       }).then(_checkResponse);
     },
     remove: (id) => {

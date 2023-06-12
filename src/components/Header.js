@@ -34,14 +34,18 @@ export default function Header({ openForm, isLoggedIn, register, login }) {
       <div className="header__container" id="button-name-avatar">
         <div className="header__slider"></div>
         <ToggleSwitch name="Temp Switch" />
-        <button
-          className="header__button"
-          type="text"
-          id="add-new-clothes"
-          onClick={openForm}
-        >
-          + Add Clothes
-        </button>
+        {isLoggedIn ? (
+          <button
+            className="header__button"
+            type="text"
+            id="add-new-clothes"
+            onClick={openForm}
+          >
+            + Add Clothes
+          </button>
+        ) : (
+          <></>
+        )}
         {!isLoggedIn ? (
           <>
             <button className="header__button" onClick={register}>
@@ -72,7 +76,7 @@ export default function Header({ openForm, isLoggedIn, register, login }) {
                   <div className="header__avatar-placeholder-container">
                     <div>
                       <p className="header__avatar-placeholder-letter ">
-                        {currentUser ? (
+                        {currentUser?.name ? (
                           currentUser?.name.charAt(0).toUpperCase()
                         ) : (
                           <></>

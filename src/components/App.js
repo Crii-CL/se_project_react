@@ -38,37 +38,10 @@ export default function App() {
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isLiked, setIsLiked] = useState(false);
-  const [isToken, setIsToken] = useState(localStorage.getItem("jwt"));
 
   const token = localStorage.getItem("jwt");
   const UserApi = SignupOrSignin();
   const itemsApiObject = itemsApi(currentUser);
-
-  // const handleLikeClick = ({ id, isLiked, user }) => {
-  //   setIsItemModalOpen(false);
-  //   const itemId = id.toString();
-  //   const userObj = { id: user };
-
-  //   if (isLiked) {
-  //     itemsApiObject
-  //       .addCardLike(itemId, userObj, token)
-  //       .then((updatedCard) => {
-  //         setItems((cards) =>
-  //           cards.map((c) => (c._id === id ? updatedCard : c))
-  //         );
-  //       })
-  //       .catch((err) => console.log(err));
-  //   } else {
-  //     itemsApiObject
-  //       .removeCardLike(itemId, userObj, token)
-  //       .then((updatedCard) => {
-  //         setItems((cards) =>
-  //           cards.map((c) => (c._id === id ? updatedCard : c))
-  //         );
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  // };
 
   const checkLikes = (card) => {
     card.likes.length > 0 ? setIsLiked(true) : setIsLiked(false);

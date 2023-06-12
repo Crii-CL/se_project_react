@@ -26,6 +26,7 @@ export default function Profile({
         <section className="cards">
           <ul className="cards__list">
             {clothingItems?.map((card) => {
+              console.log(card);
               return (
                 <ItemCard
                   key={uniqueId}

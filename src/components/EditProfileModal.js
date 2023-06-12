@@ -15,8 +15,7 @@ export default function EditProfileModal({
   const [nameInputValue, setNameInputValue] = useState("");
   const [avatarInputValue, setAvatarInputValue] = useState("");
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit() {
     editProfile(nameInputValue, avatarInputValue);
     onClose();
   }
