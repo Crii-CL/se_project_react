@@ -77,9 +77,9 @@ export default function App() {
   const handleLikeClick = ({ card, isLiked }) => {
     if (card.likes.some((user) => user._id === currentUser._id)) {
       checkLikes(card);
-      if (isLiked(true)) {
+      if (isLiked) {
         itemsApiObject.removeCardLike(card.id, card.likes);
-      } else if (isLiked(false)) {
+      } else if (isLiked) {
         itemsApiObject.addCardLike(card.id, card.likes);
       }
     }
