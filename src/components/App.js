@@ -90,7 +90,7 @@ export default function App() {
     itemsApiObject
       .add(name, url, weatherType)
       .then((res) => {
-        setItems([res, ...items]);
+        setItems([res.data, ...items]);
         setIsAddModalOpen(false);
       })
       .catch((error) => {
@@ -251,7 +251,6 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    //////////////////////////////////
     itemsApiObject
       .get()
       .then((res) => {
@@ -316,6 +315,7 @@ export default function App() {
                     openEdit={openEditProfileForm}
                     logout={signOutUser}
                     isLoggedIn={isLoggedIn}
+                    isLiked={isLiked}
                   />
                 )}
               </ProtectedRoute>

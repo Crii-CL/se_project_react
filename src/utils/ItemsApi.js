@@ -6,8 +6,8 @@ export default function itemsApi(currentUser) {
     return Promise.reject(`Error${res.status}`);
   }
 
-  const baseUrl =
-    "https://my-json-server.typicode.com/crii-cl/se_project_react";
+  const baseUrl = "http://localhost:3001";
+  // "https://my-json-server.typicode.com/crii-cl/se_project_react";
 
   const token = localStorage.getItem("jwt");
 
@@ -15,30 +15,28 @@ export default function itemsApi(currentUser) {
     get: () => {
       return fetch(`${baseUrl}/items`)
         .then(_checkResponse)
-        .then((cards) => {
+        .then((data) => {
+          const cards = data.data;
           return cards.map((card) => ({
             ...card,
-            owner: card._id,
-            likes: [],
           }));
         });
     },
 
     add: (name, imageUrl, weather) => {
-      const body = {
-        name,
-        imageUrl,
-        weather,
-        owner: currentUser._id,
-        likes: [],
-      };
       return fetch(`${baseUrl}/items`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify({
+          name,
+          imageUrl,
+          weather,
+          owner: currentUser._id,
+          likes: [],
+        }),
       }).then(_checkResponse);
     },
     remove: (id) => {
@@ -50,28 +48,6 @@ export default function itemsApi(currentUser) {
         },
       }).then(_checkResponse);
     },
-    // addCardLike: (id, user) => {
-    //   console.log(id);
-    //   return fetch(`${baseUrl}/items/${id}`, {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       authorization: `Bearer ${token}`,
-    //     },
-    //     body: JSON.stringify({ id, user }),
-    //   }).then(_checkResponse);
-    // },
-    // removeCardLike: (id, user) => {
-    //   console.log(id);
-    //   return fetch(`${baseUrl}/items/${id}`, {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       authorization: `Bearer ${token}`,
-    //     },
-    //     body: JSON.stringify({ id, user }),
-    //   }).then(_checkResponse);
-    // },
     addCardLike: (id, likes) => {
       return fetch(`${baseUrl}/items/${id}`, {
         method: "PUT",

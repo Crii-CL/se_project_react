@@ -13,6 +13,7 @@ export default function ItemCard({
   id,
   isLoggedIn,
   card,
+  owner,
   isLiked,
 }) {
   const currentUser = useContext(CurrentUserContext);
@@ -24,7 +25,7 @@ export default function ItemCard({
     >
       <div className="cards__caption">
         <p className="cards__name">{name}</p>
-        {isLoggedIn && currentUser._id === card.owner._id && (
+        {isLoggedIn && currentUser._id === owner && (
           <button className="cards__button">
             <img
               src={isLiked ? liked : disliked}
