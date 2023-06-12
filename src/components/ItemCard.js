@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import "../blocks/ItemCard.css";
-import likeButton from "../images/likeButton.svg";
+import disliked from "../images/likeButton.svg";
+import liked from "../images/like_active.svg";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function ItemCard({
   handleCardClick,
@@ -8,10 +11,13 @@ export default function ItemCard({
   url,
   weather,
   id,
-  isLiked,
-  user,
   isLoggedIn,
+  card,
+  isLiked,
 }) {
+  console.log(card);
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <li
       className="cards__el"
@@ -22,9 +28,9 @@ export default function ItemCard({
         {isLoggedIn && (
           <button className="cards__button">
             <img
-              src={likeButton}
-              className="cards__like-image"
-              onClick={() => handleLikeClick({ id, isLiked, user })}
+              src={isLiked ? liked : disliked}
+              className={"cards__like-image"}
+              onClick={() => handleLikeClick({ card, isLiked })}
             />
           </button>
         )}

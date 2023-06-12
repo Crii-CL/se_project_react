@@ -22,10 +22,6 @@ import LoginModal from "./LoginModal";
 import { Switch } from "react-router-dom";
 import EditProfileModal from "./EditProfileModal";
 
-const token = localStorage.getItem("jwt");
-const itemsApiObject = itemsApi();
-const UserApi = SignupOrSignin();
-
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -44,30 +40,48 @@ export default function App() {
   const [isLiked, setIsLiked] = useState(false);
   const [isToken, setIsToken] = useState(localStorage.getItem("jwt"));
 
-  const handleLikeClick = ({ id, isLiked, user }) => {
-    setIsItemModalOpen(false);
+  const token = localStorage.getItem("jwt");
+  const UserApi = SignupOrSignin();
+  const itemsApiObject = itemsApi(currentUser);
 
-    const itemId = id.toString();
-    const userObj = { id: user };
+  // const handleLikeClick = ({ id, isLiked, user }) => {
+  //   setIsItemModalOpen(false);
+  //   const itemId = id.toString();
+  //   const userObj = { id: user };
 
-    if (isLiked) {
-      itemsApiObject
-        .addCardLike(itemId, userObj, token)
-        .then((updatedCard) => {
-          setItems((cards) =>
-            cards.map((c) => (c._id === id ? updatedCard : c))
-          );
-        })
-        .catch((err) => console.log(err));
-    } else {
-      itemsApiObject
-        .removeCardLike(itemId, userObj, token)
-        .then((updatedCard) => {
-          setItems((cards) =>
-            cards.map((c) => (c._id === id ? updatedCard : c))
-          );
-        })
-        .catch((err) => console.log(err));
+  //   if (isLiked) {
+  //     itemsApiObject
+  //       .addCardLike(itemId, userObj, token)
+  //       .then((updatedCard) => {
+  //         setItems((cards) =>
+  //           cards.map((c) => (c._id === id ? updatedCard : c))
+  //         );
+  //       })
+  //       .catch((err) => console.log(err));
+  //   } else {
+  //     itemsApiObject
+  //       .removeCardLike(itemId, userObj, token)
+  //       .then((updatedCard) => {
+  //         setItems((cards) =>
+  //           cards.map((c) => (c._id === id ? updatedCard : c))
+  //         );
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  // };
+
+  const checkLikes = (card) => {
+    card.likes.length > 0 ? setIsLiked(true) : setIsLiked(false);
+  };
+
+  const handleLikeClick = ({ card, isLiked }) => {
+    if (card.likes.some((user) => user._id === currentUser._id)) {
+      checkLikes(card);
+      if (isLiked(true)) {
+        itemsApiObject.removeCardLike(card.id, card.likes);
+      } else if (isLiked(false)) {
+        itemsApiObject.addCardLike(card.id, card.likes);
+      }
     }
   };
 
@@ -237,6 +251,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    //////////////////////////////////
     itemsApiObject
       .get()
       .then((res) => {
@@ -288,6 +303,7 @@ export default function App() {
                   weatherData={weatherData}
                   clothingItems={items}
                   isLoggedIn={isLoggedIn}
+                  isLiked={isLiked}
                 />
               </Route>
               <ProtectedRoute isLoggedIn={isLoggedIn}>

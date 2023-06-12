@@ -53,13 +53,6 @@
 
 .cards__like-image {
   padding: none;
-  fill: aquamarine;
   width: 18px;
   height: 15px;
-}
-
-.cards__like_active {
-}
-
-.cards__like_disabled {
 }

@@ -1,4 +1,4 @@
-export default function itemsApi() {
+export default function itemsApi(currentUser) {
   function _checkResponse(res) {
     if (res.ok) {
       return res.json();
@@ -13,20 +13,32 @@ export default function itemsApi() {
 
   return {
     get: () => {
-      return fetch(`${baseUrl}/items`).then(_checkResponse);
+      return fetch(`${baseUrl}/items`)
+        .then(_checkResponse)
+        .then((cards) => {
+          return cards.map((card) => ({
+            ...card,
+            owner: card._id,
+            likes: [],
+          }));
+        });
     },
+
     add: (name, imageUrl, weather) => {
+      const body = {
+        name,
+        imageUrl,
+        weather,
+        owner: currentUser._id,
+        likes: [],
+      };
       return fetch(`${baseUrl}/items`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          name,
-          imageUrl,
-          weather,
-        }),
+        body: JSON.stringify(body),
       }).then(_checkResponse);
     },
     remove: (id) => {
@@ -38,27 +50,46 @@ export default function itemsApi() {
         },
       }).then(_checkResponse);
     },
-    addCardLike: (id, user) => {
-      console.log("this is the card id");
-      console.log(id);
+    // addCardLike: (id, user) => {
+    //   console.log(id);
+    //   return fetch(`${baseUrl}/items/${id}`, {
+    //     method: "PUT",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       authorization: `Bearer ${token}`,
+    //     },
+    //     body: JSON.stringify({ id, user }),
+    //   }).then(_checkResponse);
+    // },
+    // removeCardLike: (id, user) => {
+    //   console.log(id);
+    //   return fetch(`${baseUrl}/items/${id}`, {
+    //     method: "PUT",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       authorization: `Bearer ${token}`,
+    //     },
+    //     body: JSON.stringify({ id, user }),
+    //   }).then(_checkResponse);
+    // },
+    addCardLike: (id, likes) => {
       return fetch(`${baseUrl}/items/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ id, user }),
+        body: JSON.stringify({ likes }),
       }).then(_checkResponse);
     },
-    removeCardLike: (id, user) => {
-      console.log(id);
+    removeCardLike: (id, likes) => {
       return fetch(`${baseUrl}/items/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ id, user }),
+        body: JSON.stringify({ likes }),
       }).then(_checkResponse);
     },
   };

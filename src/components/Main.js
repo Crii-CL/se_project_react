@@ -10,6 +10,7 @@ function Main({
   clothingItems,
   handleLikeClick,
   isLoggedIn,
+  isLiked,
 }) {
   return (
     <main className="main">
@@ -23,9 +24,11 @@ function Main({
               url={card.imageUrl}
               id={card.id}
               weather={card.weather}
+              isLiked={isLiked}
               handleCardClick={handleCardClick}
               handleLikeClick={handleLikeClick}
               isLoggedIn={isLoggedIn}
+              card={card}
             />
           ))}
         </ul>

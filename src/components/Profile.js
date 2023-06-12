@@ -10,7 +10,6 @@ export default function Profile({
   openForm,
   openEdit,
   logout,
-  onClose,
   isLoggedIn,
 }) {
   return (
