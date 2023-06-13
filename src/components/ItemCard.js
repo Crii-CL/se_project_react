@@ -30,7 +30,7 @@ export default function ItemCard({
       onClick={() => handleCardClick(name, url, weather, id)}
     >
       <div className="cards__caption">
-        <p className="cards__name">{name}</p>
+        {!linkError ? <p className="cards__name">{name}</p> : <></>}
         {isLoggedIn && currentUser._id === owner && (
           <button className="cards__button">
             <img
@@ -49,8 +49,8 @@ export default function ItemCard({
           onError={handleLinkError}
         ></img>
       ) : (
-        <div className="cards__el">
-          <p className="addItem__error-text">Image Link Failure</p>
+        <div className="cards__image-error">
+          <p className="cards__error-text">Can't wear this :/</p>
         </div>
       )}
     </li>

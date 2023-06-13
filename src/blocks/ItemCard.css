@@ -42,6 +42,14 @@
   padding: none;
 }
 
+.cards__image-error {
+  width: 326px;
+  height: 326px;
+  border-radius: 3%;
+  border: solid 1px rgba(255, 0, 0, 0.3);
+  padding: none;
+}
+
 .cards__button {
   position: relative;
   box-sizing: border-box;
@@ -55,4 +63,14 @@
   padding: none;
   width: 18px;
   height: 15px;
+}
+
+.cards__error-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 45%;
+  margin: 0;
+  font-family: CabinetGrotesk-Bold, "inter", sans-serif;
+  font-size: 30px;
 }
