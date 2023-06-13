@@ -87,13 +87,14 @@ export default function App() {
       });
   };
 
-  const handleCardClick = (name, url, weather, id) => {
+  const handleCardClick = (name, url, weather, id, owner) => {
     setIsItemModalOpen(true);
     setModalData({
       name,
       url,
       weather,
       id,
+      owner,
     });
   };
 
@@ -252,7 +253,9 @@ export default function App() {
       setIsLoggedIn(false);
     }
   }, []);
-  /* ------------------------------------ . ----------------------------------- */
+
+  console.log(currentUser);
+
   return (
     <div className="page">
       <BrowserRouter>
@@ -325,6 +328,7 @@ export default function App() {
               handleItemDelete={handleItemDelete}
               openConfirmModal={openConfirmModal}
               handleConfirmModalClose={handleConfirmModalClose}
+              currentUser={currentUser}
             />
             <AddItemModal
               onClose={closeAllPopups}

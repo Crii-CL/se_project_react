@@ -4,6 +4,7 @@ import disliked from "../images/likeButton.svg";
 import liked from "../images/like_active.svg";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function ItemCard({
   handleCardClick,
@@ -12,7 +13,7 @@ export default function ItemCard({
   url,
   weather,
   id,
-  isLoggedIn,
+  user,
   card,
   owner,
   isLiked,
@@ -24,22 +25,24 @@ export default function ItemCard({
     setLinkError(true);
   }
 
+  if (owner !== user || null) {
+    return null;
+  }
+
   return (
     <li
       className="cards__el"
-      onClick={() => handleCardClick(name, url, weather, id)}
+      onClick={() => handleCardClick(name, url, weather, id, owner)}
     >
       <div className="cards__caption">
         {!linkError ? <p className="cards__name">{name}</p> : <></>}
-        {isLoggedIn && currentUser._id === owner && (
-          <button className="cards__button">
-            <img
-              src={isLiked ? liked : disliked}
-              className={"cards__like-image"}
-              onClick={() => handleLikeClick({ card, isLiked })}
-            />
-          </button>
-        )}
+        <button className="cards__button">
+          <img
+            src={isLiked ? liked : disliked}
+            className={"cards__like-image"}
+            onClick={() => handleLikeClick({ card, isLiked })}
+          />
+        </button>
       </div>
       {!linkError ? (
         <img

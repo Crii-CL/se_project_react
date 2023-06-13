@@ -12,6 +12,7 @@ export default function ItemModal({
   handleItemDelete,
   openConfirmModal,
   handleConfirmModalClose,
+  currentUser,
 }) {
   return (
     <div
@@ -33,9 +34,11 @@ export default function ItemModal({
         <img src={itemData?.url} className="itemModal__image" alt="item"></img>
         <p className="itemModal__caption">{itemData?.name}</p>
         <p className="itemModal__caption">Weather: {itemData?.weather}</p>
-        <button className="itemModal__delBtn" onClick={openConfirmModal}>
-          Delete Item
-        </button>
+        {currentUser?._id === itemData?.owner && (
+          <button className="itemModal__delBtn" onClick={openConfirmModal}>
+            Delete Item
+          </button>
+        )}
       </div>
       <div
         className={`itemModal__confirm ${
