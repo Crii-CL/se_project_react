@@ -3,6 +3,7 @@ import "../blocks/ItemCard.css";
 import disliked from "../images/likeButton.svg";
 import liked from "../images/like_active.svg";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { useState } from "react";
 
 export default function ItemCard({
   handleCardClick,
@@ -16,7 +17,12 @@ export default function ItemCard({
   owner,
   isLiked,
 }) {
+  const [linkError, setLinkError] = useState(false);
   const currentUser = useContext(CurrentUserContext);
+
+  function handleLinkError() {
+    setLinkError(true);
+  }
 
   return (
     <li
@@ -35,7 +41,18 @@ export default function ItemCard({
           </button>
         )}
       </div>
-      <img className="cards__image" src={url} alt={name}></img>
+      {!linkError ? (
+        <img
+          className="cards__image"
+          src={url}
+          alt={name}
+          onError={handleLinkError}
+        ></img>
+      ) : (
+        <div className="cards__el">
+          <p className="addItem__error-text">Image Link Failure</p>
+        </div>
+      )}
     </li>
   );
 }

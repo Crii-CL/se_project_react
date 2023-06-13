@@ -56,3 +56,14 @@
   right: 5px;
   font-size: 16px;
 }
+
+.addItem__error {
+  width: 328px;
+  height: 328px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.addItem__error-text {
+  font-size: 20px;
+  color: #000;
+}
