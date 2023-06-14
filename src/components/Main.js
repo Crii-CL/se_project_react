@@ -18,16 +18,7 @@ export default function Main({
   checkLikes,
 }) {
   const currentUser = useContext(CurrentUserContext);
-  const [liked, setLiked] = useState(isLiked);
-  const [likedCards, setLikedCards] = useState([]);
 
-  const toggleLike = (cardId) => {
-    if (likedCards.includes(cardId)) {
-      setLikedCards(likedCards.filter((id) => id !== cardId));
-    } else {
-      setLikedCards([...likedCards, cardId]);
-    }
-  };
   return (
     <main className="main">
       <WeatherCard day={false} type="clear" weatherTemp={weatherData} />
@@ -51,7 +42,6 @@ export default function Main({
                   owner={card?.owner}
                   user={currentUser?.currentUser?._id}
                   image={image}
-                  toggleLike={toggleLike}
                 />
               );
             })}

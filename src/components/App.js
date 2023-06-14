@@ -146,7 +146,6 @@ export default function App() {
   function signOutUser() {
     setIsLoggedIn(false);
     localStorage.removeItem("jwt");
-    window.location.reload();
   }
 
   /* ----------------------------- User Auth ----------------------------- */
@@ -157,7 +156,6 @@ export default function App() {
         setIsRegistered(true);
         setIsLoggedIn(true);
         setIsRegisterModalOpen(false);
-        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -173,7 +171,6 @@ export default function App() {
       .then(() => {
         setIsLoggedIn(true);
         setIsLoginModalOpen(false);
-        window.location.reload();
       })
       .catch((err) => {
         console.log(err);

@@ -16,8 +16,10 @@ export default function LoginModal({
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     login(emailInputValue, passwordInputValue);
+    onClose();
     history.push("/profile");
   }
 

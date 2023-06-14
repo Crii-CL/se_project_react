@@ -53,7 +53,7 @@ export default function itemsApi(currentUser) {
 
       body.likes.push(userId);
 
-      return fetch(`${baseUrl}/items/${id}`, {
+      return fetch(`${baseUrl}/items/${id}/likes`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export default function itemsApi(currentUser) {
       }).then(_checkResponse);
     },
     removeCardLike: (id) => {
-      return fetch(`${baseUrl}/items/${id}`, {
+      return fetch(`${baseUrl}/items/${id}/likes`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -79,7 +79,7 @@ export default function itemsApi(currentUser) {
 
           const filteredLikes = updatedLikes.filter((like) => like !== userId);
 
-          return fetch(`${baseUrl}/items/${id}`, {
+          return fetch(`${baseUrl}/items/${id}/likes`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",

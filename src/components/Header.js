@@ -58,11 +58,13 @@ export default function Header({ openForm, isLoggedIn, register, login }) {
         ) : (
           <></>
         )}
-        <NavLink to="/profile" className="header__link">
-          <div className="header__name">{currentUser?.name}</div>
-        </NavLink>
-        <NavLink to="/profile" className="header__link">
-          {isLoggedIn && (
+        {isLoggedIn && (
+          <NavLink to="/profile" className="header__link">
+            <div className="header__name">{currentUser?.name}</div>
+          </NavLink>
+        )}
+        {isLoggedIn && (
+          <NavLink to="/profile" className="header__link">
             <div className="header__avatar">
               {!avatarError ? (
                 <img
@@ -87,8 +89,8 @@ export default function Header({ openForm, isLoggedIn, register, login }) {
                 </div>
               )}
             </div>
-          )}
-        </NavLink>
+          </NavLink>
+        )}
       </div>
     </header>
   );

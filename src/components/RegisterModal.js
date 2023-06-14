@@ -16,7 +16,8 @@ export default function RegisterModal({
   const [nameInputValue, setNameInputValue] = useState("");
   const [avatarInputValue, setAvatarInputValue] = useState("");
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     signup(
       emailInputValue,
       passwordInputValue,
@@ -102,11 +103,7 @@ export default function RegisterModal({
         ></input>
       </fieldset>
       <div className="register__login">
-        <button
-          type="submit"
-          className="register__login-button"
-          onClick={switchToLogin}
-        >
+        <button className="register__login-button" onClick={switchToLogin}>
           or Log in
         </button>
       </div>

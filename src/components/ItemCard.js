@@ -16,17 +16,12 @@ export default function ItemCard({
   owner,
   isLiked,
   image,
-  toggleLike,
 }) {
   const [linkError, setLinkError] = useState(false);
   console.log(card);
 
   function handleLinkError() {
     setLinkError(true);
-  }
-
-  function handleLike() {
-    toggleLike(id);
   }
 
   if (owner !== user || null) {
@@ -47,7 +42,6 @@ export default function ItemCard({
               className="cards__like-image"
               onClick={() => {
                 handleLikeClick({ card, isLiked });
-                handleLike();
               }}
             />
           </button>
