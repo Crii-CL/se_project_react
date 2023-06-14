@@ -2,6 +2,7 @@ import { useContext } from "react";
 import "../blocks/ItemModal.css";
 import closeButton from "../images/close-button-white.svg";
 import closeButtonDark from "../images/close-button.svg";
+import { useState } from "react";
 
 export default function ItemModal({
   itemData,
@@ -60,9 +61,10 @@ export default function ItemModal({
             irreversible.
           </p>
           <button
+            type="submit"
             className="itemModal__confirm-delBtn"
             onClick={() => {
-              handleItemDelete(itemData.id);
+              handleItemDelete(itemData._id);
             }}
           >
             Delete Item

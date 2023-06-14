@@ -5,17 +5,20 @@ import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUni
 import "../blocks/Main.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
+import disliked from "../images/likeButton.svg";
+import liked from "../images/like_active.svg";
 
 export default function Main({
+  handleLikeClick,
   handleCardClick,
   weatherData,
   clothingItems,
-  handleLikeClick,
   isLoggedIn,
   isLiked,
+  checkLikes,
 }) {
   const currentUser = useContext(CurrentUserContext);
-  console.log(clothingItems?.length);
+
   return (
     <main className="main">
       <WeatherCard day={false} type="clear" weatherTemp={weatherData} />
@@ -23,20 +26,22 @@ export default function Main({
         {isLoggedIn && (
           <ul className="cards__list" id="card-list">
             {clothingItems?.map((card) => {
+              const image = isLiked ? liked : disliked;
               return (
                 <ItemCard
-                  key={card._id}
-                  name={card.name}
-                  url={card.imageUrl}
-                  id={card._id}
-                  weather={card.weather}
+                  key={card?._id}
+                  name={card?.name}
+                  url={card?.imageUrl}
+                  id={card?._id}
+                  weather={card?.weather}
                   isLiked={isLiked}
                   handleCardClick={handleCardClick}
                   handleLikeClick={handleLikeClick}
                   isLoggedIn={isLoggedIn}
                   card={card}
-                  owner={card.owner}
+                  owner={card?.owner}
                   user={currentUser?.currentUser?._id}
+                  image={image}
                 />
               );
             })}

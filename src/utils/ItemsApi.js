@@ -48,14 +48,18 @@ export default function itemsApi(currentUser) {
         },
       }).then(_checkResponse);
     },
-    addCardLike: (id) => {
+    addCardLike: (id, userId) => {
+      const body = { likes: [] };
+
+      body.likes.push(userId);
+
       return fetch(`${baseUrl}/items/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ likes: [1] }),
+        body: JSON.stringify(body),
       }).then(_checkResponse);
     },
     removeCardLike: (id) => {
@@ -65,8 +69,25 @@ export default function itemsApi(currentUser) {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ likes: [0] }),
-      }).then(_checkResponse);
+        body: JSON.stringify({ likes: [] }),
+      })
+        .then(_checkResponse)
+        .then((data) => {
+          const updatedCard = data.data;
+          const updatedLikes = updatedCard.likes || [];
+          const userId = currentUser.currentUser._id;
+
+          const filteredLikes = updatedLikes.filter((like) => like !== userId);
+
+          return fetch(`${baseUrl}/items/${id}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ likes: filteredLikes }),
+          }).then(_checkResponse);
+        });
     },
   };
 }

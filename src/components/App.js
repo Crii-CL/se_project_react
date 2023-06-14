@@ -48,23 +48,12 @@ export default function App() {
   };
 
   const handleLikeClick = ({ card, isLiked }) => {
-    checkLikes();
-    // if (card === isLiked) {
-    //   setIsLiked(false);
-    //   itemsApiObject.removeCardLike(card);
-    // } else if (card !== isLiked) {
-    //   [];
-    //   setIsLiked(true);
-    //   itemsApiObject.addCardLike(card);
-    // }
-
-    if (card.likes.some((user) => user._id === currentUser?.currentUser._id)) {
-      checkLikes(card);
-      if (isLiked) {
-        itemsApiObject.removeCardLike(card.id, card.likes);
-      } else if (!isLiked) {
-        itemsApiObject.addCardLike(card.id, card.likes);
-      }
+    if (isLiked) {
+      setIsLiked(false);
+      itemsApiObject.removeCardLike(card._id);
+    } else if (!isLiked) {
+      setIsLiked(true);
+      itemsApiObject.addCardLike(card._id);
     }
   };
 
@@ -265,8 +254,6 @@ export default function App() {
     }
   }, []);
 
-  console.log(currentUser);
-  console.log(items);
   return (
     <div className="page">
       <BrowserRouter>
@@ -290,6 +277,7 @@ export default function App() {
                   clothingItems={items}
                   isLoggedIn={isLoggedIn}
                   isLiked={isLiked}
+                  checkLikes={checkLikes}
                 />
               </Route>
               <ProtectedRoute isLoggedIn={isLoggedIn}>
