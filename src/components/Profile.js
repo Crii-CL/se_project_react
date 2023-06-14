@@ -2,7 +2,6 @@ import "../blocks/Profile.css";
 import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
 import ItemCard from "./ItemCard";
-import { v4 as uuidv4 } from "uuid";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 
@@ -16,8 +15,8 @@ export default function Profile({
   isLoggedIn,
   isLiked,
 }) {
-  const uniqueId = uuidv4();
   const currentUser = useContext(CurrentUserContext);
+  console.log(isLiked, "likes");
 
   return (
     <div className="profile">
@@ -31,10 +30,10 @@ export default function Profile({
             {clothingItems?.map((card) => {
               return (
                 <ItemCard
-                  key={uniqueId}
+                  key={card._id}
                   name={card.name}
                   url={card.imageUrl}
-                  id={card.id}
+                  id={card._id}
                   weather={card.weather}
                   isLiked={isLiked}
                   handleCardClick={handleCardClick}
@@ -42,7 +41,7 @@ export default function Profile({
                   isLoggedIn={isLoggedIn}
                   card={card}
                   owner={card.owner}
-                  user={currentUser.currentUser._id}
+                  user={currentUser?.currentUser._id}
                 />
               );
             })}

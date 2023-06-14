@@ -36,13 +36,15 @@ export default function ItemCard({
     >
       <div className="cards__caption">
         {!linkError ? <p className="cards__name">{name}</p> : <></>}
-        <button className="cards__button">
-          <img
-            src={isLiked ? liked : disliked}
-            className={"cards__like-image"}
-            onClick={() => handleLikeClick({ card, isLiked })}
-          />
-        </button>
+        {!linkError && (
+          <button className="cards__button">
+            <img
+              src={isLiked ? liked : disliked}
+              className={"cards__like-image"}
+              onClick={() => handleLikeClick({ card, isLiked })}
+            />
+          </button>
+        )}
       </div>
       {!linkError ? (
         <img

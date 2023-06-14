@@ -3,7 +3,6 @@ import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import "../blocks/Main.css";
-import { v4 as uuidv4 } from "uuid";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 
@@ -16,7 +15,7 @@ export default function Main({
   isLiked,
 }) {
   const currentUser = useContext(CurrentUserContext);
-  const uniqueId = uuidv4();
+  console.log(clothingItems?.length);
   return (
     <main className="main">
       <WeatherCard day={false} type="clear" weatherTemp={weatherData} />
@@ -24,13 +23,12 @@ export default function Main({
         {isLoggedIn && (
           <ul className="cards__list" id="card-list">
             {clothingItems?.map((card) => {
-              // console.log(card);
               return (
                 <ItemCard
-                  key={uniqueId}
+                  key={card._id}
                   name={card.name}
                   url={card.imageUrl}
-                  id={card.id}
+                  id={card._id}
                   weather={card.weather}
                   isLiked={isLiked}
                   handleCardClick={handleCardClick}

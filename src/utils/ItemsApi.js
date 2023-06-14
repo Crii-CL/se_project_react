@@ -7,7 +7,6 @@ export default function itemsApi(currentUser) {
   }
 
   const baseUrl = "http://localhost:3001";
-  // "https://my-json-server.typicode.com/crii-cl/se_project_react";
 
   const token = localStorage.getItem("jwt");
 
@@ -49,24 +48,24 @@ export default function itemsApi(currentUser) {
         },
       }).then(_checkResponse);
     },
-    addCardLike: (id, likes) => {
+    addCardLike: (id) => {
       return fetch(`${baseUrl}/items/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ likes }),
+        body: JSON.stringify({ likes: [1] }),
       }).then(_checkResponse);
     },
-    removeCardLike: (id, likes) => {
+    removeCardLike: (id) => {
       return fetch(`${baseUrl}/items/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ likes }),
+        body: JSON.stringify({ likes: [0] }),
       }).then(_checkResponse);
     },
   };

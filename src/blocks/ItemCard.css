@@ -57,6 +57,11 @@
   padding: none;
   cursor: pointer;
   background: transparent;
+  transition: 0.2s ease;
+}
+
+.cards__button:hover {
+  transform: scale(120%);
 }
 
 .cards__like-image {

@@ -48,11 +48,21 @@ export default function App() {
   };
 
   const handleLikeClick = ({ card, isLiked }) => {
-    if (card.likes.some((user) => user._id === currentUser._id)) {
+    checkLikes();
+    // if (card === isLiked) {
+    //   setIsLiked(false);
+    //   itemsApiObject.removeCardLike(card);
+    // } else if (card !== isLiked) {
+    //   [];
+    //   setIsLiked(true);
+    //   itemsApiObject.addCardLike(card);
+    // }
+
+    if (card.likes.some((user) => user._id === currentUser?.currentUser._id)) {
       checkLikes(card);
       if (isLiked) {
         itemsApiObject.removeCardLike(card.id, card.likes);
-      } else if (isLiked) {
+      } else if (!isLiked) {
         itemsApiObject.addCardLike(card.id, card.likes);
       }
     }
@@ -63,6 +73,7 @@ export default function App() {
     itemsApiObject
       .add(name, url, weatherType)
       .then((res) => {
+        console.log(res.data);
         setItems([res.data, ...items]);
         setIsAddModalOpen(false);
       })
@@ -255,7 +266,7 @@ export default function App() {
   }, []);
 
   console.log(currentUser);
-
+  console.log(items);
   return (
     <div className="page">
       <BrowserRouter>
