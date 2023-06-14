@@ -15,16 +15,16 @@ export default function EditProfileModal({
   const [nameInputValue, setNameInputValue] = useState("");
   const [avatarInputValue, setAvatarInputValue] = useState("");
 
+  useEffect(() => {
+    setNameInputValue(currentUser?.name);
+    setAvatarInputValue(currentUser?.avatar);
+  }, [isModalOpen]);
+
   function handleSubmit(e) {
     e.preventDefault();
     editProfile(nameInputValue, avatarInputValue);
     onClose();
   }
-
-  useEffect(() => {
-    setNameInputValue(currentUser?.name);
-    setAvatarInputValue(currentUser?.avatar);
-  }, [isModalOpen]);
 
   return (
     <ModalWithForm
