@@ -15,10 +15,8 @@ export default function Profile({
   openEdit,
   logout,
   isLoggedIn,
-  isLiked,
 }) {
   const currentUser = useContext(CurrentUserContext);
-  console.log(isLiked, "likes");
 
   return (
     <div className="profile">
@@ -30,7 +28,6 @@ export default function Profile({
         <section className="cards">
           <ul className="cards__list">
             {clothingItems?.map((card) => {
-              const image = isLiked ? liked : disliked;
               return (
                 <ItemCard
                   key={card?._id}
@@ -38,14 +35,12 @@ export default function Profile({
                   url={card?.imageUrl}
                   id={card?._id}
                   weather={card?.weather}
-                  isLiked={isLiked}
                   handleCardClick={handleCardClick}
                   handleLikeClick={handleLikeClick}
                   isLoggedIn={isLoggedIn}
                   card={card}
                   owner={card?.owner}
                   user={currentUser?.currentUser?._id}
-                  image={image}
                 />
               );
             })}

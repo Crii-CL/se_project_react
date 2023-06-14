@@ -64,30 +64,13 @@ export default function itemsApi(currentUser) {
     },
     removeCardLike: (id) => {
       return fetch(`${baseUrl}/items/${id}/likes`, {
-        method: "PUT",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ likes: [] }),
-      })
-        .then(_checkResponse)
-        .then((data) => {
-          const updatedCard = data.data;
-          const updatedLikes = updatedCard.likes || [];
-          const userId = currentUser.currentUser._id;
-
-          const filteredLikes = updatedLikes.filter((like) => like !== userId);
-
-          return fetch(`${baseUrl}/items/${id}/likes`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-              authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({ likes: filteredLikes }),
-          }).then(_checkResponse);
-        });
+      }).then(_checkResponse);
     },
   };
 }

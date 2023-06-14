@@ -3,22 +3,21 @@ import "../blocks/ItemCard.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useState } from "react";
 import { useEffect } from "react";
+import disliked from "../images/likeButton.svg";
+import liked from "../images/like_active.svg";
 
 export default function ItemCard({
   handleCardClick,
   handleLikeClick,
   name,
   url,
-  weather,
-  id,
   user,
   card,
   owner,
-  isLiked,
-  image,
 }) {
+  const { currentUser } = useContext(CurrentUserContext);
   const [linkError, setLinkError] = useState(false);
-  console.log(card);
+  const isLiked = card.likes.includes(currentUser?._id);
 
   function handleLinkError() {
     setLinkError(true);
@@ -31,14 +30,17 @@ export default function ItemCard({
   return (
     <li
       className="cards__el"
-      // onClick={() => handleCardClick(name, url, weather, id, owner)}
+      // onClick={(e) => {
+      //   handleCardClick(name, url, weather, _id, owner);
+      //   e.stopPropagation();
+      // }}
     >
       <div className="cards__caption">
         {!linkError ? <p className="cards__name">{name}</p> : <></>}
         {!linkError && (
           <button className="cards__button">
             <img
-              src={image}
+              src={isLiked ? liked : disliked}
               className="cards__like-image"
               onClick={() => {
                 handleLikeClick({ card, isLiked });

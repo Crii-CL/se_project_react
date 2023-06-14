@@ -43,17 +43,26 @@ export default function App() {
   const UserApi = SignupOrSignin();
   const itemsApiObject = itemsApi(currentUser);
 
-  const checkLikes = (card) => {
-    card.likes.length > 0 ? setIsLiked(true) : setIsLiked(false);
-  };
-
   const handleLikeClick = ({ card, isLiked }) => {
+    const cardIndex = items.indexOf(card);
     if (isLiked) {
       setIsLiked(false);
       itemsApiObject.removeCardLike(card._id);
+      const updatedCards = [
+        ...items.slice(0, cardIndex),
+        { ...card, isLiked: false },
+        ...items.slice(cardIndex + 1),
+      ];
+      setItems(updatedCards);
     } else if (!isLiked) {
       setIsLiked(true);
       itemsApiObject.addCardLike(card._id);
+      const updatedCards = [
+        ...items.slice(0, cardIndex),
+        { ...card, isLiked: false },
+        ...items.slice(cardIndex + 1),
+      ];
+      setItems(updatedCards);
     }
   };
 
@@ -75,6 +84,8 @@ export default function App() {
   };
 
   const handleItemDelete = (item) => {
+    console.log(items);
+    console.log(item);
     itemsApiObject
       .remove(item)
       .then(() => {
@@ -87,13 +98,13 @@ export default function App() {
       });
   };
 
-  const handleCardClick = (name, url, weather, id, owner) => {
+  const handleCardClick = (name, url, weather, _id, owner) => {
     setIsItemModalOpen(true);
     setModalData({
       name,
       url,
       weather,
-      id,
+      _id,
       owner,
     });
   };
@@ -274,7 +285,6 @@ export default function App() {
                   clothingItems={items}
                   isLoggedIn={isLoggedIn}
                   isLiked={isLiked}
-                  checkLikes={checkLikes}
                 />
               </Route>
               <ProtectedRoute isLoggedIn={isLoggedIn}>
