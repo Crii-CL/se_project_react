@@ -65,7 +65,7 @@ export default function ItemModal({
             type="submit"
             className="itemModal__confirm-delBtn"
             onClick={() => {
-              handleItemDelete(itemData.id);
+              handleItemDelete(itemData._id);
             }}
           >
             Delete Item
