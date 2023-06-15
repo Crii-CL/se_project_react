@@ -165,7 +165,7 @@ export default function App() {
     UserApi.signUp(email, password, name, avatar)
       .then(() => {
         setIsRegistered(true);
-        setIsLoggedIn(true);
+        setIsLoginModalOpen(true);
         setIsRegisterModalOpen(false);
       })
       .catch((err) => {
@@ -194,7 +194,7 @@ export default function App() {
   const editProfile = (name, avatar) => {
     setIsLoading(true);
     UserApi.editUser(name, avatar, token)
-      .then((user) => {
+      .then(() => {
         setCurrentUser(name, avatar);
         closeAllPopups();
       })
