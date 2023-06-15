@@ -84,8 +84,6 @@ export default function App() {
   };
 
   const handleItemDelete = (item) => {
-    console.log(items);
-    console.log(item);
     itemsApiObject
       .remove(item)
       .then(() => {
@@ -260,7 +258,7 @@ export default function App() {
     } else {
       setIsLoggedIn(false);
     }
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <div className="page">

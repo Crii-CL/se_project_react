@@ -15,7 +15,6 @@ export default function ItemModal({
   handleConfirmModalClose,
   currentUser,
 }) {
-  console.log(itemData);
   return (
     <div
       className={`itemModal ${isItemModalOpen ? "modal_opened" : ""} ${
