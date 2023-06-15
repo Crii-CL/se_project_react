@@ -7,7 +7,6 @@ import liked from "../images/like_active.svg";
 
 export default function ItemCard({
   handleCardClick,
-  handleLikeClick,
   name,
   url,
   user,
@@ -15,10 +14,34 @@ export default function ItemCard({
   owner,
   weather,
   _id,
+  items,
+  setItems,
+  itemsApiObject,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
   const [linkError, setLinkError] = useState(false);
   const isLiked = card.likes.includes(currentUser?._id);
+
+  const handleLikeClick = ({ card }) => {
+    const cardIndex = items.indexOf(card);
+    if (isLiked) {
+      itemsApiObject.removeCardLike(card._id);
+      const updatedCards = [
+        ...items.slice(0, cardIndex),
+        { ...card, isLiked: false },
+        ...items.slice(cardIndex + 1),
+      ];
+      setItems(updatedCards);
+    } else if (!isLiked) {
+      itemsApiObject.addCardLike(card._id);
+      const updatedCards = [
+        ...items.slice(0, cardIndex),
+        { ...card, isLiked: false },
+        ...items.slice(cardIndex + 1),
+      ];
+      setItems(updatedCards);
+    }
+  };
 
   function handleLinkError() {
     setLinkError(true);
@@ -31,10 +54,9 @@ export default function ItemCard({
   return (
     <li
       className="cards__el"
-      onClick={(e) => {
-        handleCardClick(name, url, weather, card._id, owner);
-        e.stopPropagation();
-      }}
+      // onClick={() => {
+      //   handleCardClick(name, url, weather, card._id, owner);
+      // }}
     >
       <div className="cards__caption">
         {!linkError ? <p className="cards__name">{name}</p> : <></>}

@@ -9,12 +9,14 @@ import liked from "../images/like_active.svg";
 
 export default function Profile({
   handleCardClick,
-  handleLikeClick,
   clothingItems,
   openForm,
   openEdit,
   logout,
   isLoggedIn,
+  items,
+  setItems,
+  itemsApiObject,
 }) {
   const currentUser = useContext(CurrentUserContext);
 
@@ -36,11 +38,13 @@ export default function Profile({
                   id={card?._id}
                   weather={card?.weather}
                   handleCardClick={handleCardClick}
-                  handleLikeClick={handleLikeClick}
                   isLoggedIn={isLoggedIn}
                   card={card}
                   owner={card?.owner}
                   user={currentUser?.currentUser?._id}
+                  items={items}
+                  setItems={setItems}
+                  itemsApiObject={itemsApiObject}
                 />
               );
             })}

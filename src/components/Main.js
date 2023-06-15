@@ -7,11 +7,13 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 
 export default function Main({
-  handleLikeClick,
   handleCardClick,
   weatherData,
   clothingItems,
   isLoggedIn,
+  items,
+  setItems,
+  itemsApiObject,
 }) {
   const currentUser = useContext(CurrentUserContext);
 
@@ -30,11 +32,13 @@ export default function Main({
                   id={card?.id}
                   weather={card?.weather}
                   handleCardClick={handleCardClick}
-                  handleLikeClick={handleLikeClick}
                   isLoggedIn={isLoggedIn}
                   card={card}
                   owner={card?.owner}
                   user={currentUser?.currentUser?._id}
+                  items={items}
+                  setItems={setItems}
+                  itemsApiObject={itemsApiObject}
                 />
               );
             })}

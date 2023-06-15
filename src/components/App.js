@@ -37,34 +37,10 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [isLiked, setIsLiked] = useState(false);
 
   const token = localStorage.getItem("jwt");
   const UserApi = SignupOrSignin();
   const itemsApiObject = itemsApi(currentUser);
-
-  const handleLikeClick = ({ card, isLiked }) => {
-    const cardIndex = items.indexOf(card);
-    if (isLiked) {
-      setIsLiked(false);
-      itemsApiObject.removeCardLike(card._id);
-      const updatedCards = [
-        ...items.slice(0, cardIndex),
-        { ...card, isLiked: false },
-        ...items.slice(cardIndex + 1),
-      ];
-      setItems(updatedCards);
-    } else if (!isLiked) {
-      setIsLiked(true);
-      itemsApiObject.addCardLike(card._id);
-      const updatedCards = [
-        ...items.slice(0, cardIndex),
-        { ...card, isLiked: false },
-        ...items.slice(cardIndex + 1),
-      ];
-      setItems(updatedCards);
-    }
-  };
 
   const handleAddItem = (name, url, weatherType) => {
     setIsLoading(true);
@@ -193,7 +169,6 @@ export default function App() {
     setIsLoading(true);
     UserApi.editUser(name, avatar, token)
       .then(() => {
-        console.log(name, avatar);
         setCurrentUser(name, avatar);
         closeAllPopups();
       })
@@ -278,25 +253,27 @@ export default function App() {
             <Switch>
               <Route exact path="/">
                 <Main
-                  handleLikeClick={handleLikeClick}
                   handleCardClick={handleCardClick}
                   weatherData={weatherData}
                   clothingItems={items}
                   isLoggedIn={isLoggedIn}
-                  isLiked={isLiked}
+                  items={items}
+                  setItems={setItems}
+                  itemsApiObject={itemsApiObject}
                 />
               </Route>
               <ProtectedRoute isLoggedIn={isLoggedIn}>
                 {isLoggedIn && (
                   <Profile
-                    handleLikeClick={handleLikeClick}
                     handleCardClick={handleCardClick}
                     openForm={openAddForm}
                     clothingItems={items}
                     openEdit={openEditProfileForm}
                     logout={signOutUser}
                     isLoggedIn={isLoggedIn}
-                    isLiked={isLiked}
+                    items={items}
+                    setItems={setItems}
+                    itemsApiObject={itemsApiObject}
                   />
                 )}
               </ProtectedRoute>
