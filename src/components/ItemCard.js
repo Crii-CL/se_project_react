@@ -38,7 +38,7 @@ export default function ItemCard({
     >
       <div className="cards__caption">
         {!linkError ? <p className="cards__name">{name}</p> : <></>}
-        {!linkError && (
+        {!linkError && currentUser && (
           <button className="cards__button">
             <img
               src={isLiked ? liked : disliked}

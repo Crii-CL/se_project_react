@@ -87,7 +87,7 @@ export default function App() {
     itemsApiObject
       .remove(item)
       .then(() => {
-        const filteredItems = items.filter((card) => card.id !== item);
+        const filteredItems = items.filter((card) => card._id !== item);
         setItems(filteredItems);
         closeAllPopups();
       })
@@ -193,6 +193,7 @@ export default function App() {
     setIsLoading(true);
     UserApi.editUser(name, avatar, token)
       .then(() => {
+        console.log(name, avatar);
         setCurrentUser(name, avatar);
         closeAllPopups();
       })
