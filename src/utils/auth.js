@@ -1,11 +1,6 @@
-export default function SignupOrSignin() {
-  function _checkResponse(res) {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error${res.status}`);
-  }
+import checkResponse from "../utils/api";
 
+export default function SignupOrSignin() {
   const baseUrl = "http://localhost:3001";
 
   return {
@@ -22,7 +17,7 @@ export default function SignupOrSignin() {
           avatar,
         }),
       }).then((res) => {
-        return _checkResponse(res);
+        return checkResponse(res);
       });
     },
     signIn: (email, password) => {
@@ -32,7 +27,7 @@ export default function SignupOrSignin() {
         body: JSON.stringify({ email, password }),
       })
         .then((res) => {
-          return _checkResponse(res);
+          return checkResponse(res);
         })
         .then((res) => {
           const token = res.token;
@@ -47,7 +42,7 @@ export default function SignupOrSignin() {
           authorization: `Bearer ${token}`,
         },
       }).then((res) => {
-        return _checkResponse(res);
+        return checkResponse(res);
       });
     },
     editUser: (name, avatar, token) => {
@@ -59,7 +54,7 @@ export default function SignupOrSignin() {
         },
         body: JSON.stringify({ name, avatar }),
       }).then((res) => {
-        return _checkResponse(res);
+        return checkResponse(res);
       });
     },
   };

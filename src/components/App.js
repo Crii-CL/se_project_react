@@ -42,6 +42,7 @@ export default function App() {
   const UserApi = SignupOrSignin();
   const itemsApiObject = itemsApi(currentUser);
 
+  console.log(items);
   const handleAddItem = (name, url, weatherType) => {
     setIsLoading(true);
     itemsApiObject
@@ -170,7 +171,8 @@ export default function App() {
     setIsLoading(true);
     UserApi.editUser(name, avatar, token)
       .then(() => {
-        setCurrentUser({ name, avatar });
+        console.log(currentUser);
+        setCurrentUser({ ...currentUser, name, avatar });
         closeAllPopups();
       })
       .catch((err) => {
@@ -256,7 +258,6 @@ export default function App() {
                 <Main
                   handleCardClick={handleCardClick}
                   weatherData={weatherData}
-                  clothingItems={items}
                   isLoggedIn={isLoggedIn}
                   items={items}
                   setItems={setItems}
@@ -268,7 +269,6 @@ export default function App() {
                   <Profile
                     handleCardClick={handleCardClick}
                     openForm={openAddForm}
-                    clothingItems={items}
                     openEdit={openEditProfileForm}
                     logout={signOutUser}
                     isLoggedIn={isLoggedIn}

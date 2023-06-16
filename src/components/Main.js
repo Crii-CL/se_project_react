@@ -9,7 +9,6 @@ import { useContext } from "react";
 export default function Main({
   handleCardClick,
   weatherData,
-  clothingItems,
   isLoggedIn,
   items,
   setItems,
@@ -23,7 +22,7 @@ export default function Main({
       <section className="cards" id="card-section">
         {isLoggedIn && (
           <ul className="cards__list" id="card-list">
-            {clothingItems?.map((card) => {
+            {items?.map((card) => {
               return (
                 <ItemCard
                   key={card?._id}

@@ -1,11 +1,6 @@
-export default function itemsApi(currentUser) {
-  function _checkResponse(res) {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error${res.status}`);
-  }
+import checkResponse from "../utils/api";
 
+export default function itemsApi(currentUser) {
   const baseUrl = "http://localhost:3001";
 
   const token = localStorage.getItem("jwt");
@@ -13,7 +8,7 @@ export default function itemsApi(currentUser) {
   return {
     get: () => {
       return fetch(`${baseUrl}/items`)
-        .then(_checkResponse)
+        .then(checkResponse)
         .then((data) => {
           const cards = data.data;
           return cards.map((card) => ({
@@ -37,7 +32,7 @@ export default function itemsApi(currentUser) {
           authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(body),
-      }).then(_checkResponse);
+      }).then(checkResponse);
     },
     remove: (id) => {
       return fetch(`${baseUrl}/items/${id}`, {
@@ -46,7 +41,7 @@ export default function itemsApi(currentUser) {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-      }).then(_checkResponse);
+      }).then(checkResponse);
     },
     addCardLike: (id, userId) => {
       const body = { likes: [] };
@@ -60,7 +55,7 @@ export default function itemsApi(currentUser) {
           authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(body),
-      }).then(_checkResponse);
+      }).then(checkResponse);
     },
     removeCardLike: (id) => {
       return fetch(`${baseUrl}/items/${id}/likes`, {
@@ -70,7 +65,7 @@ export default function itemsApi(currentUser) {
           authorization: `Bearer ${token}`,
         },
         // body: JSON.stringify({ likes: [] }),
-      }).then(_checkResponse);
+      }).then(checkResponse);
     },
   };
 }

@@ -7,7 +7,6 @@ import { useContext } from "react";
 import disliked from "../images/likeButton.svg";
 import liked from "../images/like_active.svg";
 import { useEffect } from "react";
-
 export default function Profile({
   handleCardClick,
   clothingItems,
@@ -30,7 +29,7 @@ export default function Profile({
         <ClothesSection openForm={openForm} />
         <section className="cards">
           <ul className="cards__list">
-            {clothingItems?.map((card) => {
+            {items?.map((card) => {
               return (
                 <ItemCard
                   key={card?._id}
