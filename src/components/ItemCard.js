@@ -65,12 +65,7 @@ export default function ItemCard({
   }
 
   return (
-    <li
-      className="cards__el"
-      // onClick={() => {
-      //   handleCardClick(name, url, weather, card._id, owner);
-      // }}
-    >
+    <li className="cards__el">
       <div className="cards__caption">
         {!linkError ? <p className="cards__name">{name}</p> : <></>}
         {!linkError && currentUser && (
@@ -91,6 +86,9 @@ export default function ItemCard({
           src={url}
           alt={name}
           onError={handleLinkError}
+          onClick={() => {
+            handleCardClick(name, url, weather, card._id, owner);
+          }}
         ></img>
       ) : (
         <div className="cards__image-error">
