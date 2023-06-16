@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import "../blocks/ItemCard.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import disliked from "../images/likeButton.svg";
@@ -20,7 +20,7 @@ export default function ItemCard({
   const { currentUser } = useContext(CurrentUserContext);
   const [linkError, setLinkError] = useState(false);
   const isLiked = card.likes.includes(currentUser?._id);
-  const [isCardLiked, setIsCardLiked] = useState(false);
+  const [isCardLiked, setIsCardLiked] = useState(isLiked);
 
   const handleLikeClick = () => {
     const cardIndex = items.findIndex((item) => item._id === card._id);
@@ -31,8 +31,9 @@ export default function ItemCard({
       itemsApiObject
         .removeCardLike(card._id, currentUser._id)
         .then(() => {
+          console.log(card, "disliking");
           updatedCard.likes = updatedCard.likes.filter(
-            (likeId) => likeId !== currentUser._id
+            (likeId) => likeId !== currentUser?._id
           );
           updatedItems[cardIndex] = updatedCard;
           setItems(updatedItems);
@@ -45,7 +46,8 @@ export default function ItemCard({
       itemsApiObject
         .addCardLike(card._id, currentUser._id)
         .then(() => {
-          updatedCard.likes.push(currentUser._id);
+          console.log(card, "liking");
+          updatedCard.likes.push(currentUser?._id);
           updatedItems[cardIndex] = updatedCard;
           setItems(updatedItems);
           setIsCardLiked(true);
@@ -63,7 +65,6 @@ export default function ItemCard({
   if (owner !== user || null) {
     return null;
   }
-
   return (
     <li className="cards__el">
       <div className="cards__caption">
