@@ -15,7 +15,7 @@ export default function Main({
   setItems,
   itemsApiObject,
 }) {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   return (
     <main className="main">
@@ -35,7 +35,7 @@ export default function Main({
                   isLoggedIn={isLoggedIn}
                   card={card}
                   owner={card?.owner}
-                  user={currentUser?.currentUser?._id}
+                  user={currentUser?._id}
                   items={items}
                   setItems={setItems}
                   itemsApiObject={itemsApiObject}

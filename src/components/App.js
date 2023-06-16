@@ -156,6 +156,7 @@ export default function App() {
       .then(() => {
         setIsLoggedIn(true);
         setIsLoginModalOpen(false);
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);

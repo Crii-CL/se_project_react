@@ -19,8 +19,13 @@ export default function ItemCard({
 }) {
   const { currentUser } = useContext(CurrentUserContext);
   const [linkError, setLinkError] = useState(false);
-  const isLiked = card.likes.includes(currentUser?._id);
-  const [isCardLiked, setIsCardLiked] = useState(isLiked);
+  const [isCardLiked, setIsCardLiked] = useState(
+    card.likes.includes(currentUser?._id)
+  );
+
+  useEffect(() => {
+    setIsCardLiked(card.likes.includes(currentUser?._id));
+  }, [card.likes, currentUser?._id]);
 
   const handleLikeClick = () => {
     const cardIndex = items.findIndex((item) => item._id === card._id);
@@ -29,11 +34,10 @@ export default function ItemCard({
 
     if (isCardLiked) {
       itemsApiObject
-        .removeCardLike(card._id, currentUser._id)
+        .removeCardLike(card._id, currentUser?._id)
         .then(() => {
-          console.log(card, "disliking");
           updatedCard.likes = updatedCard.likes.filter(
-            (likeId) => likeId !== currentUser?._id
+            (likeId) => likeId !== currentUser._id
           );
           updatedItems[cardIndex] = updatedCard;
           setItems(updatedItems);
@@ -44,9 +48,8 @@ export default function ItemCard({
         });
     } else {
       itemsApiObject
-        .addCardLike(card._id, currentUser._id)
+        .addCardLike(card._id, currentUser?._id)
         .then(() => {
-          console.log(card, "liking");
           updatedCard.likes.push(currentUser?._id);
           updatedItems[cardIndex] = updatedCard;
           setItems(updatedItems);
@@ -75,7 +78,7 @@ export default function ItemCard({
               src={isCardLiked ? liked : disliked}
               className="cards__like-image"
               onClick={() => {
-                handleLikeClick({ card, isLiked });
+                handleLikeClick();
               }}
             />
           </button>

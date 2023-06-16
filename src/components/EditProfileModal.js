@@ -27,7 +27,6 @@ export default function EditProfileModal({
   function handleSubmit(e) {
     e.preventDefault();
     editProfile(nameInputValue, avatarInputValue);
-    onClose();
   }
 
   return (

@@ -19,7 +19,6 @@ export default function LoginModal({
   function handleSubmit(e) {
     e.preventDefault();
     login(emailInputValue, passwordInputValue);
-    onClose();
     history.push("/profile");
   }
 

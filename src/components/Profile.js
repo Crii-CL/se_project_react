@@ -6,6 +6,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 import disliked from "../images/likeButton.svg";
 import liked from "../images/like_active.svg";
+import { useEffect } from "react";
 
 export default function Profile({
   handleCardClick,
@@ -18,7 +19,7 @@ export default function Profile({
   setItems,
   itemsApiObject,
 }) {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   return (
     <div className="profile">
@@ -41,7 +42,7 @@ export default function Profile({
                   isLoggedIn={isLoggedIn}
                   card={card}
                   owner={card?.owner}
-                  user={currentUser?.currentUser?._id}
+                  user={currentUser?._id}
                   items={items}
                   setItems={setItems}
                   itemsApiObject={itemsApiObject}
