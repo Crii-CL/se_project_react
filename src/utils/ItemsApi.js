@@ -49,6 +49,7 @@ export default function itemsApi(currentUser) {
       }).then(_checkResponse);
     },
     addCardLike: (id, userId) => {
+      console.log({ id, userId });
       const body = { likes: [] };
 
       body.likes.push(userId);

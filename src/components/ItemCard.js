@@ -1,7 +1,6 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "../blocks/ItemCard.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { useState } from "react";
 import disliked from "../images/likeButton.svg";
 import liked from "../images/like_active.svg";
 
@@ -21,25 +20,39 @@ export default function ItemCard({
   const { currentUser } = useContext(CurrentUserContext);
   const [linkError, setLinkError] = useState(false);
   const isLiked = card.likes.includes(currentUser?._id);
+  const [isCardLiked, setIsCardLiked] = useState(false);
 
-  const handleLikeClick = ({ card }) => {
-    const cardIndex = items.indexOf(card);
-    if (isLiked) {
-      itemsApiObject.removeCardLike(card._id);
-      const updatedCards = [
-        ...items.slice(0, cardIndex),
-        { ...card, isLiked: false },
-        ...items.slice(cardIndex + 1),
-      ];
-      setItems(updatedCards);
-    } else if (!isLiked) {
-      itemsApiObject.addCardLike(card._id);
-      const updatedCards = [
-        ...items.slice(0, cardIndex),
-        { ...card, isLiked: false },
-        ...items.slice(cardIndex + 1),
-      ];
-      setItems(updatedCards);
+  const handleLikeClick = () => {
+    const cardIndex = items.findIndex((item) => item._id === card._id);
+    const updatedItems = [...items];
+    const updatedCard = { ...updatedItems[cardIndex] };
+
+    if (isCardLiked) {
+      itemsApiObject
+        .removeCardLike(card._id, currentUser._id)
+        .then(() => {
+          updatedCard.likes = updatedCard.likes.filter(
+            (likeId) => likeId !== currentUser._id
+          );
+          updatedItems[cardIndex] = updatedCard;
+          setItems(updatedItems);
+          setIsCardLiked(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      itemsApiObject
+        .addCardLike(card._id, currentUser._id)
+        .then(() => {
+          updatedCard.likes.push(currentUser._id);
+          updatedItems[cardIndex] = updatedCard;
+          setItems(updatedItems);
+          setIsCardLiked(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
@@ -63,7 +76,7 @@ export default function ItemCard({
         {!linkError && currentUser && (
           <button className="cards__button">
             <img
-              src={isLiked ? liked : disliked}
+              src={isCardLiked ? liked : disliked}
               className="cards__like-image"
               onClick={() => {
                 handleLikeClick({ card, isLiked });

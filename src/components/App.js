@@ -169,7 +169,7 @@ export default function App() {
     setIsLoading(true);
     UserApi.editUser(name, avatar, token)
       .then(() => {
-        setCurrentUser(name, avatar);
+        setCurrentUser({ name, avatar });
         closeAllPopups();
       })
       .catch((err) => {
