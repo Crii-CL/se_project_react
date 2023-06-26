@@ -3,7 +3,7 @@ import checkResponse from "../utils/api";
 export default function SignupOrSignin() {
   const baseUrl =
     process.env.NODE_ENV === "production"
-      ? "http://wtwr-crii.chickenkiller.com"
+      ? "https://wtwr-crii.chickenkiller.com"
       : "http://localhost:3001";
 
   return {
