@@ -42,7 +42,6 @@ export default function App() {
   const UserApi = SignupOrSignin();
   const itemsApiObject = itemsApi(currentUser);
 
-  console.log(items);
   const handleAddItem = (name, url, weatherType) => {
     setIsLoading(true);
     itemsApiObject
