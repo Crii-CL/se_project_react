@@ -3,7 +3,7 @@ import checkResponse from "../utils/api";
 export default function itemsApi(currentUser) {
   const baseUrl =
     process.env.NODE_ENV === "production"
-      ? "https://wtwr-crii.chickenkiller.com"
+      ? "https://api.wtwr-crii.chickenkiller.com"
       : "http://localhost:3001";
 
   const token = localStorage.getItem("jwt");
