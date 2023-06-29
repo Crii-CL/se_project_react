@@ -67,7 +67,6 @@ export default function itemsApi(currentUser) {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
         },
-        // body: JSON.stringify({ likes: [] }),
       }).then(checkResponse);
     },
   };
