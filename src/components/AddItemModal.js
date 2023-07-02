@@ -12,6 +12,44 @@ export default function AddItemModal({
   const [linkInputValue, setLinkInputValue] = useState("");
   const [weatherType, setWeatherType] = useState("");
 
+  /* ------------------------------------ . ----------------------------------- */
+  const [name, setName] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [url, setUrl] = useState("");
+  const [urlError, setUrlError] = useState("");
+  const [formValid, setFormValid] = useState(false);
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+    validateName();
+    validateForm();
+  };
+
+  const handleUrlChange = (e) => {
+    setUrl(e.target.value);
+    validateUrl();
+    validateForm();
+  };
+
+  const validateName = () => {
+    setNameError(name.length > 0 ? "" : "Name is required");
+  };
+
+  const validateUrl = () => {
+    if (url.length > 0) {
+      const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+      setUrlError(urlRegex.test(url) ? "" : "Invalid URL");
+    } else {
+      setUrlError("URL is required");
+    }
+  };
+
+  const validateForm = () => {
+    const isValid = name.length > 0 && url.length > 0 && urlError === "";
+    setFormValid(isValid);
+  };
+  /* ------------------------------------ . ----------------------------------- */
+
   function handleSubmit(e) {
     e.preventDefault();
     onAddItem(nameInputValue, linkInputValue, weatherType);

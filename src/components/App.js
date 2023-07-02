@@ -109,8 +109,6 @@ export default function App() {
     setIsEditProfileModalOpen(true);
   };
 
-  const formRef = useRef(null);
-
   const closeAllPopups = () => {
     setIsAddModalOpen(false);
     setIsItemModalOpen(false);
@@ -281,14 +279,12 @@ export default function App() {
               </ProtectedRoute>
             </Switch>
             <EditProfileModal
-              formRef={formRef}
               onClose={closeAllPopups}
               isModalOpen={isEditProfileModalOpen}
               handleOverlayClick={handleOverlayClick}
               editProfile={editProfile}
             ></EditProfileModal>
             <RegisterModal
-              formRef={formRef}
               handleOverlayClick={handleOverlayClick}
               onClose={closeAllPopups}
               isModalOpen={isRegisterModalOpen}
@@ -297,7 +293,6 @@ export default function App() {
               signup={signupUser}
             />
             <LoginModal
-              formRef={formRef}
               onClose={closeAllPopups}
               handleOverlayClick={handleOverlayClick}
               isModalOpen={isLoginModalOpen}
@@ -318,7 +313,6 @@ export default function App() {
               currentUser={currentUser}
             />
             <AddItemModal
-              formRef={formRef}
               onClose={closeAllPopups}
               isModalOpen={isAddModalOpen}
               handleOverlayClick={handleOverlayClick}
