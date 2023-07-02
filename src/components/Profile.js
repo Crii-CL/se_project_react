@@ -9,7 +9,6 @@ import liked from "../images/like_active.svg";
 import { useEffect } from "react";
 export default function Profile({
   handleCardClick,
-  clothingItems,
   openForm,
   openEdit,
   logout,
