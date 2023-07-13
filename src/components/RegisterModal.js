@@ -1,5 +1,6 @@
 import ModalWithForm from "./ModalWithForm";
 import "../blocks/RegisterModal.css";
+import "../blocks/modal.css";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -10,6 +11,7 @@ export default function RegisterModal({
   signup,
   handleRegisterModal,
   handleLoginModal,
+  checkInputValidity,
 }) {
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
@@ -43,6 +45,10 @@ export default function RegisterModal({
       clearInputs();
     }
   }, [isModalOpen]);
+
+  useEffect(() => {
+    checkInputValidity();
+  }, [emailInputValue, passwordInputValue, nameInputValue, avatarInputValue]);
 
   return (
     <ModalWithForm

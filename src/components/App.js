@@ -37,6 +37,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [error, setError] = useState(false);
 
   const token = localStorage.getItem("jwt");
   const UserApi = SignupOrSignin();
@@ -87,6 +88,25 @@ export default function App() {
     if (e.target === e.currentTarget) {
       closeAllPopups();
     }
+  };
+
+  const checkInputValidity = () => {
+    const formInputs = document.querySelectorAll(".login__input");
+    let hasError = false;
+
+    formInputs.forEach((input) => {
+      if (!input.validity.valid) {
+        hasError = true;
+        input.classList.add("error");
+        input.classList.remove("valid");
+      } else {
+        hasError = false;
+        input.classList.remove("error");
+        input.classList.add("valid");
+      }
+    });
+
+    setError(hasError);
   };
 
   const openConfirmModal = () => {
@@ -285,6 +305,7 @@ export default function App() {
               editProfile={editProfile}
             ></EditProfileModal>
             <RegisterModal
+              checkInputValidity={checkInputValidity}
               handleOverlayClick={handleOverlayClick}
               onClose={closeAllPopups}
               isModalOpen={isRegisterModalOpen}
@@ -293,6 +314,7 @@ export default function App() {
               signup={signupUser}
             />
             <LoginModal
+              checkInputValidity={checkInputValidity}
               onClose={closeAllPopups}
               handleOverlayClick={handleOverlayClick}
               isModalOpen={isLoginModalOpen}

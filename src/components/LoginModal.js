@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ModalWithForm from "./ModalWithForm";
 import "../blocks/LoginModal.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -10,11 +10,15 @@ export default function LoginModal({
   login,
   handleLoginModal,
   handleRegisterModal,
+  checkInputValidity,
 }) {
   const history = useHistory();
 
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
+
+  const emailInput = useRef(null);
+  const passwordInput = useRef(null);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -37,6 +41,16 @@ export default function LoginModal({
       clearInputs();
     }
   }, [isModalOpen]);
+
+  // useEffect(() => {
+  //   checkInputValidity();
+  // }, [emailInputValue, passwordInputValue]);
+
+  useRef(() => {
+    if (emailInput.current.focus()) {
+      checkInputValidity();
+    }
+  }, [checkInputValidity]);
 
   return (
     <ModalWithForm
