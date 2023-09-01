@@ -3,7 +3,7 @@ import ModalWithForm from "./ModalWithForm";
 import "../blocks/LoginModal.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-export default function LoginModal({
+const LoginModal = ({
   onClose,
   isModalOpen,
   handleOverlayClick,
@@ -11,7 +11,7 @@ export default function LoginModal({
   handleLoginModal,
   handleRegisterModal,
   checkInputValidity,
-}) {
+}) => {
   const history = useHistory();
 
   const [emailInputValue, setEmailInputValue] = useState("");
@@ -42,9 +42,9 @@ export default function LoginModal({
     }
   }, [isModalOpen]);
 
-  // useEffect(() => {
-  //   checkInputValidity();
-  // }, [emailInputValue, passwordInputValue]);
+  useEffect(() => {
+    checkInputValidity();
+  }, [emailInputValue, passwordInputValue]);
 
   useRef(() => {
     if (emailInput.current.focus()) {
@@ -95,4 +95,6 @@ export default function LoginModal({
       </div>
     </ModalWithForm>
   );
-}
+};
+
+export default LoginModal;

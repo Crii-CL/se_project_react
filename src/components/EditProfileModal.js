@@ -4,13 +4,14 @@ import "../blocks/modal.css";
 import "../blocks/EditProfileModal.css";
 import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { editableInputTypes } from "@testing-library/user-event/dist/utils";
 
-export default function EditProfileModal({
+const EditProfileModal = ({
   onClose,
   isModalOpen,
   handleOverlayClick,
   editProfile,
-}) {
+}) => {
   const { currentUser } = useContext(CurrentUserContext);
   const [nameInputValue, setNameInputValue] = useState("");
   const [avatarInputValue, setAvatarInputValue] = useState("");
@@ -63,4 +64,6 @@ export default function EditProfileModal({
       </fieldset>
     </ModalWithForm>
   );
-}
+};
+
+export default EditProfileModal;

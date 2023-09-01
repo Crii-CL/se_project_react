@@ -2,12 +2,12 @@ import ModalWithForm from "./ModalWithForm";
 import "../blocks/AddItemModal.css";
 import React, { useEffect, useState } from "react";
 
-export default function AddItemModal({
+const AddItemModal = ({
   onClose,
   isModalOpen,
   handleOverlayClick,
   onAddItem,
-}) {
+}) => {
   const [nameInputValue, setNameInputValue] = useState("");
   const [linkInputValue, setLinkInputValue] = useState("");
   const [weatherType, setWeatherType] = useState("");
@@ -107,4 +107,6 @@ export default function AddItemModal({
       </fieldset>
     </ModalWithForm>
   );
-}
+};
+
+export default AddItemModal;

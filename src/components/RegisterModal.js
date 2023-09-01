@@ -4,7 +4,7 @@ import "../blocks/modal.css";
 import { useState } from "react";
 import { useEffect } from "react";
 
-export default function RegisterModal({
+const RegisterModal = ({
   onClose,
   isModalOpen,
   handleOverlayClick,
@@ -12,7 +12,7 @@ export default function RegisterModal({
   handleRegisterModal,
   handleLoginModal,
   checkInputValidity,
-}) {
+}) => {
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
   const [nameInputValue, setNameInputValue] = useState("");
@@ -115,4 +115,6 @@ export default function RegisterModal({
       </div>
     </ModalWithForm>
   );
-}
+};
+
+export default RegisterModal;

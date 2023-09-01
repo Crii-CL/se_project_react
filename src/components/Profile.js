@@ -7,7 +7,8 @@ import { useContext } from "react";
 import disliked from "../images/likeButton.svg";
 import liked from "../images/like_active.svg";
 import { useEffect } from "react";
-export default function Profile({
+
+const Profile = ({
   handleCardClick,
   openForm,
   openEdit,
@@ -16,7 +17,7 @@ export default function Profile({
   items,
   setItems,
   itemsApiObject,
-}) {
+}) => {
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
@@ -52,4 +53,6 @@ export default function Profile({
       </div>
     </div>
   );
-}
+};
+
+export default Profile;

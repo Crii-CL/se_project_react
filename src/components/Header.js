@@ -6,7 +6,7 @@ import ToggleSwitch from "./ToggleSwitch";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-export default function Header({ openForm, isLoggedIn, register, login }) {
+const Header = ({ openForm, isLoggedIn, register, login }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -94,4 +94,6 @@ export default function Header({ openForm, isLoggedIn, register, login }) {
       </div>
     </header>
   );
-}
+};
+
+export default Header;

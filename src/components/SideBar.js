@@ -2,7 +2,7 @@ import "../blocks/SideBar.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext, useState } from "react";
 
-export default function SideBar({ openEdit, logout }) {
+const SideBar = ({ openEdit, logout }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const [avatarError, setAvatarError] = useState(false);
 
@@ -44,4 +44,6 @@ export default function SideBar({ openEdit, logout }) {
       </button>
     </div>
   );
-}
+};
+
+export default SideBar;

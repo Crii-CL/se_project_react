@@ -6,14 +6,14 @@ import "../blocks/Main.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-export default function Main({
+const Main = ({
   handleCardClick,
   weatherData,
   isLoggedIn,
   items,
   setItems,
   itemsApiObject,
-}) {
+}) => {
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
@@ -46,4 +46,5 @@ export default function Main({
       </section>
     </main>
   );
-}
+};
+export default Main;

@@ -1,6 +1,6 @@
 import checkResponse from "../utils/api";
 
-export default function SignupOrSignin() {
+const SignupOrSignin = () => {
   const baseUrl =
     process.env.NODE_ENV === "production"
       ? "https://api.wtwr-crii.chickenkiller.com"
@@ -61,4 +61,6 @@ export default function SignupOrSignin() {
       });
     },
   };
-}
+};
+
+export default SignupOrSignin;

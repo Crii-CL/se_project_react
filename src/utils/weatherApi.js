@@ -1,4 +1,4 @@
-export default function getWeather(latitude, longitude, apiKey, temperature) {
+const getWeather = (latitude, longitude, apiKey, temperature) => {
   if (temperature >= 86) {
     return "hot";
   } else if (temperature >= 66 && temperature <= 85) {
@@ -15,7 +15,7 @@ export default function getWeather(latitude, longitude, apiKey, temperature) {
     }
     return Promise.reject(`Error ${res.status}`);
   });
-}
+};
 
 export const parseWeatherData = (data) => {
   const main = data.main;
@@ -27,3 +27,5 @@ export const tempUnits = (temp) => ({
   F: `${Math.round(temp)}°F`,
   C: `${Math.round(((temp - 32) * 5) / 9)}°C`,
 });
+
+export default getWeather;

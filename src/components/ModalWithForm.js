@@ -1,7 +1,7 @@
 import React from "react";
 import closeButton from "../images/close-button.svg";
 
-export default function ModalWithForm({
+const ModalWithForm = ({
   name,
   title,
   buttonText,
@@ -10,7 +10,7 @@ export default function ModalWithForm({
   handleOverlayClick,
   onClose,
   children,
-}) {
+}) => {
   return (
     <div
       className={`modal modal_type_${name} ${
@@ -38,4 +38,5 @@ export default function ModalWithForm({
       </form>
     </div>
   );
-}
+};
+export default ModalWithForm;

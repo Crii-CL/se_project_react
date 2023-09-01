@@ -1,6 +1,6 @@
 import checkResponse from "../utils/api";
 
-export default function itemsApi(currentUser) {
+export const itemsApi = (currentUser) => {
   const baseUrl =
     process.env.NODE_ENV === "production"
       ? "https://api.wtwr-crii.chickenkiller.com"
@@ -70,4 +70,6 @@ export default function itemsApi(currentUser) {
       }).then(checkResponse);
     },
   };
-}
+};
+
+export default itemsApi;

@@ -1,6 +1,6 @@
 import "../blocks/ClothesSection.css";
 
-export default function ClothesSection({ openForm }) {
+const ClothesSection = ({ openForm }) => {
   return (
     <div className="clothes">
       <h2 className="clothes__header">Your Items</h2>
@@ -9,4 +9,6 @@ export default function ClothesSection({ openForm }) {
       </button>
     </div>
   );
-}
+};
+
+export default ClothesSection;

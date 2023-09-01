@@ -4,7 +4,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import disliked from "../images/likeButton.svg";
 import liked from "../images/like_active.svg";
 
-export default function ItemCard({
+const ItemCard = ({
   handleCardClick,
   name,
   url,
@@ -16,7 +16,7 @@ export default function ItemCard({
   items,
   setItems,
   itemsApiObject,
-}) {
+}) => {
   const { currentUser } = useContext(CurrentUserContext);
   const [linkError, setLinkError] = useState(false);
   const [isCardLiked, setIsCardLiked] = useState(
@@ -101,4 +101,6 @@ export default function ItemCard({
       )}
     </li>
   );
-}
+};
+
+export default ItemCard;

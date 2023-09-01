@@ -4,7 +4,7 @@ import closeButton from "../images/close-button-white.svg";
 import closeButtonDark from "../images/close-button.svg";
 import { useState } from "react";
 
-export default function ItemModal({
+const ItemModal = ({
   itemData,
   handleOverlayClick,
   isItemModalOpen,
@@ -14,7 +14,7 @@ export default function ItemModal({
   openConfirmModal,
   handleConfirmModalClose,
   currentUser,
-}) {
+}) => {
   return (
     <div
       className={`itemModal ${isItemModalOpen ? "modal_opened" : ""} ${
@@ -79,4 +79,6 @@ export default function ItemModal({
       </div>
     </div>
   );
-}
+};
+
+export default ItemModal;
