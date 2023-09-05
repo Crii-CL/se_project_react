@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from "react";
 
-function FormValidator({ settings, form }) {
+function FormValidator({ form, settings, children }) {
   const [inputList, setInputList] = useState([]);
   const [submitButton, setSubmitButton] = useState(null);
 
   useEffect(() => {
-    const formElement = document.querySelector(`form[title="${form}"]`);
-    const inputElements = [
-      ...formElement.querySelectorAll(settings.inputSelector),
-    ];
-    const submitButtonElement = formElement.querySelector(
-      settings.submitButtonSelector
-    );
+    const formElement = document.querySelector(`#${form}`);
+    if (formElement) {
+      const inputElements = [
+        ...formElement.querySelectorAll(settings.inputSelector),
+      ];
+      const submitButtonElement = formElement.querySelector(
+        settings.submitButtonSelector
+      );
 
-    setInputList(inputElements);
-    setSubmitButton(submitButtonElement);
+      setInputList(inputElements);
+      setSubmitButton(submitButtonElement);
 
-    inputElements.forEach((inputElement) => {
-      inputElement.addEventListener("input", () => {
-        checkInputValidity(inputElement);
-        toggleButtonState();
+      inputElements.forEach((inputElement) => {
+        inputElement.addEventListener("input", () => {
+          checkInputValidity(inputElement);
+          toggleButtonState();
+        });
       });
-    });
 
-    toggleButtonState();
+      toggleButtonState();
+    }
   }, [form, settings.inputSelector, settings.submitButtonSelector]);
 
   const toggleButtonState = () => {
@@ -43,33 +45,13 @@ function FormValidator({ settings, form }) {
 
   const checkInputValidity = (inputElement) => {
     if (!inputElement.validity.valid) {
-      showInputError(inputElement);
+      inputElement.classList.add(settings.inputErrorClass);
     } else {
-      hideInputError(inputElement);
+      inputElement.classList.remove(settings.inputErrorClass);
     }
   };
 
-  const showInputError = (inputElement) => {
-    const errorMessageElement = formElement.querySelector(
-      `#${inputElement.id}-error`
-    );
-
-    inputElement.classList.add(settings.inputErrorClass);
-    errorMessageElement.textContent = inputElement.validationMessage;
-    errorMessageElement.classList.add(settings.errorClass);
-  };
-
-  const hideInputError = (inputElement) => {
-    const errorMessageElement = formElement.querySelector(
-      `#${inputElement.id}-error`
-    );
-
-    inputElement.classList.remove(settings.inputErrorClass);
-    errorMessageElement.textContent = " ";
-    errorMessageElement.classList.remove(settings.errorClass);
-  };
-
-  return null;
+  return <div>{children}</div>;
 }
 
 export default FormValidator;

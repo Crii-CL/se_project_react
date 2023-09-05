@@ -53,10 +53,6 @@
   padding: 28px 28px;
 }
 
-.modal__form_login {
-  height: 324px;
-}
-
 .modal__form_register {
   width: 496px;
   height: 456px;
@@ -165,7 +161,7 @@
   visibility: hidden;
 }
 
-.errorMessage {
+.error-message {
   text-overflow: ellipsis;
   color: red;
   font-size: 10px;

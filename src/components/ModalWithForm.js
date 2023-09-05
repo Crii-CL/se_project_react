@@ -1,5 +1,6 @@
 import React from "react";
 import closeButton from "../images/close-button.svg";
+import FormValidator from "./FormValidator";
 
 const ModalWithForm = ({
   name,

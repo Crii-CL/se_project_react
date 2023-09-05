@@ -33,7 +33,7 @@
 }
 
 .login__caption {
-  margin-top: 24px;
+  margin-top: 14px;
   margin-bottom: 8px;
 }
 
@@ -41,13 +41,15 @@
   display: flex;
   position: absolute;
   left: 110px;
-  bottom: 40px;
+  bottom: 25px;
+}
+
+.login__caption:nth-child(1) {
+  margin-top: 20px;
 }
 
 .login__register-button {
   margin: 0;
-  padding: 0 0 0 5px;
-
   font-size: 16px;
   font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
   background: transparent;
