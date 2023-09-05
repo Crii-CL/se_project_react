@@ -99,12 +99,12 @@ export default function App() {
         setError(true);
         input.classList.add("error");
         input.classList.remove("valid");
-        // setErrMessage(input.validationMessage);
+        setErrMessage(input.validationMessage);
       } else {
         setError(false);
         input.classList.remove("error");
         input.classList.add("valid");
-        // setErrMessage("");
+        setErrMessage("");
       }
     });
   };

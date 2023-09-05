@@ -69,8 +69,8 @@ const LoginModal = ({
             checkInputValidity();
           }}
         ></input>
-        <span className={`login__err-text ${error ? "" : "hidden"}`}>
-          {`${errMessage !== "" ? errMessage : "Invalid Input"}`}
+        <span className={`errorMessage ${error ? "" : "hidden"}`}>
+          {`${errMessage !== "" ? errMessage : "Enter e-mail address"}`}
         </span>
         <p className="login__caption">Password</p>
         <input
@@ -86,8 +86,12 @@ const LoginModal = ({
             checkInputValidity();
           }}
         ></input>
-        <span className={`login__err-text ${error ? "" : "hidden"}`}>
-          {`${errMessage !== "" ? errMessage : "Invalid Input"}`}
+        <span className={`errorMessage ${error ? "" : "hidden"}`}>
+          {`${
+            errMessage !== ""
+              ? errMessage
+              : "Enter a password composed of more than 5 characters"
+          }`}
         </span>
       </fieldset>
       <div className="login__register">
