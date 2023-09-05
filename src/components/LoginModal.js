@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import ModalWithForm from "./ModalWithForm";
 import "../blocks/LoginModal.css";
+import "../blocks/modal.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const LoginModal = ({
@@ -11,14 +12,13 @@ const LoginModal = ({
   handleLoginModal,
   handleRegisterModal,
   checkInputValidity,
+  error,
+  errMessage,
 }) => {
   const history = useHistory();
 
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
-
-  const emailInput = useRef(null);
-  const passwordInput = useRef(null);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -42,15 +42,9 @@ const LoginModal = ({
     }
   }, [isModalOpen]);
 
-  useEffect(() => {
-    checkInputValidity();
-  }, [emailInputValue, passwordInputValue]);
-
-  useRef(() => {
-    if (emailInput.current.focus()) {
-      checkInputValidity();
-    }
-  }, [checkInputValidity]);
+  // useEffect(() => {
+  //   checkInputValidity();
+  // }, [emailInputValue, passwordInputValue]);
 
   return (
     <ModalWithForm
@@ -72,8 +66,12 @@ const LoginModal = ({
           value={emailInputValue}
           onChange={(e) => {
             setEmailInputValue(e.target.value);
+            checkInputValidity();
           }}
         ></input>
+        <span className={`login__err-text ${error ? "" : "hidden"}`}>
+          {`${errMessage !== "" ? errMessage : "Invalid Input"}`}
+        </span>
         <p className="login__caption">Password</p>
         <input
           className="login__input"
@@ -85,8 +83,12 @@ const LoginModal = ({
           value={passwordInputValue}
           onChange={(e) => {
             setPasswordInputValue(e.target.value);
+            checkInputValidity();
           }}
         ></input>
+        <span className={`login__err-text ${error ? "" : "hidden"}`}>
+          {`${errMessage !== "" ? errMessage : "Invalid Input"}`}
+        </span>
       </fieldset>
       <div className="login__register">
         <button className="login__register-button" onClick={switchToRegister}>

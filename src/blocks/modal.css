@@ -53,6 +53,10 @@
   padding: 28px 28px;
 }
 
+.modal__form_login {
+  height: 324px;
+}
+
 .modal__form_register {
   width: 496px;
   height: 456px;
@@ -97,7 +101,6 @@
 }
 
 .modal__submit_login {
-  margin-top: 25px;
   width: 73px;
   height: 36px;
 }
@@ -127,7 +130,7 @@
 }
 
 .modal__title_login {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .modal__title_register {
@@ -156,4 +159,8 @@
 #modal-item-confirm-close {
   top: 17px;
   right: 12px;
+}
+
+.hidden {
+  visibility: hidden;
 }

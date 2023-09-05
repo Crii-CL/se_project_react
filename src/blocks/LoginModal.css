@@ -32,6 +32,13 @@
   border-bottom: solid red 1px;
 }
 
+.login__err-text {
+  text-overflow: ellipsis;
+  color: red;
+  font-size: 10px;
+  line-height: 10px;
+}
+
 .login__caption {
   margin-top: 24px;
   margin-bottom: 8px;
