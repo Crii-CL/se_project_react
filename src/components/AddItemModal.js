@@ -1,5 +1,6 @@
 import ModalWithForm from "./ModalWithForm";
 import "../blocks/AddItemModal.css";
+import "../blocks/modal.css"; //if inputs look weird double check the import
 import React, { useEffect, useState } from "react";
 
 const AddItemModal = ({
@@ -44,7 +45,7 @@ const AddItemModal = ({
         <p className="addItem__caption">Name</p>
         <input
           type="text"
-          className="addItem__input"
+          className="modal__input"
           placeholder="Name"
           minLength="1"
           maxLength="50"
@@ -58,7 +59,7 @@ const AddItemModal = ({
         <p className="addItem__caption">Image</p>
         <input
           type="url"
-          className="addItem__input"
+          className="modal__input"
           placeholder="Image URL"
           minLength="1"
           maxLength="100"
@@ -77,7 +78,7 @@ const AddItemModal = ({
         <label className="addItem__label">
           <input
             type="radio"
-            className="addItem__input"
+            className="modal__input"
             name="temperature"
             value="Hot"
             onChange={(e) => setWeatherType(e.target.value)}
@@ -87,7 +88,7 @@ const AddItemModal = ({
         <label className="addItem__label">
           <input
             type="radio"
-            className="addItem__input"
+            className="modal__input"
             name="temperature"
             value="Warm"
             onChange={(e) => setWeatherType(e.target.value)}
@@ -97,7 +98,7 @@ const AddItemModal = ({
         <label className="addItem__label">
           <input
             type="radio"
-            className="addItem__input"
+            className="modal__input"
             name="temperature"
             value="Cold"
             onChange={(e) => setWeatherType(e.target.value)}

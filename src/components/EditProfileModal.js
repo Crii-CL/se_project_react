@@ -43,7 +43,7 @@ const EditProfileModal = ({
       <fieldset className="edit">
         <p className="edit__caption">Name*</p>
         <input
-          className="edit__input"
+          className="modal__input"
           type="text"
           placeholder="Name"
           value={nameInputValue}
@@ -53,7 +53,7 @@ const EditProfileModal = ({
         ></input>
         <p className="edit__caption">Avatar*</p>
         <input
-          className="edit__input"
+          className="modal__input"
           type="url"
           placeholder="Avatar"
           value={avatarInputValue}

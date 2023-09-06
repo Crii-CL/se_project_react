@@ -31,6 +31,18 @@
   transition: 0.3s ease;
 }
 
+.modal__input {
+  border: none;
+  outline: none;
+  border-bottom: solid #000 1px;
+  width: 436px;
+  padding-bottom: 4px;
+  padding-left: 0;
+  cursor: text;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  font-size: 16px;
+}
+
 .modal__form {
   position: relative;
   box-sizing: border-box;

@@ -63,7 +63,7 @@ const RegisterModal = ({
       <fieldset className="register">
         <p className="register__caption">Email*</p>
         <input
-          className="register__input"
+          className="modal__input"
           type="email"
           placeholder="Email"
           required
@@ -74,7 +74,7 @@ const RegisterModal = ({
         ></input>
         <p className="register__caption">Password*</p>
         <input
-          className="register__input"
+          className="modal__input"
           type="text"
           placeholder="Password"
           minLength="5"
@@ -87,7 +87,7 @@ const RegisterModal = ({
         ></input>
         <p className="register__caption">Name*</p>
         <input
-          className="register__input"
+          className="modal__input"
           type="text"
           placeholder="Name"
           required
@@ -98,7 +98,7 @@ const RegisterModal = ({
         ></input>
         <p className="register__caption">Avatar URL*</p>
         <input
-          className="register__input"
+          className="modal__input"
           type="url"
           placeholder="Avatar URL"
           required

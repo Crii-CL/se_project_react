@@ -38,7 +38,6 @@ export default function App() {
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [error, setError] = useState(false);
-  const [errMessage, setErrMessage] = useState("");
 
   const token = localStorage.getItem("jwt");
   const UserApi = SignupOrSignin();
@@ -92,19 +91,17 @@ export default function App() {
   };
 
   const checkInputValidity = () => {
-    const formInputs = document.querySelectorAll(".login__input");
+    const formInputs = document.querySelectorAll(".modal__input");
 
     formInputs.forEach((input) => {
       if (!input.validity.valid) {
         setError(true);
         input.classList.add("error");
         input.classList.remove("valid");
-        setErrMessage(input.validationMessage);
       } else {
         setError(false);
         input.classList.remove("error");
         input.classList.add("valid");
-        setErrMessage("");
       }
     });
   };
@@ -313,7 +310,6 @@ export default function App() {
               handleLoginModal={setIsLoginModalOpen}
               signup={signupUser}
               error={error}
-              errMessage={errMessage}
             />
             <LoginModal
               checkInputValidity={checkInputValidity}
@@ -324,7 +320,6 @@ export default function App() {
               handleLoginModal={setIsLoginModalOpen}
               login={loginUser}
               error={error}
-              errMessage={errMessage}
             />
             <Footer />
             <ItemModal

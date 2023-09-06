@@ -31,19 +31,7 @@
   margin-top: 24px;
 }
 
-.addItem__input {
-  border: none;
-  outline: none;
-  border-bottom: solid #000 1px;
-  width: 436px;
-  padding-bottom: 4px;
-  padding-left: 0;
-  cursor: text;
-  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
-  font-size: 16px;
-}
-
-.addItem__input[type="radio"] {
+.modal__input[type="radio"] {
   position: relative;
   width: 10px;
   height: 10px;

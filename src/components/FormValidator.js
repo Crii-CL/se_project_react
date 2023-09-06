@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function FormValidator({ form, settings, children }) {
+const FormValidator = ({ form, settings, children }) => {
   const [inputList, setInputList] = useState([]);
   const [submitButton, setSubmitButton] = useState(null);
 
@@ -46,12 +46,14 @@ function FormValidator({ form, settings, children }) {
   const checkInputValidity = (inputElement) => {
     if (!inputElement.validity.valid) {
       inputElement.classList.add(settings.inputErrorClass);
+      // inputElement.classList.remove(settings.inputValidClass)
     } else {
       inputElement.classList.remove(settings.inputErrorClass);
+      // inputElement.classList.add(settings.inputValidClass)
     }
   };
 
   return <div>{children}</div>;
-}
+};
 
 export default FormValidator;
