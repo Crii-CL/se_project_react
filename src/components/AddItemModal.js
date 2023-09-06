@@ -8,6 +8,10 @@ const AddItemModal = ({
   isModalOpen,
   handleOverlayClick,
   onAddItem,
+  error,
+  setError,
+  toggleSubmit,
+  setToggleSubmit,
 }) => {
   const [nameInputValue, setNameInputValue] = useState("");
   const [linkInputValue, setLinkInputValue] = useState("");
@@ -40,6 +44,10 @@ const AddItemModal = ({
       handleSubmit={handleSubmit}
       handleOverlayClick={handleOverlayClick}
       onAddItem={onAddItem}
+      error={error}
+      setError={setError}
+      toggleSubmit={toggleSubmit}
+      setToggleSubmit={setToggleSubmit}
     >
       <fieldset className="addItem__fieldset" id="input-fieldset">
         <p className="addItem__caption">Name</p>

@@ -12,6 +12,10 @@ const RegisterModal = ({
   handleRegisterModal,
   handleLoginModal,
   checkInputValidity,
+  error,
+  setError,
+  toggleSubmit,
+  setToggleSubmit,
 }) => {
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
@@ -46,10 +50,6 @@ const RegisterModal = ({
     }
   }, [isModalOpen]);
 
-  useEffect(() => {
-    checkInputValidity();
-  }, [emailInputValue, passwordInputValue, nameInputValue, avatarInputValue]);
-
   return (
     <ModalWithForm
       name="register"
@@ -59,6 +59,10 @@ const RegisterModal = ({
       isModalOpen={isModalOpen}
       handleOverlayClick={handleOverlayClick}
       handleSubmit={handleSubmit}
+      error={error}
+      setError={setError}
+      toggleSubmit={toggleSubmit}
+      setToggleSubmit={setToggleSubmit}
     >
       <fieldset className="register">
         <p className="register__caption">Email*</p>

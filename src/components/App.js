@@ -38,6 +38,7 @@ export default function App() {
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [error, setError] = useState(false);
+  const [toggleSubmit, setToggleSubmit] = useState(false);
 
   const token = localStorage.getItem("jwt");
   const UserApi = SignupOrSignin();
@@ -90,21 +91,24 @@ export default function App() {
     }
   };
 
-  const checkInputValidity = () => {
-    const formInputs = document.querySelectorAll(".modal__input");
+  /* ----------------------------- FormValidation ----------------------------- */
+  // const checkInputValidity = () => {
+  //   const formInputs = document.querySelectorAll(".modal__input");
 
-    formInputs.forEach((input) => {
-      if (!input.validity.valid) {
-        setError(true);
-        input.classList.add("error");
-        input.classList.remove("valid");
-      } else {
-        setError(false);
-        input.classList.remove("error");
-        input.classList.add("valid");
-      }
-    });
-  };
+  //   formInputs.forEach((input) => {
+  //     if (!input.validity.valid) {
+  //       setError(true);
+  //       input.classList.add("error");
+  //       // input.classList.remove("valid");
+  //     } else {
+  //       setError(false);
+  //       input.classList.remove("error");
+  //       // input.classList.add("valid");
+  //     }
+  //   });
+  // };
+
+  /* ---------------------------- ^Form Validation^ --------------------------- */
 
   const openConfirmModal = () => {
     setIsConfirmModalOpen(true);
@@ -296,30 +300,38 @@ export default function App() {
               </ProtectedRoute>
             </Switch>
             <EditProfileModal
+              error={error}
+              setError={setError}
+              toggleSubmit={toggleSubmit}
+              setToggleSubmit={setToggleSubmit}
               onClose={closeAllPopups}
               isModalOpen={isEditProfileModalOpen}
               handleOverlayClick={handleOverlayClick}
               editProfile={editProfile}
             ></EditProfileModal>
             <RegisterModal
-              checkInputValidity={checkInputValidity}
+              error={error}
+              setError={setError}
+              toggleSubmit={toggleSubmit}
+              setToggleSubmit={setToggleSubmit}
               handleOverlayClick={handleOverlayClick}
               onClose={closeAllPopups}
               isModalOpen={isRegisterModalOpen}
               handleRegisterModal={setIsRegisterModalOpen}
               handleLoginModal={setIsLoginModalOpen}
               signup={signupUser}
-              error={error}
             />
             <LoginModal
-              checkInputValidity={checkInputValidity}
+              error={error}
+              setError={setError}
+              toggleSubmit={toggleSubmit}
+              setToggleSubmit={setToggleSubmit}
               onClose={closeAllPopups}
               handleOverlayClick={handleOverlayClick}
               isModalOpen={isLoginModalOpen}
               handleRegisterModal={setIsRegisterModalOpen}
               handleLoginModal={setIsLoginModalOpen}
               login={loginUser}
-              error={error}
             />
             <Footer />
             <ItemModal
@@ -334,6 +346,10 @@ export default function App() {
               currentUser={currentUser}
             />
             <AddItemModal
+              error={error}
+              setError={setError}
+              toggleSubmit={toggleSubmit}
+              setToggleSubmit={setToggleSubmit}
               onClose={closeAllPopups}
               isModalOpen={isAddModalOpen}
               handleOverlayClick={handleOverlayClick}

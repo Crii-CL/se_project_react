@@ -11,6 +11,10 @@ const EditProfileModal = ({
   isModalOpen,
   handleOverlayClick,
   editProfile,
+  error,
+  setError,
+  toggleSubmit,
+  setToggleSubmit,
 }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const [nameInputValue, setNameInputValue] = useState("");
@@ -39,6 +43,10 @@ const EditProfileModal = ({
       isModalOpen={isModalOpen}
       handleSubmit={handleSubmit}
       handleOverlayClick={handleOverlayClick}
+      error={error}
+      setError={setError}
+      toggleSubmit={toggleSubmit}
+      setToggleSubmit={setToggleSubmit}
     >
       <fieldset className="edit">
         <p className="edit__caption">Name*</p>

@@ -12,6 +12,10 @@ const LoginModal = ({
   login,
   handleLoginModal,
   handleRegisterModal,
+  error,
+  setError,
+  toggleSubmit,
+  setToggleSubmit,
 }) => {
   const history = useHistory();
 
@@ -42,6 +46,10 @@ const LoginModal = ({
       isModalOpen={isModalOpen}
       handleSubmit={handleSubmit}
       handleOverlayClick={handleOverlayClick}
+      error={error}
+      setError={setError}
+      toggleSubmit={toggleSubmit}
+      setToggleSubmit={setToggleSubmit}
     >
       {/* <FormValidator
         settings={{

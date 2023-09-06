@@ -11,7 +11,27 @@ const ModalWithForm = ({
   handleOverlayClick,
   onClose,
   children,
+  error,
+  setError,
+  toggleSubmit,
+  setToggleSubmit,
 }) => {
+  const checkInputValidity = () => {
+    const formInputs = document.querySelectorAll(".modal__input");
+
+    formInputs.forEach((input) => {
+      if (!input.validity.valid) {
+        setError(true);
+        input.classList.add("error");
+        // input.classList.remove("valid");
+      } else {
+        setError(false);
+        input.classList.remove("error");
+        // input.classList.add("valid");
+      }
+    });
+  };
+
   return (
     <div
       className={`modal modal_type_${name} ${
