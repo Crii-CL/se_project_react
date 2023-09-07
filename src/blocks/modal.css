@@ -56,16 +56,22 @@
   width: 496px;
   height: 436px;
   padding: 25px;
-  display: flex;
-  flex-direction: column;
   box-sizing: border-box;
 }
 
-.modal__form_login,
 .modal__form_edit-profile {
   width: 496px;
   height: 304px;
   padding: 28px 28px;
+}
+
+.modal__form_login {
+  width: 496px;
+  height: 295px;
+  padding: 28px 28px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
 }
 
 .modal__form_register {
@@ -115,6 +121,8 @@
 .modal__submit_login {
   width: 73px;
   height: 36px;
+  position: absolute;
+  bottom: 5px;
 }
 
 .modal__submit_register {

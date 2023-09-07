@@ -82,7 +82,7 @@ const RegisterModal = ({
           }}
           value={emailInputValue}
         ></input>
-        <span className="error-message">{emailValidationMessage}</span>
+        <p className="error-message">{emailValidationMessage}</p>
         <p className="register__caption">Password*</p>
         <input
           className="modal__input"
@@ -97,7 +97,7 @@ const RegisterModal = ({
           }}
           value={passwordInputValue}
         ></input>
-        <span className="error-message">{passwordValidationMessage}</span>
+        <p className="error-message">{passwordValidationMessage}</p>
         <p className="register__caption">Name*</p>
         <input
           className="modal__input"
@@ -110,7 +110,7 @@ const RegisterModal = ({
           }}
           value={nameInputValue}
         ></input>
-        <span className="error-message">{nameValidationMessage}</span>
+        <p className="error-message">{nameValidationMessage}</p>
         <p className="register__caption">Avatar URL*</p>
         <input
           className="modal__input"
@@ -123,7 +123,7 @@ const RegisterModal = ({
           }}
           value={avatarInputValue}
         ></input>
-        <span className="error-message">{avatarValidationMessage}</span>
+        <p className="error-message">{avatarValidationMessage}</p>
       </fieldset>
       <div className="register__login">
         <button className="register__login-button" onClick={switchToLogin}>

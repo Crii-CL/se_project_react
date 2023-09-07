@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "./ModalWithForm";
-import FormValidator from "./FormValidator";
 import "../blocks/LoginModal.css";
 import "../blocks/modal.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -62,14 +61,6 @@ const LoginModal = ({
       toggleSubmit={toggleSubmit}
       setToggleSubmit={setToggleSubmit}
     >
-      {/* <FormValidator
-        settings={{
-          inputSelector: ".modal__input",
-          submitButtonSelector: ".modal__submit_login",
-          inactiveButtonClass: "inactive",
-          inputErrorClass: "error",
-        }}
-      > */}
       <fieldset className="login">
         <p className="login__caption">Email</p>
         <input
@@ -83,13 +74,11 @@ const LoginModal = ({
             setEmailValidationMessage(e.target.validationMessage);
           }}
         ></input>
-        <span
+        <p
           className={`error-message ${
             emailValidationMessage === "" ? "hidden" : ""
           }`}
-        >{`${
-          emailValidationMessage === "" ? "a" : emailValidationMessage
-        }`}</span>
+        >{`${emailValidationMessage === "" ? "a" : emailValidationMessage}`}</p>
         <p className="login__caption">Password</p>
         <input
           className="modal__input"
@@ -104,15 +93,14 @@ const LoginModal = ({
             setPasswordValidationMessage(e.target.validationMessage);
           }}
         ></input>
-        <span
+        <p
           className={`error-message ${
             passwordValidationMessage === "" ? "hidden" : ""
           }`}
         >{`${
           passwordValidationMessage === "" ? "a" : passwordValidationMessage
-        }`}</span>
+        }`}</p>
       </fieldset>
-      {/* </FormValidator> */}
       <div className="login__register">
         <button className="login__register-button" onClick={switchToRegister}>
           or Register
