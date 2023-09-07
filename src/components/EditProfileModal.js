@@ -20,6 +20,9 @@ const EditProfileModal = ({
   const [nameInputValue, setNameInputValue] = useState("");
   const [avatarInputValue, setAvatarInputValue] = useState("");
 
+  const [nameValidationMessage, setNameValidationMessage] = useState("");
+  const [avatarValidationMessage, setAvatarValidationMessage] = useState("");
+
   useEffect(() => {
     if (currentUser?.name) {
       setNameInputValue(currentUser.name);
@@ -55,20 +58,28 @@ const EditProfileModal = ({
           type="text"
           placeholder="Name"
           value={nameInputValue}
+          required
+          minLength="2"
           onChange={(e) => {
             setNameInputValue(e.target.value);
+            setNameValidationMessage(e.target.validationMessage);
           }}
         ></input>
+        <p className="error-message">{nameValidationMessage}</p>
         <p className="edit__caption">Avatar*</p>
         <input
           className="modal__input"
           type="url"
           placeholder="Avatar"
+          required
+          minLength="13"
           value={avatarInputValue}
           onChange={(e) => {
             setAvatarInputValue(e.target.value);
+            setAvatarValidationMessage(e.target.validationMessage);
           }}
         ></input>
+        <p className="error-message">{avatarValidationMessage}</p>
       </fieldset>
     </ModalWithForm>
   );
