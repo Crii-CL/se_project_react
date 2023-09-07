@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "../blocks/ItemCard.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import disliked from "../images/likeButton.svg";
@@ -84,19 +84,17 @@ const ItemCard = ({
           </button>
         )}
       </div>
-      {!linkError ? (
-        <img
-          className="cards__image"
-          src={url}
-          alt={name}
-          onError={handleLinkError}
-          onClick={() => {
-            handleCardClick(name, url, weather, card._id, owner);
-          }}
-        ></img>
-      ) : (
-        <div className="cards__image-error">
-          <p className="cards__error-text">Can't wear this :/</p>
+      {!linkError && (
+        <div>
+          <img
+            className="cards__image"
+            src={url}
+            alt={name}
+            onError={handleLinkError}
+            onClick={() => {
+              handleCardClick(name, url, weather, card._id, owner);
+            }}
+          ></img>
         </div>
       )}
     </li>
