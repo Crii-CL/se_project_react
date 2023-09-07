@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalWithForm from "./ModalWithForm";
 import FormValidator from "./FormValidator";
 import "../blocks/LoginModal.css";
@@ -35,6 +35,17 @@ const LoginModal = ({
     handleLoginModal(false);
     handleRegisterModal(true);
   }
+
+  function clearInputs() {
+    setEmailInputValue("");
+    setPasswordInputValue("");
+  }
+
+  useEffect(() => {
+    if (isModalOpen) {
+      clearInputs();
+    }
+  }, [isModalOpen]);
 
   return (
     <ModalWithForm

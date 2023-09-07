@@ -10,16 +10,6 @@
   margin-bottom: 24px;
 }
 
-.valid {
-  color: black;
-  border-bottom: solid #000 1px;
-}
-
-.error {
-  color: red;
-  border-bottom: solid red 1px;
-}
-
 .login__caption {
   margin-top: 14px;
   margin-bottom: 8px;

@@ -17,6 +17,9 @@ const AddItemModal = ({
   const [linkInputValue, setLinkInputValue] = useState("");
   const [weatherType, setWeatherType] = useState("");
 
+  const [nameValidationMessage, setNameValidationMessage] = useState("");
+  const [linkValidationMessage, setLinkValidationMessage] = useState("");
+
   function handleSubmit(e) {
     e.preventDefault();
     onAddItem(nameInputValue, linkInputValue, weatherType);
@@ -62,9 +65,13 @@ const AddItemModal = ({
           value={nameInputValue}
           onChange={(e) => {
             setNameInputValue(e.target.value);
+            setNameValidationMessage(e.target.validationMessage);
           }}
         ></input>
-        <p className="addItem__caption">Image</p>
+        <p className="error-message">{nameValidationMessage}</p>
+        <p className="addItem__caption" id="add-item-image-caption">
+          Image
+        </p>
         <input
           type="url"
           className="modal__input"
@@ -76,8 +83,12 @@ const AddItemModal = ({
           value={linkInputValue}
           onChange={(e) => {
             setLinkInputValue(e.target.value);
+            setLinkValidationMessage(e.target.validationMessage);
           }}
         ></input>
+        <p className="error-message error-message__name-add-item">
+          {linkValidationMessage}
+        </p>
       </fieldset>
       <h3 className="addItem__title" id="weather-type-title">
         Select the weather type:

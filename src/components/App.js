@@ -3,7 +3,7 @@ import Header from "./Header";
 import Profile from "./Profile";
 import Main from "./Main";
 import Footer from "./Footer";
-import React, { useEffect, useState, useHistory, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import ItemModal from "./ItemModal";
 import AddItemModal from "./AddItemModal";
 import getWeather, { parseWeatherData, tempUnits } from "../utils/weatherApi";

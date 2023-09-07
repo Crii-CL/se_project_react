@@ -22,6 +22,12 @@ const RegisterModal = ({
   const [nameInputValue, setNameInputValue] = useState("");
   const [avatarInputValue, setAvatarInputValue] = useState("");
 
+  const [emailValidationMessage, setEmailValidationMessage] = useState("");
+  const [passwordValidationMessage, setPasswordValidationMessage] =
+    useState("");
+  const [nameValidationMessage, setNameValidationMessage] = useState("");
+  const [avatarValidationMessage, setAvatarValidationMessage] = useState("");
+
   function handleSubmit(e) {
     e.preventDefault();
     signup(
@@ -37,14 +43,13 @@ const RegisterModal = ({
     handleLoginModal(true);
   }
 
+  function clearInputs() {
+    setEmailInputValue("");
+    setPasswordInputValue("");
+    setNameInputValue("");
+    setAvatarInputValue("");
+  }
   useEffect(() => {
-    function clearInputs() {
-      setEmailInputValue("");
-      setPasswordInputValue("");
-      setNameInputValue("");
-      setAvatarInputValue("");
-    }
-
     if (isModalOpen) {
       clearInputs();
     }
@@ -73,9 +78,11 @@ const RegisterModal = ({
           required
           onChange={(e) => {
             setEmailInputValue(e.target.value);
+            setEmailValidationMessage(e.target.validationMessage);
           }}
           value={emailInputValue}
         ></input>
+        <span className="error-message">{emailValidationMessage}</span>
         <p className="register__caption">Password*</p>
         <input
           className="modal__input"
@@ -86,9 +93,11 @@ const RegisterModal = ({
           required
           onChange={(e) => {
             setPasswordInputValue(e.target.value);
+            setPasswordValidationMessage(e.target.validationMessage);
           }}
           value={passwordInputValue}
         ></input>
+        <span className="error-message">{passwordValidationMessage}</span>
         <p className="register__caption">Name*</p>
         <input
           className="modal__input"
@@ -97,9 +106,11 @@ const RegisterModal = ({
           required
           onChange={(e) => {
             setNameInputValue(e.target.value);
+            setNameValidationMessage(e.target.validationMessage);
           }}
           value={nameInputValue}
         ></input>
+        <span className="error-message">{nameValidationMessage}</span>
         <p className="register__caption">Avatar URL*</p>
         <input
           className="modal__input"
@@ -108,9 +119,11 @@ const RegisterModal = ({
           required
           onChange={(e) => {
             setAvatarInputValue(e.target.value);
+            setAvatarValidationMessage(e.target.validationMessage);
           }}
           value={avatarInputValue}
         ></input>
+        <span className="error-message">{avatarValidationMessage}</span>
       </fieldset>
       <div className="register__login">
         <button className="register__login-button" onClick={switchToLogin}>

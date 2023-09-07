@@ -22,13 +22,17 @@
 }
 
 .addItem__caption {
-  margin-top: 0;
+  margin-top: 10px;
   margin-bottom: 8px;
   font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
 }
 
-.addItem__caption:nth-last-child(2) {
-  margin-top: 24px;
+#add-item-image-caption {
+  margin-top: 20px;
+}
+
+#weather-type-title {
+  margin-top: 20px;
 }
 
 .modal__input[type="radio"] {
@@ -37,6 +41,7 @@
   height: 10px;
   border-radius: 50%;
   cursor: pointer;
+  margin: 0 5px 0 0;
 }
 
 .addItem__label {
