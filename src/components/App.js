@@ -91,25 +91,6 @@ export default function App() {
     }
   };
 
-  /* ----------------------------- FormValidation ----------------------------- */
-  // const checkInputValidity = () => {
-  //   const formInputs = document.querySelectorAll(".modal__input");
-
-  //   formInputs.forEach((input) => {
-  //     if (!input.validity.valid) {
-  //       setError(true);
-  //       input.classList.add("error");
-  //       // input.classList.remove("valid");
-  //     } else {
-  //       setError(false);
-  //       input.classList.remove("error");
-  //       // input.classList.add("valid");
-  //     }
-  //   });
-  // };
-
-  /* ---------------------------- ^Form Validation^ --------------------------- */
-
   const openConfirmModal = () => {
     setIsConfirmModalOpen(true);
   };
@@ -191,7 +172,6 @@ export default function App() {
     setIsLoading(true);
     UserApi.editUser(name, avatar, token)
       .then(() => {
-        console.log(currentUser);
         setCurrentUser({ ...currentUser, name, avatar });
         closeAllPopups();
       })

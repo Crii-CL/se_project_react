@@ -4,7 +4,6 @@ import "../blocks/modal.css";
 import "../blocks/EditProfileModal.css";
 import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { editableInputTypes } from "@testing-library/user-event/dist/utils";
 
 const EditProfileModal = ({
   onClose,

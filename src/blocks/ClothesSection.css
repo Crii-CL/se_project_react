@@ -28,3 +28,8 @@
   color: rgba(0, 0, 0, 0.3);
   transform: scale(105%);
 }
+
+.clothes__radio {
+  border: none;
+  gap: 5px;
+}

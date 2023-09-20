@@ -12,7 +12,6 @@ const ModalWithForm = ({
   handleOverlayClick,
   onClose,
   children,
-  error,
   setError,
   toggleSubmit,
   setToggleSubmit,
@@ -21,6 +20,11 @@ const ModalWithForm = ({
     const formInputs = document.querySelectorAll(".modal__input");
 
     formInputs.forEach((input) => {
+      if (input.length <= 1) {
+        input.classList.add("valid");
+        input.clasList.remove("error");
+      }
+
       if (!input.validity.valid) {
         setError(true);
         input.classList.add("error");
@@ -52,7 +56,6 @@ const ModalWithForm = ({
       >
         <button
           className={`modal__closeBtn modal__closeBtn_${name}`}
-          id="clothes-form-close"
           type="button"
           onClick={onClose}
         >

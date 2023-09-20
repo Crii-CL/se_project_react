@@ -97,6 +97,8 @@
   border: none;
   padding: none;
   cursor: pointer;
+  right: 20px;
+  top: 20px;
 }
 
 .modal__submit {
@@ -167,10 +169,6 @@
   height: 36px;
 }
 
-#clothes-form-close {
-  right: 31px;
-}
-
 #modal-item-close {
   top: 17px;
   right: 17px;
@@ -203,6 +201,7 @@
   position: absolute;
   margin: 5px 0 10px 0;
 }
+
 .error-message__name-add-item {
   position: absolute;
 }

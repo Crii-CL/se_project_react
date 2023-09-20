@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
 import ItemCard from "./ItemCard";
-import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import "../blocks/Main.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
@@ -15,6 +14,20 @@ const Main = ({
   itemsApiObject,
 }) => {
   const { currentUser } = useContext(CurrentUserContext);
+  const [weatherSort, setWeatherSort] = useState(items);
+
+  useEffect(() => {
+    const sortedItems = [...items].sort((a, b) => {
+      if (a.weather === "Hot" && b.weather !== "Hot") return -1;
+      if (a.weather !== "Hot" && b.weather === "Hot") return 1;
+      if (a.weather === "Warm" && b.weather === "Cold") return -1;
+      if (a.weather === "Cold" && b.weather === "Warm") return 1;
+      return 0;
+    });
+
+    setWeatherSort(sortedItems);
+  }, [items]);
+  const sortedItems = weatherSort;
 
   return (
     <main className="main">
@@ -22,7 +35,7 @@ const Main = ({
       <section className="cards" id="card-section">
         {isLoggedIn && (
           <ul className="cards__list" id="card-list">
-            {items?.map((card) => {
+            {sortedItems?.map((card) => {
               return (
                 <ItemCard
                   key={card?._id}
