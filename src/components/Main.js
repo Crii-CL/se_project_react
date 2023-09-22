@@ -15,9 +15,10 @@ const Main = ({
 }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const [weatherSort, setWeatherSort] = useState(items);
+  let sortedItems = weatherSort;
 
   useEffect(() => {
-    const sortedItems = [...items].sort((a, b) => {
+    sortedItems = [...items].sort((a, b) => {
       if (a.weather === "Hot" && b.weather !== "Hot") return -1;
       if (a.weather !== "Hot" && b.weather === "Hot") return 1;
       if (a.weather === "Warm" && b.weather === "Cold") return -1;
@@ -27,7 +28,6 @@ const Main = ({
 
     setWeatherSort(sortedItems);
   }, [items]);
-  const sortedItems = weatherSort;
 
   return (
     <main className="main">

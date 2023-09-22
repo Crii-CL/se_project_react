@@ -31,5 +31,10 @@
 
 .clothes__radio {
   border: none;
-  gap: 5px;
+  padding: 0;
+}
+
+.clothes__label {
+  margin-right: 10px;
+  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
 }

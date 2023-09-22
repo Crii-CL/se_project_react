@@ -19,9 +19,10 @@ const Profile = ({
 }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const [weatherSort, setWeatherSort] = useState(items);
+  let sortedItems = [];
 
   useEffect(() => {
-    const sortedItems = [...items].sort((a, b) => {
+    sortedItems = [...items].sort((a, b) => {
       if (a.weather === "Hot" && b.weather !== "Hot") return -1;
       if (a.weather !== "Hot" && b.weather === "Hot") return 1;
       if (a.weather === "Warm" && b.weather === "Cold") return -1;
@@ -29,9 +30,8 @@ const Profile = ({
       return 0;
     });
 
-    setWeatherSort(sortedItems);
-  }, [items]);
-  const sortedItems = weatherSort;
+    setWeatherSort(items);
+  });
 
   return (
     <div className="profile">
@@ -42,7 +42,7 @@ const Profile = ({
         <ClothesSection openForm={openForm} />
         <section className="cards">
           <ul className="cards__list">
-            {sortedItems?.map((card) => {
+            {weatherSort?.map((card) => {
               return (
                 <ItemCard
                   key={card?._id}

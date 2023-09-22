@@ -11,7 +11,7 @@ const ClothesSection = ({ openForm }) => {
         +Add New
       </button>
       <fieldset className="clothes__radio">
-        <label>
+        <label className="clothes__label">
           <input
             type="radio"
             className="modal__input"
@@ -21,7 +21,7 @@ const ClothesSection = ({ openForm }) => {
           ></input>
           Hot
         </label>
-        <label>
+        <label className="clothes__label">
           <input
             type="radio"
             className="modal__input"
@@ -31,7 +31,7 @@ const ClothesSection = ({ openForm }) => {
           ></input>
           Warm
         </label>
-        <label>
+        <label className="clothes__label">
           <input
             type="radio"
             className="modal__input"
