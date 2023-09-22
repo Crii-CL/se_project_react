@@ -18,20 +18,22 @@ const Profile = ({
   itemsApiObject,
 }) => {
   const { currentUser } = useContext(CurrentUserContext);
-  const [weatherSort, setWeatherSort] = useState(items);
-  let sortedItems = [];
+  let [weatherType, setWeatherType] = useState("None");
+  let [currentItems, setCurrentItems] = useState([]);
 
   useEffect(() => {
-    sortedItems = [...items].sort((a, b) => {
-      if (a.weather === "Hot" && b.weather !== "Hot") return -1;
-      if (a.weather !== "Hot" && b.weather === "Hot") return 1;
-      if (a.weather === "Warm" && b.weather === "Cold") return -1;
-      if (a.weather === "Cold" && b.weather === "Warm") return 1;
-      return 0;
-    });
-
-    setWeatherSort(items);
-  });
+    let filteredItems = [];
+    if (weatherType === "Hot") {
+      filteredItems = items.filter((item) => item.weather === "Hot");
+    } else if (weatherType === "Warm") {
+      filteredItems = items.filter((item) => item.weather === "Warm");
+    } else if (weatherType === "Cold") {
+      filteredItems = items.filter((item) => item.weather === "Cold");
+    } else {
+      filteredItems = items;
+    }
+    setCurrentItems(filteredItems);
+  }, [weatherType]);
 
   return (
     <div className="profile">
@@ -39,10 +41,10 @@ const Profile = ({
         <SideBar openEdit={openEdit} logout={logout} />
       </div>
       <div className="profile__garments">
-        <ClothesSection openForm={openForm} />
+        <ClothesSection openForm={openForm} setWeatherType={setWeatherType} />
         <section className="cards">
           <ul className="cards__list">
-            {weatherSort?.map((card) => {
+            {currentItems?.map((card) => {
               return (
                 <ItemCard
                   key={card?._id}

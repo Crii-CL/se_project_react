@@ -1,12 +1,19 @@
 import "../blocks/ClothesSection.css";
-import { useState } from "react";
 
-const ClothesSection = ({ openForm }) => {
-  const [weatherType, setWeatherType] = useState("");
-
+const ClothesSection = ({ openForm, setWeatherType }) => {
   return (
     <div className="clothes">
-      <h2 className="clothes__header">Your Items</h2>
+      <label className="clothes__header">
+        <input
+          id="items-button"
+          type="radio"
+          className="modal__input"
+          name="temperature"
+          value="None"
+          onChange={(e) => setWeatherType(e.target.value)}
+        ></input>
+        Your Items
+      </label>
       <button className="clothes__button" onClick={openForm}>
         +Add New
       </button>

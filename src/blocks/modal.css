@@ -43,6 +43,16 @@
   font-size: 16px;
 }
 
+.modal__input[type="radio"] {
+  appearance: none;
+  outline: none;
+  margin: 0;
+}
+
+.modal__input[type="radio"]:checked {
+  background-color: red;
+}
+
 .modal__form {
   position: relative;
   box-sizing: border-box;
