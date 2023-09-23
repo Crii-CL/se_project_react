@@ -28,26 +28,30 @@
 }
 
 .clothes__radio {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
   border: none;
   padding: 0;
 }
 
-.clothes__label {
-  width: 25px;
-  border-radius: 5px;
-  margin-right: 10px;
+.clothes__radio-input {
   font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
+  font-size: 20px;
+  border: none;
+  border-radius: 10%;
+  padding: 0 5px;
 }
 
 .clothes__button:hover,
-.clothes__label:hover,
+.clothes__radio-input:hover,
 .clothes__header:hover {
   color: rgba(0, 0, 0, 0.3);
   transform: scale(105%);
 }
 
 .clothes__button,
-.clothes__label,
+.clothes__radio-input,
 .clothes__header {
   transition: 0.15s ease-in-out;
 }

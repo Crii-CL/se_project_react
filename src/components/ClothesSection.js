@@ -1,56 +1,55 @@
+import "../blocks/modal.css";
 import "../blocks/ClothesSection.css";
 
-const ClothesSection = ({ openForm, setWeatherType }) => {
+const ClothesSection = ({ openForm, weatherType, setWeatherType }) => {
+  const handleClick = (e) => {
+    setWeatherType(e.target.value);
+  };
+
   return (
     <div className="clothes">
-      <label className="clothes__header">
-        <input
-          id="items-button"
-          type="radio"
-          className="modal__input"
-          name="temperature"
-          value="None"
-          onChange={(e) => setWeatherType(e.target.value)}
-        ></input>
-        Your Items
-      </label>
+      <input
+        id="items-button"
+        type="button"
+        className=" clothes__header"
+        name="temperature"
+        value="Your Items"
+        onClick={handleClick}
+      ></input>
       <button className="clothes__button" onClick={openForm}>
         +Add New
       </button>
       <fieldset className="clothes__radio">
-        <label className="clothes__label">
-          <input
-            id="clothes-hot"
-            type="radio"
-            className="modal__input clothes__input"
-            name="temperature"
-            value="Hot"
-            onChange={(e) => setWeatherType(e.target.value)}
-          ></input>
-          Hot
-        </label>
-        <label className="clothes__label">
-          <input
-            id="clothes-warm"
-            type="radio"
-            className="modal__input clothes__input"
-            name="temperature"
-            value="Warm"
-            onChange={(e) => setWeatherType(e.target.value)}
-          ></input>
-          Warm
-        </label>
-        <label className="clothes__label">
-          <input
-            id="clothes-cold"
-            type="radio"
-            className="modal__input clothes__input"
-            name="temperature"
-            value="Cold"
-            onChange={(e) => setWeatherType(e.target.value)}
-          ></input>
-          Cold
-        </label>
+        <input
+          id="clothes-hot"
+          type="button"
+          className={`clothes__radio-input ${
+            weatherType === "Hot" ? "Hot" : "None"
+          }`}
+          name="temperature"
+          value="Hot"
+          onClick={handleClick}
+        ></input>
+        <input
+          id="clothes-warm"
+          type="button"
+          className={`clothes__radio-input ${
+            weatherType === "Warm" ? "Warm" : "None"
+          }`}
+          name="temperature"
+          value="Warm"
+          onClick={handleClick}
+        ></input>
+        <input
+          id="clothes-cold"
+          type="button"
+          className={`clothes__radio-input ${
+            weatherType === "Cold" ? "Cold" : "None"
+          }`}
+          name="temperature"
+          value="Cold"
+          onClick={handleClick}
+        ></input>
       </fieldset>
     </div>
   );

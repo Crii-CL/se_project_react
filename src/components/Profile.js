@@ -18,7 +18,7 @@ const Profile = ({
   itemsApiObject,
 }) => {
   const { currentUser } = useContext(CurrentUserContext);
-  let [weatherType, setWeatherType] = useState("None");
+  let [weatherType, setWeatherType] = useState("Your Items");
   let [currentItems, setCurrentItems] = useState([]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Profile = ({
       filteredItems = items;
     }
     setCurrentItems(filteredItems);
-  }, [weatherType]);
+  }, [items, weatherType]);
 
   return (
     <div className="profile">
@@ -41,7 +41,11 @@ const Profile = ({
         <SideBar openEdit={openEdit} logout={logout} />
       </div>
       <div className="profile__garments">
-        <ClothesSection openForm={openForm} setWeatherType={setWeatherType} />
+        <ClothesSection
+          openForm={openForm}
+          weatherType={weatherType}
+          setWeatherType={setWeatherType}
+        />
         <section className="cards">
           <ul className="cards__list">
             {currentItems?.map((card) => {

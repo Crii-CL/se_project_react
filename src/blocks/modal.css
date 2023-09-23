@@ -47,21 +47,25 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  position: absolute;
-  outline: none;
+  padding: 5px;
   margin: 0;
-  width: 0;
+  border: 1px solid black;
+  align-self: center;
 }
 
-#clothes-hot:checked {
-  background-color: rgb(185, 58, 58);
+.None {
+  background-color: transparent;
 }
 
-#clothes-warm:checked {
-  background-color: rgb(113, 190, 58);
+.Hot {
+  background-color: rgb(216, 9, 9);
 }
 
-#clothes-cold:checked {
+.Warm {
+  background-color: rgb(230, 210, 35);
+}
+
+.Cold {
   background-color: rgb(46, 114, 165);
 }
 
