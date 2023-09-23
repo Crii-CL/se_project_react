@@ -44,13 +44,25 @@
 }
 
 .modal__input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
+  position: absolute;
   outline: none;
   margin: 0;
+  width: 0;
 }
 
-.modal__input[type="radio"]:checked {
-  background-color: red;
+#clothes-hot:checked {
+  background-color: rgb(185, 58, 58);
+}
+
+#clothes-warm:checked {
+  background-color: rgb(113, 190, 58);
+}
+
+#clothes-cold:checked {
+  background-color: rgb(46, 114, 165);
 }
 
 .modal__form {

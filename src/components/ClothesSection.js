@@ -20,8 +20,9 @@ const ClothesSection = ({ openForm, setWeatherType }) => {
       <fieldset className="clothes__radio">
         <label className="clothes__label">
           <input
+            id="clothes-hot"
             type="radio"
-            className="modal__input"
+            className="modal__input clothes__input"
             name="temperature"
             value="Hot"
             onChange={(e) => setWeatherType(e.target.value)}
@@ -30,8 +31,9 @@ const ClothesSection = ({ openForm, setWeatherType }) => {
         </label>
         <label className="clothes__label">
           <input
+            id="clothes-warm"
             type="radio"
-            className="modal__input"
+            className="modal__input clothes__input"
             name="temperature"
             value="Warm"
             onChange={(e) => setWeatherType(e.target.value)}
@@ -40,8 +42,9 @@ const ClothesSection = ({ openForm, setWeatherType }) => {
         </label>
         <label className="clothes__label">
           <input
+            id="clothes-cold"
             type="radio"
-            className="modal__input"
+            className="modal__input clothes__input"
             name="temperature"
             value="Cold"
             onChange={(e) => setWeatherType(e.target.value)}

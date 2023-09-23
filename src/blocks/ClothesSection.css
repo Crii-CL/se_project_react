@@ -33,8 +33,10 @@
 }
 
 .clothes__label {
+  width: 25px;
+  border-radius: 5px;
   margin-right: 10px;
-  font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
+  font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
 }
 
 .clothes__button:hover,
