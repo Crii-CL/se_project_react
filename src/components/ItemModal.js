@@ -17,7 +17,7 @@ const ItemModal = ({
 }) => {
   return (
     <div
-      className={`itemModal ${isItemModalOpen ? "modal_opened" : ""} ${
+      className={`itemModal ${isItemModalOpen ? "modal_opened" : "hidden"} ${
         !isItemModalOpen && onClose ? "modal_closed" : ""
       }  `}
       id="item-modal"
@@ -43,8 +43,8 @@ const ItemModal = ({
       </div>
       <div
         className={`itemModal__confirm ${
-          isConfirmModalOpen ? "modal_opened" : ""
-        }`}
+          isConfirmModalOpen ? "modal_opened" : "hidden"
+        } ${!isConfirmModalOpen && onClose ? "modal_closed" : ""}`}
         onClick={handleOverlayClick}
       >
         <div className="itemModal__confirm-container">

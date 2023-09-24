@@ -47,7 +47,6 @@ const ModalWithForm = ({
       <form
         className={`modal__form modal__form_${name}`}
         onSubmit={handleSubmit}
-        // noValidate
       >
         <button
           className={`modal__closeBtn modal__closeBtn_${name}`}

@@ -49,7 +49,6 @@ export default function App() {
     itemsApiObject
       .add(name, url, weatherType)
       .then((res) => {
-        console.log(res.data);
         setItems([res.data, ...items]);
         setIsAddModalOpen(false);
       })

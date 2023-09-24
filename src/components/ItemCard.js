@@ -68,6 +68,7 @@ const ItemCard = ({
   if (owner !== user || null) {
     return null;
   }
+
   return (
     <li className="cards__el">
       <div className="cards__caption">
