@@ -13,8 +13,6 @@ const LoginModal = ({
   handleRegisterModal,
   error,
   setError,
-  toggleSubmit,
-  setToggleSubmit,
 }) => {
   const history = useHistory();
 
@@ -58,8 +56,6 @@ const LoginModal = ({
       handleOverlayClick={handleOverlayClick}
       error={error}
       setError={setError}
-      toggleSubmit={toggleSubmit}
-      setToggleSubmit={setToggleSubmit}
     >
       <fieldset className="login">
         <p className="login__caption">Email</p>
@@ -76,9 +72,11 @@ const LoginModal = ({
         ></input>
         <p
           className={`error-message ${
-            emailValidationMessage === "" ? "hidden" : ""
+            emailInputValue.length === 0 ? "hidden" : ""
           }`}
-        >{`${emailValidationMessage === "" ? "a" : emailValidationMessage}`}</p>
+        >
+          {emailValidationMessage}
+        </p>
         <p className="login__caption">Password</p>
         <input
           className="modal__input"
@@ -95,11 +93,11 @@ const LoginModal = ({
         ></input>
         <p
           className={`error-message ${
-            passwordValidationMessage === "" ? "hidden" : ""
+            passwordInputValue.length === 0 ? "hidden" : ""
           }`}
-        >{`${
-          passwordValidationMessage === "" ? "a" : passwordValidationMessage
-        }`}</p>
+        >
+          {passwordValidationMessage}
+        </p>
       </fieldset>
       <div className="login__register">
         <button className="login__register-button" onClick={switchToRegister}>

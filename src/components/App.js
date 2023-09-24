@@ -38,7 +38,7 @@ export default function App() {
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [error, setError] = useState(false);
-  const [toggleSubmit, setToggleSubmit] = useState(false);
+  const [isValidUrl, setIsValidUrl] = useState(false);
 
   const token = localStorage.getItem("jwt");
   const UserApi = SignupOrSignin();
@@ -282,30 +282,26 @@ export default function App() {
             <EditProfileModal
               error={error}
               setError={setError}
-              toggleSubmit={toggleSubmit}
-              setToggleSubmit={setToggleSubmit}
               onClose={closeAllPopups}
               isModalOpen={isEditProfileModalOpen}
               handleOverlayClick={handleOverlayClick}
               editProfile={editProfile}
+              setIsValidUrl={setIsValidUrl}
             ></EditProfileModal>
             <RegisterModal
               error={error}
               setError={setError}
-              toggleSubmit={toggleSubmit}
-              setToggleSubmit={setToggleSubmit}
               handleOverlayClick={handleOverlayClick}
               onClose={closeAllPopups}
               isModalOpen={isRegisterModalOpen}
               handleRegisterModal={setIsRegisterModalOpen}
               handleLoginModal={setIsLoginModalOpen}
               signup={signupUser}
+              setIsValidUrl={setIsValidUrl}
             />
             <LoginModal
               error={error}
               setError={setError}
-              toggleSubmit={toggleSubmit}
-              setToggleSubmit={setToggleSubmit}
               onClose={closeAllPopups}
               handleOverlayClick={handleOverlayClick}
               isModalOpen={isLoginModalOpen}
@@ -328,12 +324,12 @@ export default function App() {
             <AddItemModal
               error={error}
               setError={setError}
-              toggleSubmit={toggleSubmit}
-              setToggleSubmit={setToggleSubmit}
               onClose={closeAllPopups}
               isModalOpen={isAddModalOpen}
               handleOverlayClick={handleOverlayClick}
               onAddItem={handleAddItem}
+              setIsValidUrl={setIsValidUrl}
+              isValidUrl={isValidUrl}
             />
           </CurrentTemperatureUnitContext.Provider>
         </CurrentUserContext.Provider>

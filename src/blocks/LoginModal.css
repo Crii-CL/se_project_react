@@ -11,7 +11,7 @@
 }
 
 .login__caption {
-  margin-top: 30px;
+  margin-top: 25px;
   margin-bottom: 8px;
 }
 
@@ -27,12 +27,13 @@
 }
 
 .login__register-button {
-  margin: 0;
+  margin-bottom: 10px;
   font-size: 16px;
   font-family: "CabinetGrotesk-Bold", "Inter", sans-serif;
   background: transparent;
   border: none;
   color: rgba(0, 0, 0, 0.5);
+  padding: 0;
 }
 
 .login__register-button:hover {

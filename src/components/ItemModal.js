@@ -5,11 +5,11 @@ import closeButtonDark from "../images/close-button.svg";
 import { useState } from "react";
 
 const ItemModal = ({
+  onClose,
   itemData,
-  handleOverlayClick,
   isItemModalOpen,
   isConfirmModalOpen,
-  onClose,
+  handleOverlayClick,
   handleItemDelete,
   openConfirmModal,
   handleConfirmModalClose,

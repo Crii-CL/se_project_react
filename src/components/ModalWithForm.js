@@ -1,7 +1,9 @@
 import React from "react";
 import closeButton from "../images/close-button.svg";
 import "../blocks/modal.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import validator from "validator";
+import { isVisible } from "@testing-library/user-event/dist/utils";
 
 const ModalWithForm = ({
   name,
@@ -13,34 +15,26 @@ const ModalWithForm = ({
   onClose,
   children,
   setError,
-  toggleSubmit,
-  setToggleSubmit,
+  error,
+  isValidUrl,
 }) => {
-  const checkInputValidity = () => {
-    const formInputs = document.querySelectorAll(".modal__input");
-
+  useEffect(() => {
+    //display input's valid state
+    let formInputs = document.querySelectorAll(".modal__input");
+    let submitButton = document.querySelectorAll(".modal__submit");
     formInputs.forEach((input) => {
-      if (input.length <= 1) {
-        input.classList.add("valid");
-        input.clasList.remove("error");
-      }
-
       if (!input.validity.valid) {
         setError(true);
         input.classList.add("error");
         input.classList.remove("valid");
-        setToggleSubmit(false);
-      } else {
+        submitButton.disabled = true;
+      }
+      if (input.validity.valid || input.value.length < 1) {
         setError(false);
         input.classList.remove("error");
         input.classList.add("valid");
-        setToggleSubmit(true);
       }
     });
-  };
-
-  useEffect(() => {
-    checkInputValidity();
   });
 
   return (
@@ -53,6 +47,7 @@ const ModalWithForm = ({
       <form
         className={`modal__form modal__form_${name}`}
         onSubmit={handleSubmit}
+        // noValidate
       >
         <button
           className={`modal__closeBtn modal__closeBtn_${name}`}
@@ -64,8 +59,13 @@ const ModalWithForm = ({
         <h2 className={`modal__title modal__title_${name}`}>{title}</h2>
         {children}
         <button
-          type={`${toggleSubmit ? "submit" : "button"}`}
+          type={`${!error ? "submit" : "button"}`}
           className={`modal__submit modal__submit_${name}`}
+          onClick={(e) => {
+            if (error === true) {
+              e.preventDefault();
+            }
+          }}
         >
           {buttonText}
         </button>

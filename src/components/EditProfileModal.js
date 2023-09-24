@@ -4,6 +4,7 @@ import "../blocks/modal.css";
 import "../blocks/EditProfileModal.css";
 import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import validator from "validator";
 
 const EditProfileModal = ({
   onClose,
@@ -12,8 +13,7 @@ const EditProfileModal = ({
   editProfile,
   error,
   setError,
-  toggleSubmit,
-  setToggleSubmit,
+  setIsValidUrl,
 }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const [nameInputValue, setNameInputValue] = useState("");
@@ -47,8 +47,6 @@ const EditProfileModal = ({
       handleOverlayClick={handleOverlayClick}
       error={error}
       setError={setError}
-      toggleSubmit={toggleSubmit}
-      setToggleSubmit={setToggleSubmit}
     >
       <fieldset className="edit">
         <p className="edit__caption">Name*</p>
@@ -75,7 +73,13 @@ const EditProfileModal = ({
           value={avatarInputValue}
           onChange={(e) => {
             setAvatarInputValue(e.target.value);
-            setAvatarValidationMessage(e.target.validationMessage);
+            if (validator.isURL(e.target.value)) {
+              setAvatarValidationMessage(e.target.validationMessage);
+              setIsValidUrl(true);
+            } else {
+              setAvatarValidationMessage("Please enter a valid URL");
+              setIsValidUrl(false);
+            }
           }}
         ></input>
         <p className="error-message">{avatarValidationMessage}</p>

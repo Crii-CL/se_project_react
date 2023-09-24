@@ -44,12 +44,8 @@
 }
 
 .modal__input[type="radio"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
   padding: 5px;
   margin: 0;
-  border: 1px solid black;
   align-self: center;
 }
 
@@ -150,7 +146,7 @@
   width: 73px;
   height: 36px;
   position: absolute;
-  bottom: 5px;
+  bottom: 15px;
 }
 
 .modal__submit_register {
@@ -211,7 +207,7 @@
 
 .valid {
   color: black;
-  border-bottom: solid #000 1px;
+  border-bottom: solid black 1px;
 }
 
 .error {
@@ -226,8 +222,4 @@
   line-height: 10px;
   position: absolute;
   margin: 5px 0 10px 0;
-}
-
-.error-message__name-add-item {
-  position: absolute;
 }

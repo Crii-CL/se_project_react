@@ -1,7 +1,8 @@
 import ModalWithForm from "./ModalWithForm";
 import "../blocks/AddItemModal.css";
-import "../blocks/modal.css"; //if inputs look weird double check the import
+import "../blocks/modal.css";
 import React, { useEffect, useState } from "react";
+import validator from "validator";
 
 const AddItemModal = ({
   onClose,
@@ -10,8 +11,8 @@ const AddItemModal = ({
   onAddItem,
   error,
   setError,
-  toggleSubmit,
-  setToggleSubmit,
+  setIsValidUrl,
+  isValidUrl,
 }) => {
   const [nameInputValue, setNameInputValue] = useState("");
   const [linkInputValue, setLinkInputValue] = useState("");
@@ -49,8 +50,7 @@ const AddItemModal = ({
       onAddItem={onAddItem}
       error={error}
       setError={setError}
-      toggleSubmit={toggleSubmit}
-      setToggleSubmit={setToggleSubmit}
+      isValidUrl={setIsValidUrl}
     >
       <fieldset className="addItem__fieldset" id="input-fieldset">
         <p className="addItem__caption">Name</p>
@@ -68,7 +68,13 @@ const AddItemModal = ({
             setNameValidationMessage(e.target.validationMessage);
           }}
         ></input>
-        <p className="error-message">{nameValidationMessage}</p>
+        <p
+          className={`error-message ${
+            nameInputValue.length === 0 ? "hidden" : ""
+          }`}
+        >
+          {nameValidationMessage}
+        </p>
         <p className="addItem__caption" id="add-item-image-caption">
           Image
         </p>
@@ -76,17 +82,29 @@ const AddItemModal = ({
           type="url"
           className="modal__input"
           placeholder="Image URL"
-          minLength="1"
+          minLength="10"
           maxLength="100"
           required
           id="link-input"
           value={linkInputValue}
           onChange={(e) => {
             setLinkInputValue(e.target.value);
-            setLinkValidationMessage(e.target.validationMessage);
+            if (validator.isURL(e.target.value)) {
+              setLinkValidationMessage(e.target.validationMessage);
+              setIsValidUrl(true);
+              e.target.setCustomValidity = true;
+            } else {
+              setLinkValidationMessage("Please enter a valid URL");
+              setIsValidUrl(false);
+              e.target.setCustomValidity = false;
+            }
           }}
         ></input>
-        <p className="error-message error-message__name-add-item">
+        <p
+          className={`error-message ${
+            linkInputValue.length === 0 ? "hidden" : ""
+          }`}
+        >
           {linkValidationMessage}
         </p>
       </fieldset>

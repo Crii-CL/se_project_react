@@ -3,6 +3,7 @@ import "../blocks/RegisterModal.css";
 import "../blocks/modal.css";
 import { useState } from "react";
 import { useEffect } from "react";
+import validator from "validator";
 
 const RegisterModal = ({
   onClose,
@@ -11,11 +12,10 @@ const RegisterModal = ({
   signup,
   handleRegisterModal,
   handleLoginModal,
-  checkInputValidity,
   error,
   setError,
-  toggleSubmit,
-  setToggleSubmit,
+  setIsValidUrl,
+  setIsFormValid,
 }) => {
   const [emailInputValue, setEmailInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
@@ -66,8 +66,6 @@ const RegisterModal = ({
       handleSubmit={handleSubmit}
       error={error}
       setError={setError}
-      toggleSubmit={toggleSubmit}
-      setToggleSubmit={setToggleSubmit}
     >
       <fieldset className="register">
         <p className="register__caption">Email*</p>
@@ -82,7 +80,13 @@ const RegisterModal = ({
           }}
           value={emailInputValue}
         ></input>
-        <p className="error-message">{emailValidationMessage}</p>
+        <p
+          className={`error-message ${
+            emailInputValue.length === 0 ? "hidden" : ""
+          }`}
+        >
+          {emailValidationMessage}
+        </p>
         <p className="register__caption">Password*</p>
         <input
           className="modal__input"
@@ -97,7 +101,13 @@ const RegisterModal = ({
           }}
           value={passwordInputValue}
         ></input>
-        <p className="error-message">{passwordValidationMessage}</p>
+        <p
+          className={`error-message ${
+            passwordInputValue.length === 0 ? "hidden" : ""
+          }`}
+        >
+          {passwordValidationMessage}
+        </p>
         <p className="register__caption">Name*</p>
         <input
           className="modal__input"
@@ -110,7 +120,13 @@ const RegisterModal = ({
           }}
           value={nameInputValue}
         ></input>
-        <p className="error-message">{nameValidationMessage}</p>
+        <p
+          className={`error-message ${
+            nameInputValue.length === 0 ? "hidden" : ""
+          }`}
+        >
+          {nameValidationMessage}
+        </p>
         <p className="register__caption">Avatar URL*</p>
         <input
           className="modal__input"
@@ -119,11 +135,23 @@ const RegisterModal = ({
           required
           onChange={(e) => {
             setAvatarInputValue(e.target.value);
-            setAvatarValidationMessage(e.target.validationMessage);
+            if (validator.isURL(e.target.value)) {
+              setAvatarValidationMessage(e.target.validationMessage);
+              setIsValidUrl(true);
+            } else {
+              setAvatarValidationMessage("Please enter a valid URL");
+              setIsValidUrl(false);
+            }
           }}
           value={avatarInputValue}
         ></input>
-        <p className="error-message">{avatarValidationMessage}</p>
+        <p
+          className={`error-message ${
+            avatarInputValue.length === 0 ? "hidden" : ""
+          }`}
+        >
+          {avatarValidationMessage}
+        </p>
       </fieldset>
       <div className="register__login">
         <button className="register__login-button" onClick={switchToLogin}>
