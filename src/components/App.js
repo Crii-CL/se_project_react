@@ -261,6 +261,7 @@ export default function App() {
                   items={items}
                   setItems={setItems}
                   itemsApiObject={itemsApiObject}
+                  currentTemperatureUnit={currentTemperatureUnit}
                 />
               </Route>
               <ProtectedRoute isLoggedIn={isLoggedIn}>

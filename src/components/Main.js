@@ -4,6 +4,7 @@ import ItemCard from "./ItemCard";
 import "../blocks/Main.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
+import getWeather from "../utils/weatherApi";
 
 const Main = ({
   handleCardClick,
@@ -12,22 +13,46 @@ const Main = ({
   items,
   setItems,
   itemsApiObject,
+  currentTemperatureUnit,
 }) => {
   const { currentUser } = useContext(CurrentUserContext);
-  const [weatherSort, setWeatherSort] = useState(items);
-  let sortedItems = weatherSort;
+  const [weatherSort, setWeatherSort] = useState([]);
+
+  const handleWeatherSort = () => {
+    if (
+      (currentTemperatureUnit === "F" &&
+        weatherData.F >= "86°F" &&
+        weatherData.F <= "110°F") ||
+      (currentTemperatureUnit === "C" &&
+        weatherData.C >= "30°C" &&
+        weatherData.C <= "43°C")
+    ) {
+      let hotItems = items.filter((item) => item.weather === "Hot");
+      setWeatherSort(hotItems);
+    } else if (
+      (currentTemperatureUnit === "F" &&
+        weatherData.F >= "65°F" &&
+        weatherData.F <= "85°F") ||
+      (currentTemperatureUnit === "C" &&
+        weatherData.C >= "18°C" &&
+        weatherData.C <= "29°C")
+    ) {
+      let warmItems = items.filter((item) => item.weather === "Warm");
+      setWeatherSort(warmItems);
+    } else if (
+      (currentTemperatureUnit === "F" && weatherData.F <= "65°F") ||
+      (currentTemperatureUnit === "C" && weatherData.C <= "18°C")
+    ) {
+      let coldItems = items.filter((item) => item.weather === "Cold");
+      setWeatherSort(coldItems);
+    } else {
+      setWeatherSort(items);
+    }
+  };
 
   useEffect(() => {
-    sortedItems = [...items].sort((a, b) => {
-      if (a.weather === "Hot" && b.weather !== "Hot") return -1;
-      if (a.weather !== "Hot" && b.weather === "Hot") return 1;
-      if (a.weather === "Warm" && b.weather === "Cold") return -1;
-      if (a.weather === "Cold" && b.weather === "Warm") return 1;
-      return 0;
-    });
-
-    setWeatherSort(sortedItems);
-  }, [items]);
+    handleWeatherSort();
+  }, [currentTemperatureUnit, weatherData]);
 
   return (
     <main className="main">
@@ -35,7 +60,7 @@ const Main = ({
       <section className="cards" id="card-section">
         {isLoggedIn && (
           <ul className="cards__list" id="card-list">
-            {sortedItems?.map((card) => {
+            {weatherSort?.map((card) => {
               return (
                 <ItemCard
                   key={card?._id}

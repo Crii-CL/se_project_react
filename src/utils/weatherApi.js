@@ -1,11 +1,19 @@
 const getWeather = (latitude, longitude, apiKey, temperature) => {
-  if (temperature >= 86) {
-    return "hot";
-  } else if (temperature >= 66 && temperature <= 85) {
-    return "warm";
-  } else if (temperature <= 65) {
-    return "cold";
-  }
+  // if (tempUnits.F && temperature >= 86 && temperature <= 110) {
+  //   return "hot";
+  // } else if (tempUnits.F && temperature >= 65 && temperature <= 85) {
+  //   return "warm";
+  // } else if (tempUnits.F && temperature <= 65) {
+  //   return "cold";
+  // }
+
+  // if (tempUnits.C && temperature >= 30 && temperature <= 43) {
+  //   return "hot";
+  // } else if (tempUnits.C && temperature >= 18 && temperature <= 29) {
+  //   return "warm";
+  // } else if (tempUnits.C && temperature <= 18) {
+  //   return "cold";
+  // }
 
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`

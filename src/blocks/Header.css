@@ -77,6 +77,7 @@
   height: 20px;
   border-radius: 50%;
   justify-content: center;
+  object-fit: cover;
 }
 
 .header__avatar:hover {

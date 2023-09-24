@@ -26,6 +26,7 @@
   align-self: center;
   transition: 0.15s ease;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .sidebar__avatar:hover {
