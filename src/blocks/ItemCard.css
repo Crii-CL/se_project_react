@@ -1,9 +1,19 @@
-.cards__list {
+/* .cards__list {
   display: flex;
   flex-flow: row wrap;
   list-style: none;
   padding: 0;
   gap: 13px;
+} */
+
+.cards__list {
+  display: grid;
+  list-style: none;
+  padding: 0px;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr; /* Two columns with equal width */
+  grid-template-rows: 1fr 1fr; /* Two rows with fixed heights */
 }
 
 .cards__el {
@@ -20,6 +30,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap: 5px;
 }
 
 .cards__name {
@@ -28,11 +39,12 @@
   font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
   color: rgba(0, 0, 0, 0.6);
   margin: 0;
+  font-size: 1em;
 }
 
 .cards__image {
-  width: 318px;
-  height: 318px;
+  width: 10em;
+  height: 10em;
   border-radius: 3%;
   border: solid 1px rgba(0, 0, 0, 0.3);
   padding: none;
@@ -48,17 +60,16 @@
 }
 
 .cards__button {
-  position: relative;
   box-sizing: border-box;
   border: none;
-  padding: none;
+  padding: 0px;
   cursor: pointer;
   background: transparent;
   transition: 0.2s ease;
 }
 
 .cards__button:hover {
-  transform: scale(120%);
+  transform: scale(110%);
 }
 
 .cards__like-image {
@@ -75,4 +86,23 @@
   margin: 0;
   font-family: CabinetGrotesk-Bold, "inter", sans-serif;
   font-size: 30px;
+}
+
+@media screen and (max-width: 700px) {
+  .cards__list {
+  }
+
+  .cards__image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .cards__name {
+    font-size: smaller;
+  }
+
+  .cards__like-image {
+    width: 10px;
+    height: 10px;
+  }
 }

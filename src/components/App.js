@@ -29,6 +29,7 @@ export default function App() {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [inProfile, setInProfile] = useState("");
   const [modalData, setModalData] = useState(null);
   const [weatherData, setWeatherData] = useState("");
   const [currentTemperatureUnit, setCurrentTempUnit] = useState("F");
@@ -250,6 +251,8 @@ export default function App() {
               isLoggedIn={isLoggedIn}
               register={openRegisterForm}
               login={openLoginForm}
+              inProfile={inProfile}
+              setInProfile={setInProfile}
               signOut={signOutUser}
             />
             <Switch>
