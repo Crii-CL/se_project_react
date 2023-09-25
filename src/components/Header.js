@@ -7,9 +7,13 @@ import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 const Header = ({ openForm, isLoggedIn, register, login }) => {
-  const currentDate = new Date().toLocaleString("default", {
-    month: "long",
-    day: "numeric",
+  const currentDate = new Date().toLocaleString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
   });
 
   const { currentUser } = useContext(CurrentUserContext);
@@ -28,7 +32,7 @@ const Header = ({ openForm, isLoggedIn, register, login }) => {
           </div>
         </NavLink>
         <div className="header__text" id="currentDate">
-          {currentDate}, Puerto Rico
+          {currentDate}
         </div>
       </div>
       <div className="header__container" id="button-name-avatar">

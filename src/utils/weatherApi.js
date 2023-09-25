@@ -1,28 +1,36 @@
-const getWeather = (latitude, longitude, apiKey, temperature) => {
-  // if (tempUnits.F && temperature >= 86 && temperature <= 110) {
-  //   return "hot";
-  // } else if (tempUnits.F && temperature >= 65 && temperature <= 85) {
-  //   return "warm";
-  // } else if (tempUnits.F && temperature <= 65) {
-  //   return "cold";
-  // }
+import { constants } from "./constants";
 
-  // if (tempUnits.C && temperature >= 30 && temperature <= 43) {
-  //   return "hot";
-  // } else if (tempUnits.C && temperature >= 18 && temperature <= 29) {
-  //   return "warm";
-  // } else if (tempUnits.C && temperature <= 18) {
-  //   return "cold";
-  // }
+let latitude;
+let longitude;
 
-  return fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error ${res.status}`);
+const getLocation = () => {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        resolve();
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
+};
+
+const getWeather = () => {
+  return getLocation()
+    .then(() => {
+      return fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${constants.apiKey}`
+      );
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error ${res.status}`);
+    });
 };
 
 export const parseWeatherData = (data) => {

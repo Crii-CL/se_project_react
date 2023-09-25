@@ -10,7 +10,6 @@ import getWeather, { parseWeatherData, tempUnits } from "../utils/weatherApi";
 import itemsApi from "../utils/ItemsApi";
 import SignupOrSignin from "../utils/auth";
 import ProtectedRoute from "./ProtectedRoute";
-import { constants } from "../utils/constants";
 import "../blocks/modal.css";
 import "../vendor/Fonts/fonts.css";
 import "../blocks/AddItemModal.css";
@@ -21,6 +20,7 @@ import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 import { Switch } from "react-router-dom";
 import EditProfileModal from "./EditProfileModal";
+import navigator from "navigator";
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -199,7 +199,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    getWeather(constants.latitude, constants.longitude, constants.apiKey)
+    getWeather()
       .then((res) => {
         setWeatherData(tempUnits(parseWeatherData(res)));
       })
