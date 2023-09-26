@@ -10,7 +10,7 @@
   z-index: 1;
 
   font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
-  font-size: x-large;
+  font-size: xx-large;
   color: white;
 }
 
@@ -25,13 +25,19 @@
   font-size: 25px;
 }
 
+@media screen and (max-width: 800px) {
+  .weather__info {
+    font-size: x-large;
+  }
+}
+
 @media screen and (max-width: 425px) {
   .weather__info {
     margin: 0 0 0 5px;
-    font-size: 1em;
+    font-size: 0.9em;
   }
 
   .weather__message {
-    font-size: 18px;
+    font-size: 14px;
   }
 }

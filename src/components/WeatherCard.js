@@ -51,7 +51,7 @@ const WeatherCard = ({ day, type, weatherTemp }) => {
       </div>
       <div>
         <h1 className="weather__message">
-          Today is {weatherTemp[currentTemperatureUnit]} You may want to wear:
+          Today is {weatherTemp[currentTemperatureUnit]} you may want to wear:
         </h1>
       </div>
     </section>

@@ -23,6 +23,8 @@ const ItemCard = ({
     card.likes.includes(currentUser?._id)
   );
 
+  const screenWidth = window.innerWidth;
+
   useEffect(() => {
     setIsCardLiked(card.likes.includes(currentUser?._id));
   }, [card.likes, currentUser?._id]);
@@ -72,7 +74,9 @@ const ItemCard = ({
   return (
     <li className="cards__el">
       <div className="cards__caption">
-        {!linkError ? <p className="cards__name">{name}</p> : <></>}
+        {!linkError && screenWidth > 500 && (
+          <p className="cards__name">{name}</p>
+        )}
         {!linkError && currentUser && (
           <button className="cards__button">
             <img
