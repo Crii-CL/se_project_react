@@ -63,8 +63,6 @@ const Header = ({
         <div className="header__text" id="currentDate">
           {currentDate}
         </div>
-        {/* </div> */}
-        {/* <div className="header__container" id="button-name-avatar"> */}
         <div className="header__slider"></div>
         {!inProfile && <ToggleSwitch name="Temp Switch" />}
         {isLoggedIn ? (
