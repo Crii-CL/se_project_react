@@ -10,34 +10,63 @@ const SideBar = ({ openEdit, logout }) => {
     setAvatarError(true);
   };
 
+  const screenWidth = window.innerWidth;
+
   return (
     <div className="sidebar">
-      <div className="sidebar__header">
-        {!avatarError ? (
-          <img
-            className="sidebar__avatar"
-            src={currentUser?.avatar}
-            onError={handleAvatarError}
-          />
-        ) : (
-          <div className="sidebar__avatar-placeholder">
-            <div className="sidebar__avatar-placeholder-container">
-              <div>
-                <p className="sidebar__avatar-placeholder-letter">
-                  {currentUser?.name ? (
-                    currentUser?.name.charAt(0).toUpperCase()
-                  ) : (
-                    <></>
-                  )}
-                </p>
+      {screenWidth > 1000 ? (
+        <div className="sidebar__header">
+          {!avatarError ? (
+            <img
+              className="sidebar__avatar"
+              src={currentUser?.avatar}
+              onError={handleAvatarError}
+            />
+          ) : (
+            <div className="sidebar__avatar-placeholder">
+              <div className="sidebar__avatar-placeholder-container">
+                <div>
+                  <p className="sidebar__avatar-placeholder-letter">
+                    {currentUser?.name ? (
+                      currentUser?.name.charAt(0).toUpperCase()
+                    ) : (
+                      <></>
+                    )}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        )}
-        <h2 className="sidebar__title">{currentUser?.name}</h2>
-      </div>
+          )}
+          <h2 className="sidebar__name">{currentUser?.name}</h2>
+        </div>
+      ) : (
+        <>
+          {!avatarError ? (
+            <img
+              className="sidebar__avatar"
+              src={currentUser?.avatar}
+              onError={handleAvatarError}
+            />
+          ) : (
+            <div className="sidebar__avatar-placeholder">
+              <div className="sidebar__avatar-placeholder-container">
+                <div>
+                  <p className="sidebar__avatar-placeholder-letter">
+                    {currentUser?.name ? (
+                      currentUser?.name.charAt(0).toUpperCase()
+                    ) : (
+                      <></>
+                    )}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+          <h2 className="sidebar__name">{currentUser?.name}</h2>
+        </>
+      )}
       <button className="sidebar__button" onClick={openEdit}>
-        Change Profile Data
+        Edit Profile
       </button>
       <button className="sidebar__button" onClick={logout}>
         Logout
