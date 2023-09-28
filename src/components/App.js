@@ -15,7 +15,7 @@ import "../vendor/Fonts/fonts.css";
 import "../blocks/AddItemModal.css";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 import { Switch } from "react-router-dom";
@@ -241,7 +241,7 @@ export default function App() {
 
   return (
     <div className="page">
-      <BrowserRouter>
+      <HashRouter>
         <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
           <CurrentTemperatureUnitContext.Provider
             value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -336,7 +336,7 @@ export default function App() {
             />
           </CurrentTemperatureUnitContext.Provider>
         </CurrentUserContext.Provider>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
