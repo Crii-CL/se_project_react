@@ -19,6 +19,7 @@ const SideBar = ({ openEdit, logout }) => {
           {!avatarError ? (
             <img
               className="sidebar__avatar"
+              alt="sidear avatar image 1"
               src={currentUser?.avatar}
               onError={handleAvatarError}
             />
@@ -45,6 +46,7 @@ const SideBar = ({ openEdit, logout }) => {
             <img
               className="sidebar__avatar"
               src={currentUser?.avatar}
+              alt="avatar image 2"
               onError={handleAvatarError}
             />
           ) : (

@@ -82,6 +82,7 @@ const ItemCard = ({
             <img
               src={isCardLiked ? liked : disliked}
               className="cards__like-image"
+              alt="card like image"
               onClick={() => {
                 handleLikeClick();
               }}

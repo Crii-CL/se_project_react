@@ -4,8 +4,6 @@ import ClothesSection from "./ClothesSection";
 import ItemCard from "./ItemCard";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext, useEffect, useState } from "react";
-import disliked from "../images/likeButton.svg";
-import liked from "../images/like_active.svg";
 
 const Profile = ({
   handleCardClick,

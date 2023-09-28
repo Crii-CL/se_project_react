@@ -20,7 +20,6 @@ import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 import { Switch } from "react-router-dom";
 import EditProfileModal from "./EditProfileModal";
-import navigator from "navigator";
 
 export default function App() {
   const [isItemModalOpen, setIsItemModalOpen] = useState(false);
@@ -218,7 +217,7 @@ export default function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [itemsApiObject]);//added itemsApiObject
 
   useEffect(() => {
     if (token) {
@@ -237,7 +236,7 @@ export default function App() {
     } else {
       setIsLoggedIn(false);
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, UserApi, token]);//added UserApi and token
 
   return (
     <div className="page">

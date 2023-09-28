@@ -2,8 +2,6 @@ import React from "react";
 import closeButton from "../images/close-button.svg";
 import "../blocks/modal.css";
 import { useEffect } from "react";
-import validator from "validator";
-import { isVisible } from "@testing-library/user-event/dist/utils";
 
 const ModalWithForm = ({
   name,

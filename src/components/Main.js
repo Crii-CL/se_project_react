@@ -4,7 +4,6 @@ import ItemCard from "./ItemCard";
 import "../blocks/Main.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
-import getWeather from "../utils/weatherApi";
 
 const Main = ({
   handleCardClick,
@@ -52,7 +51,7 @@ const Main = ({
 
   useEffect(() => {
     handleWeatherSort();
-  }, [currentTemperatureUnit, weatherData]);
+  }, [currentTemperatureUnit, weatherData, handleWeatherSort]); // added handleWeatherSort
 
   return (
     <main className="main">

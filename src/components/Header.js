@@ -1,11 +1,9 @@
 import "../blocks/Header.css";
-import avatar from "../images/avatar.png";
 import logo from "../images/logo.svg";
 import React, { useContext, useState } from "react";
 import ToggleSwitch from "./ToggleSwitch";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { hasSelectionSupport } from "@testing-library/user-event/dist/utils";
 
 const Header = ({
   openForm,
