@@ -51,7 +51,7 @@ const Main = ({
 
   useEffect(() => {
     handleWeatherSort();
-  }, [currentTemperatureUnit, weatherData]); // added handleWeatherSort
+  }, [currentTemperatureUnit, weatherData]);
 
   return (
     <main className="main">
