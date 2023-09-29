@@ -217,7 +217,7 @@ export default function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, [itemsApiObject]); //added itemsApiObject
+  }, []);
 
   useEffect(() => {
     if (token) {
@@ -236,8 +236,7 @@ export default function App() {
     } else {
       setIsLoggedIn(false);
     }
-  }, [isLoggedIn, UserApi, token]); //added UserApi and token
-
+  }, [isLoggedIn]);
   return (
     <div className="page">
       <BrowserRouter>
