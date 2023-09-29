@@ -15,7 +15,7 @@ import "../vendor/Fonts/fonts.css";
 import "../blocks/AddItemModal.css";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { HashRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
 import { Switch } from "react-router-dom";
@@ -217,7 +217,7 @@ export default function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, [itemsApiObject]);//added itemsApiObject
+  }, [itemsApiObject]); //added itemsApiObject
 
   useEffect(() => {
     if (token) {
@@ -236,11 +236,11 @@ export default function App() {
     } else {
       setIsLoggedIn(false);
     }
-  }, [isLoggedIn, UserApi, token]);//added UserApi and token
+  }, [isLoggedIn, UserApi, token]); //added UserApi and token
 
   return (
     <div className="page">
-      <HashRouter>
+      <BrowserRouter>
         <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
           <CurrentTemperatureUnitContext.Provider
             value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -335,7 +335,7 @@ export default function App() {
             />
           </CurrentTemperatureUnitContext.Provider>
         </CurrentUserContext.Provider>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 }
