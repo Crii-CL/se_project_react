@@ -90,7 +90,7 @@ const RegisterModal = ({
         <p className="register__caption">Password*</p>
         <input
           className="modal__input"
-          type="text"
+          type="password"
           placeholder="Password"
           minLength="5"
           maxLength="20"
