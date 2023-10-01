@@ -8,6 +8,7 @@
 }
 
 .header__container {
+  display: -webkit-grid;
   display: grid;
   grid-template-columns: auto 1fr auto auto auto auto auto;
   grid-template-rows: 1fr;
@@ -60,9 +61,11 @@
 }
 
 .header__avatar {
+  display: -webkit-flex;
   display: flex;
   margin-left: 12px;
   border-radius: 50%;
+  -webkit-align-items: center;
   align-items: center;
   transition: 0.15s ease-in-out;
   margin: 0;
@@ -72,6 +75,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  -webkit-justify-content: center;
   justify-content: center;
   object-fit: cover;
 }
@@ -84,10 +88,13 @@
   width: 20px;
   height: 20px;
   border: solid 1px #000;
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: center;
   justify-content: center;
   background-color: rgb(18, 96, 152);
   border-radius: 50%;
+  -webkit-align-items: center;
   align-items: center;
 }
 
@@ -144,6 +151,7 @@
 
   #currentDate {
     font-size: 10px;
+    -webkit-justify-self: center;
     justify-self: center;
     width: 60px;
   }

@@ -49,7 +49,6 @@
 
 .switch__temp-F {
   position: relative;
-
   top: 3px;
   right: 36px;
   z-index: 100;
@@ -80,4 +79,67 @@
   top: 0px;
   right: 25px;
   font-size: 15px;
+}
+
+.switch__box::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #000;
+  cursor: pointer;
+}
+
+.switch__box::-moz-range-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #000;
+  cursor: pointer;
+}
+
+.switch__box::-ms-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #000;
+  cursor: pointer;
+}
+
+.switch__box::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.switch__box::-moz-range-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.switch__box::-ms-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.switch__box::-webkit-slider-thumb:hover {
+  transform: scale(1.03);
+}
+
+.switch__box::-moz-range-thumb:hover {
+  transform: scale(1.03);
+}
+
+.switch__box::-ms-thumb:hover {
+  transform: scale(1.03);
 }

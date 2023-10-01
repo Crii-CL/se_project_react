@@ -22,7 +22,6 @@
 .sidebar__avatar {
   width: 56px;
   height: 56px;
-  /* margin-right: 16px; */
   align-self: center;
   transition: 0.15s ease;
   border-radius: 50%;
@@ -42,7 +41,6 @@
   background-color: rgb(18, 96, 152);
   border-radius: 50%;
   align-items: center;
-  /* margin-right: 16px; */
   box-sizing: border-box;
 }
 

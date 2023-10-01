@@ -1,9 +1,10 @@
 .footer {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
   position: relative;
   bottom: -40vh;
   margin: 0 20px;
-
   font-family: "CabinetGrotesk-Medium", "Inter", sans-serif;
   color: #000;
 }
