@@ -47,8 +47,10 @@
     ]
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.16",
     "file-loader": "^6.2.0",
     "gh-pages": "^5.0.0",
+    "postcss": "^8.4.31",
     "url-loader": "^4.1.1",
     "webpack-cli": "^5.0.1"
   },

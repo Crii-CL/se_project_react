@@ -16,7 +16,10 @@
 }
 
 #radio-button-fieldset {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-direction: column;
   flex-direction: column;
   gap: 15px;
 }
