@@ -1,4 +1,3 @@
-import "../blocks/App.css";
 import Header from "./Header";
 import Profile from "./Profile";
 import Main from "./Main";
