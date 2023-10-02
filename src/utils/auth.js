@@ -4,7 +4,7 @@ const SignupOrSignin = () => {
   const baseUrl =
     process.env.NODE_ENV === "production"
       ? "https://soft-starburst-848c30.netlify.app"
-      : "localhost:3001";
+      : "http://localhost:3001";
 
   return {
     signUp: (email, password, name, avatar) => {
