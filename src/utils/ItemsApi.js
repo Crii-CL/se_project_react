@@ -3,7 +3,7 @@ import checkResponse from "../utils/api";
 export const itemsApi = (currentUser) => {
   const baseUrl =
     process.env.NODE_ENV === "production"
-      ? "https://crii-cl.github.io/se_project_express/"
+      ? "https://crii-cl.github.io/se_project_express"
       : "http://localhost:3001";
 
   const token = localStorage.getItem("jwt");
