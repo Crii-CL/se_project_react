@@ -3,7 +3,7 @@ import checkResponse from "../utils/api";
 const SignupOrSignin = () => {
   const baseUrl =
     process.env.NODE_ENV === "production"
-      ? "https://soft-starburst-848c30.netlify.app"
+      ? "https://wtwr-back.netlify.app"
       : "http://localhost:3001";
 
   return {
