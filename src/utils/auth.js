@@ -3,7 +3,7 @@ import checkResponse from "../utils/api";
 const SignupOrSignin = () => {
   const baseUrl =
     process.env.NODE_ENV === "production"
-      ? "https://soft-starburst-848c30.netlify.app"
+      ? "https://crii-cl.github.io/se_project_express/"
       : "http://localhost:3001";
 
   return {
