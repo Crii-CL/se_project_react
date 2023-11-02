@@ -2,3 +2,7 @@
   padding: 0 20px;
   font-family: "CabinetGrotesk-Regular";
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
