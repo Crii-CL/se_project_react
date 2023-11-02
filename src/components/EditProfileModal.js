@@ -32,7 +32,6 @@ const EditProfileModal = ({
   }, [currentUser]);
 
   function handleSubmit(e) {
-    e.preventDefault();
     editProfile(nameInputValue, avatarInputValue);
   }
 

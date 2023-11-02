@@ -129,6 +129,7 @@ export default function App() {
   };
 
   function signOutUser() {
+    window.location.reload();
     setIsLoggedIn(false);
     localStorage.removeItem("jwt");
   }
